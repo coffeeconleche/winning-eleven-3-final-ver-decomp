@@ -25,7 +25,7 @@ confirmed in full during the first controlled menu route. Notably, the observed
 
 Authoritative Splat layouts now exist for all five confirmed modules. Together
 they contain 412 functions and rebuild 414,610 retail bytes exactly. Fifteen
-functions currently compile from matching C; the remaining 397 use the
+functions currently compile from matching C; the remaining 396 use the
 generated assembly baseline.
 
 Verify every confirmed overlay with:
