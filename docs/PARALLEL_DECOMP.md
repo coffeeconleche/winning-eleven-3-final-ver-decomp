@@ -217,6 +217,52 @@ with unchanged hashes and sizes; all nine SDK-free tooling tests also passed.
 The targets above are completed, not available assignments; ignored earlier
 research is preserved.
 
+### Fourteenth through sixteenth batch results
+
+At `956a9a6`, twelve new targets were assigned as four lanes of three. Three
+existing isolated workers ran alongside the integrating agent, who implemented
+the fourth lane in the primary checkout before integrating worker results.
+There was no global barrier between queue positions; no additional worker or
+shared writable build directory was needed.
+
+| Lane / worker branch | First target (bytes) | Second target (bytes) | Third target (bytes) |
+|---|---|---|---|
+| `decomp/select-mode-and-call` | `func_801A4908` (64) | `func_801A7A4C` (64) | `func_801A8540` (112) |
+| `decomp/select-descriptor-submit` | `func_80196800` (156) | `func_8019645C` (156) | `func_801964F8` (164) |
+| `decomp/select-poll-and-copy` | `func_801926EC` (52) | `func_80191E44` (60) | `func_80192428` (120) |
+| Integrating agent | `func_801C2064` (68) | `func_801C20A8` (72) | `func_801C1C5C` (120) |
+
+Recovered behaviors include a mode-selected byte lookup, eleven ordered calls,
+wrapped byte call setup, three descriptor-submission paths, indefinite retry,
+button-based callback/return, indexed copies, two mode initializers, and a
+mode/side classifier. Original prototypes and gameplay meanings remain
+uncertain.
+
+The call setup retains selector underflow from zero to 255 before scaling.
+Descriptor routines preserve five early stack loads, word/halfword/byte stores,
+scratchpad flag-read order and the 20-byte entry stride. Endpoint sums narrow
+to halfwords; the fifth argument of the endpoint routine is word-sized, unlike
+the other two. The retry repeats the entire side-effectful call, with no
+invented timeout. Indexed copies read a signed halfword index after the first
+call and reread its low byte after the second. The classifier retains a second
+table-byte load instead of reusing the first. Bounds and fallbacks were not
+added to the matching sources.
+
+All twelve use `gcc272-dos -quiet -O2 -G0`. Ten need no barriers or register
+bindings; the global descriptor submission and mode/side classifier use
+documented empty constraints. No symbols or jump tables were added, and no
+original assembly, reference hashes or generated instructions were patched.
+
+Each function passed all five overlays and resident verification before its
+separate commit. Root reviewed the worker sources and retained each queue's
+order, rebuilding SELECT after every integration. These queues added 1,208
+matching code bytes (340, 352 and 516 per queue position), raising the accepted
+count from 57 to 69 functions (68 SELECT and one ENTER). The remaining 343
+confirmed overlay functions are assembly-backed. Final combined checks passed
+for all five overlays and the resident with unchanged hashes and sizes, along
+with all nine SDK-free tooling tests. All targets in this table
+are completed, not new assignments; ignored research remains local.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 

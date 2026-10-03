@@ -18,7 +18,7 @@ break the reference build.
   available.
 - Matching assembly baseline: **established** (1,273 resident functions).
 - Confirmed matching overlays: **5** (412 functions, 414,610 exact bytes).
-- Decompiled and matching C: **57 functions**.
+- Decompiled and matching C: **69 functions**.
 - Resident frame loop, controller boundary and match dispatchers: **mapped**.
 - Native PC target: **not started**.
 
