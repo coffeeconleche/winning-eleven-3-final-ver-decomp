@@ -551,6 +551,68 @@ tooling tests pass. Privacy review passed, and worker checkouts were tracked
 clean. These targets are completed, not available assignments; ignored
 research remains local. This batch was committed locally without a push.
 
+### Ninety-function run: verified checkpoints
+
+Starting at `84a3fcf` with 138 matching C functions, three isolated
+workers have exclusive 30-target queues on `decomp/select-ninety-a`,
+`decomp/select-ninety-b` and `decomp/select-ninety-c`. Workers proceed
+after individual verified commits without a global round barrier. Integration
+retains worker commit order; each publication groups five accepted functions
+per worker. Unresolved probes remain private and do not count as matches.
+
+| Checkpoint | New exact functions in run | Total matching C | Assembly-backed confirmed overlay functions |
+|---|---:|---:|---:|
+| 1 | 15 | 153 | 259 |
+
+15 verified additions cover 1,904 matching code bytes.
+Remaining planned targets are not claimed as completed.
+
+| Worker | Function | Bytes | Source compiler aids |
+|---|---|---:|---|
+| A | `func_801BE744` | 56 | None |
+| B | `func_801CB334` | 72 | None |
+| A | `func_801BD6A0` | 76 | Unused 8-byte leaf frame, original purpose unknown |
+| B | `func_801C8CB4` | 76 | None |
+| A | `func_801BD2F8` | 112 | None |
+| B | `func_801A84C8` | 120 | None |
+| C | `func_801CF918` | 76 | None |
+| A | `func_801C6250` | 144 | None; 20-byte local descriptor naturally gives measured 48-byte frame |
+| B | `func_801BA564` | 176 | None |
+| C | `func_801AA778` | 76 | One empty base input |
+| C | `func_801BD368` | 136 | None |
+| B | `func_801BB140` | 192 | None |
+| A | `func_801CF6A8` | 184 | Two empty inputs and return answer $2 binding |
+| C | `func_801ADF5C` | 196 | None |
+| C | `func_801CACF0` | 212 | None |
+
+Observed access patterns are not recovered original gameplay names or complete
+types. Call order, signed arithmetic, narrow wrapping, alias-sensitive rereads,
+sparse cases and negative inputs remain as measured; no new bounds, timeout
+or null guards are introduced. Original assembly, reference hashes, linker
+placement and generated instructions are not patched.
+
+The paired word-bit helpers retain byte-narrowed variable shift counts. Their
+matching PS1 code has measured MIPS low-five-bit shift behavior, but C shifts
+by 32 or more are not portable. A future native implementation must explicitly
+mask the count rather than assume an unproved caller bound. `func_801CB334`
+retains the original miss fallthrough (the register holds zero), without inventing
+a source-level return contract. Frame reservations have unknown original purposes
+and introduce no accesses. Empty constraints and bindings retain measured compiler
+choices and emit no instructions themselves.
+
+Each source passes full overlay and resident checks before its worker commit.
+The integrator reviews each source and independently links and hashes the complete
+SELECT image after every integration. Routine local checks may reuse verbatim DOS
+compiler assembly through an ignored content-addressed cache keyed by exact
+preprocessed input, flags and compiler/runtime/wrapper bytes; preprocessing,
+conversion, assembly, linking and complete retail-byte comparison still run.
+Cache tests cover invalidation and corruption; cached baseline output was checked
+against an independent uncached build. This private optimization is not a
+replacement for the public verifier: every publication checkpoint reruns the
+original uncached all-five-overlay build, the resident build, all nine SDK-free
+tooling tests, counts and privacy checks. All retail hashes and sizes remain
+unchanged. Only verified checkpoints are reported, not all 90 targets in advance.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 
