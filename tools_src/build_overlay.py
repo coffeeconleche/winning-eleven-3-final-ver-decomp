@@ -11,6 +11,7 @@ import subprocess
 import sys
 from pathlib import Path
 
+from dos_cc1 import compile_dos
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -32,6 +33,8 @@ CPP_FLAGS = [
     "-DLANGUAGE_C",
     "-Iinclude",
 ]
+
+PER_FUNC_COMPILERS: dict[str, str] = {}
 
 PER_FUNC_CC1_FLAGS = {
     "func_801A3930": ["-quiet", "-O2", "-G0", "-mno-split-addresses"],
@@ -227,6 +230,8 @@ def compile_c_sources(
     out_dir: Path,
     psyq_bin: Path | None,
     maspsx_path: Path | None,
+    dosbox_path: Path | None = None,
+    dos_cc1_path: Path | None = None,
 ) -> dict[str, Path]:
     source_dir = ROOT / "src" / "overlays" / name.lower()
     sources = sorted(source_dir.glob("func_*.c"))
@@ -260,15 +265,23 @@ def compile_c_sources(
             ]
         )
         cc1_flags = PER_FUNC_CC1_FLAGS.get(source.stem, ["-quiet", "-O2", "-G0"])
-        run(
-            [
-                str(cc1psx),
-                *cc1_flags,
-                preprocessed.relative_to(ROOT).as_posix(),
-                "-o",
-                compiler_asm.relative_to(ROOT).as_posix(),
-            ]
-        )
+        profile = PER_FUNC_COMPILERS.get(source.stem, "gcc281")
+        if profile == "gcc272-dos":
+            dosbox = find_existing("DOSBox-X", [dosbox_path or ROOT / "tools" / "dosbox-x" / "dosbox-x.exe"])
+            dos_cc1 = find_existing("DOS CC1PSX.EXE", [dos_cc1_path or psyq_bin / "DOS" / "CC1PSX.EXE"])
+            compile_dos(dos_cc1, dosbox, preprocessed, compiler_asm, cc1_flags)
+        elif profile == "gcc281":
+            run(
+                [
+                    str(cc1psx),
+                    *cc1_flags,
+                    preprocessed.relative_to(ROOT).as_posix(),
+                    "-o",
+                    compiler_asm.relative_to(ROOT).as_posix(),
+                ]
+            )
+        else:
+            raise BuildError(f"unknown compiler profile {profile!r} for {source.stem}")
         result = subprocess.run(
             [
                 str(maspsx_python),
@@ -311,6 +324,8 @@ def build_overlay(
     bin_dir: Path | None,
     psyq_bin: Path | None,
     maspsx_path: Path | None,
+    dosbox_path: Path | None = None,
+    dos_cc1_path: Path | None = None,
 ) -> None:
     config = OVERLAYS[name]
     expected = config["expected"]
@@ -328,7 +343,7 @@ def build_overlay(
     obj = source.with_suffix(".o")
     elf = out_dir / f"{name.lower()}.elf"
     image = out_dir / f"{name}.BIN"
-    compiled = compile_c_sources(name, out_dir, psyq_bin, maspsx_path)
+    compiled = compile_c_sources(name, out_dir, psyq_bin, maspsx_path, dosbox_path, dos_cc1_path)
     write_aggregate(config, source, compiled)
 
     print(f"== {name}.BIN ({len(compiled)} matching C) ==")
@@ -379,6 +394,8 @@ def main() -> int:
     parser.add_argument("--bin-dir", type=Path)
     parser.add_argument("--psyq-bin", type=Path, help="directory containing CPPPSX.EXE and CC1PSX.EXE")
     parser.add_argument("--maspsx", type=Path, help="path to maspsx.py")
+    parser.add_argument("--dosbox", type=Path, help="DOSBox-X executable for gcc272-dos functions")
+    parser.add_argument("--dos-cc1", type=Path, help="DOS GCC 2.7.2 CC1PSX.EXE (default: PsyQ BIN/DOS)")
     args = parser.parse_args()
     if args.all == (args.overlay is not None):
         parser.error("provide one overlay name or --all")
@@ -386,7 +403,7 @@ def main() -> int:
     try:
         names = list(OVERLAYS) if args.all else [args.overlay]
         for name in names:
-            build_overlay(name, args.bin_dir, args.psyq_bin, args.maspsx)
+            build_overlay(name, args.bin_dir, args.psyq_bin, args.maspsx, args.dosbox, args.dos_cc1)
         print(f"Verified {len(names)} overlay(s).")
         return 0
     except (BuildError, OSError) as error:
