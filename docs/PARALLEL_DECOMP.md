@@ -94,6 +94,45 @@ of matching C, bringing the accepted count to 30 functions (29 SELECT and one
 ENTER), with 382 confirmed overlay functions still assembly-backed. All six
 targets in this table are completed, not available assignments.
 
+### Fifth through seventh batch results
+
+At `36aaa2b`, the same three workers each received a three-target queue. All
+nine functions matched, with a separate verified commit for each function and
+no global barrier between rounds:
+
+| Worker branch | First target (bytes) | Second target (bytes) | Third target (bytes) |
+|---|---|---|---|
+| `decomp/select-reset-and-sequence` | `func_8018E538` (128) | `func_8018EC60` (80) | `func_8019A62C` (212) |
+| `decomp/select-range-input` | `func_8018E5EC` (84) | `func_8018E640` (92) | `func_8018E994` (116) |
+| `decomp/select-slot-helpers` | `func_801A36D0` (92) | `func_801A3EE8` (244) | `func_801A372C` (516) |
+
+The routines reset table fields, update an indexed data pointer, recognize a
+word-valued input sequence, wrap values for two input-mask pairs, approach a
+signed-halfword target, classify slot ranges, toggle a scratchpad selection,
+and clear mode-dependent status ranges. These are measured behaviors; original
+prototypes and gameplay meanings remain uncertain.
+
+The approach routine retains negative signed-step behavior and a signed first
+load followed by an unsigned reread. A zero step leaves the halfword unchanged
+and returns 1; an equal-distance step updates it but still returns 0. The status
+reset initializes 44 bytes and preserves flag reloads and the mode-2 clear
+starting at index 21. These details must not be simplified in the matching lane.
+
+All nine use `gcc272-dos` with `-quiet -O2 -G0`; the status reset also uses
+`-fno-schedule-insns`. Four functions need neither barriers nor bindings; the
+others use documented empty constraints to preserve register lifetimes and
+ordering. No symbols, original assembly, expected hashes or generated
+instructions were changed to obtain the matches.
+
+Workers checked all overlays and the resident executable after each target.
+Root reviewed and integrated the commits in each worker's order, checking
+SELECT after every pick and all five overlays plus the resident again after
+combining all nine. The complete binaries remain byte-identical. These rounds
+added 1,564 matching bytes (304, 416 and 844 per queue position), raising the
+accepted count from 30 to 39 functions (38 SELECT and one ENTER). The remaining
+373 confirmed overlay functions are assembly-backed. These are completed
+targets, not new assignments; earlier ignored research remains local.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 
@@ -157,8 +196,8 @@ Read `CONTRIBUTING.md`, `docs/WORKFLOW.md`, `README.md`, and applicable
 7. Make the smallest necessary supporting edits. A private-branch change to
    `PER_FUNC_COMPILERS` / `PER_FUNC_CC1_FLAGS` in `tools_src/build_overlay.py`
    is allowed only for your assigned function. Symbol-file additions must be
-   justified by existing addresses and be additive. Prefer local types/declarations in the new C file
-   when shared header changes are unnecessary.
+   justified by existing addresses and be additive. Prefer local types and
+   declarations in the new C file when shared header changes are unnecessary.
 8. Do not change original assembly, reference binaries, expected hashes,
    linker placement, or comparison checks to manufacture a match. A correct
    size or equivalent behavior is not a match: the complete linked SELECT
@@ -240,14 +279,14 @@ Return the following in your final response:
 Only the integrating agent should combine the results. Workers do not need to
 wait for each other to compile or commit in isolated worktrees.
 
-For a two-target queue, explicitly assign both exclusive functions up front.
-Each worker completes, verifies and commits its first target, reports the
-result, then proceeds directly to its second target in the same worktree.
+For a multi-target queue, explicitly assign every exclusive function and its
+order up front. Each worker completes, verifies and commits one target,
+reports the result, then proceeds directly to the next in the same worktree.
 Use a separate commit for each exact match. Preserve incomplete research under
 ignored `build/` paths and remove its active substitution before proceeding.
-The integrating agent must preserve each worker's commit order: a second
-result was verified on top of that worker's first accepted result. Other
-workers may still be on their first target; there is no global batch barrier.
+The integrating agent must preserve each worker's commit order: later results
+were verified on top of that worker's earlier accepted results. Other workers
+may still be on their first target; there is no global batch barrier.
 
 1. Review each worker's diff and test evidence. Require the same baseline or
    account explicitly for differences before integration.

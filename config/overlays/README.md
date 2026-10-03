@@ -24,8 +24,8 @@ confirmed in full during the first controlled menu route. Notably, the observed
 `SELFORM.BIN` address is `0x8011D800`, not the inferred `0x8011A800`.
 
 Authoritative Splat layouts now exist for all five confirmed modules. Together
-they contain 412 functions and rebuild 414,610 retail bytes exactly. Thirty
-functions currently compile from matching C; the remaining 382 use the
+they contain 412 functions and rebuild 414,610 retail bytes exactly. Thirty-nine
+functions currently compile from matching C; the remaining 373 use the
 generated assembly baseline.
 
 Verify every confirmed overlay with:

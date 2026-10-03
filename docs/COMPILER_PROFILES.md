@@ -19,10 +19,11 @@ GCC 2.7.2 recovered the complete 244-byte match without barriers or register
 bindings. This confirms a usable profile for that function; it does not prove
 that every game translation unit used the same compiler.
 
-Six SELECT functions currently use this profile. `func_801A24E4` additionally
-uses `-fno-schedule-insns` to preserve selector/counter setup order while keeping
-branch-delay scheduling. The per-function maps in `build_overlay.py` are the
-authoritative compiler and flag selections.
+This profile was first established for six SELECT functions. `func_801A24E4`
+and `func_801A372C` additionally use `-fno-schedule-insns` to preserve their
+selector/counter or status/cursor setup order while keeping branch-delay
+scheduling. Later matches may extend the profile; the per-function maps in
+`build_overlay.py` are the authoritative compiler and flag selections.
 
 The older compiler's epilogue handling differs from GCC 2.8.1's RTL-expanded
 epilogue. Source references for investigating this difference are the
