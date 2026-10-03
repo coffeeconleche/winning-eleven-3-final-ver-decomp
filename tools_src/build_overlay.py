@@ -38,6 +38,7 @@ CPP_FLAGS = [
 PER_FUNC_COMPILERS: dict[str, str] = {
     "func_80192520": "gcc272-dos",
     "func_80191DF0": "gcc272-dos",
+    "func_8019E454": "gcc272-dos",
     "func_8019E580": "gcc272-dos",
     "func_8019E4D8": "gcc272-dos",
     "func_8019E494": "gcc272-dos",
@@ -75,6 +76,7 @@ PER_FUNC_JUMP_TABLES: dict[str, tuple[str, int]] = {
 PER_FUNC_CC1_FLAGS = {
     "func_80192520": ["-quiet", "-O2", "-G0"],
     "func_80191DF0": ["-quiet", "-O2", "-G0"],
+    "func_8019E454": ["-quiet", "-O2", "-G0"],
     # Preserve descriptor byte load/store order before delay scheduling.
     "func_8019E580": ["-quiet", "-O2", "-G0", "-fno-schedule-insns"],
     "func_8019E4D8": ["-quiet", "-O2", "-G0"],
