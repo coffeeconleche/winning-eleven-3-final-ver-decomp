@@ -483,6 +483,74 @@ SDK-free tooling tests pass. Privacy review passed; primary and worker checkouts
 were tracked clean. These targets are completed, not available assignments;
 ignored research remains local.
 
+### Thirty-fourth through thirty-eighth batch results
+
+At `041f740`, three existing isolated workers received five exclusive targets
+each. Every worker verified and committed one function before proceeding;
+there was no global round barrier. Integration preserved each worker's order.
+A finished worker privately helped solve the paired glyph lookup while its
+assigned worker retained source ownership. No new worktrees or emulator
+session were needed.
+
+| Worker branch | First target (bytes) | Second target (bytes) | Third target (bytes) | Fourth target (bytes) | Fifth target (bytes) |
+|---|---|---|---|---|---|
+| `decomp/select-glyph-and-score-helpers` | `func_801A62EC` (188) | `func_801A76A8` (248) | `func_801A97FC` (120) | `func_801A98F0` (280) | `func_801A29FC` (320) |
+| `decomp/select-format-and-statistics` | `func_801A92A4` (296) | `func_801A9B88` (204) | `func_801AA40C` (280) | `func_801AEBF8` (188) | `func_801AECB4` (220) |
+| `decomp/select-dispatch-and-numeric-records` | `func_801B1168` (188) | `func_801B04B4` (228) | `func_801B0598` (328) | `func_801B0368` (332) | `func_801AF110` (136) |
+
+Recovered access patterns include two descriptor-row copies, coordinate
+selection, signed descending score ordering, paired glyph lookup, ordered
+motion calls, three-byte numeric text, a sparse packed-state lookup, narrow
+counter updates, six-mode coordinates, descriptor enumeration and clamping,
+menu dispatch, controller repeat handling, numeric glyph records and an
+unsigned-byte comparator. Original record types, field meanings and some
+prototypes remain uncertain; these are behavioral descriptions, not recovered
+gameplay names.
+
+Descriptor and glyph routines preserve mixed-width store order and
+alias-sensitive rereads. Score sorting retains unsigned inclusive bounds and
+the original unconditional outer decrement; no empty-range guard was added.
+The three-byte formatter writes underscores for negative inputs and no
+terminator. The glyph-record formatter instead retains signed division and
+remainder on negative inputs, with only an upper cap of 999. The sparse lookup
+does not invent a return value for unsupported cases. Motion calls all execute
+in order and combine completion bits with bitwise AND. Dispatchers preserve
+base captures before calls and reload flags afterward where measured.
+Statistics records retain six-byte strides, narrow counter wrapping, clamping
+and mode-dependent comparator selection. Unsupported coordinate modes retain
+initialized zero halfwords. Controller handling preserves low-byte key
+selection and the original halfword counters; a caller's narrow load does not
+prove the original callee prototype.
+
+All fifteen use `gcc272-dos -quiet -O2 -G0`; `func_801AECB4` additionally
+uses `-fno-strength-reduce` to retain the original single six-byte cursor.
+Eight functions need no source compiler aids. The descriptor copy uses two
+empty constraints and `$5`/`$7` bindings. Numeric text and the counter update
+each use one empty constraint; the glyph-record formatter uses two empty
+constraints. The motion wrapper uses one final accumulator input. Paired glyph
+lookup uses a base tie, one memory barrier and an unused eight-byte frame
+reservation. The sparse lookup retains an unused 24-byte frame reservation.
+The original purposes of those frame slots are unknown; no accesses were
+invented. These aids are documented and emit no instructions themselves.
+
+The existing jump-table adapter owns exactly six original words at
+`jtbl_8018A59C` for `func_801AEBF8`; the next table begins immediately
+after those 24 bytes, so no padding was assumed. The only new symbol is
+`D_801D27BE = 0x801D27BE`, the proved halfword at `D_801D27BC + 2`.
+Original assembly, reference hashes, linker placement and generated
+instructions were not patched.
+
+Each source passed all five overlays and resident verification before its
+separate commit. SELECT was independently rebuilt after every integration;
+the final integration ran all five overlays as the combined gate. The queues
+added 3,556 matching code bytes (672, 680, 728, 800 and 676 per queue position),
+raising the accepted count from 123 to 138 functions (137 SELECT and one ENTER).
+The remaining 274 confirmed overlay functions are assembly-backed. Final
+combined overlay and resident hashes and sizes are unchanged; all nine SDK-free
+tooling tests pass. Privacy review passed, and worker checkouts were tracked
+clean. These targets are completed, not available assignments; ignored
+research remains local. This batch was committed locally without a push.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 

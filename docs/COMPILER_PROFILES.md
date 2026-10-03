@@ -25,6 +25,10 @@ selector/counter or status/cursor setup order while keeping branch-delay
 scheduling. Later matches may extend the profile; the per-function maps in
 `build_overlay.py` are the authoritative compiler and flag selections.
 
+`func_801AECB4` additionally uses `-fno-strength-reduce` to retain one
+six-byte record cursor for its byte and halfword accesses. This is a verified
+per-function selection, not evidence for changing the global compiler profile.
+
 Source parameter width can also affect register allocation. For
 `func_801A3D3C`, a word-sized button parameter recovered the exact match without
 barriers or bindings; a halfword parameter did not. A caller's halfword load
