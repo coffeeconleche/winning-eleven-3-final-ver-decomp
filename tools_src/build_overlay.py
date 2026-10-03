@@ -41,6 +41,7 @@ PER_FUNC_COMPILERS: dict[str, str] = {
     "func_80191DF0": "gcc272-dos",
     "func_8019E3EC": "gcc272-dos",
     "func_8019E454": "gcc272-dos",
+    "func_801A4948": "gcc272-dos",
     "func_801A2474": "gcc272-dos",
     "func_8018E69C": "gcc272-dos",
     "func_8019E580": "gcc272-dos",
@@ -83,6 +84,7 @@ PER_FUNC_CC1_FLAGS = {
     "func_80191DF0": ["-quiet", "-O2", "-G0"],
     "func_8019E3EC": ["-quiet", "-O2", "-G0"],
     "func_8019E454": ["-quiet", "-O2", "-G0"],
+    "func_801A4948": ["-quiet", "-O2", "-G0"],
     "func_801A2474": ["-quiet", "-O2", "-G0"],
     "func_8018E69C": ["-quiet", "-O2", "-G0"],
     # Preserve descriptor byte load/store order before delay scheduling.
