@@ -1,0 +1,32 @@
+# Copyrighted game media and extracted retail files. Contributors must use
+# their own legally obtained disc dump; none of these files belong in Git.
+*.bin
+*.cue
+*.iso
+*.ccd
+*.chd
+*.img
+*.sub
+/*.zip
+/extracted/
+/assets/
+
+# Downloaded SDKs, compilers, Ghidra and other third-party tools.
+/tools/
+
+# Generated build and analysis output.
+/build/
+/.venv/
+/src/5EBC.c
+/ghidra_project/*.gpr
+/ghidra_project/*.rep/
+/ghidra_project/scripts/
+/ghidra_project/*.txt
+
+# Local experiments and editor/OS files.
+/config/flag_overrides.json
+__pycache__/
+*.pyc
+Thumbs.db
+.DS_Store
+/.sentry-native/

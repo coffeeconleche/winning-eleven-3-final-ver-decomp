@@ -1,0 +1,49 @@
+name: UNIFORM.BIN
+sha1: 52f1bc69e5b072827d5723772c3cf9cf5fbc20a4
+
+options:
+  basename: uniform
+  base_path: ../..
+  target_path: extracted/modules/UNIFORM.BIN
+  elf_path: build/overlays/uniform/uniform.elf
+  platform: psx
+  compiler: PSYQ
+
+  asm_path: asm/overlays/uniform
+  src_path: src/overlays/uniform
+  build_path: build/overlays/uniform
+  generated_asm_macros_directory: include
+
+  ld_script_path: config/overlays/uniform.ld
+  ld_dependencies: true
+  find_file_boundaries: false
+  gp_value: 0x800E6A8C
+
+  o_as_suffix: true
+  use_legacy_include_asm: false
+  ld_align_section_vram_end: false
+  ld_align_segment_vram_end: false
+  subalign: 2
+
+  section_order: [".rodata", ".text", ".data", ".sdata", ".sbss", ".bss"]
+  symbol_addrs_path:
+    - config/symbol_addrs.txt
+  undefined_funcs_auto_path: config/overlays/uniform.undefined_funcs_auto.txt
+  undefined_syms_auto_path: config/overlays/uniform.undefined_syms_auto.txt
+
+  string_encoding: SHIFT_JIS
+  data_string_encoding: SHIFT_JIS
+  rodata_string_guesser_level: 0
+  data_string_guesser_level: 0
+
+# Exact live match at 0x80188F78 during uniform selection.
+segments:
+  - name: uniform
+    type: code
+    start: 0x0
+    vram: 0x80188F78
+    subsegments:
+      - [0x0, rodata]
+      - [0x7A8, c]
+      - [0xD08]
+  - [0xD08]

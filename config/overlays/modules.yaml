@@ -1,0 +1,49 @@
+# Runtime modules extracted from the data track. A confirmed_vram entry means
+# the entire file matched a saved 2 MiB emulator RAM image byte-for-byte.
+modules:
+  - name: SELECT.BIN
+    size: 0x51EDA
+    sha1: 9555fd6506c2ecdab32c528683cd262c59d558d8
+    candidate_vram: 0x80188F78
+    confirmed_vram: 0x80188F78
+    evidence: exact RAM match during exhibition team selection
+  - name: ENTER.BIN
+    size: 0xB784
+    sha1: a7946495e695a25606c865aefe53d515d8cf1dda
+    candidate_vram: 0x80188F78
+    confirmed_vram: 0x80188F78
+    evidence: exact RAM match during exhibition setup
+  - name: MOVIE.BIN
+    size: 0xB48
+    sha1: 13c342431f2f678d3d207f87186347c9efc82922
+    candidate_vram: 0x80188F78
+  - name: TRAINING.BIN
+    size: 0xC68
+    sha1: 0c8208565850ea99431a3aa16aadfafe336df6eb
+    candidate_vram: 0x80188F78
+  - name: UNIFORM.BIN
+    size: 0xD08
+    sha1: 52f1bc69e5b072827d5723772c3cf9cf5fbc20a4
+    candidate_vram: 0x80188F78
+    confirmed_vram: 0x80188F78
+    evidence: exact RAM match during uniform selection
+  - name: SELFORM.BIN
+    size: 0x584C
+    sha1: 95651f110448e163b81b0dfa44636ed8efd2be02
+    candidate_vram: 0x8011A800
+    confirmed_vram: 0x8011D800
+    evidence: exact RAM match on the formation screen; candidate was incorrect
+  - name: SELSND.BIN
+    size: 0x17E0
+    sha1: 528b4b8a91d4cc7cc309dde876a19858eb3099a3
+    candidate_vram: 0x80138000
+    confirmed_vram: 0x80138000
+    evidence: exact RAM match at paused kickoff
+  - name: ENDING.BIN
+    size: 0xC3C8
+    sha1: 07652c94ddba818e3a7993a7693cdb37de118a00
+    candidate_vram: 0x801CD000
+  - name: STAFF.BIN
+    size: 0x7D10
+    sha1: aeb26dc4700ba368530e7ce40491ab5d6655c445
+    candidate_vram: 0x801CD000

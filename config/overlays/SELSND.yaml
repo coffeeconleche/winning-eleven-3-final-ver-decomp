@@ -1,0 +1,51 @@
+name: SELSND.BIN
+sha1: 528b4b8a91d4cc7cc309dde876a19858eb3099a3
+
+options:
+  basename: selsnd
+  base_path: ../..
+  target_path: extracted/modules/SELSND.BIN
+  elf_path: build/overlays/selsnd/selsnd.elf
+  platform: psx
+  compiler: PSYQ
+
+  asm_path: asm/overlays/selsnd
+  src_path: src/overlays/selsnd
+  build_path: build/overlays/selsnd
+  generated_asm_macros_directory: include
+
+  ld_script_path: config/overlays/selsnd.ld
+  ld_dependencies: true
+  find_file_boundaries: false
+  gp_value: 0x800E6A8C
+
+  o_as_suffix: true
+  use_legacy_include_asm: false
+  ld_align_section_vram_end: false
+  ld_align_segment_vram_end: false
+  subalign: 2
+
+  section_order: [".rodata", ".text", ".data", ".sdata", ".sbss", ".bss"]
+  symbol_addrs_path:
+    - config/symbol_addrs.txt
+  undefined_funcs_auto_path: config/overlays/selsnd.undefined_funcs_auto.txt
+  undefined_syms_auto_path: config/overlays/selsnd.undefined_syms_auto.txt
+
+  string_encoding: SHIFT_JIS
+  data_string_encoding: SHIFT_JIS
+  rodata_string_guesser_level: 0
+  data_string_guesser_level: 0
+
+# Confirmed by an exact match against a live 2 MiB RAM snapshot at kickoff.
+# The leading words are entry-point pointers into the single dispatcher body.
+segments:
+  - name: selsnd
+    type: code
+    start: 0x0
+    vram: 0x80138000
+    subsegments:
+      - [0x0, rodata]
+      - [0x18, c]
+      - [0xE9C, data]
+      - [0x17E0]
+  - [0x17E0]

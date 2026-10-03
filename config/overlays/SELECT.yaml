@@ -1,0 +1,50 @@
+name: SELECT.BIN
+sha1: 9555fd6506c2ecdab32c528683cd262c59d558d8
+
+options:
+  basename: select
+  base_path: ../..
+  target_path: extracted/modules/SELECT.BIN
+  elf_path: build/overlays/select/select.elf
+  platform: psx
+  compiler: PSYQ
+
+  asm_path: asm/overlays/select
+  src_path: src/overlays/select
+  build_path: build/overlays/select
+  generated_asm_macros_directory: include
+
+  ld_script_path: config/overlays/select.ld
+  ld_dependencies: true
+  find_file_boundaries: false
+  gp_value: 0x800E6A8C
+
+  o_as_suffix: true
+  use_legacy_include_asm: false
+  ld_align_section_vram_end: false
+  ld_align_segment_vram_end: false
+  subalign: 2
+
+  section_order: [".rodata", ".text", ".data", ".sdata", ".sbss", ".bss"]
+  symbol_addrs_path:
+    - config/symbol_addrs.txt
+  undefined_funcs_auto_path: config/overlays/select.undefined_funcs_auto.txt
+  undefined_syms_auto_path: config/overlays/select.undefined_syms_auto.txt
+
+  string_encoding: SHIFT_JIS
+  data_string_encoding: SHIFT_JIS
+  rodata_string_guesser_level: 0
+  data_string_guesser_level: 0
+
+# Exact live match at 0x80188F78 during exhibition team selection.
+segments:
+  - name: select
+    type: code
+    start: 0x0
+    vram: 0x80188F78
+    subsegments:
+      - [0x0, rodata]
+      - [0x4BE0, c]
+      - [0x48AD8, data]
+      - [0x51EDA]
+  - [0x51EDA]

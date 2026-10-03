@@ -1,0 +1,63 @@
+name: SLPM_861.62
+sha1: 7e480656a295dced6ec187286773ab897651e995
+
+options:
+  basename: slpm_861.62
+  base_path: ..
+  target_path: extracted/SLPM_861.62
+  elf_path: build/slpm_861.62.elf
+  platform: psx
+  compiler: PSYQ
+
+  asm_path: asm
+  src_path: src
+  build_path: build
+  generated_asm_macros_directory: include
+
+  ld_script_path: config/slpm_861.62.ld
+  ld_dependencies: true
+  find_file_boundaries: false
+  gp_value: 0x800E6A8C
+
+  o_as_suffix: true
+  use_legacy_include_asm: false
+  ld_align_section_vram_end: false
+  ld_align_segment_vram_end: false
+  subalign: 2
+
+  section_order: [".rodata", ".text", ".data", ".sdata", ".sbss", ".bss"]
+  symbol_addrs_path:
+    - config/symbol_addrs.txt
+  reloc_addrs_path:
+    - config/reloc_addrs.txt
+  undefined_funcs_auto_path: config/undefined_funcs_auto.txt
+  undefined_syms_auto_path: config/undefined_syms_auto.txt
+
+  string_encoding: SHIFT_JIS
+  data_string_encoding: SHIFT_JIS
+  rodata_string_guesser_level: 2
+  data_string_guesser_level: 2
+
+# Initial measured layout. File offsets include the 0x800-byte PS-X EXE header.
+# The final 0x540 bytes are zero load padding. Runtime startup clears BSS from
+# 0x800E6AC0 through 0x8011CE70, so the padding overlaps the beginning of the
+# range that is immediately cleared and is kept as a separate binary segment.
+segments:
+  - name: header
+    type: header
+    start: 0x0
+
+  - name: main
+    type: code
+    start: 0x800
+    vram: 0x80010000
+    bss_size: 0x363B0
+    subsegments:
+      - [0x800, rodata]
+      - [0x5EBC, c]
+      - [0xB6874, data]
+      - [0xD728C, sdata]
+      - [0xD72C0]
+
+  - [0xD72C0, bin, load_padding]
+  - [0xD7800]
