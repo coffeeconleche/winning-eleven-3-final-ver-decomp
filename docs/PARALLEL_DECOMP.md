@@ -308,6 +308,60 @@ Final combined checks passed for all five overlays and the resident with unchang
 hashes and sizes, together with all nine SDK-free tooling tests. All targets in
 this table are completed, not new assignments; ignored research remains local.
 
+### Twentieth through twenty-fourth batch results
+
+At `8c71478`, three existing isolated workers each received five exclusive
+targets. Each worker verified and committed one function before proceeding to
+the next, without a global round barrier. The integrating agent reviewed and
+combined the results in each worker's commit order. A finished worker also
+helped solve a traversal scheduling difference using only ignored research;
+the assigned traversal worker retained source and commit ownership.
+
+| Worker branch | First target (bytes) | Second target (bytes) | Third target (bytes) | Fourth target (bytes) | Fifth target (bytes) |
+|---|---|---|---|---|---|
+| `decomp/select-transfer-and-descriptors` | `func_80192334` (244) | `func_80192608` (228) | `func_801942E0` (180) | `func_801940EC` (244) | `func_801941E0` (256) |
+| `decomp/select-descriptor-and-motion` | `func_80196378` (228) | `func_80199FDC` (208) | `func_8019A0AC` (188) | `func_8019A2A0` (160) | `func_8019A340` (188) |
+| `decomp/select-node-traversal-and-ranges` | `func_801B8A20` (152) | `func_801B8CD4` (156) | `func_801B8BB0` (184) | `func_801B8AB8` (248) | `func_801B3D20` (124) |
+
+Recovered behaviors include eight ordered one-byte transfer calls, indefinite
+polling followed by priority retries, three mixed-width descriptor updates,
+scratchpad descriptor submission, four paired motion loops, mode-selected
+record traversals, recursive field propagation and a cumulative range lookup.
+The transfer wrapper is a BIOS dispatch stub; argument direction is not
+asserted from that stub alone. Original prototypes, full record layouts and
+gameplay meanings remain uncertain.
+
+Descriptor copies retain alternating reads and writes, including possible
+overlap. The adjusted copy rereads unsigned sizes after earlier stores and
+narrows results to halfwords. A halfword parameter explicitly narrowed to a
+byte recovers the observed byte load before a halfword destination store.
+Motion loops always perform both calls, accumulate results with bitwise AND,
+and retain counter decrements and alternating signed targets. Traversals test
+the entry gate once but reread the mode across callbacks; byte-narrow and signed
+word counters remain distinct. A nonzero gate still visits entry zero when the
+mode byte is zero. Recursion retains its saved child pointer and post-call
+field rereads; no null or cycle guards were added. The cumulative scan remains
+unbounded and adds one per preceding table entry before narrowing its return.
+
+All fifteen use `gcc272-dos -quiet -O2 -G0`. Thirteen are natural C without
+barriers or register bindings. The first traversal uses a documented empty
+base/setup constraint; moving the initial mode read into the loop recovers the
+reference mask/load order. The signed traversal uses an empty memory constraint
+to retain eight otherwise-unused local bytes and the measured 40-byte frame;
+the original local purpose is unknown. No register bindings, new symbols or
+jump tables were needed. Original assembly, reference hashes and generated
+instructions were not patched.
+
+Each function passed all five overlays and resident verification before its
+separate commit. SELECT was rebuilt after each integration; the final
+integration ran all five overlays as the combined verification. These queues
+added 2,988 matching code bytes (624, 592, 552, 652 and 568 per queue position),
+raising the accepted count from 81 to 96 functions (95 SELECT and one ENTER).
+The remaining 316 confirmed overlay functions are assembly-backed. Final
+combined overlay and resident hashes and sizes are unchanged, and all nine
+SDK-free tooling tests pass. All targets above are completed, not available
+assignments; ignored research remains local.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 
