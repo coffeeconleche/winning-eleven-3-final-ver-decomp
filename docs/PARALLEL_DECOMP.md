@@ -175,6 +175,48 @@ functions (47 SELECT and one ENTER). The remaining 364 confirmed overlay
 functions are assembly-backed. All targets above are completed, not available
 assignments; earlier ignored research remains local.
 
+### Eleventh through thirteenth batch results
+
+At `1c4be84`, the same three workers each received another exclusive three-target
+queue. All nine matched with separate verified source commits:
+
+| Worker branch | First target (bytes) | Second target (bytes) | Third target (bytes) |
+|---|---|---|---|
+| `decomp/select-mode-and-search` | `func_8018E69C` (132) | `func_801A2474` (56) | `func_801A4948` (140) |
+| `decomp/select-descriptor-helpers` | `func_8019E454` (64) | `func_8019E3EC` (104) | `func_8019E1D0` (140) |
+| `decomp/select-call-and-poll` | `func_80191DF0` (84) | `func_80192520` (116) | `func_80192594` (116) |
+
+Recovered behaviors include two mode switches, a bounded exclusion scan, an
+unbounded mode-selected index search, a scratchpad-dependent offset, twelve
+paired record updates, a flag-gated descriptor call, and two BIOS polling
+wrappers. The search assumes a match exists and narrows its index to a byte;
+no new absent-value fallback was added. The polling wrappers reread each of
+four handles after the preceding call and repeat their distinct poll entries
+until any nonzero result, without an invented timeout. Wrapped byte subtraction
+and all call ordering are preserved. Original prototypes and gameplay meanings
+remain uncertain; these are matching sources, not host-safe APIs.
+
+All nine use `gcc272-dos -quiet -O2 -G0`. Eight need no barriers or register
+bindings; the scratchpad offset uses documented empty constraints. No symbol
+additions, original assembly edits, reference-hash changes or instruction
+patches were needed.
+
+The integrating agent added [owned jump-table placement](WORKFLOW.md#owned-switch-tables)
+and SDK-free tests. The compiler-generated five- and six-entry tables are placed
+verbatim in their original slots, retaining surrounding data and padding. The
+workers using switches received only this shared infrastructure commit; root
+already owned it and integrated their source commits separately.
+
+Workers verified all five overlays and the resident after every function. Root
+reviewed and integrated in each worker's order and rebuilt SELECT after every
+pick. These queues added 952 matching code bytes (280, 276, and 396 per queue
+position), raising the accepted count from 48 to 57 functions (56 SELECT and
+one ENTER). The remaining 355 confirmed overlay functions are assembly-backed.
+Final combined verification passed for all five overlays and the resident,
+with unchanged hashes and sizes; all nine SDK-free tooling tests also passed.
+The targets above are completed, not available assignments; ignored earlier
+research is preserved.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 

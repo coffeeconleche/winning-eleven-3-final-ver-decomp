@@ -33,6 +33,26 @@ Register allocation, delay-slot placement, signed loads, global addressing and
 small-data selection are part of matching. A function that behaves correctly
 but differs in bytes is not yet a match.
 
+## Owned switch tables
+
+When compiled C emits a jump table, record its original symbol and entry count
+in `PER_FUNC_JUMP_TABLES` in `tools_src/build_overlay.py`. Inspect the original
+table and all case targets before declaring ownership. The aggregate builder
+moves the compiler-generated words and label into that table's original slot,
+retains surrounding data and padding, and removes the emitted copy from the
+function text. Original slot alignment controls placement; the compiler's
+standalone table alignment must not shift the retail layout.
+
+Only one simple word-address table per declared function is currently supported.
+Missing ownership, incorrect entry counts, and unsupported layouts fail closed.
+Do not patch instructions, case addresses, original assembly, or expected hashes
+to make a switch match. Both the generated code and regenerated table must pass
+the complete overlay byte comparison. SDK-free placement and wrapper checks:
+
+```powershell
+py -B -m unittest discover -s tools_src/tests -p 'test_*.py'
+```
+
 ## Runtime modules
 
 Trace CD reads and jumps in an emulator. For every module record:
