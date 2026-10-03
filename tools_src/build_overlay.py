@@ -34,6 +34,12 @@ CPP_FLAGS = [
 ]
 
 PER_FUNC_CC1_FLAGS = {
+    "func_8018E4F0": ["-quiet", "-O2", "-G0", "-mno-split-addresses"],
+    "func_8018E514": ["-quiet", "-O2", "-G0", "-mno-split-addresses"],
+    "func_8018E5B8": ["-quiet", "-O2", "-G0", "-mno-split-addresses"],
+    "func_8018F2F8": ["-quiet", "-O2", "-G0", "-mno-split-addresses"],
+    "func_801A24AC": ["-quiet", "-O2", "-G0", "-mno-split-addresses"],
+    "func_801BFB24": ["-quiet", "-O2", "-G0", "-mno-split-addresses"],
     "func_8018EBF4": ["-quiet", "-O2", "-G0", "-mno-split-addresses"],
     "func_8018EC18": ["-quiet", "-O2", "-G0", "-mno-split-addresses"],
     "func_8018EC3C": ["-quiet", "-O2", "-G0", "-mno-split-addresses"],
@@ -150,7 +156,7 @@ def body(path: Path) -> str:
     return "\n".join(line for line in lines if not line.startswith('.include "macro.inc"'))
 
 
-def compiled_body(path: Path) -> str:
+def compiled_body(path: Path, function_name: str) -> str:
     ignored = {'gcc2_compiled.:', '__gnu_compiled_c:'}
     lines = path.read_text(encoding="utf-8").splitlines()
     text = "\n".join(
@@ -160,6 +166,7 @@ def compiled_body(path: Path) -> str:
         and not line.startswith('.include "macro.inc"')
         and not line.lstrip().startswith(".file")
     )
+    text = text.replace("$L", f"$L_{function_name}_")
     return ".set at\n" + text + "\n.set noat"
 
 
@@ -183,7 +190,7 @@ def write_aggregate(
         ".set noreorder",
         body(config["rodata"]),
         ".section .text",
-        *(compiled_body(compiled[path.stem]) if path.stem in compiled else body(path)
+        *(compiled_body(compiled[path.stem], path.stem) if path.stem in compiled else body(path)
           for path in text_paths),
     ]
     if "data" in config:
