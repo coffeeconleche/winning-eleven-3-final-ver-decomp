@@ -263,6 +263,51 @@ for all five overlays and the resident with unchanged hashes and sizes, along
 with all nine SDK-free tooling tests. All targets in this table
 are completed, not new assignments; ignored research remains local.
 
+### Seventeenth through nineteenth batch results
+
+At `74cd823`, twelve more targets were assigned as four lanes of three. The
+same three isolated workers handled their queues while the integrating agent
+implemented the fourth lane in the primary checkout. Each lane proceeded
+without waiting for the others; integration retained each worker's commit order.
+
+| Lane / worker branch | First target (bytes) | Second target (bytes) | Third target (bytes) |
+|---|---|---|---|
+| `decomp/select-handles-and-reset` | `func_801924A0` (128) | `func_801929B4` (124) | `func_80193EA0` (120) |
+| `decomp/select-packet-and-markers` | `func_801962E4` (148) | `func_80197BE0` (152) | `func_80193F18` (156) |
+| `decomp/select-record-search-and-update` | `func_801B4FA8` (100) | `func_801B8450` (136) | `func_801B8C68` (108) |
+| Integrating agent | `func_801B9100` (68) | `func_801B89D0` (80) | `func_801AFECC` (80) |
+
+Recovered behaviors include ordered handle-result priority, indefinite polling
+before a word reset, two pointer lookups and byte writes per loop iteration,
+packet-dependent dispatch, digit descriptor setup, conditional marker submission,
+ordered record search, selected record-byte updates, recursive record updates,
+an initialization call/store sequence, and a backwards nine-byte reset.
+Original prototypes, complete record layouts and gameplay meanings remain
+uncertain.
+
+The handle routines retain global rereads across calls and add no timeout.
+Digit setup tests a wrapped byte while retaining the adjusted word for the
+shift. Marker submission preserves the unsigned word coordinate literals before
+callee halfword narrowing. The search returns 32 when no entry matches. Record
+selection reads the scratchpad word after lookup; both recursive walks reread
+the current byte after recursion and still update the terminal record. No null,
+cycle or bounds guards were invented. The backwards reset starts at the existing
+data symbol and writes into preceding bytes whose full layout is still unknown.
+
+All twelve use `gcc272-dos -quiet -O2 -G0`. Eleven need no barriers or register
+bindings; the backwards reset uses two documented empty input constraints to
+retain the reference setup order. No symbols or jump tables were added, and no
+original assembly, reference hashes or generated instructions were patched.
+
+Each function passed all five overlays and resident verification before its
+separate commit. Worker sources were reviewed and SELECT rebuilt after every
+integration. These queues added 1,400 matching code bytes (444, 492 and 464 per
+queue position), raising the accepted count from 69 to 81 functions (80 SELECT
+and one ENTER). The remaining 331 confirmed overlay functions are assembly-backed.
+Final combined checks passed for all five overlays and the resident with unchanged
+hashes and sizes, together with all nine SDK-free tooling tests. All targets in
+this table are completed, not new assignments; ignored research remains local.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 
