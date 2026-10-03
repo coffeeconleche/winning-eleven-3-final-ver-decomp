@@ -1,0 +1,18 @@
+#include "common.h"
+
+extern u8 D_800FF748[];
+extern s32 func_8018E994(s16 *current, s32 target, s32 step);
+
+s32 func_8019A2A0(void) {
+    u8 *base = D_800FF748;
+    s32 complete = 1;
+    s32 i = 0;
+    s32 second = 0x6180;
+    s32 first = 0x60B8;
+
+    for (; i < 5; second += 40, i++, first += 40) {
+        complete &= func_8018E994((s16 *)(base + first + 16), 0, 32);
+        complete &= func_8018E994((s16 *)(base + second + 16), 0, 32);
+    }
+    return complete;
+}
