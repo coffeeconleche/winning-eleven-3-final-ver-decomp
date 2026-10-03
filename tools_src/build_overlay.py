@@ -37,6 +37,7 @@ CPP_FLAGS = [
 
 PER_FUNC_COMPILERS: dict[str, str] = {
     "func_80196378": "gcc272-dos",
+    "func_80192334": "gcc272-dos",
     "func_801AFECC": "gcc272-dos",
     "func_801B89D0": "gcc272-dos",
     "func_801B9100": "gcc272-dos",
@@ -106,6 +107,7 @@ PER_FUNC_JUMP_TABLES: dict[str, tuple[str, int]] = {
 
 PER_FUNC_CC1_FLAGS = {
     "func_80196378": ["-quiet", "-O2", "-G0"],
+    "func_80192334": ["-quiet", "-O2", "-G0"],
     "func_801AFECC": ["-quiet", "-O2", "-G0"],
     "func_801B89D0": ["-quiet", "-O2", "-G0"],
     "func_801B9100": ["-quiet", "-O2", "-G0"],
