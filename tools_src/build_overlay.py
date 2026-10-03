@@ -37,6 +37,7 @@ CPP_FLAGS = [
 
 PER_FUNC_COMPILERS: dict[str, str] = {
     "func_8019A3FC": "gcc272-dos",
+    "func_80192720": "gcc272-dos",
     "func_8019A340": "gcc272-dos",
     "func_8019A2A0": "gcc272-dos",
     "func_8019A0AC": "gcc272-dos",
@@ -116,12 +117,14 @@ PER_FUNC_COMPILERS: dict[str, str] = {
 # location. Code, targets and surrounding retail rodata are never patched.
 PER_FUNC_JUMP_TABLES: dict[str, tuple[str, int]] = {
     "func_8019A3FC": ("jtbl_80189CAC", 6),
+    "func_80192720": ("jtbl_80189440", 5),
     "func_8018E69C": ("jtbl_80188F94", 5),
     "func_8019E3EC": ("jtbl_80189FD8", 6),
 }
 
 PER_FUNC_CC1_FLAGS = {
     "func_8019A3FC": ["-quiet", "-O2", "-G0"],
+    "func_80192720": ["-quiet", "-O2", "-G0"],
     "func_8019A340": ["-quiet", "-O2", "-G0"],
     "func_8019A2A0": ["-quiet", "-O2", "-G0"],
     "func_8019A0AC": ["-quiet", "-O2", "-G0"],
