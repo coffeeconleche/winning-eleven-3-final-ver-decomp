@@ -59,8 +59,40 @@ preserve the original register lifetimes and instruction scheduling. All use
 The integrating agent reviewed each commit, rebuilt SELECT after each serial
 integration, and verified all five overlays and the resident executable again
 after combining the changes. All complete binaries remain byte-identical.
-This batch adds 632 bytes of matching C, bringing the total to 24 functions
+This batch added 632 bytes of matching C, bringing that baseline to 24 functions
 (23 SELECT and one ENTER). These targets are completed, not new assignments.
+
+### Third and fourth batch results
+
+Three existing workers were reused at `be13e8c`, each with two exclusive targets
+in sequence. Each worker verified and committed its first target before starting
+its second, without waiting for the other workers. All six targets matched:
+
+| Worker branch | First target | Bytes | Second target | Bytes |
+|---|---|---:|---|---:|
+| `decomp/select-state-init` | `func_8018DE7C` | 180 | `func_8018F188` | 360 |
+| `decomp/select-input-transitions` | `func_8018E2C0` | 244 | `func_8018E3B4` | 248 |
+| `decomp/select-draw-and-choice` | `func_801A346C` | 284 | `func_801A24E4` | 300 |
+
+The routines cover state initialization, staged reset, two input/state
+transitions, two-slot setup, and randomized availability retry. These are
+behavioral descriptions, not claims about original names or gameplay fields.
+The staged reset preserves the original lack of a defined return outside its
+observed stage range; it is matching-source research, not a host-safe API.
+
+All six use the [DOS GCC 2.7.2 profile](COMPILER_PROFILES.md); the retry routine
+also uses `-fno-schedule-insns`. No new symbols, original-assembly edits or
+instruction-output patches were needed. The integrating agent added an isolated,
+fail-closed DOS compiler wrapper and SDK-free tests. Earlier compiler-profile
+near-matches remained ignored until an exact match was established.
+
+Each worker checked all five overlays and the resident executable. Integration
+preserved each worker's commit order, retained shared compiler-map additions,
+and independently rebuilt SELECT after every accepted function. Final combined
+overlay and resident verification also passed. The two queues added 1,616 bytes
+of matching C, bringing the accepted count to 30 functions (29 SELECT and one
+ENTER), with 382 confirmed overlay functions still assembly-backed. All six
+targets in this table are completed, not available assignments.
 
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
@@ -123,9 +155,9 @@ Read `CONTRIBUTING.md`, `docs/WORKFLOW.md`, `README.md`, and applicable
 6. Implement only your assigned C function. Other files and caller assembly may
    be read for evidence, but neighboring functions are not additional targets.
 7. Make the smallest necessary supporting edits. A private-branch change to
-   `PER_FUNC_CC1_FLAGS` in `tools_src/build_overlay.py` is allowed only for your
-   assigned function. Symbol-file additions must be justified by existing
-   addresses and be additive. Prefer local types/declarations in the new C file
+   `PER_FUNC_COMPILERS` / `PER_FUNC_CC1_FLAGS` in `tools_src/build_overlay.py`
+   is allowed only for your assigned function. Symbol-file additions must be
+   justified by existing addresses and be additive. Prefer local types/declarations in the new C file
    when shared header changes are unnecessary.
 8. Do not change original assembly, reference binaries, expected hashes,
    linker placement, or comparison checks to manufacture a match. A correct
@@ -176,6 +208,10 @@ by its absolute path; do not modify another worker's environment while it runs.
 Run commands from your worktree root. Check process exit status as well as the
 printed hashes; PowerShell output filters can otherwise obscure failures.
 
+For functions using the DOS compiler profile, also supply `--dosbox` and
+optionally `--dos-cc1` when those tools are not at the default local paths.
+See [compiler profiles](COMPILER_PROFILES.md) for setup and wrapper checks.
+
 Expected SELECT SHA-1: `9555fd6506c2ecdab32c528683cd262c59d558d8`
 (335,578 bytes).
 
@@ -203,6 +239,15 @@ Return the following in your final response:
 
 Only the integrating agent should combine the results. Workers do not need to
 wait for each other to compile or commit in isolated worktrees.
+
+For a two-target queue, explicitly assign both exclusive functions up front.
+Each worker completes, verifies and commits its first target, reports the
+result, then proceeds directly to its second target in the same worktree.
+Use a separate commit for each exact match. Preserve incomplete research under
+ignored `build/` paths and remove its active substitution before proceeding.
+The integrating agent must preserve each worker's commit order: a second
+result was verified on top of that worker's first accepted result. Other
+workers may still be on their first target; there is no global batch barrier.
 
 1. Review each worker's diff and test evidence. Require the same baseline or
    account explicitly for differences before integration.
