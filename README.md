@@ -18,7 +18,7 @@ break the reference build.
   available.
 - Matching assembly baseline: **established** (1,273 resident functions).
 - Confirmed matching overlays: **5** (412 functions, 414,610 exact bytes).
-- Decompiled and matching C: **39 functions**.
+- Decompiled and matching C: **48 functions**.
 - Resident frame loop, controller boundary and match dispatchers: **mapped**.
 - Native PC target: **not started**.
 
@@ -111,9 +111,10 @@ command:
 `build_overlay.py` automatically compiles any `func_*.c` beneath the matching
 `src/overlays/<name>/` directory through its established compiler profile,
 maspsx and GNU binutils, substitutes it at the correct address, and then checks
-the complete module SHA-1. Most current sources use PsyQ GCC 2.8.1; explicitly
-selected functions use a locally supplied DOS GCC 2.7.2 compiler through
-DOSBox-X. See [compiler profiles and local setup](docs/COMPILER_PROFILES.md)
+the complete module SHA-1. Established profiles include PsyQ GCC 2.8.1 and a
+locally supplied DOS GCC 2.7.2 compiler through DOSBox-X. Each function uses
+its individually verified profile. See
+[compiler profiles and local setup](docs/COMPILER_PROFILES.md)
 for the additional ignored tools and `--dosbox` / `--dos-cc1` options.
 
 For isolated parallel matching assignments and integration rules, see

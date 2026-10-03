@@ -25,6 +25,12 @@ selector/counter or status/cursor setup order while keeping branch-delay
 scheduling. Later matches may extend the profile; the per-function maps in
 `build_overlay.py` are the authoritative compiler and flag selections.
 
+Source parameter width can also affect register allocation. For
+`func_801A3D3C`, a word-sized button parameter recovered the exact match without
+barriers or bindings; a halfword parameter did not. A caller's halfword load
+alone does not establish the original callee declaration. Keep such choices
+evidence-backed without claiming that the original prototype is known.
+
 The older compiler's epilogue handling differs from GCC 2.8.1's RTL-expanded
 epilogue. Source references for investigating this difference are the
 [GNU GCC 2.7.2 source archive](https://ftp.gnu.org/old-gnu/gcc/gcc-2.7.2.tar.gz)

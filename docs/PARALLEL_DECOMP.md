@@ -133,6 +133,48 @@ accepted count from 30 to 39 functions (38 SELECT and one ENTER). The remaining
 373 confirmed overlay functions are assembly-backed. These are completed
 targets, not new assignments; earlier ignored research remains local.
 
+### Eighth through tenth batch results
+
+At `781811e`, the same three workers each received another three-target queue.
+All nine functions matched, each with its own verified commit:
+
+| Worker branch | First target (bytes) | Second target (bytes) | Third target (bytes) |
+|---|---|---|---|
+| `decomp/select-halfword-and-confirm` | `func_8018EA08` (132) | `func_8018EA8C` (104) | `func_8018EAF4` (176) |
+| `decomp/select-settings-apply` | `func_8019E494` (68) | `func_8019E4D8` (168) | `func_8019E580` (160) |
+| `decomp/select-packed-navigation` | `func_801A63A8` (88) | `func_801A3588` (328) | `func_801A3D3C` (428) |
+
+Recovered behaviors include coupled halfword movement, exact confirmation and
+cancellation values, byte-range classification, two descriptor-application
+paths, halfword-pair transfers, packed three-bit field decoding, and grid
+navigation. Original names, prototypes, and gameplay field meanings remain
+uncertain.
+
+The coupled movement preserves store/load order even when the pointers alias,
+arithmetic right shift for negative odd movement, and a zero-step early return.
+The decoder reloads the packed halfword for each output field; its sentinel
+clears only the current row and returns immediately. Unsupported mode values
+retain the original lack of a defined initial index, rather than inventing a
+fallback. This is matching-source research, not a host-safe API. Navigation
+checks all four button bits independently, calls the callback before rereading
+selection, and returns whether the final selection differs from the initial one.
+
+All nine use `gcc272-dos` with `-quiet -O2 -G0`; the halfword-pair transfer and
+packed descriptor application additionally use `-fno-schedule-insns`. Six need
+neither barriers nor register bindings. The other three use documented empty
+constraints to preserve instruction order or register lifetimes. No symbols,
+original assembly, reference hashes, or generated instructions were changed.
+
+Each worker verified all five overlays and the resident executable after every
+target. Root reviewed and integrated the results in each worker's order,
+rebuilding SELECT after every pick. Final combined checks passed for all five
+overlays and the resident, with unchanged SHA-1s and sizes; the four SDK-free
+DOS wrapper tests also passed. These queues added 1,652 matching bytes (288,
+600, and 764 per queue position), raising the accepted count from 39 to 48
+functions (47 SELECT and one ENTER). The remaining 364 confirmed overlay
+functions are assembly-backed. All targets above are completed, not available
+assignments; earlier ignored research remains local.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 
