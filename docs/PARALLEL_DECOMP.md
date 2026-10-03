@@ -424,6 +424,65 @@ SDK-free tooling tests pass. Privacy review passed and all worker checkouts
 were tracked clean. All targets above are completed, not available assignments;
 ignored research remains local.
 
+### Twenty-ninth through thirty-third batch results
+
+At `a2ed20a`, three existing isolated workers each received five exclusive
+targets. Each worker verified and committed a function before proceeding,
+without a global round barrier. Integration preserved each worker's order.
+No new workers, worktrees or emulator session were needed.
+
+| Worker branch | First target (bytes) | Second target (bytes) | Third target (bytes) | Fourth target (bytes) | Fifth target (bytes) |
+|---|---|---|---|---|---|
+| `decomp/select-poll-and-glyph-setup` | `func_80192848` (364) | `func_80199E8C` (336) | `func_80197470` (320) | `func_8019E09C` (308) | `func_8019DF70` (300) |
+| `decomp/select-input-and-list-updates` | `func_8019C61C` (288) | `func_8019C73C` (288) | `func_801A8CD0` (312) | `func_801A8E08` (248) | `func_801A9168` (316) |
+| `decomp/select-ranking-and-display-fields` | `func_801B8F38` (192) | `func_801B8FF8` (264) | `func_801B500C` (236) | `func_801B5560` (228) | `func_801C1CD4` (192) |
+
+Recovered behaviors include seven-byte template copying and record enumeration,
+paired descriptor submissions, scratchpad glyph setup, coupled motion wrappers,
+control/glyph byte appending, signed score ordering, a weighted ranking formula,
+paired bounded record searches, six-mode halfword coordinates and numeric glyph
+layout. These describe observed access patterns; original prototypes, complete
+layouts, ranking-field meanings, selector meaning and encoding remain uncertain.
+
+Enumeration retains signed size loads, rounding and global reloads. Descriptor
+loops preserve argument bits, call order, lookup-byte signed division and
+secondary counters that advance only on retained iterations. Glyph setup keeps
+wrapped byte-range checks, lookup offsets and mixed-width scratchpad store order.
+Motion wrappers execute every call and combine their results with bitwise AND.
+Ranking uses unsigned field loads and modulo-word arithmetic before signed
+sorting; its byte-field weight is 10,000,000. Bounded searches retain the last
+examined entry on a miss, asymmetric delay-slot counter updates and output
+rereads. Coordinate modes outside 0..5 store initialized zero halfwords. The
+two encoders retain ordered byte stores, pointer advancement, distinct signed
+and unsigned quotient sequences, and global-pointer rereads where applicable.
+No bounds, timeout, terminator or null guards were added.
+
+All fifteen use `gcc272-dos -quiet -O2 -G0`. Nine are natural C without barriers
+or register bindings. The lookup pair uses an empty tied key constraint to
+retain separate narrowings. The descriptor pair uses one branch-local selector
+input; the appender uses two pointer inputs. Score ordering uses one empty
+score/counter input after its store. The weighted score binds its subtotal to
+`$5`; the bounded search binds its base to `$10` and uses two empty setup
+inputs. These documented compiler aids emit no instructions themselves; no
+frame-retention aids were needed.
+
+The existing jump-table adapter owns exactly six original entries at
+`jtbl_8018AD6C` for `func_801B5560`. Generated entries replace only those
+24 bytes, with surrounding data and alignment retained. No new symbols were
+needed. Original assembly, reference hashes and generated instructions were
+not patched.
+
+Each function passed all five overlays and resident verification before its
+separate commit. SELECT was rebuilt after every integration; the final
+integration ran all five overlays as the combined gate. These queues added
+4,192 matching code bytes (844, 888, 868, 784 and 808 per queue position),
+raising the accepted count from 108 to 123 functions (122 SELECT and one ENTER).
+The remaining 289 confirmed overlay functions are assembly-backed. Final
+combined overlay and resident hashes and sizes are unchanged, and all nine
+SDK-free tooling tests pass. Privacy review passed; primary and worker checkouts
+were tracked clean. These targets are completed, not available assignments;
+ignored research remains local.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 
