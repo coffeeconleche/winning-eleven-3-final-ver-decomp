@@ -25,7 +25,7 @@ file belongs at `src/overlays/select/<function>.c`.
 
 Agents 2 and 3 recovered exact C matches for `func_801AF198` (744 bytes) and
 `func_801CF964` (544 bytes). They were integrated after independent review and
-full binary verification. The accepted matching C count is now 21.
+full binary verification. That batch raised the accepted matching C count to 21.
 
 Agent 1's `func_801AB510` remains assembly-backed. Its closest research draft
 has the original 472-byte size but differs in eight instruction words: both
@@ -36,6 +36,31 @@ ignored `build/` directory; they are not distributed with the public source.
 The assignments below document the original batch. Do not rerun completed
 targets as new work; select and explicitly assign new unmatched functions for
 the next batch.
+
+### Second batch results
+
+Three new workers started at `e547690`, each on a separate branch and with
+independent build outputs. All three recovered exact C matches:
+
+| Agent | Exclusive target | Original size | Working branch |
+|---|---|---:|---|
+| 4 | `func_801A3930` | 180 bytes | `decomp/select-table-reset` |
+| 5 | `func_801A9540` | 212 bytes | `decomp/select-number-format` |
+| 6 | `func_801A61FC` | 240 bytes | `decomp/select-ui-coordinates` |
+
+The recovered routines reset indexed record fields, format two glyph records,
+and set coordinate halfwords in four records, respectively. Gameplay field
+meanings, the original packet type, and some parameter declarations remain
+uncertain. The reset needed no compiler barriers or register bindings; the
+formatter and coordinate routine use commented empty barriers and bindings to
+preserve the original register lifetimes and instruction scheduling. All use
+`-quiet -O2 -G0 -mno-split-addresses`; none required new symbols.
+
+The integrating agent reviewed each commit, rebuilt SELECT after each serial
+integration, and verified all five overlays and the resident executable again
+after combining the changes. All complete binaries remain byte-identical.
+This batch adds 632 bytes of matching C, bringing the total to 24 functions
+(23 SELECT and one ENTER). These targets are completed, not new assignments.
 
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
@@ -188,8 +213,8 @@ wait for each other to compile or commit in isolated worktrees.
    rebuild all five overlays and the resident executable again. Independent
    matches do not automatically prove the combined build matches.
 4. Count the actual accepted C files and update `README.md` and
-   `config/overlays/README.md` once. If all three assignments match, the initial
-   count of 19 becomes 22; do not predeclare that result.
+   `config/overlays/README.md` once. Add only verified new matches to the agreed
+   baseline count; do not predeclare that all assignments will succeed.
 5. Review the final staged changes and get the user's authorization for any
    remote publishing not already authorized. Keep the integration order serial.
 6. Keep worktrees until their commits and any useful ignored research have been
