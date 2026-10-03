@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -59,6 +60,14 @@ PER_FUNC_COMPILERS: dict[str, str] = {
     "func_801A24E4": "gcc272-dos",
     "func_801A346C": "gcc272-dos",
     "func_8018F188": "gcc272-dos",
+}
+
+# Original read-only table ownership, excluding any trailing padding words.
+# Compiler-generated words replace only this table's entries at its established
+# location. Code, targets and surrounding retail rodata are never patched.
+PER_FUNC_JUMP_TABLES: dict[str, tuple[str, int]] = {
+    "func_8018E69C": ("jtbl_80188F94", 5),
+    "func_8019E3EC": ("jtbl_80189FD8", 6),
 }
 
 PER_FUNC_CC1_FLAGS = {
@@ -226,7 +235,7 @@ def body(path: Path) -> str:
     return "\n".join(line for line in lines if not line.startswith('.include "macro.inc"'))
 
 
-def compiled_body(path: Path, function_name: str) -> str:
+def compiled_parts(path: Path, function_name: str) -> tuple[str, str | None]:
     ignored = {'gcc2_compiled.:', '__gnu_compiled_c:'}
     lines = path.read_text(encoding="utf-8").splitlines()
     text = "\n".join(
@@ -237,7 +246,50 @@ def compiled_body(path: Path, function_name: str) -> str:
         and not line.lstrip().startswith(".file")
     )
     text = text.replace("$L", f"$L_{function_name}_")
-    return ".set at\n" + text + "\n.set noat"
+    # maspsx converts GCC .rdata to this directive. Move the whole section,
+    # without changing generated text or table words, into its owned slot.
+    pattern = r"(?m)^\.section[ \t]+\.rodata[ \t]*\n(.*?)^\.text[ \t]*(?:\n|$)"
+    tables = re.findall(pattern, text, flags=re.DOTALL)
+    ownership = PER_FUNC_JUMP_TABLES.get(function_name)
+    if tables and ownership is None:
+        raise BuildError(f"{function_name}: generated rodata has no declared ownership")
+    if ownership is not None and len(tables) != 1:
+        raise BuildError(f"{function_name}: expected exactly one generated jump table")
+    table = tables[0] if tables else None
+    text = re.sub(pattern, ".text\n", text, flags=re.DOTALL)
+    return ".set at\n" + text + "\n.set noat", table
+
+
+def relocate_jump_table(rodata: str, function_name: str, table: str) -> str:
+    symbol, count = PER_FUNC_JUMP_TABLES[function_name]
+    # The existing slot controls alignment. Retaining the compiler's .align 3
+    # would shift a valid four-byte-aligned original table and adjacent data.
+    lines = [line.strip() for line in table.splitlines() if line.strip()]
+    if lines and re.fullmatch(r"\.align\s+[0-3]", lines[0]):
+        lines.pop(0)
+    if (len(lines) != count + 1
+            or not re.fullmatch(r"\$L_[A-Za-z0-9_]+:", lines[0])
+            or any(not re.fullmatch(r"\.word\s+\$L_[A-Za-z0-9_]+", line)
+                   for line in lines[1:])):
+        raise BuildError(f"{function_name}: unsupported generated table layout")
+    pattern = (rf"(?m)^dlabel {re.escape(symbol)}\s*\n"
+               rf"(.*?)^enddlabel {re.escape(symbol)}$")
+    matches = list(re.finditer(pattern, rodata, flags=re.DOTALL))
+    if len(matches) != 1:
+        raise BuildError(f"{function_name}: missing or duplicate original table {symbol}")
+    original = matches[0].group(1).splitlines()
+    entries = [i for i, line in enumerate(original) if re.search(r"\.word\s", line)]
+    if len(entries) < count:
+        raise BuildError(f"{function_name}: original table is shorter than its ownership")
+    for i in entries[:count]:
+        if not re.search(r"\.word\s+\.L[0-9A-Fa-f]+\s*$", original[i]):
+            raise BuildError(f"{function_name}: unexpected original jump-table entry")
+    # Any original trailing padding/data stays untouched. Only owned entries go.
+    prefix = original[:entries[0]]
+    suffix = original[entries[count - 1] + 1:]
+    replacement = "\n".join([f"dlabel {symbol}", *prefix, *lines, *suffix,
+                              f"enddlabel {symbol}"])
+    return rodata[:matches[0].start()] + replacement + rodata[matches[0].end():]
 
 
 def function_address(path: Path) -> int:
@@ -254,13 +306,20 @@ def write_aggregate(
             raise BuildError(f"no generated functions under {config['text_dir']}")
     else:
         text_paths = [config["text"]]
+    rodata = body(config["rodata"])
+    compiled_text = {}
+    for function_name, path in compiled.items():
+        text, table = compiled_parts(path, function_name)
+        compiled_text[function_name] = text
+        if table is not None:
+            rodata = relocate_jump_table(rodata, function_name, table)
     sections = [
         '.include "macro.inc"',
         ".set noat",
         ".set noreorder",
-        body(config["rodata"]),
+        rodata,
         ".section .text",
-        *(compiled_body(compiled[path.stem], path.stem) if path.stem in compiled else body(path)
+        *(compiled_text[path.stem] if path.stem in compiled else body(path)
           for path in text_paths),
     ]
     if "data" in config:
