@@ -36,6 +36,7 @@ CPP_FLAGS = [
 
 PER_FUNC_COMPILERS: dict[str, str] = {
     "func_8019E494": "gcc272-dos",
+    "func_8018EA8C": "gcc272-dos",
     "func_8018EA08": "gcc272-dos",
     "func_801A63A8": "gcc272-dos",
     "func_8019A62C": "gcc272-dos",
@@ -57,6 +58,7 @@ PER_FUNC_COMPILERS: dict[str, str] = {
 
 PER_FUNC_CC1_FLAGS = {
     "func_8019E494": ["-quiet", "-O2", "-G0"],
+    "func_8018EA8C": ["-quiet", "-O2", "-G0"],
     "func_8018EA08": ["-quiet", "-O2", "-G0"],
     # Retain interleaved halfword loads/stores rather than hoisting both loads.
     "func_801A63A8": ["-quiet", "-O2", "-G0", "-fno-schedule-insns"],
