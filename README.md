@@ -18,7 +18,7 @@ break the reference build.
   available.
 - Matching assembly baseline: **established** (1,273 resident functions).
 - Confirmed matching overlays: **5** (412 functions, 414,610 exact bytes).
-- Decompiled and matching C: **19 functions**.
+- Decompiled and matching C: **21 functions**.
 - Resident frame loop, controller boundary and match dispatchers: **mapped**.
 - Native PC target: **not started**.
 
@@ -112,6 +112,9 @@ command:
 `src/overlays/<name>/` directory through the original PsyQ GCC 2.8.1 compiler,
 maspsx and GNU binutils, substitutes it at the correct address, and then checks
 the complete module SHA-1.
+
+For isolated parallel matching assignments and integration rules, see
+[the parallel decompilation handoff](docs/PARALLEL_DECOMP.md).
 
 ## Two build lanes
 
