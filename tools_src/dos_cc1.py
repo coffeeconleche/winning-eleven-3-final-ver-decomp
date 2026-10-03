@@ -42,7 +42,8 @@ def compile_dos(
         config.write_text(
             "[sdl]\noutput=surface\nautolock=false\nshowmenu=false\nwaitonerror=false\n"
             "[dosbox]\nmemsize=64\n[cpu]\ncore=normal\ncycles=max\n"
-            "[mixer]\nnosound=true\n[autoexec]\n"
+            "[mixer]\nnosound=true\n[joystick]\njoysticktype=none\n"
+            "[midi]\nmpu401=none\nmididevice=none\n[autoexec]\n"
             f'mount c "{work}"\nc:\nRUN.BAT\nexit\n',
             encoding="utf-8",
         )
@@ -55,7 +56,7 @@ def compile_dos(
         try:
             result = subprocess.run(
                 [str(dosbox.resolve()), "-silent", "-noconsole", "-conf", str(config)],
-                cwd=work, capture_output=True, text=True, timeout=60, **options,
+                cwd=work, capture_output=True, text=True, errors="replace", timeout=60, **options,
             )
         except subprocess.TimeoutExpired as error:
             raise OSError("DOS compiler timed out after 60 seconds") from error

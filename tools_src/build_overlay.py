@@ -415,7 +415,7 @@ def main() -> int:
             build_overlay(name, args.bin_dir, args.psyq_bin, args.maspsx, args.dosbox, args.dos_cc1)
         print(f"Verified {len(names)} overlay(s).")
         return 0
-    except (BuildError, OSError) as error:
+    except (BuildError, OSError, ValueError) as error:
         print(f"build overlay: {error}", file=sys.stderr)
         return 1
 
