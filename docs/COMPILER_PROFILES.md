@@ -29,6 +29,13 @@ scheduling. Later matches may extend the profile; the per-function maps in
 six-byte record cursor for its byte and halfword accesses. This is a verified
 per-function selection, not evidence for changing the global compiler profile.
 
+`func_801C98F8` additionally uses `-fno-cse-skip-blocks`. The default
+profile reused a scratchpad address across a conditional callback and added a
+saved register, yielding 292 rather than the original 288 bytes. Disabling this
+cross-block CSE recovered the measured RA-only frame and complete original
+bytes with natural C. This selection applies only to this function; retain all
+other established profiles.
+
 Source parameter width can also affect register allocation. For
 `func_801A3D3C`, a word-sized button parameter recovered the exact match without
 barriers or bindings; a halfword parameter did not. A caller's halfword load

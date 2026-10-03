@@ -563,8 +563,9 @@ per worker. Unresolved probes remain private and do not count as matches.
 | Checkpoint | New exact functions in run | Total matching C | Assembly-backed confirmed overlay functions |
 |---|---:|---:|---:|
 | 1 | 15 | 153 | 259 |
+| 2 | 30 | 168 | 244 |
 
-15 verified additions cover 1,904 matching code bytes.
+30 verified additions cover 5,980 matching code bytes.
 Remaining planned targets are not claimed as completed.
 
 | Worker | Function | Bytes | Source compiler aids |
@@ -584,6 +585,21 @@ Remaining planned targets are not claimed as completed.
 | A | `func_801CF6A8` | 184 | Two empty inputs and return answer $2 binding |
 | C | `func_801ADF5C` | 196 | None |
 | C | `func_801CACF0` | 212 | None |
+| B | `func_801D0BB0` | 208 | None |
+| B | `func_801AEE80` | 240 | None |
+| A | `func_801D0820` | 208 | One empty counter/cursor input, $5/$4 bindings, unused 8-byte frame |
+| B | `func_801C2A3C` | 276 | None |
+| B | `func_801C576C` | 288 | None |
+| A | `func_801AED90` | 240 | None |
+| A | `func_801BD8E8` | 272 | One empty base lifetime input |
+| A | `func_801C20F0` | 284 | None |
+| B | `func_801D08F0` | 304 | None |
+| C | `func_801BA7EC` | 256 | None |
+| C | `func_801BF35C` | 284 | None |
+| C | `func_801C98F8` | 288 | None; -fno-cse-skip-blocks profile |
+| A | `func_801BCBA8` | 304 | Five empty ties/inputs, base $5/mapped $3 bindings, unused 16-byte frame |
+| C | `func_801D110C` | 304 | Four local bindings and one empty destination-base input |
+| C | `func_801C18AC` | 320 | One late remainder $4 binding and one empty matching tie |
 
 Observed access patterns are not recovered original gameplay names or complete
 types. Call order, signed arithmetic, narrow wrapping, alias-sensitive rereads,
