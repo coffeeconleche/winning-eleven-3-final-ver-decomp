@@ -44,6 +44,7 @@ PER_FUNC_COMPILERS: dict[str, str] = {
     "func_801A84C8": "gcc272-dos",
     "func_801C8CB4": "gcc272-dos",
     "func_801CB334": "gcc272-dos",
+    "func_801BD368": "gcc272-dos",
     "func_801AA778": "gcc272-dos",
     "func_801CF918": "gcc272-dos",
     "func_801AECB4": "gcc272-dos",
@@ -184,6 +185,7 @@ PER_FUNC_CC1_FLAGS = {
     "func_801A84C8": ["-quiet", "-O2", "-G0"],
     "func_801C8CB4": ["-quiet", "-O2", "-G0"],
     "func_801CB334": ["-quiet", "-O2", "-G0"],
+    "func_801BD368": ["-quiet", "-O2", "-G0"],
     "func_801AA778": ["-quiet", "-O2", "-G0"],
     "func_801CF918": ["-quiet", "-O2", "-G0"],
     # Keep byte and halfword accesses on the original single six-byte cursor.
