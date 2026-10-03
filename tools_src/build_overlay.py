@@ -35,6 +35,7 @@ CPP_FLAGS = [
 
 PER_FUNC_CC1_FLAGS = {
     "func_801A3930": ["-quiet", "-O2", "-G0", "-mno-split-addresses"],
+    "func_801A9540": ["-quiet", "-O2", "-G0", "-mno-split-addresses"],
     # Keep the common scratchpad base while retaining large base-relative accesses.
     "func_801CF964": ["-quiet", "-O2", "-G0", "-mno-split-addresses", "-fforce-addr"],
     "func_801AF198": ["-quiet", "-O2", "-G0", "-mno-split-addresses"],
