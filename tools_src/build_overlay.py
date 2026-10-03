@@ -36,6 +36,7 @@ CPP_FLAGS = [
 ]
 
 PER_FUNC_COMPILERS: dict[str, str] = {
+    "func_8019A510": "gcc272-dos",
     "func_8019A3FC": "gcc272-dos",
     "func_80192720": "gcc272-dos",
     "func_801B84D8": "gcc272-dos",
@@ -117,6 +118,7 @@ PER_FUNC_COMPILERS: dict[str, str] = {
 # Compiler-generated words replace only this table's entries at its established
 # location. Code, targets and surrounding retail rodata are never patched.
 PER_FUNC_JUMP_TABLES: dict[str, tuple[str, int]] = {
+    "func_8019A510": ("jtbl_80189CC4", 6),
     "func_8019A3FC": ("jtbl_80189CAC", 6),
     "func_80192720": ("jtbl_80189440", 5),
     "func_8018E69C": ("jtbl_80188F94", 5),
@@ -124,6 +126,7 @@ PER_FUNC_JUMP_TABLES: dict[str, tuple[str, int]] = {
 }
 
 PER_FUNC_CC1_FLAGS = {
+    "func_8019A510": ["-quiet", "-O2", "-G0"],
     "func_8019A3FC": ["-quiet", "-O2", "-G0"],
     "func_80192720": ["-quiet", "-O2", "-G0"],
     "func_801B84D8": ["-quiet", "-O2", "-G0"],
