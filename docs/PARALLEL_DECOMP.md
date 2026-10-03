@@ -362,6 +362,68 @@ combined overlay and resident hashes and sizes are unchanged, and all nine
 SDK-free tooling tests pass. All targets above are completed, not available
 assignments; ignored research remains local.
 
+### Twenty-fifth through twenty-eighth batch results
+
+At `90e3725`, three existing isolated workers each received four exclusive
+targets. Workers verified and committed each function before proceeding to the
+next, without a global round barrier. Integration preserved each worker's order.
+A finished worker helped resolve the final node selector's compiler-frame
+difference using ignored research; the assigned worker retained source and
+commit ownership. No new workers, worktrees or emulator session were needed.
+
+| Worker branch | First target (bytes) | Second target (bytes) | Third target (bytes) | Fourth target (bytes) |
+|---|---|---|---|---|
+| `decomp/select-poll-switch-and-text` | `func_80192720` (296) | `func_80193884` (268) | `func_80193FB4` (312) | `func_80194A74` (240) |
+| `decomp/select-mode-and-record-setup` | `func_8019A3FC` (276) | `func_8019A510` (276) | `func_8019A700` (260) | `func_8019A168` (312) |
+| `decomp/select-two-pass-and-node-state` | `func_801B84D8` (268) | `func_801B8708` (268) | `func_801B85E4` (292) | `func_801B8D70` (328) |
+
+Recovered behaviors include embedded priority checks and indefinite polling,
+mode-selected dispatch, ordered buffer/flag reset calls, a mixed-width
+40-byte descriptor setup, paired 17-argument calls, a text-position scanner,
+two-pass node walks, recursive byte export and recursive selection-state
+updates. Original prototypes, complete record/table layouts and gameplay
+meanings remain uncertain; these are access views and behavioral descriptions.
+
+Polling retains handle rereads and byte wrapping before the threshold test.
+The descriptor preserves field widths, its 88-byte frame and argument spills.
+The paired loop always makes both calls and retains the original argument bits.
+The scanner retains distinct initial and loop-top terminators, one/two-byte
+advances, word counters narrowed only after scanning, empty-count wrapping,
+signed-byte pitch, signed-halfword truncation before shifting and the clamp.
+Walkers preserve the saved entry gate, independent current-mode second gate,
+byte indices and mode reloads across callbacks. Recursive export reloads fields
+and the word counter after potentially aliasing byte stores. Selection retains
+scratch-store order and captures both bytes before its potentially aliasing
+pointer store. No bounds, null, cycle or timeout guards were added.
+
+All twelve use `gcc272-dos -quiet -O2 -G0`. Seven are natural C without barriers
+or register bindings. The buffer reset uses a documented empty memory output
+to retain 32 otherwise-unused local bytes in its measured 56-byte frame; their
+original purpose is unknown. Both two-pass walkers use empty row-input
+constraints for reference scheduling. The scanner uses documented `$3`/`$5`
+bindings and paired empty inputs to preserve the clamp's delay-slot copy. The
+node selector uses an empty memory barrier to prevent premature child-pointer
+loading. Splitting only its first lookup address eliminates an extra compiler
+temporary and recovers the 32-byte frame without a frame-retention constraint.
+These compiler constraints emit no instructions themselves.
+
+The existing jump-table adapter now owns five original entries at
+`jtbl_80189440` and six each at `jtbl_80189CAC` and `jtbl_80189CC4`. Only the
+compiler-generated entries replace their established table ranges; no trailing
+padding is claimed. No new symbols were needed. Original assembly, reference
+hashes and generated instructions were not patched.
+
+Each function passed all five overlays and resident verification before its
+separate commit. SELECT was rebuilt after each integration; the final
+integration ran all five overlays as the combined gate. These queues added
+3,396 matching code bytes (840, 812, 864 and 880 per queue position), raising
+the accepted count from 96 to 108 functions (107 SELECT and one ENTER).
+The remaining 304 confirmed overlay functions are assembly-backed. Final
+combined overlay and resident hashes and sizes are unchanged, and all nine
+SDK-free tooling tests pass. Privacy review passed and all worker checkouts
+were tracked clean. All targets above are completed, not available assignments;
+ignored research remains local.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 
