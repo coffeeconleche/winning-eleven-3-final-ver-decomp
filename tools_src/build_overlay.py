@@ -47,6 +47,7 @@ PER_FUNC_CC1_FLAGS = {
     "func_8018EA04": ["-quiet", "-O2", "-G0", "-mno-split-addresses"],
     "func_801AEF70": ["-quiet", "-O2", "-G0", "-mno-split-addresses"],
     "func_801AEFE0": ["-quiet", "-O2", "-G0", "-mno-split-addresses"],
+    "func_801A9614": ["-quiet", "-O2", "-G0", "-mno-split-addresses"],
     "func_801B8EB8": ["-quiet", "-O2", "-G0", "-mno-split-addresses"],
     "func_8018E4AC": ["-quiet", "-O2", "-G0", "-mno-split-addresses"],
     "func_8018EBA4": ["-quiet", "-O2", "-G0", "-mno-split-addresses"],
