@@ -557,15 +557,17 @@ Starting at `84a3fcf` with 138 matching C functions, three isolated
 workers have exclusive 30-target queues on `decomp/select-ninety-a`,
 `decomp/select-ninety-b` and `decomp/select-ninety-c`. Workers proceed
 after individual verified commits without a global round barrier. Integration
-retains worker commit order; each publication groups five accepted functions
-per worker. Unresolved probes remain private and do not count as matches.
+retains worker commit order; each publication groups 15 accepted functions
+across the three workers without requiring equal per-worker counts at each
+checkpoint. Unresolved probes remain private and do not count as matches.
 
 | Checkpoint | New exact functions in run | Total matching C | Assembly-backed confirmed overlay functions |
 |---|---:|---:|---:|
 | 1 | 15 | 153 | 259 |
 | 2 | 30 | 168 | 244 |
+| 3 | 45 | 183 | 229 |
 
-30 verified additions cover 5,980 matching code bytes.
+45 verified additions cover 11,388 matching code bytes.
 Remaining planned targets are not claimed as completed.
 
 | Worker | Function | Bytes | Source compiler aids |
@@ -600,6 +602,21 @@ Remaining planned targets are not claimed as completed.
 | A | `func_801BCBA8` | 304 | Five empty ties/inputs, base $5/mapped $3 bindings, unused 16-byte frame |
 | C | `func_801D110C` | 304 | Four local bindings and one empty destination-base input |
 | C | `func_801C18AC` | 320 | One late remainder $4 binding and one empty matching tie |
+| B | `func_801A4C6C` | 316 | One scaled-term $4 binding and one empty two-term input |
+| B | `func_801BFD94` | 328 | None |
+| B | `func_801A2B3C` | 356 | None |
+| B | `func_801BD9F8` | 380 | One empty tied index constraint |
+| B | `func_801B53DC` | 388 | None |
+| A | `func_801C588C` | 312 | One loop input/memory barrier, colors $10 binding, scalar symbol-expression view |
+| C | `func_801CBFE4` | 344 | None |
+| C | `func_801A2F90` | 356 | None |
+| A | `func_801C3150` | 324 | One empty halfword-address tie and saved-register $17 binding |
+| A | `func_801B5644` | 348 | None |
+| A | `func_801A93CC` | 372 | None |
+| C | `func_801A9A08` | 384 | One empty captured-three-byte input and measured 24 unused local bytes; original purpose unknown |
+| C | `func_801BAFBC` | 388 | None |
+| B | `func_801BB200` | 396 | One invariant map-offset $6 binding |
+| B | `func_801C3EBC` | 416 | None |
 
 Observed access patterns are not recovered original gameplay names or complete
 types. Call order, signed arithmetic, narrow wrapping, alias-sensitive rereads,
@@ -615,6 +632,11 @@ retains the original miss fallthrough (the register holds zero), without inventi
 a source-level return contract. Frame reservations have unknown original purposes
 and introduce no accesses. Empty constraints and bindings retain measured compiler
 choices and emit no instructions themselves.
+
+`func_801A9A08` uses a word-return access view with an unknown original
+prototype. Six observed callers discard its status. Unsupported flags leave
+`v0=0x4040` in the retail binary, but its matching C fallthrough is not a
+portable return contract; native porting must resolve this explicitly.
 
 Each source passes full overlay and resident checks before its worker commit.
 The integrator reviews each source and independently links and hashes the complete
