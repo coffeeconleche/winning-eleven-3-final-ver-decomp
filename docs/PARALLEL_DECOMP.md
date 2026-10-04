@@ -566,8 +566,9 @@ checkpoint. Unresolved probes remain private and do not count as matches.
 | 1 | 15 | 153 | 259 |
 | 2 | 30 | 168 | 244 |
 | 3 | 45 | 183 | 229 |
+| 4 | 60 | 198 | 214 |
 
-45 verified additions cover 11,388 matching code bytes.
+60 verified additions cover 18,032 matching code bytes.
 Remaining planned targets are not claimed as completed.
 
 | Worker | Function | Bytes | Source compiler aids |
@@ -617,6 +618,21 @@ Remaining planned targets are not claimed as completed.
 | C | `func_801BAFBC` | 388 | None |
 | B | `func_801BB200` | 396 | One invariant map-offset $6 binding |
 | B | `func_801C3EBC` | 416 | None |
+| B | `func_80192174` | 448 | Measured 120-byte unused-frame output constraint; original padding purpose unknown |
+| B | `func_8019DDA8` | 456 | Two empty lower-bound scheduling ties |
+| C | `func_8019E25C` | 400 | One empty raw-mode tie retains measured byte re-narrowing |
+| C | `func_8019D75C` | 424 | Four empty constant/argument scheduling ties |
+| A | `func_80196C98` | 388 | Five empty constraints, packet $4/selector $19 bindings, ordered volatile halfword views and absolute scratch-byte access view |
+| C | `func_8019CB54` | 440 | Four short-lived bindings, one empty word tie, two captured-byte inputs and eight unused frame bytes |
+| B | `func_801A8124` | 468 | Base s0 binding, two empty setup ties and one late v0 clobber |
+| B | `func_801BA614` | 472 | None |
+| C | `func_801A6FC8` | 448 | One counter s0 binding |
+| A | `func_801BFB58` | 388 | Two empty ties and mapped $2/branch-local address $3 bindings |
+| A | `func_801D0A20` | 400 | None |
+| C | `func_80196E1C` | 460 | Two entry bindings and seven empty constraints |
+| B | `func_801CB14C` | 488 | Seven scoped bindings and five empty constraints, individually minimized |
+| B | `func_801CAAFC` | 500 | None |
+| C | `func_801C16DC` | 464 | One limit v0 binding |
 
 Observed access patterns are not recovered original gameplay names or complete
 types. Call order, signed arithmetic, narrow wrapping, alias-sensitive rereads,
