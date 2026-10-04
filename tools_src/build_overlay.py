@@ -42,6 +42,7 @@ PER_FUNC_COMPILERS: dict[str, str] = {
     "func_80121A2C": "gcc272-dos",
     "func_80120314": "gcc272-dos",
     "func_801960E0": "gcc272-dos",
+    "func_8018CA38": "gcc272-dos",
     "func_8018CB78": "gcc272-dos",
     "func_8018A6C0": "gcc272-dos",
     "func_8018E8D0": "gcc272-dos",
@@ -290,6 +291,7 @@ PER_FUNC_JUMP_TABLES: dict[str, JumpTableSlot | tuple[JumpTableSlot, ...]] = {
 }
 
 PER_FUNC_CC1_FLAGS = {
+    "func_8018CA38": ["-quiet", "-O2", "-G0", "-fno-schedule-insns"],
     "func_8018CB78": ["-quiet", "-O2", "-G0", "-fno-schedule-insns"],
     "func_8018A6C0": ["-quiet", "-O2", "-G0", "-fforce-addr"],
     "func_8018E8D0": ["-quiet", "-O2", "-G0", "-fno-strength-reduce"],
