@@ -571,6 +571,11 @@ within the same 90-target scope by `func_801A5A14` and `func_801A5B88`.
 Each replacement preserves its five-entry generated table at the original
 slot, trailing padding and complete retail image. Parked work is uncounted.
 
+The five-word entry-order near-match for `func_801C86B4` remains parked,
+private and uncounted. `func_80191E80` replaces it within the same 90-function
+scope, preserving the measured buffer-pointer rereads, ordered transfer
+boundaries and signed checksum span without claiming a recovered data format.
+
 | Checkpoint | New exact functions in run | Total matching C | Assembly-backed confirmed overlay functions |
 |---|---:|---:|---:|
 | 1 | 15 | 153 | 259 |
@@ -578,9 +583,10 @@ slot, trailing padding and complete retail image. Parked work is uncounted.
 | 3 | 45 | 183 | 229 |
 | 4 | 60 | 198 | 214 |
 | 5 | 75 | 213 | 199 |
+| 6 | 90 | 228 | 184 |
 
-75 verified additions cover 24,868 matching code bytes.
-Remaining planned targets are not claimed as completed.
+90 verified additions cover 33,372 matching code bytes.
+All 90 requested additions are verified.
 
 | Worker | Function | Bytes | Source compiler aids |
 |---|---|---:|---|
@@ -659,6 +665,21 @@ Remaining planned targets are not claimed as completed.
 | B | `func_801AB6E8` | 552 | Two bindings and two empty constraints |
 | C | `func_80198E20` | 496 | Eight-byte frame reservation and one empty output constraint |
 | A | `func_801AB510` | 472 | None |
+| B | `func_801AFF1C` | 576 | None |
+| C | `func_801C4DE8` | 504 | None |
+| C | `func_801979D8` | 520 | Two scoped bindings and two empty constraints |
+| A | `func_801C3888` | 484 | Two scoped bindings and six empty constraints |
+| B | `func_801AA524` | 596 | Three bindings, eight address ties and one raw-shift liveness input |
+| A | `func_801BD6EC` | 508 | Two empty setup constraints; no bindings |
+| A | `func_801C96DC` | 540 | none; default gcc281 profile |
+| A | `func_8019D904` | 568 | one product/remainder v1 binding |
+| A | `func_801C4BF4` | 500 | one a0 binding and six empty constraint sites |
+| C | `func_801BE77C` | 628 | two scoped argument bindings and one empty constraint |
+| C | `func_80196A60` | 568 | three bindings, six empty constraints; -fno-cse-follow-jumps |
+| A | `func_801B7B00` | 580 | seven bindings and two empty constraints |
+| C | `func_801A5FA4` | 600 | four scoped argument bindings and three empty constraints |
+| A | `func_80191E80` | 756 | three bindings and four empty constraints |
+| C | `func_801BC968` | 576 | two register bindings; no empty constraints |
 
 Observed access patterns are not recovered original gameplay names or complete
 types. Call order, signed arithmetic, narrow wrapping, alias-sensitive rereads,
@@ -674,6 +695,18 @@ retains the original miss fallthrough (the register holds zero), without inventi
 a source-level return contract. Frame reservations have unknown original purposes
 and introduce no accesses. Empty constraints and bindings retain measured compiler
 choices and emit no instructions themselves.
+
+The two-save near-match for `func_80196FE8` remains parked, private
+and uncounted. `func_801BE77C` replaces it within the same 90-function scope.
+Its caller-side argument view preserves ten supplied words followed by nine
+for `func_80196800`; the observed callee consumes nine. The extra first-call
+word is retained without claiming a recovered original prototype.
+
+`func_801AA524` likewise retains an unmasked raw-word variable shift.
+The retail SLLV uses the low five count bits; a general 0..31 caller bound
+and the original prototype are unproved. Matching C is not portable for
+large counts; a native implementation needs explicit count masking. Its
+alternative byte path preserves four selector rereads after stores.
 
 `func_801A9A08` uses a word-return access view with an unknown original
 prototype. Six observed callers discard its status. Unsupported flags leave

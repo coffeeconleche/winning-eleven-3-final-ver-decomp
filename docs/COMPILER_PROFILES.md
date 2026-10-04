@@ -42,6 +42,11 @@ branch-delay scheduling. The 480-byte match uses ordinary field views;
 volatile field qualifiers were removed during minimization. This remains a
 per-function selection, not a change to the global profile.
 
+`func_80196A60` additionally uses `-fno-cse-follow-jumps` to preserve
+the measured literal-zero argument at its conditional callback join. Other
+profiles reused the known-zero mode register instead. This is a per-function
+selection; the complete 568-byte function and full image remain the gate.
+
 Source parameter width can also affect register allocation. For
 `func_801A3D3C`, a word-sized button parameter recovered the exact match without
 barriers or bindings; a halfword parameter did not. A caller's halfword load
