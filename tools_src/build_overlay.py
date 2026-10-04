@@ -249,7 +249,8 @@ PER_FUNC_COMPILERS: dict[str, str] = {
 # Original read-only table ownership, excluding any trailing padding words.
 # Compiler-generated words replace only this table's entries at its established
 # location. Code, targets and surrounding retail rodata are never patched.
-PER_FUNC_JUMP_TABLES: dict[str, tuple[str, int]] = {
+JumpTableSlot = tuple[str, int]
+PER_FUNC_JUMP_TABLES: dict[str, JumpTableSlot | tuple[JumpTableSlot, ...]] = {
     "func_801CF760": ("jtbl_8018DAE0", 6),
     "func_801C0808": ("jtbl_8018B9C4", 5),
     "func_801A5B88": ("jtbl_8018A1F0", 5),
@@ -611,7 +612,24 @@ def body(path: Path) -> str:
     return "\n".join(line for line in lines if not line.startswith('.include "macro.inc"'))
 
 
-def compiled_parts(path: Path, function_name: str) -> tuple[str, str | None]:
+def jump_table_slots(function_name: str) -> tuple[JumpTableSlot, ...]:
+    ownership = PER_FUNC_JUMP_TABLES.get(function_name)
+    if ownership is None:
+        return ()
+    if not isinstance(ownership, tuple):
+        raise BuildError(f"{function_name}: invalid jump-table ownership")
+    slots = (ownership,) if ownership and isinstance(ownership[0], str) else ownership
+    if (not slots or any(not isinstance(slot, tuple) or len(slot) != 2
+                         or not isinstance(slot[0], str)
+                         or not isinstance(slot[1], int) or isinstance(slot[1], bool)
+                         or slot[1] <= 0 for slot in slots)):
+        raise BuildError(f"{function_name}: invalid jump-table ownership")
+    if len({slot[0] for slot in slots}) != len(slots):
+        raise BuildError(f"{function_name}: duplicate jump-table ownership")
+    return slots
+
+
+def compiled_parts(path: Path, function_name: str) -> tuple[str, str | tuple[str, ...] | None]:
     ignored = {'gcc2_compiled.:', '__gnu_compiled_c:'}
     lines = path.read_text(encoding="utf-8").splitlines()
     text = "\n".join(
@@ -626,18 +644,27 @@ def compiled_parts(path: Path, function_name: str) -> tuple[str, str | None]:
     # without changing generated text or table words, into its owned slot.
     pattern = r"(?m)^\.section[ \t]+\.rodata[ \t]*\n(.*?)^\.text[ \t]*(?:\n|$)"
     tables = re.findall(pattern, text, flags=re.DOTALL)
-    ownership = PER_FUNC_JUMP_TABLES.get(function_name)
-    if tables and ownership is None:
+    ownership = jump_table_slots(function_name)
+    if tables and not ownership:
         raise BuildError(f"{function_name}: generated rodata has no declared ownership")
-    if ownership is not None and len(tables) != 1:
-        raise BuildError(f"{function_name}: expected exactly one generated jump table")
-    table = tables[0] if tables else None
+    if ownership and len(tables) != len(ownership):
+        raise BuildError(f"{function_name}: generated jump-table count differs from ownership")
+    table = (tables[0] if len(tables) == 1 else tuple(tables)) if tables else None
     text = re.sub(pattern, ".text\n", text, flags=re.DOTALL)
     return ".set at\n" + text + "\n.set noat", table
 
 
-def relocate_jump_table(rodata: str, function_name: str, table: str) -> str:
-    symbol, count = PER_FUNC_JUMP_TABLES[function_name]
+def relocate_jump_table(
+    rodata: str, function_name: str, table: str, slot: JumpTableSlot | None = None
+) -> str:
+    slots = jump_table_slots(function_name)
+    if slot is None:
+        if len(slots) != 1:
+            raise BuildError(f"{function_name}: explicit slot required for multiple tables")
+        slot = slots[0]
+    if slot not in slots:
+        raise BuildError(f"{function_name}: undeclared jump-table slot")
+    symbol, count = slot
     # The existing slot controls alignment. Retaining the compiler's .align 3
     # would shift a valid four-byte-aligned original table and adjacent data.
     lines = [line.strip() for line in table.splitlines() if line.strip()]
@@ -684,11 +711,17 @@ def write_aggregate(
         text_paths = [config["text"]]
     rodata = body(config["rodata"])
     compiled_text = {}
+    claimed_slots: set[str] = set()
     for function_name, path in compiled.items():
         text, table = compiled_parts(path, function_name)
         compiled_text[function_name] = text
         if table is not None:
-            rodata = relocate_jump_table(rodata, function_name, table)
+            tables = (table,) if isinstance(table, str) else table
+            for slot, generated in zip(jump_table_slots(function_name), tables, strict=True):
+                if slot[0] in claimed_slots:
+                    raise BuildError(f"{function_name}: table slot already claimed: {slot[0]}")
+                claimed_slots.add(slot[0])
+                rodata = relocate_jump_table(rodata, function_name, generated, slot)
     sections = [
         '.include "macro.inc"',
         ".set noat",

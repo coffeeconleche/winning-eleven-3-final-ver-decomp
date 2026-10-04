@@ -43,8 +43,13 @@ retains surrounding data and padding, and removes the emitted copy from the
 function text. Original slot alignment controls placement; the compiler's
 standalone table alignment must not shift the retail layout.
 
-Only one simple word-address table per declared function is currently supported.
-Missing ownership, incorrect entry counts, and unsupported layouts fail closed.
+For one table, declare `(symbol, count)`. For multiple independent tables,
+declare `((first_symbol, first_count), (second_symbol, second_count), ...)`
+in compiler-emission order. Each simple word-address table keeps its own
+proved original slot; do not merge adjacent tables into one ownership range.
+Each generated table must occupy a separate `.rodata`/`.text` block.
+Missing or duplicate ownership, incorrect table/entry counts, reused slots
+across functions, and unsupported layouts fail closed.
 Do not patch instructions, case addresses, original assembly, or expected hashes
 to make a switch match. Both the generated code and regenerated table must pass
 the complete overlay byte comparison. SDK-free placement and wrapper checks:
