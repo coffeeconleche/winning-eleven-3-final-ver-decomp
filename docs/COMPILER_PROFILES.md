@@ -47,6 +47,12 @@ the measured literal-zero argument at its conditional callback join. Other
 profiles reused the known-zero mode register instead. This is a per-function
 selection; the complete 568-byte function and full image remain the gate.
 
+`func_8018E490` uses `gcc272-dos -quiet -O2 -G0 -fno-strength-reduce`
+to retain the original single 1,000-byte row cursor. Default strength reduction
+introduces two cursors and eight extra bytes. Two empty setup inputs preserve
+counter/selector narrowing, constants and address order; they emit no instructions.
+This is a measured per-function selection, not a global profile change.
+
 Source parameter width can also affect register allocation. For
 `func_801A3D3C`, a word-sized button parameter recovered the exact match without
 barriers or bindings; a halfword parameter did not. A caller's halfword load

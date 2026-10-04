@@ -726,6 +726,60 @@ original uncached all-five-overlay build, the resident build, all nine SDK-free
 tooling tests, counts and privacy checks. All retail hashes and sizes remain
 unchanged. Only verified checkpoints are reported, not all 90 targets in advance.
 
+### Second ninety-function run: verified checkpoints
+
+Starting at `1587001` with 228 matching C functions, three isolated
+workers have exclusive 30-target queues on `decomp/next-ninety-a`,
+`decomp/next-ninety-b` and `decomp/next-ninety-c`. These additions
+are separate from the preceding ninety-function run. Targets include ENTER,
+SELFORM and SELECT. Workers proceed after individual verified commits without
+a global round barrier; integration preserves each worker's commit order.
+Each publication groups 15 accepted matches across the workers. Unresolved
+private probes do not count as recovered C.
+
+| Checkpoint | New exact functions in this run | Total matching C | Assembly-backed confirmed overlay functions |
+|---|---:|---:|---:|
+| 1 | 15 | 243 | 169 |
+
+15 verified additions cover 3,752 matching code bytes.
+Remaining planned targets are not claimed as completed.
+
+| Worker | Overlay | Function | Bytes | Observed behavior | Source compiler aids |
+|---|---|---|---:|---|---|
+| A | ENTER | `func_8018F88C` | 72 | Scratch byte selects one of two ordered call paths | None; gcc272-dos |
+| B | SELFORM | `func_8012051C` | 128 | Side-selected scratch index and paired record-byte stores | None; gcc272-dos |
+| B | SELFORM | `func_8012199C` | 144 | XOR-selected record and ordered adjusted halfword pair | None; gcc272-dos |
+| A | ENTER | `func_8018E490` | 80 | 22 rows with byte counter and ordered selector-dependent byte pair | Two empty setup inputs; gcc272-dos -fno-strength-reduce |
+| C | SELECT | `func_801CF760` | 440 | Status dispatch, ordered late configuration rereads and scratch reset | Scratch s0 binding; gcc272-dos; six-word owned table |
+| A | ENTER | `func_8018EB00` | 84 | Ordered mixed-width global stores and descriptor call | None; gcc272-dos |
+| A | ENTER | `func_8018F8D4` | 104 | Ordered paired scratch-byte calls with selector reread | None; gcc272-dos |
+| B | SELFORM | `func_80120974` | 228 | Descriptor reset, conditional signed-halfword submission and ordered final call | Two scoped bindings and two empty constraints; gcc272-dos |
+| B | SELFORM | `func_8012059C` | 252 | Four aliased index/table rereads, signed shifts and byte stores | One empty word input; natural 48-byte frame; gcc272-dos |
+| A | ENTER | `func_8018EA5C` | 164 | Ordered global setup and sparse mode-dependent call | None; gcc272-dos |
+| B | SELFORM | `func_8012153C` | 308 | Ordered helper/callback sequence, entry update and 11 byte-counted records | Reused a0 call-ID binding and two empty constraints; gcc272-dos |
+| C | SELECT | `func_801CB37C` | 500 | Six byte-counted dual dispatches with independent selector/halfword rereads | Destination v1 binding and two empty constraints; gcc272-dos; two six-word tables |
+| B | SELECT | `func_801960E0` | 516 | Signed-halfword cycle and ordered mixed-width descriptor; unsupported mode uninitialized | None; gcc272-dos; five-word owned table |
+| A | ENTER | `func_8018EB54` | 212 | Ordered lookups, cross-call field capture and unsigned quotient/remainder byte setup | Prefix s1 binding and two empty constraints; gcc272-dos |
+| B | SELFORM | `func_80120314` | 520 | Mode/sign-selected byte export after bounded halfword-distance square | One empty signed-distance tie; gcc272-dos |
+
+Names, original prototypes, full data layouts and gameplay interpretations
+remain uncertain. Sources preserve measured widths, arithmetic, alias-sensitive
+reloads and call order, without invented guards or portable return contracts.
+Matching compiler constraints emit no instructions themselves; unused frame
+reservations have unknown original purposes. Original assembly, reference hashes,
+linker placement and generated instructions are not patched.
+
+Each worker verifies the complete affected overlay, all five confirmed
+overlays and the resident executable before committing. The integrator reviews
+each source and independently rebuilds all five complete overlay images after
+every integration. Routine checks may use the previously validated ignored
+content-addressed cache of verbatim DOS compiler assembly; preprocessing,
+conversion, assembly, linking and complete original-byte comparison still run.
+Every publication checkpoint reruns the original uncached all-five-overlay
+build, the resident build, all twelve SDK-free tooling tests, actual source counts
+and privacy checks. Original hashes and sizes remain unchanged. This is matching
+PS1-source progress, not a completed native PC port or whole-game percentage.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 
