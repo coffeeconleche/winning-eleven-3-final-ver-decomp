@@ -56,6 +56,7 @@ PER_FUNC_COMPILERS: dict[str, str] = {
     "func_801BD2F8": "gcc272-dos",
     "func_801BD6A0": "gcc272-dos",
     "func_801BE744": "gcc272-dos",
+    "func_801A5B88": "gcc272-dos",
     "func_801A5A14": "gcc272-dos",
     "func_801B015C": "gcc272-dos",
     "func_801C49F0": "gcc272-dos",
@@ -226,6 +227,7 @@ PER_FUNC_COMPILERS: dict[str, str] = {
 # location. Code, targets and surrounding retail rodata are never patched.
 PER_FUNC_JUMP_TABLES: dict[str, tuple[str, int]] = {
     "func_801C0808": ("jtbl_8018B9C4", 5),
+    "func_801A5B88": ("jtbl_8018A1F0", 5),
     "func_801A5A14": ("jtbl_8018A1D8", 5),
     "func_801AEBF8": ("jtbl_8018A59C", 6),
     "func_801B5560": ("jtbl_8018AD6C", 6),
@@ -257,6 +259,7 @@ PER_FUNC_CC1_FLAGS = {
     "func_801BD2F8": ["-quiet", "-O2", "-G0"],
     "func_801BD6A0": ["-quiet", "-O2", "-G0"],
     "func_801BE744": ["-quiet", "-O2", "-G0"],
+    "func_801A5B88": ["-quiet", "-O2", "-G0"],
     "func_801A5A14": ["-quiet", "-O2", "-G0"],
     "func_801B015C": ["-quiet", "-O2", "-G0"],
     "func_801C49F0": ["-quiet", "-O2", "-G0"],
