@@ -109,6 +109,29 @@ claim. Its natural 32-byte frame needs no reservation. The owned five-word
 The flag prevents duplicate state comparisons and is verified by full-image
 byte equality; record meanings and complete helper types remain unknown.
 
+`func_80189DB4` uses `gcc272-dos -quiet -O2 -G0 -fno-strength-reduce`
+with three scoped bindings for the constant 64 and five empty constraints. Inlined
+identities retain the separate callback sequences and word-result capture order;
+they emit no instructions. Two byte access views preserve measured reloads,
+not hardware volatility. The natural 88-byte frame contains a six-halfword
+local table with only its last two entries initialized as in the original.
+Table meaning and complete helper prototypes remain unknown; no bounds guards
+or frame reservations are invented. The flag removes twelve extra bytes and
+still requires complete-image equality.
+
+`func_801A2CA0` matches naturally with `gcc272-dos -quiet -O2 -G0`
+and no bindings, empty constraints or frame reservations. Its sparse 0/1 mode
+switch preserves the retail unsupported-mode register residue and uninitialized
+local-byte path; it is not a portable initialized default contract. The final
+callback argument uses its evidenced byte-width view, without inventing an
+early caller cast or a complete original prototype.
+
+`func_801A77A0` uses the basic GCC 2.7.2 profile with six scoped bindings
+and two empty constraints. A pointer identity and a local-memory/index input
+retain measured branch-delay argument copies without instructions, clobbers or
+extra accesses. Its natural 104-byte frame holds an actual eight-byte copied
+prefix; record meanings and complete external helper types remain unknown.
+
 Source parameter width can also affect register allocation. For
 `func_801A3D3C`, a word-sized button parameter recovered the exact match without
 barriers or bindings; a halfword parameter did not. A caller's halfword load

@@ -742,8 +742,9 @@ private probes do not count as recovered C.
 | 1 | 15 | 243 | 169 |
 | 2 | 30 | 258 | 154 |
 | 3 | 45 | 273 | 139 |
+| 4 | 60 | 288 | 124 |
 
-45 verified additions cover 20,936 matching code bytes.
+60 verified additions cover 32,628 matching code bytes.
 Remaining planned targets are not claimed as completed.
 
 | Worker | Overlay | Function | Bytes | Observed behavior | Source compiler aids |
@@ -793,6 +794,21 @@ Remaining planned targets are not claimed as completed.
 | B | SELECT | `func_801A89F0` | 736 | Capped unsigned halfword decimal conversion, centered halfword-width arithmetic and raw-word right alignment with distinct ordered glyph callbacks | gcc272-dos basic; four measured bindings; two empty selector constraints; natural 80-byte frame; no tables/symbols |
 | C | SELECT | `func_801B57A0` | 732 | Eight state actions, ordered reset captures and three node-byte writes with late mode/counter rereads across callbacks | gcc272-dos O2/G0; zero bindings; one empty memory-output retaining measured eight unused bytes in 32-byte frame, unknown purpose; owned eight-word jtbl_8018AD84; no added symbols |
 | B | SELECT | `func_80194790` | 740 | Two ordered clear/sync sequences, 58-item byte stream with single-byte skips, fifteen-row source copy or clearing, bit expansion and mixed-width recompression before upload | gcc272-dos O2/G0; four scoped binding sites; zero empty constraints or frame reservation; actual 128+96 byte buffers yield 264-byte frame; no symbols/tables |
+| A | ENTER | `func_80189DB4` | 596 | Updates twenty-two 1,000-byte records through signed random/remainder calculations and two ordered callback paths, retaining mixed-width writes, byte rereads and partially initialized local-table updates. | gcc272-dos O2/G0/fno-strength-reduce; three scoped constant bindings and five empty constraints; two measured volatile byte reload views; natural 88-byte frame with six halfwords, only the last two initialized; no new symbols or tables |
+| C | SELECT | `func_801BA8EC` | 724 | Captured child before recursion, late node/mode/map comparisons, signed pulse-channel shifts and narrowed colors, three coordinate submissions with preserved signed child thresholds | gcc272-dos O2/G0; six scoped binding sites and four empty constraints; no clobbers/reserved frame/symbols/tables |
+| B | SELECT | `func_8019C85C` | 760 | One captured shifted halfword, four independently narrowed helper results and eight ordered seventeen-word descriptor submissions with late argument-byte rereads | Natural gcc272-dos O2/G0; zero bindings/empty constraints/reserved frame/symbols/tables |
+| C | SELECT | `func_801B7D44` | 740 | Clears 28 descending 45-byte records, updates four descriptor rows, emits ordered glyph callbacks and appends control bytes with alias-sensitive map rereads. | gcc272-dos -quiet -O2 -G0; three scoped bindings and two empty input constraints; no frame reservation, table or symbol additions |
+| C | SELECT | `func_801A2CA0` | 752 | Captures two classifications, handles category-six field clears or four descriptor callbacks, and retains table lookup order and the retail unsupported-mode residue path. | basic gcc272-dos -quiet -O2 -G0; natural C with zero matching aids |
+| A | SELECT | `func_801A77A0` | 684 | Copies an eight-byte prefix, configures two descriptors and performs ordered packet updates, halfword table lookups and callbacks for two captured selectors. | basic gcc272-dos -quiet -O2 -G0; six bindings and two empty constraints; no clobbers, volatile accesses or frame reservation |
+| C | SELECT | `func_8018DB58` | 804 | Dispatches a captured mode byte through the original sparse cases, including the ordered 6-to-16 store/fallthrough and predicate-gated reset for mode 255. | basic gcc272-dos -quiet -O2 -G0; naturally matching sparse switch, zero aids |
+| C | SELECT | `func_801A735C` | 844 | Updates paired descriptors from a signed value and copies selected bytes to one or two captured destinations, preserving independent mode reads and alias-sensitive byte order. | basic gcc272-dos -quiet -O2 -G0; four scoped register bindings and three empty constraints, natural 96-byte frame |
+| A | SELECT | `func_801A2198` | 732 | Selects mapped rows using the original byte-wrapped status scans and helper-driven retries, preserving selector replacement and the initial mapping read before clearing the index. | basic gcc272-dos -quiet -O2 -G0; one mask binding and two branch-local empty base identities, natural 48-byte frame |
+| A | SELECT | `func_801B50F8` | 740 | Writes two descriptor field groups and issues five ordered callbacks, retaining the original partial overwrite sets and signed-halfword/byte store widths. | basic gcc272-dos -quiet -O2 -G0; one second-pointer binding, zero empty constraints, natural 56-byte frame |
+| B | SELECT | `func_801A2610` | 1004 | Mode dispatch, ordered partial descriptor writes, four interpolation callbacks, and late scratch/flag rereads. | gcc272-dos; one persistent scratch $22 binding and four measured empty constraints; natural 104-byte frame; six-entry original jump table |
+| A | SELECT | `func_801BDB74` | 744 | Eight conditional rows with ordered six numeric-descriptor calls and one packet callback, retaining control rereads and signed high-half coordinates. | basic gcc272-dos; zero bindings and one measured step input; natural 96-byte frame with real spills |
+| B | SELECT | `func_801C88BC` | 1016 | Five unconditional descriptor submissions followed by byte-mode/selection-specific submissions with original sparse category ranges. | natural basic gcc272-dos; zero bindings, empty constraints, frame reserve, tables, or symbols |
+| A | SELECT | `func_801B7804` | 764 | Five-case state dispatch with original descriptor-byte updates, signed guards and late unsigned-halfword/event rereads. | basic gcc272-dos; one saved-base binding; natural 32-byte frame; original 21-entry switch table |
+| A | ENTER | `func_8018BB0C` | 788 | Eight signed-angle cases preserve division toward zero, byte-wrapped offsets, ordered helper calls and post-call halfword rereads. | basic gcc272-dos; one saved angle binding and eight branch-local identities; natural 40-byte frame; original eight-entry jump table |
 
 Names, original prototypes, full data layouts and gameplay interpretations
 remain uncertain. Sources preserve measured widths, arithmetic, alias-sensitive
@@ -800,6 +816,10 @@ reloads and call order, without invented guards or portable return contracts.
 Matching compiler constraints emit no instructions themselves; unused frame
 reservations have unknown original purposes. Original assembly, reference hashes,
 linker placement and generated instructions are not patched.
+
+Parked private probes and approved same-scope replacements:
+
+- `func_8018E4E0` replaced by `func_801D03EC`; original handwritten GTE routine remains assembly-backed and uncounted.
 
 Each worker verifies the complete affected overlay, all five confirmed
 overlays and the resident executable before committing. The integrator reviews
