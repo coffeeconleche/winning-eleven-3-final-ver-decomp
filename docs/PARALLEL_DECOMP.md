@@ -889,6 +889,30 @@ build, the resident build, all twelve SDK-free tooling tests, actual source coun
 and privacy checks. Original hashes and sizes remain unchanged. This is matching
 PS1-source progress, not a completed native PC port or whole-game percentage.
 
+### Single-function follow-up
+
+After the second ninety-function run, `func_801C86B4` was recovered in
+SELECT by one worker, without parallel agents. Its complete 520-byte body
+matches SHA-1 `25323a64d160982fe873a09f9a7a1623c8774c28` using the
+basic `gcc272-dos -quiet -O2 -G0` profile.
+
+The source copies six twelve-byte records while preserving halfwords at offsets
+6 and 8, then submits byte-table entries with signed index arithmetic. Counts
+are reread after each copy and callback; the resource selector is reloaded after
+each inner loop. Original unchecked template and byte-table accesses remain
+unchecked. The twelve-byte aggregate and helper declarations are measured
+access/ABI views, not recovered complete types or gameplay names.
+
+No bindings, empty constraints, artificial frame reservations, new symbols or
+jump-table ownership are needed. The measured 88-byte frame arises naturally.
+The original uncached all-five-overlay build, resident build and all twelve
+SDK-free tooling tests pass, with reference hashes and sizes unchanged.
+
+This follow-up raises matching C to 319 functions, leaving 93 of the 412
+confirmed overlay functions assembly-backed. The preceding ninety-function
+checkpoint counts remain historical; whole-game totals and the native PC lane
+are not claimed by this milestone.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 
