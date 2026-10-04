@@ -76,6 +76,7 @@ PER_FUNC_COMPILERS: dict[str, str] = {
     "func_801A84C8": "gcc272-dos",
     "func_801C8CB4": "gcc272-dos",
     "func_801CB334": "gcc272-dos",
+    "func_801C0808": "gcc272-dos",
     "func_801CAF78": "gcc272-dos",
     "func_801C16DC": "gcc272-dos",
     "func_80196E1C": "gcc272-dos",
@@ -217,6 +218,7 @@ PER_FUNC_COMPILERS: dict[str, str] = {
 # Compiler-generated words replace only this table's entries at its established
 # location. Code, targets and surrounding retail rodata are never patched.
 PER_FUNC_JUMP_TABLES: dict[str, tuple[str, int]] = {
+    "func_801C0808": ("jtbl_8018B9C4", 5),
     "func_801AEBF8": ("jtbl_8018A59C", 6),
     "func_801B5560": ("jtbl_8018AD6C", 6),
     "func_8019A510": ("jtbl_80189CC4", 6),
@@ -267,6 +269,7 @@ PER_FUNC_CC1_FLAGS = {
     "func_801A84C8": ["-quiet", "-O2", "-G0"],
     "func_801C8CB4": ["-quiet", "-O2", "-G0"],
     "func_801CB334": ["-quiet", "-O2", "-G0"],
+    "func_801C0808": ["-quiet", "-O2", "-G0"],
     "func_801CAF78": ["-quiet", "-O2", "-G0"],
     "func_801C16DC": ["-quiet", "-O2", "-G0"],
     "func_80196E1C": ["-quiet", "-O2", "-G0"],
