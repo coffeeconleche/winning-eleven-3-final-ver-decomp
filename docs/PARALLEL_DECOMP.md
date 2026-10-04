@@ -740,8 +740,9 @@ private probes do not count as recovered C.
 | Checkpoint | New exact functions in this run | Total matching C | Assembly-backed confirmed overlay functions |
 |---|---:|---:|---:|
 | 1 | 15 | 243 | 169 |
+| 2 | 30 | 258 | 154 |
 
-15 verified additions cover 3,752 matching code bytes.
+30 verified additions cover 11,396 matching code bytes.
 Remaining planned targets are not claimed as completed.
 
 | Worker | Overlay | Function | Bytes | Observed behavior | Source compiler aids |
@@ -761,6 +762,21 @@ Remaining planned targets are not claimed as completed.
 | B | SELECT | `func_801960E0` | 516 | Signed-halfword cycle and ordered mixed-width descriptor; unsupported mode uninitialized | None; gcc272-dos; five-word owned table |
 | A | ENTER | `func_8018EB54` | 212 | Ordered lookups, cross-call field capture and unsigned quotient/remainder byte setup | Prefix s1 binding and two empty constraints; gcc272-dos |
 | B | SELFORM | `func_80120314` | 520 | Mode/sign-selected byte export after bounded halfword-distance square | One empty signed-distance tie; gcc272-dos |
+| C | SELECT | `func_801B190C` | 512 | Sparse state dispatcher with captured flags, ordered callbacks and late counters | Scoped counter v0 binding and two empty constraints; gcc272-dos; 31-word table |
+| C | SELECT | `func_801BFEDC` | 536 | Ordered byte-state resets, shared counter increment and callback-gated late rereads | Next v0 binding and one empty memory barrier; gcc272-dos; five-word table |
+| A | ENTER | `func_8018E8D0` | 308 | Two ordered packet/callback rows, byte triple and four halfword triples | Five scoped bindings, three empty sites and ordered halfword views; gcc272-dos -fno-strength-reduce |
+| B | SELFORM | `func_80121A2C` | 600 | Halfword-indexed split search, alias-sensitive flag rereads and low-byte count submission | Seven scoped binding sites and five empty constraints; gcc272-dos |
+| A | ENTER | `func_8018A6C0` | 260 | 22 indexed rows with mode-selected byte stores and wrapped halfword range tests | None; gcc272-dos -fforce-addr; five-word table |
+| B | SELECT | `func_801A8F00` | 616 | Low-nibble branch selects two or four ordered 17-word descriptor calls | None; gcc272-dos |
+| C | SELECT | `func_801A5508` | 604 | 32-entry signed-layout arithmetic, ordered drawing calls and late mapped-byte rereads | Eleven scoped binding sites and three empty inputs; gcc272-dos |
+| B | SELECT | `func_8019DB3C` | 620 | Captured descriptor key, signed byte-centering division and four aliased decimal-byte rereads | Two scoped a0 bindings and one empty identity; gcc272-dos |
+| A | ENTER | `func_8018CB78` | 316 | Signed halfword scratch setup, captured row/bank offsets and two aliased low-24-bit link updates | Eight scoped bindings, two empty uses and measured eight-byte reserve; gcc272-dos -fno-schedule-insns |
+| B | SELECT | `func_801C19EC` | 624 | Mode-selected halfword initialization, two unbounded byte searches, wrapped signed clamps and conditional callback | Nine scoped binding sites and four empty uses; gcc272-dos; natural 24-byte frame |
+| A | ENTER | `func_8018CA38` | 320 | Captured signed record fields, bank/row helper pointers and aliased low-24-bit link rereads | Seven scoped bindings and measured eight-byte reserve; gcc272-dos -fno-schedule-insns; no empty constraints |
+| C | SELECT | `func_801BF0F4` | 616 | 16-column status dispatch, post-call flag/limit rereads and two late halfword-based submissions preserving extra caller word | One empty late-limit input; gcc272-dos; natural 80-byte frame; no bindings |
+| C | SELECT | `func_801A5764` | 688 | Eight measured 36-byte records, 64 ordered signed halfword stores and two raw-word mode calls | gcc272-dos; natural C without bindings, empty constraints, frame reserves or tables |
+| B | SELECT | `func_801AE020` | 628 | 64 ten-byte records with signed movement, wrapped halfword rereads, eight ordered reset calls and two post-call reloaded submissions | Four scoped bindings and three empty identities; gcc272-dos; natural 48-byte frame |
+| A | ENTER | `func_8018CCB4` | 396 | Four ordered record/scratch updates and helper submissions followed by aliased low-24-bit links with repeated scratch reads | Six scoped bindings, actual volatile scalar spill; gcc272-dos -fno-schedule-insns; no empties or extra frame reserve |
 
 Names, original prototypes, full data layouts and gameplay interpretations
 remain uncertain. Sources preserve measured widths, arithmetic, alias-sensitive

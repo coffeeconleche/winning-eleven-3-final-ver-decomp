@@ -53,6 +53,39 @@ introduces two cursors and eight extra bytes. Two empty setup inputs preserve
 counter/selector narrowing, constants and address order; they emit no instructions.
 This is a measured per-function selection, not a global profile change.
 
+`func_8018A6C0` uses `gcc272-dos -quiet -O2 -G0 -fforce-addr`
+to combine its indexed 1,000-byte rows into the original single cursor and retain
+the dispatch-address setup order. Without the flag, the measured source emits
+268 rather than 260 bytes with a separate offset cursor. The matching source
+needs no register bindings, empty constraints or frame reservation. This is a
+per-function choice; the complete overlay image remains the acceptance gate.
+
+`func_8018CB78` uses `gcc272-dos -quiet -O2 -G0 -fno-schedule-insns`
+to preserve the original scratch-base and constant setup order. With scheduling
+enabled, the same 316-byte source differs in two setup instructions. Eight scoped
+register bindings and two empty uses preserve measured allocation and captures;
+an unused eight-byte reservation reproduces the original 32-byte frame, whose
+purpose is unknown. A scalar numeric assembly name denotes the proved scratch
+byte address without allocating data or adding a symbol. Removing the reservation
+changes six frame instructions; no bounds or shift guards are invented. These
+choices apply only to this function and still require full-image equality.
+
+`func_8018CA38` also uses `gcc272-dos -quiet -O2 -G0 -fno-schedule-insns`
+for its measured scratch-word, constant and address setup. Seven scoped register
+bindings remain after joint prefix minimization; no empty constraints are needed.
+Its measured eight-byte reservation reproduces the 32-byte frame, with original
+purpose unknown. The scalar scratch-byte name allocates no new data, and both
+selectors are reread after the possibly aliasing link store. No shift guards or
+new table/symbol ownership is added; complete-image matching remains required.
+
+`func_8018CCB4` uses `gcc272-dos -quiet -O2 -G0 -fno-schedule-insns`
+with six measured scoped register bindings and no empty constraints. A volatile
+scalar access view preserves the observed stack spill and reload across calls;
+it is not a hardware-volatility claim or an artificial frame reservation. Four
+submissions preserve signed field loads, halfword updates and separate scratch
+reloads after possibly aliasing link stores. Original record/table meanings remain
+unknown. This per-function selection still requires complete-image equality.
+
 Source parameter width can also affect register allocation. For
 `func_801A3D3C`, a word-sized button parameter recovered the exact match without
 barriers or bindings; a halfword parameter did not. A caller's halfword load
