@@ -163,6 +163,15 @@ halfword wrapping, callback chronology and alias-sensitive restoration remain
 explicit. Full object layouts and complete helper prototypes are not claimed.
 Full-image equality remains the acceptance gate.
 
+`func_80196FE8` uses the basic GCC 2.7.2 profile with eight scoped
+bindings and ten empty sites for actual captures and load order. The sites
+emit no instructions or extra accesses; all volatile access qualifiers and
+memory clobbers were removed during minimization. Its natural 48-byte frame
+needs no reservation. The two descriptor formats preserve byte wrapping and
+logical shifts; the optional expanded submission rereads dimensions and mode
+after the first callback. Table accesses remain unchecked, and complete object
+layouts/helper APIs remain unknown. Full-image equality remains required.
+
 Source parameter width can also affect register allocation. For
 `func_801A3D3C`, a word-sized button parameter recovered the exact match without
 barriers or bindings; a halfword parameter did not. A caller's halfword load

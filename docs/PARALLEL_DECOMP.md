@@ -913,6 +913,33 @@ confirmed overlay functions assembly-backed. The preceding ninety-function
 checkpoint counts remain historical; whole-game totals and the native PC lane
 are not claimed by this milestone.
 
+### Second single-function follow-up
+
+`func_80196FE8` was recovered in SELECT by one worker, without parallel
+agents. Its complete 536-byte body matches SHA-1
+`80e9cfce2c5e7e002a8eb3fa63d50d809f029760` using the basic
+`gcc272-dos -quiet -O2 -G0` profile.
+
+The source builds the observed scratch descriptor with two size-dependent
+byte-coordinate formats and a classified palette lookup. The initial mode
+read remains before the first palette-halfword store. An optional expanded
+descriptor uses word-wrapped coordinates minus one, fresh width/height/mode
+reads after the first submission, and a separately byte-narrowed selector.
+Original unchecked table accesses and untouched descriptor fields remain
+unchanged; complete layouts and helper APIs are not claimed.
+
+Joint minimization leaves eight scoped bindings and ten empty compiler sites.
+The sites preserve actual captures and load order without instructions or
+extra accesses. No volatile access qualifiers, memory/register clobbers,
+artificial frame reservation, new symbols or jump-table ownership remain.
+The measured 48-byte frame arises naturally.
+
+The original uncached all-five-overlay build, resident build and all twelve
+SDK-free tooling tests pass, with reference hashes and sizes unchanged.
+Matching C now covers 320 functions, leaving 92 of the 412 confirmed overlay
+functions assembly-backed. Earlier checkpoint counts remain historical;
+this is not a whole-game or native-PC completion claim.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 
