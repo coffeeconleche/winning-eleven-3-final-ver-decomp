@@ -16,16 +16,17 @@ and local `jal` targets. Exact live matches now confirm five modules.
 | `ENDING.BIN` | `0xC3C8` | 24 | `0x801CD000` | candidate |
 | `STAFF.BIN` | `0x7D10` | 46 | `0x801CD000` | candidate |
 
-`UNIFORM.BIN` is primarily data with one code-like routine and must be checked
-dynamically. Low code density does not rule out compressed executable modules.
+`UNIFORM.BIN` is primarily data with one routine. Its live load address and
+complete bytes have been confirmed; that routine now compiles from matching C.
+Low code density alone does not rule out executable modules.
 
 `SELECT.BIN`, `ENTER.BIN`, `UNIFORM.BIN`, `SELFORM.BIN`, and `SELSND.BIN` were
 confirmed in full during the first controlled menu route. Notably, the observed
 `SELFORM.BIN` address is `0x8011D800`, not the inferred `0x8011A800`.
 
 Authoritative Splat layouts now exist for all five confirmed modules. Together
-they contain 412 functions and rebuild 414,610 retail bytes exactly. 303
-functions currently compile from matching C; the remaining 109
+they contain 412 functions and rebuild 414,610 retail bytes exactly. 318
+functions currently compile from matching C; the remaining 94
 use the generated assembly baseline.
 
 Verify every confirmed overlay with:

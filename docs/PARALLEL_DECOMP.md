@@ -732,7 +732,7 @@ Starting at `1587001` with 228 matching C functions, three isolated
 workers have exclusive 30-target queues on `decomp/next-ninety-a`,
 `decomp/next-ninety-b` and `decomp/next-ninety-c`. These additions
 are separate from the preceding ninety-function run. Targets include ENTER,
-SELFORM and SELECT. Workers proceed after individual verified commits without
+SELFORM, SELECT and UNIFORM. Workers proceed after individual verified commits without
 a global round barrier; integration preserves each worker's commit order.
 Each publication groups 15 accepted matches across the workers. Unresolved
 private probes do not count as recovered C.
@@ -744,9 +744,10 @@ private probes do not count as recovered C.
 | 3 | 45 | 273 | 139 |
 | 4 | 60 | 288 | 124 |
 | 5 | 75 | 303 | 109 |
+| 6 | 90 | 318 | 94 |
 
-75 verified additions cover 48,312 matching code bytes.
-Remaining planned targets are not claimed as completed.
+90 verified additions cover 63,884 matching code bytes.
+All 90 requested additions in this second run are verified.
 
 | Worker | Overlay | Function | Bytes | Observed behavior | Source compiler aids |
 |---|---|---|---:|---|---|
@@ -825,6 +826,21 @@ Remaining planned targets are not claimed as completed.
 | C | SELECT | `func_801975B0` | 1064 | Builds descriptor fields from byte-wrapped character classes, retaining ordered palette rereads, unchecked byte-table lookups and raw coordinate captures. | basic gcc272-dos; six scoped binding sites and eight empty scheduling constraints; absolute scalar scratch access views; natural zero frame; no tables or new symbols |
 | A | SELECT | `func_801C1208` | 1236 | Dispatches the independent selector through206 table entries, preserving ordered callbacks, partial resets, mapped-row lookups and late state-byte rereads. | basic gcc272-dos; one v0 binding, eight empty memory constraints, two measured volatile byte access views; natural32-byte frame; original206-word jump table; no new symbols |
 | C | SELECT | `func_801B8028` | 1064 | Nine ordered descriptor submissions, two independently reloaded signed-halfword marker tests and four paired 45-byte row submissions. | basic gcc272-dos; two scoped v0 bindings and two empty inputs; natural 112-byte frame; no table or symbol additions |
+| A | SELECT | `func_801A6AE4` | 1252 | Captured byte published to two words, ordered descriptor loops and field updates, with late helper calls and independently narrowed classifier results. | basic gcc272-dos; zero bindings/empty constraints/frame reservation; six measured local volatile write views; natural 112-byte frame |
+| A | ENTER | `func_8018F380` | 1292 | Nested random-gated callback sequences, late mode/flag dispatch and unbounded word-wrapped mapping search preserve signed division toward zero. | basic gcc272-dos; four scoped bindings and one empty memory constraint; natural 40-byte frame; existing six-halfword data remains unchanged |
+| C | SELECT | `func_801B9144` | 1072 | Two descriptor rectangles and two encoded rows retain raw XOR status return, callback words, byte-only initial side narrowing and late scratch reloads. | basic gcc272-dos; 13 scoped bindings, seven empty constraints; natural112-byte frame; no new symbols, tables or frame reserves |
+| B | SELECT | `func_801AC9D8` | 1108 | Paired mapped-byte captures, four-mode dispatcher and descriptor setup preserve byte exchange, independent callback reload increment and nonboolean late flag return. | gcc272-dos quiet/O2/G0; three short-lived bindings, two empty constraints; measured32-byte unused reservation restores original112-byte frame; same-symbol volatile store view; no symbols/tables |
+| B | SELECT | `func_801A82F8` | 464 | Sentinel-terminated three-byte pair search and mode updates preserve first-match exit, unsupported-mode stop and independent final equality update with late selector rereads. | gcc272-dos quiet/O2/G0; six scoped bindings, three empty constraints; measuredwhollyunused32byteframe; no symbols/tables |
+| A | SELECT | `func_801CADC4` | 436 | Six-byte indexed row swaps selected table or both when either selected byte is4/5; preserve allbytearguments, alias-safe load/store ordering and refresh on every path. | gcc272-dos quiet/O2/G0,21 binding declarations/11 empty input sites one memory qualified; natural24byteRAframe, no symbols/tables |
+| A | SELECT | `func_801C9A18` | 1364 | Byte-wrapped glyph range dispatch and scratch descriptor fields; branch-specific full-word palette lookup/fallbacks, ordered byte/halfword/word stores and unchecked font access retained. | gcc272-dos quiet/O2/G0,8 scoped real-value bindings,zeroemptyconstraints/artificialframe/symbols/tables |
+| C | SELECT | `func_801C59C4` | 1300 | Mode-dependent divisors and signed-halfword capped coordinates drive two fixed callback sequences, retaining repeated scratch reads and low-word signed division. | gcc272-dos defaultquiet/O2/G0 onlycompilerentry,zeroregisterbindings/emptyconstraints/frame reservation; actuallatevolatilebytescratchview no new symbols/tables |
+| A | SELECT | `func_801BFCDC` | 184 | Capture table byte, signed%15 and/15 coordinate bytes, selector40 offset, ordered callback andbyte10 returnstore retained. | gcc272-dosquiet/O2/G0/fno-cse-skip-blocks;oneactualvalue7binding/twoemptyidentity-inputconstraints/onemeasuredvolatiletablebyteview;natural24frame,no metadataelse |
+| C | SELECT | `func_8019D23C` | 1312 | Late byte mode selects fixed descriptor setup and two/three-iteration rows, preserving signed centering, mode11fallthrough and full supplied coordinatewords. | gcc272-dosdefaultquiet/O2/G0 compilerentryonly;zerobindings/constraints/frame/table/syms |
+| C | SELECT | `func_80193990` | 1296 | Up-to-fifteen callback comparisons, signed-indexed byte tables and ordered twelve-stride record writes retain alias-sensitive reloads, unsigned divide trap and late key submission. | basic gcc272-dos quiet/O2/G0; zero bindings/reserves/tables/symbol additions; two measured empty identities and actual four-byte pointer-entry byte-address view; natural72frame |
+| C | SELECT | `func_801BABC0` | 1020 | Eight ordered packet callbacks retain partial coordinate/byte updates and independent post-callback triplet captures, followed by the original nine-word descriptor submission. | basic gcc272-dos quiet/O2/G0; four bindings minimized13→4 (thirdpointer18, secondtriplet8/9/10); zero emptyconstraints/reserves/tables/symbol adds; scalar realbyteoffset accessaliases; natural72frame |
+| C | SELECT | `func_801C4FE0` | 772 | Seven signed scaled geometry/color quotients retain byte clamp, unsigned raw-coordinate reconstruction and partially initialized descriptor submission. | basic gcc272-dos quiet/O2/G0; 21 genuine bindings cumulatively minimized27→21, one realheightnumerator input minimized3→1; natural88frame/naturalFP; zero reserve/clobber/volatile/table/symbol additions |
+| C | SELECT | `func_801CBAB8` | 1324 | Five-state descriptor/coordinate transition preserves fallthrough, signed movement thresholds, byte and halfword wrapping, callback order and alias-sensitive restoration. | basic gcc272-dos quiet/O2/G0; two genuine scoped bindings minimized16→2; eleven empty sites minimized14→11, all memory clobbers removed; measured unused32B reservation restores96frame, removal only10framewords; original5word jtbl_8018D9F0 owned, no symbols. |
+| B | UNIFORM | `func_80189720` | 1376 | Triplet-table local copy and ordered side selections, sentinel scan, sparse exclusions and wrapped byte encoding preserve selector rereads and signed helper results without added range guards. | Natural basic gcc272-dos quiet/O2/G0; zero bindings, empty constraints or frame reservations; original39- and42-word switch tables; natural1680-byte frame. |
 
 Names, original prototypes, full data layouts and gameplay interpretations
 remain uncertain. Sources preserve measured widths, arithmetic, alias-sensitive
@@ -851,6 +867,16 @@ Parked private probes and approved same-scope replacements:
 - `func_80195DE0` replaced by `func_80193990`; Unresolved private compiler-layout probe remains assembly-backed and uncounted; coordinator reassigned an unrecovered routine within the existing overlay scope.
 - `func_801A30F4` replaced by `func_801C59C4`; Unresolved private compiler-layout probe remains assembly-backed and uncounted; coordinator reassigned an unrecovered routine within the existing overlay scope.
 - `func_801C5ED8` replaced by `func_8019D23C`; Unresolved private compiler-layout probe remains assembly-backed and uncounted; coordinator reassigned an unrecovered routine within the existing overlay scope.
+- `func_801AAE5C` replaced by `func_801BFCDC`; Bounded honest compiler-layout probes remained unmatched; preserved private drafts and original assembly, selected another unrecovered same-scope function.
+- `func_801BCF80` replaced by `func_801CADC4`; Bounded honest compiler-layout probes remained unmatched; preserved private drafts and original assembly, selected another unrecovered same-scope function.
+- `func_801AF480` replaced by `func_801A82F8`; Bounded honest compiler-layout probes remained unmatched; preserved private drafts and original assembly, selected another unrecovered same-scope function.
+- `func_8018A008` replaced by `func_801C9A18`; Bounded honest compiler-layout probes remained unmatched; preserved private drafts and original assembly, selected another unrecovered same-scope function.
+- `func_801B38E0` replaced by `func_801C3A6C`; Bounded honest compiler-layout probes remained unmatched; preserved private drafts and original assembly, selected another unrecovered same-scope function.
+- `func_801C3A6C` replaced by `func_801A30F4`; Bounded entry scheduling probes remained unmatched; preserved private C3A6C draft and original assembly, reassigned an unrecovered same-overlay routine after the previous owner confirmed no active work.
+- `func_801C8D00` replaced by `func_801C4FE0`; Bounded leaf control-flow/allocation probes remained unmatched; preserved private C8D00 drafts and original assembly, reassigned an unrecovered straight-line routine within the same overlay scope.
+- `func_801A30F4` replaced by `func_8019CD0C`; Bounded two-loop call setup probes remained unmatched; preserved private A30F4 draft and original assembly and reassigned an unrecovered paired-submission routine within the same overlay scope.
+- `func_8018ECB0` replaced by `func_801CBAB8`; Bounded private register-lifetime probes remained two instructions short of exact equality; preserved the 8ECB0 draft and original assembly uncounted and reassigned an unrecovered descriptor-transition routine in the same overlay.
+- `func_8019CD0C` replaced by `func_80189720`; Bounded paired-submission scheduling probes remained unmatched; preserved the private 9CD0C drafts and assembly uncounted, replacing the final slot with an independently exact natural-C routine in the already-confirmed UNIFORM overlay.
 
 Each worker verifies the complete affected overlay, all five confirmed
 overlays and the resident executable before committing. The integrator reviews

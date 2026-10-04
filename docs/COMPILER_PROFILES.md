@@ -139,6 +139,30 @@ original allocation. Signed random adjustments and the signed comparison of
 word-wrapped squared distance are retained without inventing record meanings
 or complete helper prototypes. Full-image equality remains the acceptance gate.
 
+`func_801C4FE0` uses `gcc272-dos -quiet -O2 -G0` with 21
+measured register bindings and one empty input consuming the actual signed
+height numerator before division. Six bindings and two other empty inputs were
+removed cumulatively during minimization. The 88-byte frame and frame-pointer
+allocation arise naturally; no frame reservation or register clobber is used.
+Seven signed quotients retain the original zero-divisor traps, and raw coordinate
+sums wrap as words before halfword narrowing. The original initializes only
+11 bytes of the 20-byte local access view; its callee copies nine further bytes
+from unknown stack residue. This is a matching-build observation, not defined
+portable behavior for a future native implementation. Full-image matching is
+still required.
+
+`func_801CBAB8` uses the basic GCC 2.7.2 profile with two scoped bindings
+and eleven empty sites: actual snapshot/counter inputs, four transparent value
+copies and two empty control fences. All memory clobbers were removed during
+joint minimization; these sites emit no instructions or extra accesses. An unused
+32-byte reservation retains the measured 96-byte frame; removing it changes only
+ten frame-adjustment/save/restore words. Its original purpose is unknown. The
+owned five-word `jtbl_8018D9F0` preserves the five-state dispatch, deliberate
+fallthrough and quiet out-of-range path. Signed coordinate thresholds, byte and
+halfword wrapping, callback chronology and alias-sensitive restoration remain
+explicit. Full object layouts and complete helper prototypes are not claimed.
+Full-image equality remains the acceptance gate.
+
 Source parameter width can also affect register allocation. For
 `func_801A3D3C`, a word-sized button parameter recovered the exact match without
 barriers or bindings; a halfword parameter did not. A caller's halfword load
