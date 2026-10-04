@@ -58,6 +58,7 @@ PER_FUNC_COMPILERS: dict[str, str] = {
     "func_80121A2C": "gcc272-dos",
     "func_80120314": "gcc272-dos",
     "func_801960E0": "gcc272-dos",
+    "func_801C1208": "gcc272-dos",
     "func_801A5188": "gcc272-dos",
     "func_8018A3A8": "gcc272-dos",
     "func_8018BB0C": "gcc272-dos",
@@ -330,6 +331,7 @@ PER_FUNC_JUMP_TABLES: dict[str, JumpTableSlot | tuple[JumpTableSlot, ...]] = {
     "func_801B190C": ("jtbl_8018A8CC", 31),
     "func_801CB37C": (("jtbl_8018D9A4", 6), ("jtbl_8018D9BC", 6)),
     "func_801CF760": ("jtbl_8018DAE0", 6),
+    "func_801C1208": ("jtbl_8018BAAC", 206),
     "func_8018BB0C": ("jtbl_801892E4", 8),
     "func_801B7804": ("jtbl_8018B21C", 21),
     "func_8018BE20": ("jtbl_80189304", 5),
@@ -347,6 +349,7 @@ PER_FUNC_JUMP_TABLES: dict[str, JumpTableSlot | tuple[JumpTableSlot, ...]] = {
 }
 
 PER_FUNC_CC1_FLAGS = {
+    "func_801C1208": ["-quiet", "-O2", "-G0"],
     "func_801A5188": ["-quiet", "-O2", "-G0", "-fno-schedule-insns"],
     "func_8018A3A8": ["-quiet", "-O2", "-G0", "-fno-strength-reduce"],
     "func_8018BB0C": ["-quiet", "-O2", "-G0"],
