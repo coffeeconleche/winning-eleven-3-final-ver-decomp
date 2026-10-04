@@ -1,0 +1,93 @@
+#include "common.h"
+
+/* Scalar access views only; descriptor fields and complete types are unknown. */
+
+extern s16 D_801D8D90, D_801D8D92, D_801D8D94, D_801D8D96;
+extern u8 D_801D8D98, D_801D8D99, D_801D8D9A, D_801D8D9B;
+extern u8 D_801D8D9C, D_801D8D9D, D_801D8D9E, D_801D8D9F;
+extern u8 D_801D8DA0, D_801D8DA1, D_801D8DA2, D_801D8DA3;
+extern s16 D_801D87C8, D_801D87CA, D_801D87CC, D_801D87CE, D_801D87D0, D_801D87D2;
+extern u8 D_801D87D4, D_801D87D5, D_801D87D6, D_801D87D7, D_801D87D8;
+extern u8 D_801D87D9, D_801D87DA, D_801D87DB, D_801D87DC;
+extern void func_80196A60(s32, volatile u16 *, u32);
+extern void func_8019689C(s32, volatile u16 *, u32);
+extern void func_80196E1C(s32, volatile u16 *, u32);
+
+void func_801B50F8(void) {
+    s16 *first;
+    /* Retain the measured second descriptor cursor allocation across calls. */
+    register s16 *second __asm__("$20");
+    first = &D_801D8D90;
+    *first = -192;
+    D_801D8D92 = -120;
+    D_801D8D94 = 192;
+    D_801D8D96 = 40;
+    D_801D8D98 = 0;
+    D_801D8D99 = 0;
+    D_801D8D9A = 255;
+    D_801D8D9B = 255;
+    D_801D8D9C = 255;
+    D_801D8D9D = 255;
+    D_801D8D9E = 64;
+    D_801D8D9F = 64;
+    D_801D8DA0 = 255;
+    D_801D8DA1 = 255;
+    D_801D8DA2 = 255;
+    D_801D8DA3 = 255;
+    func_80196A60(0,(volatile u16 *)first, 1);
+    *first = 0;
+    D_801D8D98 = 255;
+    D_801D8D99 = 255;
+    D_801D8D9A = 255;
+    D_801D8D9B = 255;
+    D_801D8D9C = 64;
+    D_801D8D9D = 64;
+    D_801D8D9E = 255;
+    D_801D8D9F = 255;
+    D_801D8DA0 = 255;
+    D_801D8DA1 = 255;
+    D_801D8DA2 = 0;
+    D_801D8DA3 = 0;
+    func_80196A60(0,(volatile u16 *)first, 1);
+    *first = -192;
+    D_801D8D94 = 384;
+    D_801D8D92 = -120;
+    D_801D8D96 = 40;
+    D_801D8D98 = 224;
+    D_801D8D99 = 224;
+    D_801D8D9A = 255;
+    func_8019689C(0,(volatile u16 *)first, 1);
+    second = &D_801D87C8;
+    *second = -192;
+    D_801D87CA = -120;
+    D_801D87CC = 192;
+    D_801D87CE = -120;
+    D_801D87D0 = 192;
+    D_801D87D2 = 120;
+    D_801D87D4 = 80;
+    D_801D87D5 = 20;
+    D_801D87D6 = 252;
+    D_801D87D7 = 0;
+    D_801D87D8 = 0;
+    D_801D87D9 = 0;
+    D_801D87DA = 80;
+    D_801D87DB = 20;
+    D_801D87DC = 252;
+    func_80196E1C(0,(volatile u16 *)second, 6);
+    *second = -192;
+    D_801D87CA = -120;
+    D_801D87CC = 192;
+    D_801D87CE = 120;
+    D_801D87D0 = -192;
+    D_801D87D2 = 120;
+    D_801D87D4 = 80;
+    D_801D87D5 = 20;
+    D_801D87D6 = 252;
+    D_801D87D7 = 80;
+    D_801D87D8 = 20;
+    D_801D87D9 = 252;
+    D_801D87DA = 0;
+    D_801D87DB = 0;
+    D_801D87DC = 0;
+    func_80196E1C(0,(volatile u16 *)second, 6);
+}
