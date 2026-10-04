@@ -132,6 +132,13 @@ retain measured branch-delay argument copies without instructions, clobbers or
 extra accesses. Its natural 104-byte frame holds an actual eight-byte copied
 prefix; record meanings and complete external helper types remain unknown.
 
+`func_8018A3A8` uses `gcc272-dos -quiet -O2 -G0 -fno-strength-reduce`
+with three measured scoped bindings and no empty constraints or frame reservation.
+The natural 48-byte frame and single 1,000-byte record cursor preserve the
+original allocation. Signed random adjustments and the signed comparison of
+word-wrapped squared distance are retained without inventing record meanings
+or complete helper prototypes. Full-image equality remains the acceptance gate.
+
 Source parameter width can also affect register allocation. For
 `func_801A3D3C`, a word-sized button parameter recovered the exact match without
 barriers or bindings; a halfword parameter did not. A caller's halfword load
