@@ -86,6 +86,29 @@ submissions preserve signed field loads, halfword updates and separate scratch
 reloads after possibly aliasing link stores. Original record/table meanings remain
 unknown. This per-function selection still requires complete-image equality.
 
+`func_8018AE8C` uses `gcc272-dos -quiet -O2 -G0 -fno-strength-reduce`
+with two scoped bindings and one paired empty constant identity. Ordered access
+views retain overwritten mixed-width fields; volatility is not an MMIO claim.
+The observed unused pointer store remains explicit, with purpose unknown, and
+the original 56-byte frame needs no artificial reservation. Signed helper-word
+results are narrowed only at the measured lookup. This is a per-function choice
+validated by complete-image equality.
+
+`func_8018C898` uses `gcc272-dos -quiet -O2 -G0 -fno-strength-reduce`
+with one saved counter binding and one empty identity consuming the last source
+word. A measured eight-word aggregate view retains the aligned grouped copy;
+field meanings and complete helper types remain unknown. The scalar scratch
+byte view allocates no data, and the natural 40-byte frame needs no reservation.
+All generated instructions remain subject to complete-image equality.
+
+`func_8018BE20` uses `gcc272-dos -quiet -O2 -G0 -fno-thread-jumps`
+with one scoped case-zero counter binding and no empty constraints. The local
+volatile word access preserves the measured post-call reload, not a hardware
+claim. Its natural 32-byte frame needs no reservation. The owned five-word
+`jtbl_80189304` retains the no-op endpoint and original surrounding data.
+The flag prevents duplicate state comparisons and is verified by full-image
+byte equality; record meanings and complete helper types remain unknown.
+
 Source parameter width can also affect register allocation. For
 `func_801A3D3C`, a word-sized button parameter recovered the exact match without
 barriers or bindings; a halfword parameter did not. A caller's halfword load

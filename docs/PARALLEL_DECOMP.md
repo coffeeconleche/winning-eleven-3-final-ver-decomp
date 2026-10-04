@@ -741,8 +741,9 @@ private probes do not count as recovered C.
 |---|---:|---:|---:|
 | 1 | 15 | 243 | 169 |
 | 2 | 30 | 258 | 154 |
+| 3 | 45 | 273 | 139 |
 
-30 verified additions cover 11,396 matching code bytes.
+45 verified additions cover 20,936 matching code bytes.
 Remaining planned targets are not claimed as completed.
 
 | Worker | Overlay | Function | Bytes | Observed behavior | Source compiler aids |
@@ -777,6 +778,21 @@ Remaining planned targets are not claimed as completed.
 | C | SELECT | `func_801A5764` | 688 | Eight measured 36-byte records, 64 ordered signed halfword stores and two raw-word mode calls | gcc272-dos; natural C without bindings, empty constraints, frame reserves or tables |
 | B | SELECT | `func_801AE020` | 628 | 64 ten-byte records with signed movement, wrapped halfword rereads, eight ordered reset calls and two post-call reloaded submissions | Four scoped bindings and three empty identities; gcc272-dos; natural 48-byte frame |
 | A | ENTER | `func_8018CCB4` | 396 | Four ordered record/scratch updates and helper submissions followed by aliased low-24-bit links with repeated scratch reads | Six scoped bindings, actual volatile scalar spill; gcc272-dos -fno-schedule-insns; no empties or extra frame reserve |
+| B | SELECT | `func_801A85B0` | 664 | Eight descriptor styles with signed coordinates, late selector byte and raw word-sized field arguments preserving callee narrowing | Natural gcc272-dos C; one independently owned ten-word switch table; no allocation or frame aids |
+| B | SELECT | `func_801BCCD8` | 680 | Eight indexed pairs, byte-map exclusion, alias-sensitive scratch exports and late post-callback index increments | Two scoped v0 bindings and one empty memory barrier; gcc272-dos; natural 48-byte frame |
+| A | ENTER | `func_8018AE8C` | 404 | Eight 1000-byte records with mode-selected lookup, ordered callback and mixed-width initialization preserving overwritten words | Two scoped bindings and one paired constant identity; gcc272-dos -fno-strength-reduce; ordered volatile views and observed unused pointer local |
+| A | ENTER | `func_8018C898` | 416 | Scratch-bank selection, eight mixed-width transformations and aligned eight-word copies, then a separate eight-record callback loop | One saved counter binding and one empty identity; gcc272-dos -fno-strength-reduce; natural 40-byte frame |
+| B | SELECT | `func_801BD3F0` | 688 | Clear paired sixteen-word tables, then inclusive mode and eight-pair loops with byte-narrow helper arguments, ordered word bit updates, raw indices on default and late mode-limit rereads | Three empty constraints; no fixed bindings or reserved frame; gcc272-dos basic O2/G0 |
+| C | SELECT | `func_80197200` | 624 | Ordered color writes and special glyph or one/two-digit drawing, preserving signed halfword coordinates, raw-number byte wrap and late submission-index rereads | Eleven scoped binding sites and eight empty constraints; fifth-argument volatile local scheduling view; natural frame; gcc272-dos basic O2/G0 |
+| A | ENTER | `func_8018BE20` | 584 | Five-state record dispatcher preserving callback order, signed halfword checks, late state rereads, ignored helper return and explicit no-op endpoint | One case-zero counter binding; volatile post-call word reload; no empty constraints or reserved frame; gcc272-dos -fno-thread-jumps; original five-word jump table |
+| C | SELECT | `func_801A5CFC` | 680 | Byte phase/step clamp and wrap followed by raw mode dispatch, four side-indexed color records with phase captures preserving alias-sensitive store order | Three scoped constant bindings only; zero empty constraints or frame aids; basic gcc272-dos O2/G0; owned five-word jump table |
+| C | SELECT | `func_8018E720` | 628 | Mode-dependent descriptor calls or helper status, unsigned-halfword coordinate update and byte-index pointer comparison with late reread; preserve explicitly unknown return on modes 0/3/default | One scoped offset binding; no empty constraints, volatile accesses or frame aids; basic gcc272-dos O2/G0 |
+| B | SELFORM | `func_80120698` | 732 | Publish packed record after two halfword reads, conditional signed-coordinate callbacks, late row lookup and seven ordered mixed-width packet field updates preserving aliases | One saved index binding only; zero empty constraints or reserved frame; basic gcc272-dos O2/G0 |
+| C | SELECT | `func_801AB290` | 640 | Three ordered signed random results, one captured flags word, mode/map overrides, low-byte side state bits and ordered callbacks with byte/halfword resets | One state-pointer binding; no empty constraints or frame aids; scalar scratch access views allocate no storage; basic gcc272-dos O2/G0 |
+| A | ENTER | `func_8018FB8C` | 592 | Wrapped timer/stage thresholds and opposing record-bank callbacks, ordered event callbacks at 360, post-call timer reread and late 780-event selection | Four scoped call-argument bindings and three empty constraints; no volatile accesses or frame aids; basic gcc272-dos O2/G0 |
+| B | SELECT | `func_801A89F0` | 736 | Capped unsigned halfword decimal conversion, centered halfword-width arithmetic and raw-word right alignment with distinct ordered glyph callbacks | gcc272-dos basic; four measured bindings; two empty selector constraints; natural 80-byte frame; no tables/symbols |
+| C | SELECT | `func_801B57A0` | 732 | Eight state actions, ordered reset captures and three node-byte writes with late mode/counter rereads across callbacks | gcc272-dos O2/G0; zero bindings; one empty memory-output retaining measured eight unused bytes in 32-byte frame, unknown purpose; owned eight-word jtbl_8018AD84; no added symbols |
+| B | SELECT | `func_80194790` | 740 | Two ordered clear/sync sequences, 58-item byte stream with single-byte skips, fifteen-row source copy or clearing, bit expansion and mixed-width recompression before upload | gcc272-dos O2/G0; four scoped binding sites; zero empty constraints or frame reservation; actual 128+96 byte buffers yield 264-byte frame; no symbols/tables |
 
 Names, original prototypes, full data layouts and gameplay interpretations
 remain uncertain. Sources preserve measured widths, arithmetic, alias-sensitive
