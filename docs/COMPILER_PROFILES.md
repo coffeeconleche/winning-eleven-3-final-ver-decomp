@@ -36,6 +36,12 @@ cross-block CSE recovered the measured RA-only frame and complete original
 bytes with natural C. This selection applies only to this function; retain all
 other established profiles.
 
+`func_8019C43C` additionally uses `-fno-schedule-insns` to retain its
+measured initial descriptor-store and scratch-mode-load order while keeping
+branch-delay scheduling. The 480-byte match uses ordinary field views;
+volatile field qualifiers were removed during minimization. This remains a
+per-function selection, not a change to the global profile.
+
 Source parameter width can also affect register allocation. For
 `func_801A3D3C`, a word-sized button parameter recovered the exact match without
 barriers or bindings; a halfword parameter did not. A caller's halfword load

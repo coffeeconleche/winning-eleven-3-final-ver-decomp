@@ -561,14 +561,25 @@ retains worker commit order; each publication groups 15 accepted functions
 across the three workers without requiring equal per-worker counts at each
 checkpoint. Unresolved probes remain private and do not count as matches.
 
+The parked `func_801BFCDC` probe was replaced within the 90-target scope
+by `func_801C0808`; unfinished work remains private and uncounted. Its five
+generated jump-table words retain the original `jtbl_8018B9C4` slot and
+trailing padding, with complete-image verification.
+
+The parked `func_801CADC4` and `func_801A82F8` probes were replaced
+within the same 90-target scope by `func_801A5A14` and `func_801A5B88`.
+Each replacement preserves its five-entry generated table at the original
+slot, trailing padding and complete retail image. Parked work is uncounted.
+
 | Checkpoint | New exact functions in run | Total matching C | Assembly-backed confirmed overlay functions |
 |---|---:|---:|---:|
 | 1 | 15 | 153 | 259 |
 | 2 | 30 | 168 | 244 |
 | 3 | 45 | 183 | 229 |
 | 4 | 60 | 198 | 214 |
+| 5 | 75 | 213 | 199 |
 
-60 verified additions cover 18,032 matching code bytes.
+75 verified additions cover 24,868 matching code bytes.
 Remaining planned targets are not claimed as completed.
 
 | Worker | Function | Bytes | Source compiler aids |
@@ -633,6 +644,21 @@ Remaining planned targets are not claimed as completed.
 | B | `func_801CB14C` | 488 | Seven scoped bindings and five empty constraints, individually minimized |
 | B | `func_801CAAFC` | 500 | None |
 | C | `func_801C16DC` | 464 | One limit v0 binding |
+| C | `func_801CAF78` | 468 | Three scoped bindings and two empty base inputs |
+| C | `func_801C0808` | 336 | None; five generated table words retain established slot |
+| A | `func_801A8848` | 424 | Three scoped bindings and five empty ties |
+| B | `func_801C49F0` | 516 | Next-counter v0 binding and one old-color retention input |
+| A | `func_801B8814` | 444 | Two empty offset ties |
+| B | `func_801B015C` | 524 | Loop s7 and shared-start v0 bindings plus one empty start/count tie |
+| B | `func_801A5A14` | 372 | None; five generated table words retain original slot |
+| A | `func_8019689C` | 452 | Two bindings and five empty constraints; ordered halfword and absolute scratch-byte views |
+| C | `func_8019C43C` | 480 | Four scoped bindings and three empty barriers; -fno-schedule-insns |
+| B | `func_801A5B88` | 372 | None |
+| A | `func_801C84E8` | 460 | Four empty constraints; no bindings |
+| A | `func_801A7188` | 468 | Two bindings; no empty constraints |
+| B | `func_801AB6E8` | 552 | Two bindings and two empty constraints |
+| C | `func_80198E20` | 496 | Eight-byte frame reservation and one empty output constraint |
+| A | `func_801AB510` | 472 | None |
 
 Observed access patterns are not recovered original gameplay names or complete
 types. Call order, signed arithmetic, narrow wrapping, alias-sensitive rereads,
