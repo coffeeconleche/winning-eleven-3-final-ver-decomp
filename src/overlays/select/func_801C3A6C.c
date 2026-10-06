@@ -80,4 +80,3 @@ void func_801C3A6C(void) {
     }
     scratchA2 = 128;
 }
-

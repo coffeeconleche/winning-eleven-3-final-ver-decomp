@@ -1021,6 +1021,42 @@ resident C recovery and the native port remain separate work.
 Outstanding slots may be rebalanced to a worker that has finished its queue;
 exclusive ownership and the total twenty-four-match budget remain unchanged.
 
+### Six-worker run: verified checkpoint 3
+
+Six more accepted functions recover 9,200 bytes. The run now has eighteen
+accepted matches and 22,672 recovered code bytes above its baseline.
+
+| Overlay | Function | Bytes | Function SHA-1 |
+|---|---|---:|---|
+| SELECT | `func_801C3A6C` | 1,104 | `36a430330ab0728b9ad32727d62fefae33405b03` |
+| SELECT | `func_80199010` | 1,580 | `903bf85bfc4942b4c58805f52a94d42af0f63551` |
+| SELECT | `func_801B45CC` | 1,720 | `de0086d46aca5b5de6e47c27c324f8326c225af1` |
+| SELECT | `func_801C2B50` | 1,536 | `61aafb366fcea568616b9ec9ec98448727a05960` |
+| ENTER | `func_8018A7C4` | 1,736 | `1043bf4e93d361629f4e87089623a06fe38d0b5a` |
+| SELECT | `func_801C3294` | 1,524 | `7a7643c3c7e120f6f5abe1246c10802b4d119b38` |
+
+All six use basic `gcc272-dos -quiet -O2 -G0` and natural frames. 99010 uses
+no matching aids; A7C4 retains one return-register binding and no empty sites.
+C3A6C retains five bindings/two empty captures, B45CC eighteen/four, and
+C2B50 ten/four. C3294 has no bindings, two empty capture identities and one
+measured ordered byte reload view; it is not an I/O classification. B45CC's
+input halfword spill is real data rather than padding, and joint removal
+eliminated an entire five-aid callback setup group. No clobbers, invented
+guards, instruction patches or unused frame reservations are introduced.
+
+99010 owns 12/7 switch words, A7C4 owns 65/6/11 words and C3294 owns six;
+their surrounding padding is unchanged. A7C4's union is an aliasing access
+view for the observed indirect destination reload, not an asserted original
+object type. Callback-relative reloads, wrapping arithmetic, early terminal
+returns and full-word helper arguments remain explicit. Helper APIs and
+complete workspace types remain unknown.
+
+The original uncached all-five-overlay and resident builds pass, as do all
+twelve tests. The repository has 338 matching C functions, leaving 74 of the
+confirmed overlay functions assembly-backed. Incomplete and suspicious-path
+research remains outside the active source; these counts do not describe a
+finished native port or complete whole-game recovery.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 
