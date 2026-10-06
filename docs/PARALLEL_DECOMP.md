@@ -1057,6 +1057,54 @@ confirmed overlay functions assembly-backed. Incomplete and suspicious-path
 research remains outside the active source; these counts do not describe a
 finished native port or complete whole-game recovery.
 
+### Six-worker run: verified checkpoint 4 (complete)
+
+The final six matches recover 11,692 bytes. The run finishes with twenty-four
+accepted functions and 34,364 recovered code bytes above the 320-C baseline.
+Every six-match checkpoint passed an uncached combined build before its push.
+
+| Overlay | Function | Bytes | Function SHA-1 |
+|---|---|---:|---|
+| SELECT | `func_801AC0B4` | 2,340 | `b7eaab71556f372f08c8d8b9e30e99d8d0cf1bd7` |
+| SELECT | `func_801B1224` | 1,768 | `abce7358e8f739940c84bbe962f7f46d2249935f` |
+| SELECT | `func_801AB910` | 1,956 | `4f9bd0751e2850b2e277c31c82987631b8e50bfa` |
+| SELECT | `func_801A9C54` | 1,976 | `006636f1baafed18f1cae4c03424ddf4ecc89aa3` |
+| SELECT | `func_8019A804` | 1,748 | `47d801db4f10dd66bc383a12b88fcb65b46fb5d9` |
+| SELECT | `func_801AD7EC` | 1,904 | `0cd75de5a2856b2a1723f0f4e55497de939dba1e` |
+
+AC0B4 retains thirty binding declarations/twelve empty sites, B1224 two/one,
+AB910 two/one, A9C54 twelve/six, A804 five/five and AD7EC eleven/nine after
+cumulative and joint minimization. A9C54's eight ordered byte/halfword reads
+retain measured chronology, not a hardware-volatility claim. AD7EC retains a
+plain unused 64-byte array to reproduce the measured 176-byte frame: removal
+changes only eighteen frame words, not the body or table. Its original local
+purpose/type remain unknown; it needs no volatile qualifier or empty frame
+constraint. The other five frames are natural. No register/memory clobbers,
+instruction patches, invented guards or new linker symbols are introduced.
+
+All use basic `gcc272-dos -quiet -O2 -G0` except B1224, whose measured
+`-fno-cse-skip-blocks` profile retains the repeated selector reads and decoder
+paths; dropping it removes twenty bytes. B1224 owns 62 dispatch words, A804
+owns 52 and AD7EC owns eleven, with other tables and padding unchanged.
+AB910's ordinary inline row views remove unused compiler spills; its final
+numeric-text address uses a direct same-address array alias, not a fabricated
+neighboring object layout. Signed coordinates, word/byte wrapping, unchecked
+strings, mapped/direct-row distinctions and callback-relative reloads remain
+explicit. Complete object types and helper APIs remain unknown.
+
+Six isolated workers started with four slots each; exclusive alternatives and
+rebalancing produced final accepted totals of 6/4/6/2/4/2. A finished worker
+also helped another through separate ignored research copies; only the owner
+published that function. Original failed attempts and suspicious-path audits
+remain preserved as ignored research and are not counted as recovered C.
+
+The original uncached all-five-overlay build, resident executable and twelve
+tooling tests pass with every reference hash/size unchanged. Final counts are
+SELECT 309, ENTER 24, SELFORM 10, UNIFORM 1 and SELSND 0: 344 matching C
+functions, with 68 confirmed overlay functions still in assembly. Resident C
+recovery, additional-bank confirmation and the native port remain separate
+work; this is not a whole-game completion claim.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 

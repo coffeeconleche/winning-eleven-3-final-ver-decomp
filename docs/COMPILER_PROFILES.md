@@ -240,6 +240,16 @@ logic or claim hardware volatility. Joint minimization removed the unused
 frame reservation: the matching 988-byte source now has a natural 72-byte
 frame. This is a per-function selection, with full-image equality required.
 
+`func_801B1224` uses `gcc272-dos -quiet -O2 -G0 -fno-cse-skip-blocks`
+to retain the observed repeated selector reads and two-stage encoded-byte
+decoder. Removing the flag shortens the measured source by twenty bytes.
+Two scoped decoder bindings and one empty actual-value identity preserve
+the captured arguments and setup order; the 1,768-byte function has a natural
+64-byte frame, no volatile memory accesses and no frame reservation. Its
+62-word switch table ends directly before the next table; no padding or other
+table is claimed. This is a per-function choice, with full-image matching
+still required.
+
 ## Wrapper checks
 
 The wrapper's SDK-free tests cover successful verbatim copying, failed or
