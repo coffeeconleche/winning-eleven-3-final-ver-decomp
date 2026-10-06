@@ -943,7 +943,7 @@ this is not a whole-game or native-PC completion claim.
 
 ### Six-worker run: verified checkpoint 1
 
-Six isolated workers are pursuing four accepted functions each. Unmatched
+Six isolated workers initially received four accepted-function slots each. Unmatched
 attempts remain ignored research, not completed jobs; exclusive alternatives
 can fill their outstanding slots. The integrator publishes every six accepted
 matches after serial integration and an uncached full-image verification.
@@ -980,6 +980,46 @@ reference hashes/sizes unchanged; all twelve SDK-free tooling tests pass.
 The combined result is 326 matching C functions, leaving 86 of the 412
 confirmed overlay functions assembly-backed. This is not a whole-game or
 native-PC completion claim. Later checkpoints will record only accepted work.
+
+### Six-worker run: verified checkpoint 2
+
+The next six accepted functions recover another 8,568 bytes; the run now has
+twelve accepted matches and 13,472 recovered code bytes above its baseline.
+
+| Overlay | Function | Bytes | Function SHA-1 |
+|---|---|---:|---|
+| SELFORM | `func_801211E8` | 852 | `1590c526051f1ce41af9aaa19763f66c60e92998` |
+| ENTER | `func_8018CE40` | 988 | `31a424113bb35b244f947be66659f3ef193d6319` |
+| SELECT | `func_801AF938` | 1,428 | `c1a576685f34337ff333b1b4d8315e4fe1a6e309` |
+| ENTER | `func_8018D21C` | 2,464 | `18f89512eb0b1da8b3580eccb85dd9b09b8b0252` |
+| SELECT | `func_801CB570` | 1,352 | `f1434d9f7eb26fb0044f7e491d901e5822f54534` |
+| SELECT | `func_801B0B9C` | 1,484 | `0e55840ebd41f08c60b7a7a14d38a50d226e3062` |
+
+AF938 uses natural scalar C without bindings, empty sites, volatile views or
+reservations. D21C retains one empty actual-value input and no bindings.
+CE40 retains eighteen bindings and twelve empty sites with ordered access
+views; minimization eliminated its unused frame reservation. CB570 retains
+eight bindings, five empty sites and one measured ordered RAM capture view;
+B0B9C retains five bindings and seven empty capture/control sites. Their
+frames arise naturally. 211E8 retains twelve bindings, six empty sites and
+a measured unused eight-byte reserve; removal changes ten frame words, with
+the original reserve's purpose unknown. No instruction patches, clobbers or
+new bounds guards are introduced.
+
+D21C owns three dispatch tables of 49/6/6 words, CB570 owns seven words and
+B0B9C owns 103 words, including their original no-op endpoints. Adjacent zero
+padding remains outside ownership and unchanged. Signed coordinates, field
+narrowing, callback-dependent reloads and byte-wrapping counters remain
+explicit; complete helper APIs and object meanings are still unknown.
+
+All use basic `gcc272-dos -quiet -O2 -G0` except CE40, which additionally uses
+the measured `-fno-strength-reduce` selection. The uncached all-five-overlay
+build, resident image and twelve tests pass. The combined result is 332
+matching C functions, leaving eighty confirmed overlay functions in assembly;
+resident C recovery and the native port remain separate work.
+
+Outstanding slots may be rebalanced to a worker that has finished its queue;
+exclusive ownership and the total twenty-four-match budget remain unchanged.
 
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.

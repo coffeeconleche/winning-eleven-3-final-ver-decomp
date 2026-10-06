@@ -232,6 +232,14 @@ GCC 2.7.2 also rejects `+r` inline-assembly constraints. Where matching needs a
 read/write register barrier, use an `=r` output and matching `0` input, supported
 by instruction-diff evidence. Empty barriers must not replace recovered logic.
 
+`func_8018CE40` uses `gcc272-dos -quiet -O2 -G0 -fno-strength-reduce`
+for its measured eight-bank packet/coordinate traversal. Eighteen scoped
+bindings, twelve empty value/memory sites and ordered mixed-width views retain
+the original captures and store chronology; they do not replace recovered
+logic or claim hardware volatility. Joint minimization removed the unused
+frame reservation: the matching 988-byte source now has a natural 72-byte
+frame. This is a per-function selection, with full-image equality required.
+
 ## Wrapper checks
 
 The wrapper's SDK-free tests cover successful verbatim copying, failed or
