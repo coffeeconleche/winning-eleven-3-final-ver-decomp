@@ -1,7 +1,8 @@
 # Parallel decompilation handoff
 
-Use this document with three independent agents working on this same game.
-Give each agent a different assignment number from the table below. Do not run
+Use this document with independent agents working on this same game.
+Give each agent an exclusive assignment or ordered queue. The three-worker
+tables below are historical examples, not current reservations. Do not run
 multiple workers in the same checkout, even if they edit different C files:
 `build_overlay.py` rewrites shared build outputs for the entire overlay.
 
@@ -939,6 +940,46 @@ SDK-free tooling tests pass, with reference hashes and sizes unchanged.
 Matching C now covers 320 functions, leaving 92 of the 412 confirmed overlay
 functions assembly-backed. Earlier checkpoint counts remain historical;
 this is not a whole-game or native-PC completion claim.
+
+### Six-worker run: verified checkpoint 1
+
+Six isolated workers are pursuing four accepted functions each. Unmatched
+attempts remain ignored research, not completed jobs; exclusive alternatives
+can fill their outstanding slots. The integrator publishes every six accepted
+matches after serial integration and an uncached full-image verification.
+
+The first checkpoint adds six functions and 4,904 bytes of recovered code:
+
+| Overlay | Function | Bytes | Function SHA-1 |
+|---|---|---:|---|
+| SELECT | `func_801A49D4` | 664 | `befbb8758bc108087a3107e1a7c3d990d5edbd5e` |
+| ENTER | `func_8018F93C` | 592 | `3c61415e2647665489f1ae8b232d64ca811d2d45` |
+| SELECT | `func_80195DE0` | 768 | `8aed2e5a43d60ff90a32c197c8cf658d61aa1e6f` |
+| SELECT | `func_801A39E4` | 856 | `c10a4f0fed050c609dd56194603c72acaf919f00` |
+| SELFORM | `func_80121670` | 812 | `20843e55f7a6f1aeca4dd40451dc5d628c071cd0` |
+| SELECT | `func_801B06E0` | 1,212 | `39ba93ca31327968546f7e35910ce978318bf96c` |
+
+All six use the basic `gcc272-dos -quiet -O2 -G0` profile. Joint minimization
+leaves no bindings or empty sites in A49D4, two bindings/two sites in F93C,
+six/four in 95DE0, six/two in A39E4, five/four in 21670, and two/two in B06E0.
+The four ordered access qualifiers in 95DE0 retain measured reads, not a
+hardware-volatility claim. A49D4 alone retains a measured unused 16-byte
+reservation: removing it changes only two frame words, with original purpose
+unknown. The other frames arise naturally. No memory/register clobbers,
+instruction patches or added guards are used.
+
+F93C preserves post-callback byte-table/selector reloads through a same-address
+access view without allocating data. A39E4 retains callback-dependent retry
+and state-clear paths; 21670 retains three conditional cursor submissions and
+the 22-entry marker loop. B06E0 owns only the proved 31-word `jtbl_8018A5B4`,
+including no-op cases, with adjacent padding unchanged. Complete object
+layouts, helper APIs and original table meanings remain unknown.
+
+The original uncached all-five-overlay build and resident build pass with all
+reference hashes/sizes unchanged; all twelve SDK-free tooling tests pass.
+The combined result is 326 matching C functions, leaving 86 of the 412
+confirmed overlay functions assembly-backed. This is not a whole-game or
+native-PC completion claim. Later checkpoints will record only accepted work.
 
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.

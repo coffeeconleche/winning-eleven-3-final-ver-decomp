@@ -185,6 +185,15 @@ and [GCC 2.8.1 MIPS backend](https://github.com/gcc-mirror/gcc/blob/releases/gcc
 Source comparisons are diagnostic evidence; the full binary comparison remains
 the acceptance gate.
 
+## Assembler/linker compatibility
+
+GNU binutils `2.47.20260726` has been verified with the established PsyQ
+compiler profiles: all five confirmed overlays and the resident executable
+remain byte-identical under the original uncached builders. This is an
+assembler/linker compatibility result, not a change to the recovered compiler
+profiles or flags. Supply local tools through `--bin-dir`; tool binaries and
+downloads must remain ignored.
+
 ## Running the DOS profile
 
 Use a locally supplied DOS compiler and a portable
