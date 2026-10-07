@@ -1161,6 +1161,58 @@ and SELSND 0: 350 matching C functions and 62 confirmed overlay functions still
 assembly-backed. Resident recovery, additional banks and the native port remain
 separate work; this is not whole-game completion.
 
+### Single-worker pilot and three-worker follow-up: four exact matches
+
+Starting from `2b66c74` and 350 matching C functions, one isolated pilot
+verified the worker setup before three workers ran concurrently in separate
+worktrees. All four primary targets matched; no fallback target was needed.
+Serial integration adds 6,544 recovered code bytes:
+
+| Overlay | Function | Bytes | Local integration commit |
+|---|---|---:|---|
+| SELECT | `func_80195944` | 1,180 | `4c8c05b` |
+| SELECT | `func_801BE9F0` | 1,796 | `2478549` |
+| SELECT | `func_801A7A8C` | 1,688 | `334ee90` |
+| ENTER | `func_8018EC28` | 1,880 | `24952aa` |
+
+All four use `gcc272-dos -quiet -O2 -G0`, with natural compiler-generated
+frames and no register bindings, inline assembly, empty constraints, volatile
+qualifiers or frame reservations. Source-shape probes and drafts are preserved
+in each worker's ignored build directory.
+
+The pilot recovers a 20-entry descriptor walk with frame/fill dispatch. Its
+five-word table owns `jtbl_80189804`; the trailing zero remains unowned. A
+stepping descriptor pointer, bitwise combination of the zero-size tests, and
+cursor-before-counter declaration order reproduce the measured code.
+
+`func_801BE9F0` recovers the per-row polyline draw over packed column nibbles.
+Measured choices include the local base pointer, two-case switch, branch-specific
+column limits, signed halfword intermediates, arithmetic order and color-local
+declaration order. An unnecessary offset variable was removed while retaining
+the exact match. It emits no jump table.
+
+`func_801A7A8C` recovers indexed record and slot-flag updates through the
+eleven-word `jtbl_8018A26C`. Assigning the base pointer between the second and
+third record lookups reproduces the entry scheduling. `func_8018EC28` recovers
+the part-transform smoothing and draw pass through the ten-word
+`jtbl_8018954C`. Its measured source choices include the depth-clamp reread,
+mirrored-pose arithmetic, matrix cursor expression and unsigned tilt handling.
+Scratchpad-address relocations differ in unlinked comparisons but resolve to
+the exact original words in the complete ENTER image. Record meanings and
+complete original helper signatures remain uncertain.
+
+Each worker passed the original uncached all-five build, resident build and
+twelve tooling tests before committing. Coordinator integration preserved all
+per-function map additions, rebuilt SELECT after each SELECT pick, and ran
+the full original uncached gate at `24952aa`. All three gate exit codes were
+zero; every reference hash and size remains unchanged.
+
+Final counts are SELECT 318, ENTER 25, SELFORM 10, UNIFORM 1 and SELSND 0:
+354 matching C functions and 58 confirmed overlay functions still assembly-backed.
+These counts cover the five confirmed overlays, not the whole game. All work
+was committed locally with the configured project identity; nothing was pushed.
+Worker worktrees and ignored research remain preserved.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 
