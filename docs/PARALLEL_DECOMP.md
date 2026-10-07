@@ -1105,6 +1105,62 @@ functions, with 68 confirmed overlay functions still in assembly. Resident C
 recovery, additional-bank confirmation and the native port remain separate
 work; this is not a whole-game completion claim.
 
+### Six-worker follow-up: six exact matches
+
+Starting from `7de55db` and 344 matching C functions, six isolated workers each
+published one verified function. Serial integration adds 10,256 code bytes:
+
+| Function (SELECT) | Bytes | Function SHA-1 |
+|---|---:|---|
+| `func_801C00F4` | 1,812 | `9c5a6eb58d32aa72aa7dcc9df3bd8783886351d9` |
+| `func_801A6400` | 1,764 | `5f7690a393670cfb6db120e2a11b3119cf3829c7` |
+| `func_80192A30` | 1,732 | `4eb6af2228790b3945796e17e0fc9771f766e70b` |
+| `func_801BF478` | 1,708 | `987cf38e3a3356c146d03025ff91dc97a7a1958f` |
+| `func_801B29CC` | 1,840 | `6a42a6eb09ce377eb869f04bea24a8b0d557ca0d` |
+| `func_801B1B0C` | 1,400 | `1512ab34ad976af22e4e1d26a8a382a166bb376d` |
+
+All six use basic `gcc272-dos -quiet -O2 -G0`. C00F4 retains one row-pointer
+binding, one mode identity and one ordered returned-byte write; A6400 retains
+nine bindings and ordered byte access views, with no empty sites. The views
+preserve measured captures/reloads, not a recovered hardware-volatility
+contract. Their natural frames are 24 and 32 bytes respectively.
+
+92A30 retains six actual-value bindings and one completed-status identity.
+Its plain unused 40-byte extent reproduces the 88-byte frame: removal changes
+only twenty stack adjustment/save/restore/incoming-argument words. B29CC and
+B1B0C each retain plain unused 16-byte extents in their measured 48-byte frames;
+removal changes only eight frame words each. None is consumed by an empty
+frame constraint or memory access, and original storage purpose/types remain
+unknown. B29CC's five bindings/four identities and B1B0C's seven/six retain
+actual captures and paired stores without volatile memory views. B1B0C's
+post-store identity names the real halfword scalar, not a broad memory clobber;
+its countdown arithmetic wraps as unsigned words.
+
+BF478 has a natural 120-byte frame and ten binding declarations/two empty
+argument-input source sites; one macro expands into four arms. Ordinary inline
+call views preserve the observed ten/nine outgoing words and late signed
+halfword rereads. They do not establish a complete original variadic API.
+Joint minimization removed the main constant, coordinate, table and final-call
+aids. Unknown object layouts, unchecked recursion/buffers and callback-relative
+reloads remain explicit; no bounds guards, instruction patches or clobbers
+were introduced.
+
+Owned tables contain 42 words for C00F4, 5/11 for A6400, 5/5 for 92A30,
+36 for BF478, five separate six-word slots for B29CC and 21 for B1B0C.
+Padding, neighboring tables, original assembly and placement remain unchanged.
+Each integration passed a full SELECT comparison. The final original uncached
+all-five build, resident comparison and twelve tooling tests also pass, with
+every reference hash and size unchanged.
+
+Exclusive replacements avoided relabeling handwritten GTE assembly or
+extending ownership across a separately named/shared table boundary. Finished
+workers supplied peer candidates through separate ignored copies; only the
+assigned owners published them. Earlier near-matches remain ignored research,
+not recovered C. Final counts are SELECT 315, ENTER 24, SELFORM 10, UNIFORM 1
+and SELSND 0: 350 matching C functions and 62 confirmed overlay functions still
+assembly-backed. Resident recovery, additional banks and the native port remain
+separate work; this is not whole-game completion.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 
