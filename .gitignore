@@ -25,6 +25,7 @@
 
 # Local experiments and editor/OS files.
 /config/flag_overrides.json
+/docs/OPENCODE_DECOMP_HANDOFF.md
 __pycache__/
 *.pyc
 Thumbs.db

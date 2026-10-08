@@ -1213,6 +1213,36 @@ These counts cover the five confirmed overlays, not the whole game. All work
 was committed locally with the configured project identity; nothing was pushed.
 Worker worktrees and ignored research remain preserved.
 
+### Single-function follow-up: transfer state driver
+
+Commit `6756599` adds SELECT `func_801930F4`, a 1,936-byte transfer state
+driver. Its independently checked function SHA-1 is
+`25ccf3bccf034161e190f63e1128e79dac4a5cbc`.
+
+The source preserves FB/FF status polling, resource setup, the three-byte
+header and 65-byte template copy, mode-dependent dispatch, error returns and
+the shared state-increment tail. Complete record layouts and helper prototypes
+remain provisional call-site views, not a native-port API.
+
+It uses `gcc272-dos -quiet -O2 -G0`, one real status-value register binding
+and a natural 88-byte frame. No instruction patches, full-function inline
+assembly, empty constraints, volatile qualifiers or artificial frame
+reservations were added. The two compiler-generated five-entry tables occupy
+their proved original slots, `jtbl_801894D0` and `jtbl_801894E8`; the first
+table's trailing zero remains unowned. The source documents measured
+allocation choices and removal effects.
+
+Independent review at `6756599` reran the original uncached builders for all
+five overlays and the resident executable, followed by all twelve tooling
+tests. Every gate passed; the complete reference hashes and sizes remain
+unchanged. No original assembly, linker placement or verification checks were
+changed by this function commit.
+
+Final counts are SELECT 319, ENTER 25, SELFORM 10, UNIFORM 1 and SELSND 0:
+355 matching C functions and 57 confirmed overlay functions still assembly-backed.
+Resident recovery, other banks and the native port remain separate work.
+The local OpenCode handoff document is ignored and is not part of publication.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 
