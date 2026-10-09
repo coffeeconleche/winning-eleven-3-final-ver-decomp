@@ -1480,6 +1480,45 @@ The refreshed treemap is generated from the clean `4f950d1` code snapshot.
 The native PC lane is still not started; local completion does not itself
 publish commits.
 
+### Separate target integration: relation matrix drawing
+
+With separate user authorization, the coordinator reviewed worker commit
+`8c0996b` for SELECT `func_801C220C` and integrated it as `e7e7d64`. Its worker
+baseline was `fdf9fa0` (365 matching functions); integration into `48488c6`
+also retains the subsequently accepted `func_801C8D00`. The only merge conflict
+was the compiler-profile insertion: both justified per-function entries were
+kept. No additional worker was started for this review.
+
+The accepted function is 524 instructions / 2,096 bytes, function SHA-1
+`18ad8cc40c47e453623157ec6e3b9ceb82560f4a`. It draws row and column labels,
+relation cells, grid lines and a final panel fill. Review preserved the
+incoming saved-register path, repeated control-helper calls, signed result
+comparisons, label-callback rereads, and coordinate advancement for both
+skipped and drawn cells. Helper APIs and complete record meanings remain
+provisional; this is a matching source, not a recovered native interface.
+
+The basic `gcc272-dos -quiet -O2 -G0` profile needs no flag override. The
+compiler-profile record describes the measured seventeen scoped bindings,
+nine empty capture/value sites and plain unused eight-byte frame extent.
+The original 88-byte frame is retained, but the reason for its unused extent
+is not known. No volatile qualifiers, jump tables, added symbol storage,
+emitted inline game instructions, original ASM edits, hash changes or
+linker-placement changes were introduced.
+
+After integration, the coordinator independently verified the linked function
+bytes and ran the original uncached all-five-overlay build, resident build
+and all twelve tooling tests. Every complete reference hash and size remained
+unchanged. These checks verify C220C together with the accepted sixth-slot
+C8D00 source, not just the worker's earlier baseline. The separate C220C
+checkout and its ignored research were left intact.
+
+Counts are SELECT 330, ENTER 26, SELFORM 10, UNIFORM 1 and SELSND 0:
+367 matching C functions and 45 confirmed overlay functions still assembly-backed.
+The refreshed treemap uses the clean `e7e7d64` code snapshot: 367/412 (89.1%)
+for confirmed overlays and 367/1,685 (21.8%) for the known inventory, not the
+whole-game denominator or remaining effort. The native PC lane is not started.
+The user authorized publishing this integration and the pending C8D00 commits.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 

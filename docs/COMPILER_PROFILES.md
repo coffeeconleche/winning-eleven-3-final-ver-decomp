@@ -278,6 +278,25 @@ not MMIO declarations or a recovered original API. Complete field meanings and
 the historical return declaration remain provisional. Acceptance includes the
 original uncached all-five-overlay and resident image checks.
 
+`func_801C220C` matches all 2,096 bytes with the basic
+`gcc272-dos -quiet -O2 -G0` profile, without a flag override. Its row/column
+labels and relation-cell submissions retain callback-driven rereads and the
+observed incoming saved-register dependency. Seventeen scoped hard bindings
+and nine empty capture/value sites remain, including the actual incoming `$20`
+capture before that register becomes a local loop counter. These sites emit no
+game instructions; they must not be replaced by an invented initial value or
+an ordinary parameter without additional evidence about the original API.
+
+A plain unused eight-byte frame extent retains the original 88-byte frame.
+Its purpose is unknown: removing it changes 22 frame/save/restore instruction
+words while leaving the drawing-body instructions unchanged. There are no
+volatile qualifiers, blanket memory clobbers, new jump tables, symbol-storage
+claims or original-assembly edits. Individual and related-group removal probes
+support the remaining aids; no global minimum is claimed. Complete object
+layouts and helper APIs remain provisional, not a native-PC interface.
+Acceptance includes an independent function-byte comparison and the combined
+original uncached all-five-overlay, resident and twelve-test checks.
+
 ## Wrapper checks
 
 The wrapper's SDK-free tests cover successful verbatim copying, failed or
