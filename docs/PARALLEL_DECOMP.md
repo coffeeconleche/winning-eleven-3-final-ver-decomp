@@ -1288,9 +1288,10 @@ Coordinator SELECT builds passed after both SELECT picks. The final original
 uncached all-five build at `b0b4a6d`, resident build and twelve tooling tests
 all exited zero. Complete image hashes and sizes are unchanged.
 
-SELECT `func_80198688` remains assembly-backed. Preserved research corrects
-the `/11` and `%11` coordinate calculations and recovers its original frame
-and spill slots; a same-size draft still has scheduling/allocation differences.
+At this checkpoint, SELECT `func_80198688` remained assembly-backed. Preserved
+research corrects the `/11` and `%11` coordinate calculations and recovers its
+original frame and spill slots; a same-size draft still has scheduling/allocation
+differences.
 Its reserved ENTER fallback `func_8018B020` also remains incomplete. Earlier
 unmatched SELFORM `func_80120A58`, ENTER `func_8018957C` and SELECT
 `func_801D123C` drafts remain research, not accepted C. No incomplete
@@ -1301,6 +1302,50 @@ Final counts are SELECT 321, ENTER 26, SELFORM 10, UNIFORM 1 and SELSND 0:
 These are confirmed-overlay counts, not whole-game completion. This update
 includes only the three verified function results and their progress notes;
 incomplete research is excluded from publication.
+
+### Single-target completion: selected text rasterization
+
+Starting from the published `14fc96d` checkpoint, SELECT `func_80198688`
+now compiles from genuine matching C. Local integration commit `443566b`
+recovers all 486 instructions and 1,944 bytes at SELECT offset `0xF710`;
+original and rebuilt function SHA-1 is
+`79ff37e6cf0fc385051fe17b3fc157f4d19071c3`.
+
+The function copies the selected tables, classifies glyph bytes, unpacks pixels,
+centers rows, repacks four-bit pixels and submits their `/11` and `%11` page
+coordinates. Selection and ASCII-width reloads, the failed width-bound
+post-increment, space-glyph residue and unsupported high-byte residue are
+preserved. Complete original helper APIs and table meanings remain provisional.
+
+The profile is `gcc272-dos -quiet -O2 -G0`, without flag overrides, added
+symbols or jump-table ownership. The 2,216-byte (`0x8A8`) frame arises
+naturally. Preserving the real scaled selector separately recovered coordinate
+allocation; removing an unnecessary row binding recovered addition order.
+Compiler RTL evidence identified a comparison temporary with a stack home:
+guarding the pixel do-loop with its initialized counter (`b < kw`), rather
+than a simplified width comparison, recovered the original frame and spill
+offsets. The guarded character do-loop computes its row offset after the
+entry test, recovering the original counter initialization scheduling.
+
+Minimization reduced the first exact source from eleven bindings and six empty
+sites to six scoped bindings for actual pixel-count, row-offset, halfword-cursor,
+group-offset, packed-word-pointer and shift values, plus three non-volatile
+empty identities of the mask, pixel pointer and line. Individual removals,
+all 36 surviving pairs and relevant group removals were measured; a successful
+joint removal eliminated two bindings that failed individually. No global
+minimum is claimed. No instruction rewriting, substitute assembly logic,
+dummy registers, blanket clobbers or artificial frame extent was used.
+
+The worker passed the original uncached SELECT and all-five builders, resident
+build and twelve tooling tests. Independent coordinator verification at
+`443566b` reran the original all-five build, resident build and test suite;
+all exited zero and every complete reference hash and size remains unchanged.
+Earlier drafts and compiler evidence are preserved as ignored research.
+
+Final counts are SELECT 322, ENTER 26, SELFORM 10, UNIFORM 1 and SELSND 0:
+359 matching C functions and 53 confirmed overlay functions still assembly-backed.
+This follow-up accepted only `func_80198688`. The function and progress update
+were committed locally; no push was performed.
 
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
