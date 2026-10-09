@@ -1243,6 +1243,64 @@ Final counts are SELECT 319, ENTER 25, SELFORM 10, UNIFORM 1 and SELSND 0:
 Resident recovery, other banks and the native port remain separate work.
 The local OpenCode handoff document is ignored and is not part of publication.
 
+### Resumed parallel follow-up: three exact matches
+
+Starting from the published `0f53baf` checkpoint of 355 matching C functions,
+serial integration adds three verified functions and 6,692 recovered code bytes:
+
+| Overlay | Function | Bytes | Function SHA-1 | Local integration commit |
+|---|---|---:|---|---|
+| SELECT | `func_801CCA00` | 2,084 | `ecdd6a5774d33408e191d118c269b9eabd8b12dc` | `58450a7` |
+| SELECT | `func_801A3FDC` | 2,348 | `de5bead7b20f5cde231e5ccd2a3fd2fd14e3fd6b` | `b935fbb` |
+| ENTER | `func_8018DBBC` | 2,260 | `5248b1fe0693fd7282559ce95fe6339802fcecda` | `b0b4a6d` |
+
+Workers used separate worktrees and writable build directories. Interrupted
+matching and minimization sessions resumed from preserved drafts; only results
+that passed the original uncached all-overlay, resident and tooling-test gates
+were committed and integrated.
+
+`func_801CCA00` recovers the SELECT menu-mode state machine and input handling.
+It uses `gcc272-dos -quiet -O2 -G0` and the owned sixteen-word
+`jtbl_8018DA58`. Measured real-value register bindings and four empty constraint
+sites retain argument ordering and captures. Inert scratch/record and several
+case-local bindings were removed after matching; individual removal evidence
+for retained constructs is preserved. Its frame is natural.
+
+`func_801A3FDC` recovers name-entry cursor movement between grid and character
+modes, including disabled-character skipping and category-dependent updates.
+It uses the same basic DOS profile, without a jump table. Two empty identities
+around actual loaded values and one localized `$3` binding remain; measured
+removals changed the output by 22, 20 and 32 diff lines respectively. No frame
+reservation or volatile memory qualifiers were introduced.
+
+`func_8018DBBC` recovers entry motion, signed helper-result averaging,
+interpolation and row-flag filtering. Its function-specific profile is
+`gcc272-dos -quiet -O2 -G0 -fno-strength-reduce`, preserving the single
+1,000-byte row cursor. The compiler emits fifty entries in `jtbl_8018946C`
+followed by six in `jtbl_80189534`, each in its proved original span.
+Minimization removed sixteen bindings and four empty sites. One scoped saved
+accumulator binding and one empty identity of the actual control halfword
+access remain, with individual and joint removal evidence. The identity emits
+no instruction or write and has no blanket memory clobber. Its 32-byte frame
+is natural. Complete object layouts and original helper APIs remain uncertain.
+
+Coordinator SELECT builds passed after both SELECT picks. The final original
+uncached all-five build at `b0b4a6d`, resident build and twelve tooling tests
+all exited zero. Complete image hashes and sizes are unchanged.
+
+SELECT `func_80198688` remains assembly-backed. Preserved research corrects
+the `/11` and `%11` coordinate calculations and recovers its original frame
+and spill slots; a same-size draft still has scheduling/allocation differences.
+Its reserved ENTER fallback `func_8018B020` also remains incomplete. Earlier
+unmatched SELFORM `func_80120A58`, ENTER `func_8018957C` and SELECT
+`func_801D123C` drafts remain research, not accepted C. No incomplete
+substitutions are active, and useful worktrees and ignored notes are retained.
+
+Final counts are SELECT 321, ENTER 26, SELFORM 10, UNIFORM 1 and SELSND 0:
+358 matching C functions and 54 confirmed overlay functions still assembly-backed.
+These are confirmed-overlay counts, not whole-game completion. The three
+function commits and this progress update are local-only; no push was performed.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 
