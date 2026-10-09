@@ -24,8 +24,8 @@ void func_801B9DCC(u32 input) {
     } side[2];
     /* Unknown-purpose compiler frame extent; the function never accesses it. */
     u8 compilerFrameExtent[32];
-    register u32 firstSide __asm__("$19");
-    register u32 sideValue __asm__("$2");
+    register u32 firstSide;
+    register u32 sideValue;
     s32 firstScore;
     s32 secondScore;
 
@@ -33,9 +33,9 @@ void func_801B9DCC(u32 input) {
     {
         register u32 callIndex __asm__("$4") = 0;
         register u32 callWord __asm__("$5") = 0x60000000;
-        register s16 *rectangle __asm__("$6") = &D_801D8D90;
-        register u32 condition __asm__("$2") = input < 2;
-        register u32 field __asm__("$3") = D_8010865D;
+        register s16 *rectangle = &D_801D8D90;
+        register u32 condition = input < 2;
+        register u32 field = D_8010865D;
         __asm__("" : "=r"(field)
                 : "0"(field), "r"(callIndex), "r"(callWord), "r"(rectangle),
                   "r"(condition));
@@ -48,23 +48,23 @@ void func_801B9DCC(u32 input) {
     firstSide = side[0].value;
     {
         register u32 one = 1;
-        register u8 *packet __asm__("$20");
-        register u8 *base __asm__("$22");
+        register u8 *packet;
+        register u8 *base;
         register u32 firstOffset __asm__("$17");
         register u32 secondOffset __asm__("$16");
-        register u32 secondSide __asm__("$18");
+        register u32 secondSide;
         register u32 callFourth __asm__("$7");
 
         firstOffset = firstSide * 4;
         {
-            register u32 firstD3 __asm__("$3") = scratchD3[firstOffset];
-            register u32 firstD4 __asm__("$7") = scratchD4[firstOffset];
+            register u32 firstD3 = scratchD3[firstOffset];
+            register u32 firstD4 = scratchD4[firstOffset];
             __asm__ volatile("" : : "r"(firstD3), "r"(firstD4));
             sideValue ^= 1;
             side[1].value = sideValue;
             __asm__ volatile("" : "=m"(side[1].value) : "m"(side[1].value));
             {
-                register u32 firstBase __asm__("$2") = D_8010A2EA[firstSide];
+                register u32 firstBase = D_8010A2EA[firstSide];
                 __asm__ volatile("" : "=r"(firstBase) : "0"(firstBase));
                 secondSide = side[1].value;
                 __asm__ volatile("" : "=r"(secondSide) : "0"(secondSide));
@@ -72,7 +72,6 @@ void func_801B9DCC(u32 input) {
                 firstD3 *= 2;
                 firstBase += firstD3;
                 secondOffset = secondSide * 4;
-                __asm__ volatile("" : "=r"(secondOffset) : "0"(secondOffset));
                 callFourth = 0;
                 total[0] = firstBase;
             }
@@ -80,14 +79,14 @@ void func_801B9DCC(u32 input) {
         {
             register u32 secondBase __asm__("$3") = D_8010A2EA[secondSide];
             {
-                register u32 secondD3 __asm__("$8") = scratchD3[secondOffset];
-                register u32 secondD4 __asm__("$9") = scratchD4[secondOffset];
+                register u32 secondD3 = scratchD3[secondOffset];
+                register u32 secondD4 = scratchD4[secondOffset];
                 __asm__ volatile("" : "=r"(secondBase) : "0"(secondBase));
 
                 {
-                    register u32 callIndex __asm__("$4") = 0;
-                    register u32 callWord __asm__("$5") = 0x60000000;
-                    register s16 *rectangle __asm__("$6") = &D_801D8D90;
+                    register u32 callIndex = 0;
+                    register u32 callWord = 0x60000000;
+                    register s16 *rectangle = &D_801D8D90;
                     *rectangle = 0;
                     D_801D8D92 = 20;
                     D_801D8D94 = 122;
@@ -107,7 +106,7 @@ void func_801B9DCC(u32 input) {
 
         {
             register u32 scale __asm__("$23") = 4096;
-            register u32 shade __asm__("$21") = 128;
+            register u32 shade = 128;
             func_80193FB4(16, 0x30F5, 0, 0, -1, 26, 0, scale, scale,
                           0, 0, shade, shade, shade, 0, 2, one);
             packet = func_8001D004(0x30F5);
@@ -148,8 +147,8 @@ void func_801B9DCC(u32 input) {
         }
         __asm__ volatile("" : : "r"(base));
         {
-            register u8 *glyph __asm__("$4") = packet + 0x90;
-            register u32 alignment __asm__("$6") = 2;
+            register u8 *glyph = packet + 0x90;
+            register u32 alignment = 2;
             __asm__ volatile("" : "=r"(glyph), "=r"(alignment)
                              : "0"(glyph), "1"(alignment));
             secondOffset *= 4;
@@ -164,8 +163,8 @@ void func_801B9DCC(u32 input) {
             }
         }
         {
-            register u8 *glyph __asm__("$4") = packet + 0xA8;
-            register u32 alignment __asm__("$6") = 1;
+            register u8 *glyph = packet + 0xA8;
+            register u32 alignment = 1;
             __asm__ volatile("" : "=r"(glyph), "=r"(alignment)
                              : "0"(glyph), "1"(alignment));
             firstOffset *= 4;
