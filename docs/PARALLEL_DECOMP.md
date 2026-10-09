@@ -1298,8 +1298,9 @@ substitutions are active, and useful worktrees and ignored notes are retained.
 
 Final counts are SELECT 321, ENTER 26, SELFORM 10, UNIFORM 1 and SELSND 0:
 358 matching C functions and 54 confirmed overlay functions still assembly-backed.
-These are confirmed-overlay counts, not whole-game completion. The three
-function commits and this progress update are local-only; no push was performed.
+These are confirmed-overlay counts, not whole-game completion. This update
+includes only the three verified function results and their progress notes;
+incomplete research is excluded from publication.
 
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.

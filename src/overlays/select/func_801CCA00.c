@@ -218,5 +218,3 @@ void func_801CCA00(void) {
         break;
     }
 }
-
-
