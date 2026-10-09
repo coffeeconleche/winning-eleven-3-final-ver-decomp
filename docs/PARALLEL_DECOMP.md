@@ -1347,6 +1347,42 @@ Final counts are SELECT 322, ENTER 26, SELFORM 10, UNIFORM 1 and SELSND 0:
 This follow-up accepted only `func_80198688`. The function and progress update
 were committed locally; no push was performed.
 
+### Single-target completion: four-edge descriptor submission
+
+Starting from `447a00d`, SELECT `func_8019659C` now compiles from matching C.
+All 153 instructions and 612 bytes at SELECT offset `0xD624` match; the
+original and rebuilt function SHA-1 is
+`56ed06b2c54b17edf2827a11baf432e50bd70963`.
+
+The routine submits the top, right, left and bottom edges using the same
+scratch descriptor. Raw coordinate additions wrap as words before halfword
+stores. Color and selector captures use the low argument bytes, the third
+color byte retains its measured local spill/reloads, and each submission
+rereads the entry index. Zero or negative dimensions do not introduce a
+new guard or reduce the four calls. Original helper APIs and complete
+descriptor/entry layouts remain unknown.
+
+The profile is basic `gcc272-dos -quiet -O2 -G0`, with no flag override,
+new symbols or jump-table ownership. Thirteen real-value bindings and six
+empty identities preserve allocation and scheduling; five identities are
+non-volatile. Greedy minimization removed all memory clobbers, unnecessary
+sites and two bindings. Further cleanup removed the entry identity's `y`
+operand and all descriptor-store qualifiers while retaining exact linked
+retail bytes. The scratch-index and three argument-byte access views retain
+measured ordering, not a claim about MMIO or original qualifiers. The natural
+64-byte frame needs no artificial reservation; no global minimum is claimed.
+
+Verification reran the original uncached all-five-overlay builder, the
+resident builder and all twelve tooling tests. Every complete reference hash
+and size remains unchanged. Original assembly and expected hashes were not
+edited. This follow-up accepted only `func_8019659C`; `func_801C220C` was
+excluded from the assignment.
+
+Counts are SELECT 323, ENTER 26, SELFORM 10, UNIFORM 1 and SELSND 0:
+360 matching C functions and 52 confirmed overlay functions still
+assembly-backed. The README treemap remains explicitly labeled as the
+earlier `9529feb` snapshot rather than being presented as this checkpoint.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 
