@@ -260,6 +260,24 @@ needed. Its 112-byte frame is natural. This is a per-function selection verified
 by full-image equality, not a global compiler change; complete record meanings
 and original helper APIs remain provisional.
 
+`func_801C8D00` matches all 1,040 bytes with the basic
+`gcc272-dos -quiet -O2 -G0` profile. Its zero-row classifier reuses the actual
+final `<12` predicate as the ordinary result variable before assigning 3 or 4.
+Removing the earlier classifier binding and identity permits the original
+comparison/constant delay-slot layout. Disabling cross-branch CSE was an initial
+probe, not a required profile: removing either or both probe flags preserves
+exact bytes. The final source has no flag override, classifier constraint,
+same-address alias, frame reservation or added symbol storage.
+
+One real result-register binding and two field-memory input sites remain.
+They preserve result allocation, the backward shared return-32 target, and a
+column reread after a halfword coordinate store. All nonempty removal subsets
+of those three aids failed the independent comparison; no global minimum is
+claimed. Its frame is naturally zero bytes. These are measured matching aids,
+not MMIO declarations or a recovered original API. Complete field meanings and
+the historical return declaration remain provisional. Acceptance includes the
+original uncached all-five-overlay and resident image checks.
+
 ## Wrapper checks
 
 The wrapper's SDK-free tests cover successful verbatim copying, failed or

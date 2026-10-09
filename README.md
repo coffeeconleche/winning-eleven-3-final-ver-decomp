@@ -18,7 +18,7 @@ break the reference build.
   available.
 - Matching assembly baseline: **established** (1,273 resident functions).
 - Confirmed matching overlays: **5** (412 functions, 414,610 exact bytes).
-- Decompiled and matching C: **365 functions**.
+- Decompiled and matching C: **366 functions**.
 - Resident frame loop, controller boundary and match dispatchers: **mapped**.
 - Native PC target: **not started**.
 
@@ -26,7 +26,7 @@ break the reference build.
 
 ![Decompilation treemap: known function inventory and confirmed overlay detail](docs/images/decompilation-progress.png)
 
-Treemap snapshot: `976aacb` (365 matching C functions).
+Treemap snapshot: `4f950d1` (366 matching C functions).
 
 Green tiles represent matching C; gray tiles remain assembly-backed. Each tile
 represents one function. The right panel enlarges the same confirmed overlays

@@ -1438,12 +1438,47 @@ Focused compiler-pass, source-shape and register-allocation experiments did not
 resolve the mismatch. Neither draft was substituted or counted. Both research
 streams and their measured diffs remain under ignored `build/` paths.
 
-Current accepted counts are SELECT 328, ENTER 26, SELFORM 10, UNIFORM 1 and
+Accepted counts at that checkpoint were SELECT 328, ENTER 26, SELFORM 10, UNIFORM 1 and
 SELSND 0: 365 matching C functions and 47 confirmed overlay functions still
 assembly-backed. Five exact matches were accepted; the sixth worker's unresolved
 research was preserved. The combined original build gate above covers all five
 accepted additions. Progress counts and the treemap reflect only verified C.
 No push has been performed for this request.
+
+### Single-target follow-up: sixth slot completed
+
+Starting from `4a80243` (365 matching C functions), the coordinator resumed only
+the preserved `func_801C8D00` research, without starting more workers. The
+accepted source is committed in `4f950d1`: 260 instructions / 1,040 bytes,
+function SHA-1 `c5d640fa061cff99ae6cc01a7557ef4db85ddfa5`, with the basic
+`gcc272-dos -quiet -O2 -G0` profile and no flag override.
+
+The missing classifier layout was recovered by reusing the actual final
+predicate as an ordinary classifier value and removing its earlier binding
+and identity together. Both CSE-disable probe flags proved redundant. Further
+minimization removed the late-result identity and the same-address row alias.
+One real result binding and two field-memory input sites remain; individual
+and joint removal tests failed. The compiler profiles document their measured
+purposes. No frame reservation, table ownership, symbol addition, emitted inline
+instructions, original ASM edit, hash change or linker-placement change was used.
+
+The routine preserves wrapped byte codes, halfword coordinate narrowing,
+ordered global stores/rereads, unchecked table lookups, and the original backward
+shared return-32 branch. The special return-22 path does not write
+`D_801D8DBE`. Complete field meanings and historical API types remain provisional.
+
+The cleaned source passed an independent linked function comparison and the
+coordinator's original uncached all-five-overlay build, resident build and all
+twelve tooling tests. Every complete reference hash and size remained unchanged;
+this verifies the combined six additions, not merely separate worker outputs.
+`func_801C220C` remained excluded. The earlier `func_801A30F4` research is still
+unaccepted and is not counted.
+
+Counts are SELECT 329, ENTER 26, SELFORM 10, UNIFORM 1 and SELSND 0:
+366 matching C functions and 46 confirmed overlay functions still assembly-backed.
+The refreshed treemap is generated from the clean `4f950d1` code snapshot.
+The native PC lane is still not started; local completion does not itself
+publish commits.
 
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
