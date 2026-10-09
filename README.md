@@ -22,6 +22,18 @@ break the reference build.
 - Resident frame loop, controller boundary and match dispatchers: **mapped**.
 - Native PC target: **not started**.
 
+## Decompilation progress
+
+![Decompilation treemap: known function inventory and confirmed overlay detail](docs/images/decompilation-progress.png)
+
+Green tiles represent matching C; gray tiles remain assembly-backed. Each tile
+represents one function. The right panel enlarges the same confirmed overlays
+shown on the left; it does not add functions to the total.
+
+The percentages cover the currently mapped inventory, not the whole game or
+estimated remaining effort. Groups reflect confirmed modules; behavioral
+subcategory counts have not yet been audited.
+
 ## Verified target
 
 | Property | Value |
