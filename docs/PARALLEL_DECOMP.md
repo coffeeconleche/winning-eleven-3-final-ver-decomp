@@ -1383,6 +1383,68 @@ Counts are SELECT 323, ENTER 26, SELFORM 10, UNIFORM 1 and SELSND 0:
 assembly-backed. The README treemap remains explicitly labeled as the
 earlier `9529feb` snapshot rather than being presented as this checkpoint.
 
+### Six-worker follow-up: ranking, row setup and edge submission
+
+Starting from `8927dbb` (360 matching C functions), six workers received
+exclusive assignments in isolated checkouts. `func_801C220C` and its separate
+worktree were excluded. Completed results were reviewed and integrated serially;
+workers did not need to wait for the other assignments before finishing.
+
+Verified SELECT additions from the six-worker batch:
+
+| Function | Bytes | Function SHA-1 | Observed behavior |
+|---|---:|---|---|
+| `func_801B30FC` | 896 | `faf8ee2a6efa18debd6c9c1d34f5aba23991f739` | Clear rows, format ordinal day headers, decode paired bytes and capture fields for two helper calls |
+| `func_801C5ED8` | 888 | `c559442d93540d25a1b20f0fe76ad63c32dd9783` | Advance a wrapped color tick and submit two sets of four signed-coordinate edges |
+| `func_801C1D94` | 720 | `e2fc3fffcd4da29c7b56249325d9724ef62d9a03` | Build wrapped score words, sort signed values and publish interleaved indices and ranks |
+| `func_801B4C84` | 804 | `394f055a8c71afeae1958c928278631da0f60348` | Rank four records using wrapped weighted scores and the original three-record tie scan |
+| `func_801BCF80` | 888 | `be8dbdf4eac36a904b4615af66d9eb952001abd5` | Rank sixteen records, preserve tie-callback results and publish byte ranks and sixteen submissions |
+
+All five use `gcc272-dos -quiet -O2 -G0`; only `func_801B30FC`
+additionally disables strength reduction, as documented in the compiler profiles.
+The three ranking routines retain signed `/10` comparisons after word wrapping.
+Equivalent captured-condition outer loops place the compiler's division invariant
+before cursor initialization. Their inner loops finish the condition, so these
+outer loops add no retry or memory read. No explicit reciprocal or duplicate
+constant substitutes for the recovered division.
+
+Minimization retained four actual-value bindings and no empty sites in
+`func_801B30FC`; one binding, one empty input and three local ordered byte-read
+views in `func_801C5ED8`; five bindings and four nonvolatile identities in
+`func_801C1D94`; twenty bindings and two nonvolatile sites in `func_801B4C84`;
+and thirteen bindings and three nonvolatile identities in `func_801BCF80`.
+Individual and relevant joint removals were measured; no global minimum is
+claimed. Only `func_801C1D94` retains an unused eight-byte reservation for its
+measured frame, with original purpose unknown. Ordered access views do not
+classify ordinary tables as hardware registers. Complete record layouts and
+original helper APIs remain provisional.
+
+Each worker passed the original uncached all-five-overlay builder, resident
+builder and twelve tooling tests. Coordinator SELECT checks passed after every
+serial integration, retaining all justified per-function metadata when shared
+map insertions conflicted. At `fdf9fa0`, the coordinator also reran the original
+uncached all-five build, resident build and all twelve tests: all exited zero
+and every complete reference hash and size remained unchanged. No original
+assembly, expected hash, linker placement or generated instruction was edited.
+
+The initial sixth target, `func_801A30F4`, remains assembly-backed. Its preserved
+888-byte draft still differs in second-loop outgoing argument-store scheduling;
+it was not accepted or counted. After focused pointer and call-expansion
+experiments left the same residue, the coordinator explicitly reassigned that
+slot to the leaf classifier `func_801C8D00`. That replacement also remains
+assembly-backed: its closest draft is 1,044 rather than 1,040 bytes, with two
+final classifier constants using a different register and one extra move.
+Focused compiler-pass, source-shape and register-allocation experiments did not
+resolve the mismatch. Neither draft was substituted or counted. Both research
+streams and their measured diffs remain under ignored `build/` paths.
+
+Current accepted counts are SELECT 328, ENTER 26, SELFORM 10, UNIFORM 1 and
+SELSND 0: 365 matching C functions and 47 confirmed overlay functions still
+assembly-backed. Five exact matches were accepted; the sixth worker's unresolved
+research was preserved. The combined original build gate above covers all five
+accepted additions. Progress counts and the treemap reflect only verified C.
+No push has been performed for this request.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 

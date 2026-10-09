@@ -250,6 +250,16 @@ the captured arguments and setup order; the 1,768-byte function has a natural
 table is claimed. This is a per-function choice, with full-image matching
 still required.
 
+`func_801B30FC` uses `gcc272-dos -quiet -O2 -G0 -fno-strength-reduce`
+to retain the measured descending 45-byte row-clear loop. With default strength
+reduction, the same source produces 892 rather than the original 896 bytes.
+Four scoped bindings capture the two decoded bytes and the first helper's two
+actual arguments; every nonempty removal subset was measured and failed matching.
+No empty constraints, volatile views, symbol additions or frame reservation are
+needed. Its 112-byte frame is natural. This is a per-function selection verified
+by full-image equality, not a global compiler change; complete record meanings
+and original helper APIs remain provisional.
+
 ## Wrapper checks
 
 The wrapper's SDK-free tests cover successful verbatim copying, failed or
