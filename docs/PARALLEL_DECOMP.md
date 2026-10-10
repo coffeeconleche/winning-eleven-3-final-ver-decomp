@@ -1649,6 +1649,32 @@ overlays, with 1,313 known functions still assembly-backed. These are not
 whole-game or effort percentages. The native-PC lane remains unstarted.
 This follow-up is local only; no push was requested or performed.
 
+### Another resident helper: signed threshold comparison
+
+Starting from `4e37ac9`, the coordinator accepted `func_8001E730` in
+`b3315cf`: 56 bytes, function SHA-1
+`2a2f48834e1113e97ad36ddf543db204ea493ebd`. The basic DOS GCC 2.7.2 profile
+matches ordinary C with a natural 24-byte frame and no allocation or assembly
+aids. The only builder change is its per-function compiler selection.
+
+The call to `func_8001E6B8(100)` is unconditional, followed by a signed
+comparison against the incoming low signed halfword. The zero/one result
+retains strict less-than semantics. Original formal types and gameplay meaning
+remain provisional; this is not a claim about uniform percentage probabilities.
+
+The original uncached five-overlay build, both resident build modes and all
+18 tooling tests passed with unchanged full reference hashes and sizes.
+Independent byte comparisons verified both resident C function slices against
+their original instruction bytes. No original ASM, retail input, expected hash,
+generated instruction or linker placement was edited.
+
+The `b3315cf` treemap snapshot records 373 matching C functions:
+371 overlay and 2/1,273 resident. Confirmed overlay counts remain unchanged at
+371/412 (90.0%); the known inventory is 373/1,685 (22.1%), with 1,312 known
+functions still assembly-backed. These are not whole-game or effort percentages.
+The native-PC lane remains unstarted. The user authorized pushing after
+verification and progress-document updates.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 

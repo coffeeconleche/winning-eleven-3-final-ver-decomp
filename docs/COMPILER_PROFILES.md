@@ -391,6 +391,15 @@ PS1 compiler emits a trap for `INT_MIN % -1`; this exceptional input is outside
 the defined C view and requires explicit handling in a future native lane.
 The raw scratch address and original helper API also require native adaptation.
 
+`func_8001E730` also matches with the basic DOS profile: 56 bytes, function
+SHA-1 `2a2f48834e1113e97ad36ddf543db204ea493ebd`. Its ordinary C needs no
+register bindings, empty assembly statements, volatile access views or frame
+reservations. The 24-byte frame is natural. It always calls
+`func_8001E6B8(100)`, then compares the signed result against the incoming
+low signed halfword and returns zero or one. Do not clamp the threshold or
+skip the callback for out-of-range values. This is a measured ABI view, not
+a claim that the original formal type or gameplay name has been recovered.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:
