@@ -354,6 +354,25 @@ and the combined original uncached overlay, resident and tooling-test gates.
 No original ASM, reference hash, jump-table ownership or linker placement was
 changed to obtain the matches.
 
+`func_8018A008` matches all 928 bytes with the basic
+`gcc272-dos -quiet -O2 -G0` profile, without a flag override. A real byte
+offset starts at 1,006 and advances by 1,000 for every row; ordinary C computes
+the field address from that offset. Strength reduction eliminates the offset
+and creates the walking field cursor after invariant constant motion, recovering
+the original setup order. The earlier redundant outer loop is unnecessary.
+This is a matching source shape, not a claim about the original declarations.
+
+Seven allocation aids were removed cumulatively. Four scoped bindings for the
+populated-record position and coordinate temporaries, plus one empty signed
+remainder input, remain. Individual and related-group removals were rechecked
+at the local fixed point; no global minimum is claimed. The 80-byte frame is
+natural, with no reservation, volatile views, register clobbers or inline game
+instructions. The regenerated 43-word `jtbl_80189030` ends immediately before
+the unrelated table at `0x801890DC`; no neighboring words or padding are owned.
+Complete record meanings and historical helper APIs remain provisional.
+Acceptance requires the independent function/table comparison and original
+uncached overlay, resident-executable and tooling-test gates.
+
 ## Wrapper checks
 
 The wrapper's SDK-free tests cover successful verbatim copying, failed or

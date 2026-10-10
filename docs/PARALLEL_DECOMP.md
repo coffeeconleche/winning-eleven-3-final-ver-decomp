@@ -1575,6 +1575,43 @@ not the whole-game denominator or remaining-effort estimate. Resident C and
 the native-PC lane are not started. The user authorized pushing this batch
 after completion.
 
+### Single GPT-6.1 Sol follow-up: ENTER row initialization
+
+Starting from `5afee48`, one GPT-6.1 Sol worker with high reasoning resumed
+ENTER `func_8018A008`, with coordinator review and independent verification.
+Commit `cb6b5d3` adds the function and its three per-target compiler/table
+entries. The function now matches all 928 bytes exactly, with function SHA-1
+`4fe9fc3e6194d7dc4a3e9b45864709d0a11849bf`.
+
+A genuine byte offset beginning at 1,006 and advancing by 1,000 lets the
+compiler strength-reduce the field cursor at the correct stage. This resolves
+the earlier three-word setup mismatch without the redundant outer loop.
+Seven allocation aids were removed cumulatively; four scoped bindings and
+one empty signed-remainder input remain after individual and related-group
+removal checks. This is a local fixed point, not a global-minimum claim.
+The basic DOS GCC 2.7.2 profile produces the natural 80-byte frame without
+frame reservation, volatile views, register clobbers or inline game instructions.
+
+Review retained the 22-row stride on every path, the position reset at row 11
+even for an absent record, signed helper results and narrowing, callback
+rereads, and the final store through the advanced record pointer after the
+last callback. Record meanings and original helper APIs remain provisional.
+The regenerated 43-word jump table starts at `0x80189030` and ends immediately
+before the unrelated table at `0x801890DC`; no adjacent words are included.
+
+Both worker and coordinator ran the original uncached all-five-overlay build,
+resident-executable build and all twelve tooling tests successfully. Complete
+reference hashes and sizes are unchanged. Independent byte comparisons also
+verified the complete function and its jump table against the local reference.
+
+Counts are SELECT 332, ENTER 28, SELFORM 10, UNIFORM 1 and SELSND 0:
+371 matching C functions, with 41 confirmed overlay functions still
+assembly-backed. This is 371/412 (90.0%) for confirmed overlays and
+371/1,685 (22.0%) for the known inventory, not a whole-game or effort estimate.
+The treemap uses the clean `cb6b5d3` code snapshot.
+Resident C and the native-PC lane remain unstarted. This follow-up is committed
+locally; no push was requested or performed.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 
