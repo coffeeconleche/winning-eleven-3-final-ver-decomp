@@ -480,6 +480,44 @@ the divisor; the early return and signed `>=9` cap remain explicit. Acceptance
 requires independent instruction comparisons and the unchanged full-image,
 both resident-mode and tooling-test gates.
 
+The next six resident matches add 444 bytes with the same basic
+`gcc272-dos -quiet -O2 -G0` profile: `func_800171FC` (16 bytes),
+`func_8001722C` (16), `func_800179D0` (80), `func_80016108` (116),
+`func_800219F4` (116), and `func_8002A7D8` (100). No flag overrides,
+register bindings, volatile memory views or frame reservations are needed.
+Four have natural zero-byte frames; the two call wrappers have 24-byte frames.
+
+The two setters use no-storage scalar scratch-byte views and store only the
+incoming low byte. A GCC 2.8.1 probe for `func_800171FC` instead materialized
+the address in `$v0` and moved the store to the return delay slot. The matching
+DOS profile leaves `$v0` untouched, as in the original. The word parameters
+and void declarations remain provisional ABI views.
+
+`func_800179D0` preserves five ordered calls, unchanged incoming `$a0-$a3`
+at its first helper, and both global pointer loads after their preceding calls.
+`func_80016108` captures scratch byte `2E6` after its first callback and before
+overwriting it, then preserves all seven stores and the final callback.
+A no-storage scalar view for that byte avoids the direct-pointer draft's
+address reuse and different capture allocation. No additional aid is required.
+
+`func_800219F4` retains two table reads around a potentially aliasing store,
+low-byte key and flag tests, and full-word unsigned offset arithmetic.
+Its explicit word result preserves measured `$v0` residue and branch scheduling
+while the stored result narrows to a byte. Known callers ignore the result;
+this does not establish the original return declaration. Existing overlay
+call-site declarations were not changed.
+
+`func_8002A7D8` uses a partial field-access struct and a no-storage scratch
+halfword table view. One empty input consuming the real loaded signed value
+retains the nonzero-mode early-return path; it emits no instructions, accesses
+or clobbers. Removing it merges the threshold flow into 88 rather than 100
+bytes. Three explicit word-return probes did not eliminate the need for this
+site. Signed halfword negation is widened to a word, including at -32,768;
+all 65,536 values passed an independent comparison audit for modes 0, 1 and
+255 (196,608 cases). The table extent, valid selector domain, complete object
+layout, gameplay meanings and original APIs remain unknown. Acceptance still
+requires independent instruction checks and unchanged complete-image gates.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:

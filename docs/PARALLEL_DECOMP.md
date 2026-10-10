@@ -1799,6 +1799,54 @@ whole-game or effort percentages; the native-PC lane remains unstarted.
 The user requested pushing after completion. All targets above are completed,
 not available assignments.
 
+### Fourth six-function resident batch
+
+Starting from `4a4a1bc`, the same six isolated GPT-6.1 sol/high workers each
+received one exclusive resident target. Existing worker checkouts were reused
+on new branches, preserving old branches and ignored research. All six matched:
+
+| Function | Bytes | Integrated commit | Measured behavior |
+|---|---:|---|---|
+| `func_800171FC` | 16 | `1588b85` | Store the incoming low byte at scratch address `0x1F80029B` |
+| `func_8001722C` | 16 | `320f37a` | Store the incoming low byte at scratch address `0x1F80029C` |
+| `func_800179D0` | 80 | `c18be7f` | Preserve five setup calls and the two global pointer loads after preceding callbacks |
+| `func_80016108` | 116 | `ed47abb` | Capture scratch byte `2E6` after a callback, write 4, retain seven stores at their original widths/order, then call `func_8001714C` |
+| `func_800219F4` | 116 | `19b0a6b` | Update record bytes from two packed-table reads and a low-byte classification with full-word result arithmetic |
+| `func_8002A7D8` | 100 | `daac3f8` | Test an indexed scratch mask, then conditionally store halfword 1 based on mode and signed halfword thresholds |
+
+All use `gcc272-dos -quiet -O2 -G0`, with no flag overrides, bindings, volatile
+memory views or frame reservations. Four leaf helpers have zero-byte frames;
+the two call wrappers have natural 24-byte frames. The setters, initializer and
+conditional helper use no-storage numeric scratch access views. The conditional
+helper alone needs one documented empty real-value input on an early-return
+path; removing it merges the flow to 88 bytes. It emits no instructions,
+accesses or clobbers. Three word-return probes did not provide a simpler match.
+
+The packed updater rereads its table after a potentially aliasing byte store.
+Only key/flag tests narrow to bytes; offset arithmetic retains unsigned word
+wraparound and the result preserves full `$v0` residue before byte storage.
+Known callers ignore the result. Original APIs, return declarations, gameplay
+meanings and complete layouts remain provisional. The threshold helper's
+sign-extension, word-negation and comparison audit covers all 65,536 signed
+halfwords at modes 0, 1 and 255 (196,608 cases), including both signed endpoints.
+No storage, symbol ownership, reference input, original ASM, expected hash,
+generated instruction or linker placement was changed.
+
+Each worker passed a fresh resident baseline, independent ASM/retail/linked
+function-byte comparisons, resident C and assembly-only builds, restored C,
+the original uncached five-overlay builder, and all 18 tooling tests. Root
+rebuilt and independently audited the resident after each integration. Final
+combined resident-mode, uncached overlay and 18-test gates pass with unchanged
+complete image hashes and sizes.
+
+This batch adds 444 matching bytes. The `daac3f8` treemap snapshot records
+397 matching functions: 371 overlay and 26/1,273 resident. The known inventory
+is 397/1,685 (23.6%), with 1,288 known functions still assembly-backed.
+Confirmed overlays remain 371/412 (90.0%), with 41 remaining. These are not
+whole-game or effort percentages; the native-PC lane remains unstarted.
+The user requested pushing after completion. All targets above are completed,
+not available assignments.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 
