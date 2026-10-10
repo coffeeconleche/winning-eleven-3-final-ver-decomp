@@ -1711,6 +1711,48 @@ Confirmed overlays remain 371/412 (90.0%), with 41 remaining. These are not
 whole-game or effort percentages; the native-PC lane remains unstarted.
 The user requested pushing after the batch and its verification are complete.
 
+### Second six-function resident batch
+
+Starting from `df68e49`, the same six isolated GPT-6.1 sol/high workers each
+received one new resident target on an exclusive branch. Existing branches
+and ignored research were preserved. All six matched and were integrated
+serially with their justified compiler selections retained:
+
+| Function | Bytes | Integrated commit | Measured behavior |
+|---|---:|---|---|
+| `func_80017178` | 40 | `64cd165` | Store the low byte at `0x1F800298`, then clear `29A`, `29B`, and `299` in order |
+| `func_8001E138` | 32 | `e04aff8` | Store three incoming low bytes at `0x1F8001E9`, `1EA`, and `1EB` in order |
+| `func_8001E768` | 16 | `984e72d` | Return the low word of the signed input's square |
+| `func_80017528` | 60 | `f0e48e7` | Select one indexed scratch halfword and return whether masked bits are nonzero |
+| `func_800174E0` | 72 | `7be8bd5` | Select one indexed scratch halfword, mask it, then compare against the full signed mask |
+| `func_80016F44` | 68 | `456cf8c` | Forward the initial overlay callback's argument registers, then conditionally reset/advance scratch state |
+
+Five use `gcc272-dos -quiet -O2 -G0`; the square helper uses default
+`gcc281 -quiet -O2 -G0` without a compiler-map edit. All have natural frames
+and no allocation bindings, compiler barriers, volatile qualifiers or padding.
+The square widens to signed 64 bits before unsigned word narrowing, defining
+the low product for every signed 32-bit input without overflow. The signed-mask
+test is not simplified to equality; no slot bounds or fallback behavior were
+invented. Raw address views, original APIs and gameplay meanings remain
+provisional. The wrapper's four-word forwarding view and void return view do
+not claim a complete original prototype or return contract.
+
+Each worker passed a fresh resident baseline, independent ASM/retail/linked
+function-byte checks, both resident build modes, the original uncached
+five-overlay builder and all 18 tooling tests. Integration rebuilt and audited
+the resident image after every commit. The final combined original uncached
+overlay, both resident-mode and 18-test gates pass with unchanged complete
+image hashes and sizes. No original ASM, reference input, expected hash,
+generated instruction or linker placement was changed.
+
+This batch adds 288 matching bytes. The `456cf8c` treemap snapshot records
+385 matching functions: 371 overlay and 14/1,273 resident. The known inventory
+is 385/1,685 (22.8%), with 1,300 known functions still assembly-backed.
+Confirmed overlays remain 371/412 (90.0%), with 41 remaining. These are not
+whole-game or effort percentages; the native-PC lane remains unstarted.
+This continues the user's six-worker, verify-and-push workflow. All targets
+above are completed, not available assignments.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 

@@ -420,6 +420,35 @@ unconditional. Original formal types and gameplay meanings remain provisional.
 Acceptance includes independent instruction-byte comparisons and the original
 uncached overlay, both resident-mode and tooling-test gates.
 
+Another five resident helpers match the basic DOS profile:
+`func_80017178` (40 bytes), `func_8001E138` (32), `func_800174E0` (72),
+`func_80017528` (60), and `func_80016F44` (68). None needs flag overrides,
+register bindings, empty constraints, volatile views or frame reservations.
+The first two preserve ordered low-byte stores through no-storage numeric
+scalar declarations. The mask helpers preserve unsigned halfword loads and
+selector-1 versus all-other-value dispatch. `func_800174E0` uses ordinary
+unsigned word address arithmetic and a full signed `>=` comparison, not an
+invented equality test. `func_80017528` retains two numeric halfword views
+and the shared shift in the initial branch delay slot. Raw indexed PS1 address
+views require proper storage/layout and valid-index handling in a native port.
+
+`func_80016F44` has a natural 24-byte frame. It forwards incoming `$a0-$a3`
+unchanged to the overlay's `func_8018DB58`, reads scratch byte `0x1F800299`
+after that callback, and conditionally calls `func_8001722C(0)` then
+`func_8001714C`. The four-word forwarding declaration is an ABI view, not a
+recovered complete prototype. The known caller ignores the result; the void
+source view does not establish the original return contract, while the match
+retains its observed register residue.
+
+`func_8001E768` matches all 16 bytes with the default
+`gcc281 -quiet -O2 -G0` profile, without a compiler-map change or matching aids.
+Signed 64-bit multiplication followed by unsigned 32-bit narrowing preserves
+the original low product word for every signed 32-bit input without signed
+overflow. Its frame is naturally zero bytes. This verified compiler selection
+does not identify the historical compiler or original API. Together, these
+six helpers add 288 matching bytes and require the same independent instruction,
+uncached full-image, both resident-mode and tooling-test gates.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:
