@@ -1675,6 +1675,42 @@ functions still assembly-backed. These are not whole-game or effort percentages.
 The native-PC lane remains unstarted. The user authorized pushing after
 verification and progress-document updates.
 
+### Six parallel resident helpers
+
+Starting from `29184a3`, six isolated workers using GPT-6.1 sol with high
+reasoning each recovered one small resident function. All six matched and
+were integrated serially, retaining every per-function compiler selection:
+
+| Function | Bytes | Integrated commit | Measured behavior |
+|---|---:|---|---|
+| `func_800171C4` | 24 | `8d1d2a4` | Store the low byte at `0x1F80029A`, then clear `0x1F80029B` |
+| `func_800171DC` | 32 | `2774566` | Increment the byte at `0x1F80029B`, wrapping modulo 256 |
+| `func_800171A0` | 36 | `8d35062` | Capture `0x1F80029A`, clear `0x1F80029B`, then store the captured byte plus one |
+| `func_8001720C` | 32 | `a0564eb` | Increment the byte at `0x1F80029C`, wrapping modulo 256 |
+| `func_8001723C` | 28 | `a935ea7` | Store the low byte at `0x1F8002DF`, then its low bit at `0x1F8002E0` |
+| `func_8001E694` | 36 | `5ba1a05` | Add 64 and narrow the first argument, forward the second word, and return `func_8001E5A4`'s result |
+
+All use `gcc272-dos -quiet -O2 -G0` with no additional flags or allocation
+constraints. The leaf helpers use no-storage scalar numeric address views;
+the call wrapper preserves both arguments and its natural 24-byte frame.
+Original APIs and gameplay meanings remain provisional. No original assembly,
+reference input, expected hash, generated instruction or linker placement was
+changed. These targets are completed, not new assignments.
+
+Each worker checked independent original-ASM/retail/linked function bytes,
+both resident build modes, all five overlays with the original uncached builder,
+and all 18 tooling tests. Integration rebuilt and independently audited the
+resident image after each commit. Final combined gates retain the full resident
+SHA-1 `7e480656a295dced6ec187286773ab897651e995` (882,688 bytes) and all five
+unchanged overlay hashes and sizes; both resident modes and 18 tests pass.
+
+This batch adds 188 matching code bytes. The `5ba1a05` treemap snapshot records
+379 matching functions: 371 overlay and 8/1,273 resident. The known inventory
+is 379/1,685 (22.5%), with 1,306 known functions still assembly-backed.
+Confirmed overlays remain 371/412 (90.0%), with 41 remaining. These are not
+whole-game or effort percentages; the native-PC lane remains unstarted.
+The user requested pushing after the batch and its verification are complete.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 

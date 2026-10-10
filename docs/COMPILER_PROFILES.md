@@ -400,6 +400,26 @@ low signed halfword and returns zero or one. Do not clamp the threshold or
 skip the callback for out-of-range values. This is a measured ABI view, not
 a claim that the original formal type or gameplay name has been recovered.
 
+Six small resident helpers additionally match with the basic DOS profile:
+`func_800171A0` (36 bytes), `func_800171C4` (24), `func_800171DC` (32),
+`func_8001720C` (32), `func_8001723C` (28), and `func_8001E694` (36).
+Their 188 matching bytes require no flag overrides, register bindings, empty
+assembly statements, volatile qualifiers, padding or frame reservations.
+
+The five leaf helpers use numeric scalar assembly names as views of proved
+scratch-byte addresses. These declarations allocate no storage and add no
+linker symbols; they retain the measured separate address materialization and
+store scheduling. Increment stores wrap modulo 256, and the low-byte/low-bit
+stores remain ordered. Their frames are naturally zero bytes. Raw PS1 addresses
+still need replacement in the native lane; these views are not MMIO claims.
+
+`func_8001E694` has a natural 24-byte frame. It adds 64 using unsigned word
+arithmetic, narrows the first argument to its low byte, forwards the second word
+unchanged to `func_8001E5A4`, and returns that helper's word result. The call is
+unconditional. Original formal types and gameplay meanings remain provisional.
+Acceptance includes independent instruction-byte comparisons and the original
+uncached overlay, both resident-mode and tooling-test gates.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:
