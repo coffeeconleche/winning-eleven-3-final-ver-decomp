@@ -1753,6 +1753,52 @@ whole-game or effort percentages; the native-PC lane remains unstarted.
 This continues the user's six-worker, verify-and-push workflow. All targets
 above are completed, not available assignments.
 
+### Third six-function resident batch
+
+Starting from `9e391be`, the same six isolated GPT-6.1 sol/high workers each
+received one new resident target on an exclusive branch, preserving old branches
+and ignored research. All six matched and were integrated serially:
+
+| Function | Bytes | Integrated commit | Measured behavior |
+|---|---:|---|---|
+| `func_8001714C` | 44 | `4f91165` | Capture scratch byte `298`, clear `29A` then `299`, and store the captured byte plus one |
+| `func_8001DD10` | 64 | `a0355af` | Clear scratch bytes `2A1`, `2A0`, `1EC`, `2C2` in order, then call `func_8001723C(0)` |
+| `func_8001951C` | 72 | `cd2ce42` | Preserve four calls and load the second global pointer after the preceding pointer-based call |
+| `func_80019B1C` | 72 | `b4840ae` | Preserve five calls, including setup 9 and the final ordered zero/one calls |
+| `func_8001E0F4` | 68 | `48c6ceb` | Clear two scratch words, then issue three ordered calls using the existing scratch address, 256 and zero |
+| `func_8002F6C8` | 68 | `54e9bd8` | Return 2 below 1,024; otherwise subtract 1,024, divide by 768, add 2 and cap at 8 |
+
+All use `gcc272-dos -quiet -O2 -G0` without flag overrides, register bindings,
+compiler barriers, volatile qualifiers, padding or frame reservations. The two
+leaf helpers have natural zero-byte frames; four call wrappers have natural
+24-byte frames. Existing numeric byte views and global pointer symbols add no
+storage or linker-symbol ownership. Original APIs, return declarations, object
+layouts and gameplay meanings remain provisional.
+
+The two callback-bearing setup wrappers preserve incoming `$a0-$a3` through
+explicit word-level forwarding views, not claimed complete prototypes. Pointer
+loads stay after the preceding calls that may change them. The byte-advance
+helper retains full-word `$v0` residue up to 256 even when its stored byte wraps.
+The classifier's unsigned division and signed cap are defined across the word
+domain; its reciprocal was independently checked at both endpoints of all
+5,592,406 quotient intervals, with monotonicity establishing equality within
+each interval. No original ASM, reference input, expected hash, generated
+instruction or linker placement was changed.
+
+Each worker passed a fresh resident baseline, independent ASM/retail/linked
+function-byte checks, both resident build modes, the original uncached
+five-overlay builder and all 18 tooling tests. Integration rebuilt and audited
+the resident image after every commit. Final combined uncached overlay, both
+resident-mode and 18-test gates pass with unchanged full image hashes and sizes.
+
+This batch adds 388 matching bytes. The `54e9bd8` treemap snapshot records
+391 matching functions: 371 overlay and 20/1,273 resident. The known inventory
+is 391/1,685 (23.2%), with 1,294 known functions still assembly-backed.
+Confirmed overlays remain 371/412 (90.0%), with 41 remaining. These are not
+whole-game or effort percentages; the native-PC lane remains unstarted.
+The user requested pushing after completion. All targets above are completed,
+not available assignments.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 

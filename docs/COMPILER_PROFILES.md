@@ -449,6 +449,37 @@ does not identify the historical compiler or original API. Together, these
 six helpers add 288 matching bytes and require the same independent instruction,
 uncached full-image, both resident-mode and tooling-test gates.
 
+Six further resident helpers match with `gcc272-dos -quiet -O2 -G0`:
+`func_8001714C` (44 bytes), `func_8001DD10` (64), `func_8001951C` (72),
+`func_80019B1C` (72), `func_8001E0F4` (68), and `func_8002F6C8` (68).
+Their 388 bytes need no additional flags, register bindings, empty constraints,
+volatile views, padding or frame reservations. Frames are natural: zero for
+the byte-advance and classifier helpers, 24 bytes for the four call wrappers.
+
+`func_8001714C` captures the unsigned scratch byte before two ordered clears,
+then stores the increment with byte narrowing. Its measured `$v0` still holds
+the full captured byte plus one, including 256; the void source view does not
+establish an original return contract. `func_8001DD10` uses four no-storage
+numeric byte views for ordered clears before unconditional `func_8001723C(0)`.
+
+`func_8001951C` preserves four direct calls and the second global pointer load
+after the first `func_80019564` call. `func_80019B1C` preserves five calls and
+loads its global pointer after the initial two. Both forward incoming `$a0-$a3`
+unchanged to `func_800B6D78`; those declarations are ABI views, not complete
+recovered prototypes or nested callback contracts. `func_8001E0F4` needs only
+direct C word stores and three calls: its real argument address is naturally
+materialized early, without an allocation aid. Raw addresses, object layouts,
+helper APIs and original return contracts still require native-lane research.
+
+`func_8002F6C8` uses ordinary unsigned division by 768. Updating the actual
+input variable before division retains the original subtraction and multiply
+allocation; a separate expression temporary did not. The quotient is bounded
+by 5,592,403 after subtracting 1,024, so its signed conversion and addition are
+defined for every incoming word. Independent reciprocal/shift checks establish
+the divisor; the early return and signed `>=9` cap remain explicit. Acceptance
+requires independent instruction comparisons and the unchanged full-image,
+both resident-mode and tooling-test gates.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:
