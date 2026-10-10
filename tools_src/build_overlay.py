@@ -36,6 +36,8 @@ CPP_FLAGS = [
 ]
 
 PER_FUNC_COMPILERS: dict[str, str] = {
+    # Resident C substitutions use the same verified compiler pipeline.
+    "func_8001E6B8": "gcc272-dos",
     "func_8018E4E0": "gcc272-dos",
     "func_801C8D00": "gcc272-dos",
     "func_801C220C": "gcc272-dos",
@@ -987,8 +989,11 @@ def compile_c_sources(
     maspsx_path: Path | None,
     dosbox_path: Path | None = None,
     dos_cc1_path: Path | None = None,
+    *,
+    source_dir: Path | None = None,
 ) -> dict[str, Path]:
-    source_dir = ROOT / "src" / "overlays" / name.lower()
+    if source_dir is None:
+        source_dir = ROOT / "src" / "overlays" / name.lower()
     sources = sorted(source_dir.glob("func_*.c"))
     if not sources:
         return {}

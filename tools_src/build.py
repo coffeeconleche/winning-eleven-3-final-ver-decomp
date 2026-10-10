@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build and verify the initial all-assembly SLPM_861.62 reconstruction."""
+"""Build and verify SLPM_861.62 with matching C or its assembly baseline."""
 
 from __future__ import annotations
 
@@ -12,6 +12,8 @@ import shutil
 import subprocess
 import sys
 from pathlib import Path
+
+from build_overlay import BuildError as CBuildError, compile_c_sources, compiled_parts
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -97,13 +99,17 @@ def function_address(path: Path) -> int:
         raise BuildError(f"invalid function address in {path.name}") from error
 
 
-def write_text_aggregate() -> Path:
+def write_text_aggregate(compiled: dict[str, Path] | None = None) -> Path:
+    compiled = compiled or {}
     functions = sorted(
         (ROOT / "asm" / "nonmatchings" / "5EBC").glob("func_*.s"),
         key=function_address,
     )
     if not functions:
         raise BuildError("no generated functions; run splat split first")
+    unknown = sorted(set(compiled) - {path.stem for path in functions})
+    if unknown:
+        raise BuildError("resident C has no assembly slot: " + ", ".join(unknown))
     output = BUILD / "generated" / "5EBC.s"
     output.parent.mkdir(parents=True, exist_ok=True)
     lines = ['.include "macro.inc"', ".set noat", ".set noreorder", ".section .text"]
@@ -113,6 +119,13 @@ def write_text_aggregate() -> Path:
     )
     raw_count = 0
     for path in functions:
+        if path.stem in compiled:
+            text, table = compiled_parts(compiled[path.stem], path.stem)
+            if table is not None:
+                raise BuildError(f"{path.stem}: resident C rodata substitution is not supported")
+            lines.extend((f"/* matching C: {path.stem} */", text,
+                          ".set noat", ".set noreorder", ".section .text"))
+            continue
         lines.append(f"/* {path.relative_to(ROOT).as_posix()} */")
         for line in path.read_text(encoding="utf-8").splitlines():
             match = handwritten.match(line)
@@ -125,7 +138,8 @@ def write_text_aggregate() -> Path:
                 raw_count += 1
             lines.append(line)
     output.write_text("\n".join(lines) + "\n", encoding="utf-8")
-    print(f"text functions: {len(functions)} ({raw_count} raw instruction words)")
+    print(f"text functions: {len(functions)} ({len(compiled)} matching C substitutions, "
+          f"{raw_count} raw instruction words)")
     return output
 
 
@@ -187,6 +201,11 @@ def read_defsyms() -> list[str]:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--bin-dir", type=Path, help="directory containing mipsel-none-elf binutils")
+    parser.add_argument("--psyq-bin", type=Path, help="local PsyQ BIN directory for matching C")
+    parser.add_argument("--maspsx", type=Path, help="local maspsx.py for matching C")
+    parser.add_argument("--dosbox", type=Path, help="local DOSBox-X for DOS compiler profiles")
+    parser.add_argument("--dos-cc1", type=Path, help="local DOS CC1PSX.EXE")
+    parser.add_argument("--assembly-only", action="store_true", help="verify the original assembly baseline")
     args = parser.parse_args()
     try:
         if not EXPECTED.is_file():
@@ -200,6 +219,11 @@ def main() -> int:
         linker = find_tool("mipsel-none-elf-ld", args.bin_dir)
         objcopy = find_tool("mipsel-none-elf-objcopy", args.bin_dir)
 
+        compiled = {} if args.assembly_only else compile_c_sources(
+            "RESIDENT", BUILD / "resident", args.psyq_bin, args.maspsx,
+            args.dosbox, args.dos_cc1, source_dir=ROOT / "src" / "resident",
+        )
+
         jobs = [
             (ROOT / "asm" / "header.s", BUILD / "asm" / "header.o"),
             (ROOT / "asm" / "data" / "800.rodata.s", BUILD / "asm" / "data" / "800.rodata.o"),
@@ -208,7 +232,7 @@ def main() -> int:
                 BUILD / "asm" / "data" / "B6874.data.o",
             ),
             (ROOT / "asm" / "data" / "D728C.sdata.s", BUILD / "asm" / "data" / "D728C.sdata.o"),
-            (write_text_aggregate(), BUILD / "src" / "5EBC.o"),
+            (write_text_aggregate(compiled), BUILD / "src" / "5EBC.o"),
         ]
         for source, output in jobs:
             if not source.is_file():
@@ -263,7 +287,7 @@ def main() -> int:
             raise BuildError(f"binary mismatch: {first_difference(wanted, actual)}")
         print("MATCH")
         return 0
-    except (BuildError, OSError) as error:
+    except (BuildError, CBuildError, OSError) as error:
         print(f"build: {error}", file=sys.stderr)
         return 1
 
