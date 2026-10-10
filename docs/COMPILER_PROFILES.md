@@ -2,7 +2,8 @@
 
 Compiler selection is per function, not inferred from the game title or the
 SDK archive name. Every accepted source must reproduce its original bytes and
-the complete linked overlay hash. The currently established profiles are:
+the complete linked overlay or resident-executable hash. The currently
+established profiles are:
 
 | Profile | Local compiler | Flags |
 |---|---|---|
@@ -372,6 +373,35 @@ the unrelated table at `0x801890DC`; no neighboring words or padding are owned.
 Complete record meanings and historical helper APIs remain provisional.
 Acceptance requires the independent function/table comparison and original
 uncached overlay, resident-executable and tooling-test gates.
+
+## Resident C builds
+
+The first resident substitution, `func_8001E6B8`, matches all 120 bytes with
+`gcc272-dos -quiet -O2 -G0` and one result-register binding. Removing that
+binding yields 124 bytes with an extra result move; an alternative single
+sum-register binding also matches, but is not needed in the accepted source.
+There are no empty assembly statements, register clobbers or frame reservations;
+the 24-byte frame is natural. Function SHA-1 is
+`b4cffd357cedc068509bf8c8688031285e0d6ac0`.
+
+Zero returns without calling the random helper or reading scratch memory.
+Otherwise, the post-callback scratch word is added with explicit unsigned
+32-bit wrapping and converted to the measured signed remainder domain. The
+PS1 compiler emits a trap for `INT_MIN % -1`; this exceptional input is outside
+the defined C view and requires explicit handling in a future native lane.
+The raw scratch address and original helper API also require native adaptation.
+
+`build.py` uses the shared per-function compiler map for `src/resident/`, with
+the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
+For shared read-only installations, use your actual local paths:
+
+```powershell
+py -B tools_src\build.py --bin-dir 'C:\path\to\mips\bin' --psyq-bin 'C:\path\to\psyq45\BIN' --maspsx 'C:\path\to\maspsx\maspsx.py' --dosbox 'C:\path\to\dosbox-x.exe'
+```
+
+`--assembly-only` bypasses resident C compilation and preserves the original
+assembly baseline. Unknown resident C slots and generated resident rodata fail
+closed; overlay switch-table placement is not automatically a resident feature.
 
 ## Wrapper checks
 

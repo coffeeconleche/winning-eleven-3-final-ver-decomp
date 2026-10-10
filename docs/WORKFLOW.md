@@ -13,6 +13,13 @@ The resident executable currently passes step 6. Its all-assembly baseline has
 1,273 discovered functions and reproduces the retail SHA-1 exactly. Repeat the
 full hash check after every accepted C conversion.
 
+Matching resident C belongs in `src/resident/<function>.c`. The resident
+builder now compiles these files through the shared per-function compiler
+profiles, substitutes only existing assembly slots and verifies the complete
+retail hash. Run `tools_src/build.py --assembly-only` to recheck the unchanged
+all-assembly baseline without requiring a C compiler. See
+[compiler profiles](COMPILER_PROFILES.md) for local tool paths and options.
+
 ## Identify the compiler
 
 Do not inherit Yu-Gi-Oh's compiler profile. Select a varied sample of leaf,
@@ -34,6 +41,10 @@ small-data selection are part of matching. A function that behaves correctly
 but differs in bytes is not yet a match.
 
 ## Owned switch tables
+
+The placement mechanism below is currently overlay-only. The resident builder
+rejects generated C rodata until its original placement has dedicated support
+and independent verification.
 
 When compiled C emits a jump table, record its original symbol and entry count
 in `PER_FUNC_JUMP_TABLES` in `tools_src/build_overlay.py`. Inspect the original

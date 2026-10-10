@@ -1612,6 +1612,43 @@ The treemap uses the clean `cb6b5d3` code snapshot.
 Resident C and the native-PC lane remain unstarted. This follow-up is committed
 locally; no push was requested or performed.
 
+### Single-function follow-up: first resident C match
+
+Starting from `a44da19`, the coordinator accepted resident `func_8001E6B8`
+in `25eef1d`: 120 bytes, function SHA-1
+`b4cffd357cedc068509bf8c8688031285e0d6ac0`. No additional worker was started.
+It uses basic DOS GCC 2.7.2 with one result-register binding and a natural
+24-byte frame, without frame padding or inline game instructions.
+
+The helper returns zero without side effects for a zero divisor. Otherwise it
+calls the random helper, reads the scratch word afterward, wraps the addition
+at 32 bits and takes a signed remainder. The signed-overflow division trap
+case, raw scratch address and provisional helper API need explicit native-lane
+adaptation. Known callers include already recovered ENTER and UNIFORM routines.
+
+The resident builder now reuses the verified compiler pipeline for
+`src/resident/`, retains every other assembly slot, and offers an explicit
+`--assembly-only` baseline. Unknown C slots and unsupported resident C rodata
+fail closed. Six SDK-free tests were added for slot substitution, assembler
+state, assembly fallback and these rejection paths.
+
+The original uncached all-five-overlay build, matching-C resident build,
+assembly-only resident build and all 18 tooling tests passed. Every full
+reference hash and size is unchanged, and an independent original-instruction
+comparison verified the complete new function slice. No original ASM, retail
+input, expected hash, generated instruction or linker placement was changed.
+
+Earlier A30F4 source-shape experiments and a B38E0 baseline recheck remained
+private and unaccepted. They add nothing to the progress count.
+
+Counts are now 372 matching C functions: 371 in confirmed overlays and
+1/1,273 in the resident executable. Overlay counts remain SELECT 332, ENTER 28,
+SELFORM 10, UNIFORM 1 and SELSND 0. The `25eef1d` treemap snapshot shows
+372/1,685 (22.1%) of the known inventory and 371/412 (90.0%) of confirmed
+overlays, with 1,313 known functions still assembly-backed. These are not
+whole-game or effort percentages. The native-PC lane remains unstarted.
+This follow-up is local only; no push was requested or performed.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 

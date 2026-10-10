@@ -18,7 +18,7 @@ break the reference build.
   available.
 - Matching assembly baseline: **established** (1,273 resident functions).
 - Confirmed matching overlays: **5** (412 functions, 414,610 exact bytes).
-- Decompiled and matching C: **371 functions**.
+- Decompiled and matching C: **372 functions** (371 overlay, 1 resident).
 - Resident frame loop, controller boundary and match dispatchers: **mapped**.
 - Native PC target: **not started**.
 
@@ -26,7 +26,7 @@ break the reference build.
 
 ![Decompilation treemap: known function inventory and confirmed overlay detail](docs/images/decompilation-progress.png)
 
-Treemap snapshot: `cb6b5d3` (371 matching C functions).
+Treemap snapshot: `25eef1d` (372 matching C functions).
 
 Green tiles represent matching C; gray tiles remain assembly-backed. Each tile
 represents one function. The right panel enlarges the same confirmed overlays
@@ -89,14 +89,14 @@ py -m venv .venv
 .venv\Scripts\python.exe -m pip install -r requirements.txt
 .venv\Scripts\python.exe tools_src\extract.py
 .venv\Scripts\splat.exe split config\SLPM_861.62.yaml
-.venv\Scripts\python.exe tools_src\build.py
+.venv\Scripts\python.exe tools_src\build.py --assembly-only
 ```
 
 `build.py` looks for `mipsel-none-elf-{as,ld,objcopy}` in
 `tools/mips/bin` or on `PATH`. Alternatively, pass the toolchain directory as
 `--bin-dir C:\path\to\mips\bin`.
 
-The overlay build additionally expects the PsyQ 4.5 compiler beneath
+Matching C builds additionally expect the PsyQ 4.5 compiler beneath
 `tools/psyq45/BIN` and `maspsx.py` at `tools/maspsx/maspsx.py`. These
 third-party tools remain local and are ignored by Git.
 
@@ -111,9 +111,13 @@ obtained disc. The ZIP is not included. It validates the retail executable hash
 and writes the boot executable plus suspected code modules beneath `extracted/`.
 
 The splat configuration is an evidence-backed initial split. `build.py`
-assembles every generated function without C substitutions, links the image,
-and requires the exact retail SHA-1. The current all-assembly build produces
-all 882,688 bytes with the verified SHA-1 above.
+compiles matching C under `src/resident/` through the same verified compiler
+pipeline as the overlays and retains assembly for the remaining functions.
+It links the image and requires the exact retail SHA-1. Both the C-substituted
+build and the `--assembly-only` baseline produce all 882,688 reference bytes.
+The resident builder currently rejects generated C rodata; switch-table
+placement must be implemented and independently verified before accepting a
+resident function that needs it.
 
 The five runtime overlays with confirmed live addresses can be verified in one
 command:
