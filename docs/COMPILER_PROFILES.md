@@ -297,6 +297,63 @@ layouts and helper APIs remain provisional, not a native-PC interface.
 Acceptance includes an independent function-byte comparison and the combined
 original uncached all-five-overlay, resident and twelve-test checks.
 
+`func_801B9DCC` matches all 912 bytes with the basic
+`gcc272-dos -quiet -O2 -G0` profile, without a flag override. Its display setup
+preserves asymmetric byte-weighted totals, captured values across callbacks,
+scratchpad rereads, packet fields and six ordered glyph submissions. Fixed-point
+greedy minimization removed twenty-one hard bindings and one empty site;
+eleven bindings and fifteen empty actual-value sites remain. Every survivor and
+ten related removal groups failed matching; no global minimum is claimed.
+
+A scoped identity on the initialized condition clobbers only `$19` and `$30`
+to retain the split saves. Initialized byte-slot identities and six numeric
+scratch-address views allocate no new data. A plain unused thirty-two-byte
+extent reproduces the original 168-byte frame; removing it changes only
+twenty-two frame/save/restore words. Its purpose remains unknown. There are no
+volatile memory qualifiers or blanket memory clobbers. Original helper APIs
+and complete field meanings remain provisional.
+
+`func_801AAE5C` matches all 1,076 bytes with the basic
+`gcc272-dos -quiet -O2 -G0` profile. It preserves byte-truncated random outcomes,
+the uncapped initial mode-1/2 redraw, the later 101-attempt limits, signed
+random-helper thresholds and sparse result writes. A nine-byte local aggregate
+places its two accessed bytes eight bytes apart, matching the observed stack
+positions. The seven intervening bytes are never accessed; this is a local
+layout view, not proof of an original structure declaration or gameplay type.
+Its 96-byte frame is natural, with no separate frame reservation.
+
+Fixed-point individual and related-group minimization removed five hard
+bindings and six empty sites. Eight bindings and five empty actual-value sites
+remain; terminal individual and four related-group probes all fail matching.
+The real players-base binding prevents cross-branch hoisting, while the selected
+output capture retains the original pre-store load. No volatile qualifiers,
+memory-output constraints, inline game instructions or new global storage are needed.
+No global minimum is claimed. Only the low incoming byte is observable; the
+original parameter declaration and helper APIs remain unknown.
+
+`func_8018E4E0` matches all 1,008 bytes with the basic
+`gcc272-dos -quiet -O2 -G0` profile. Matrix setup, signed coordinate transfer,
+the two-iteration packet loop and ordering-table links are C. Narrow COP2
+load/store/control/command intrinsics retain real GTE hardware operations with
+their register and memory effects; this is not a whole-function assembly copy
+or a native implementation. Its original 72-byte frame is natural.
+
+Six scoped bindings and two empty actual-value inputs remain after removing
+redundant matrix/record bindings and an unused intrinsic input. All eight
+individual removals and four related groups fail full ENTER matching; no global
+minimum is claimed. Unsigned modular packet-base arithmetic retains measured
+operand order. The fourth vertex uses the proved table-base-plus-24 address;
+original object ownership remains provisional. Unsigned variable shifts still
+assume counts below 32 in this C view, whereas MIPS uses the low five bits.
+That bound is not established here: native ports must handle other counts and
+replace the GTE and raw PlayStation address views. Separate ordering-table
+rereads after the packet-tag store preserve the observed alias chronology.
+
+These three profiles are accepted only with independent function-byte checks
+and the combined original uncached overlay, resident and tooling-test gates.
+No original ASM, reference hash, jump-table ownership or linker placement was
+changed to obtain the matches.
+
 ## Wrapper checks
 
 The wrapper's SDK-free tests cover successful verbatim copying, failed or

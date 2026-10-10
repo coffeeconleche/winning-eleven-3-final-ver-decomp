@@ -1519,6 +1519,62 @@ for confirmed overlays and 367/1,685 (21.8%) for the known inventory, not the
 whole-game denominator or remaining effort. The native PC lane is not started.
 The user authorized publishing this integration and the pending C8D00 commits.
 
+### Three GPT-5.6 Sol workers: display, randomized outcome and GTE packets
+
+At `ba01eeb`, the user requested three additional functions using three
+`gpt-5.6-sol` workers with `high` reasoning. Three isolated existing checkouts
+were used, with exclusive source ownership and independent build outputs; no
+additional worker or nested agent was started. The coordinator reviewed and
+integrated completed work serially while the remaining worker continued.
+
+| Overlay | Accepted function | Bytes | Function SHA-1 |
+|---|---|---:|---|
+| SELECT | `func_801B9DCC` | 912 | `058dc0b54d2cdcd732195f6d62ae609fbbfdb109` |
+| SELECT | `func_801AAE5C` | 1,076 | `bc63d6f5c77915c173fe9128e6c4ecbed3112025` |
+| ENTER | `func_8018E4E0` | 1,008 | `ffb7e656b1f4a4cd926893ca90038f03672c29c7` |
+
+The second worker initially researched ENTER `func_8018A008`. Its nearest
+draft differed in three prologue words and was not accepted. The active
+substitution was removed, the tracked checkout restored clean, and the same
+worker was reassigned to `func_801AAE5C`. The unresolved draft and compiler
+research remain ignored and local; they are not counted as matching C.
+
+The accepted routines recover display setup and glyph submissions, randomized
+byte outcomes with mode-dependent retries, and matrix/projected quadrilateral
+packets with ordering-table links. These are behavioral descriptions, not
+recovered original names. Review retained callback rereads, byte narrowing,
+random-helper call order, the initial uncapped redraw, later retry limits,
+sparse output writes and ordering-table alias chronology. Complete data layouts
+and original helper APIs remain provisional.
+
+All three use `gcc272-dos -quiet -O2 -G0`. The compiler-profile document records
+the retained allocation aids, terminal removal probes, and frame/layout
+caveats. B9DCC retains an unused frame extent of unknown purpose; AAE5C uses
+the observed eight-byte separation between two local byte slots. E4E0 retains
+only narrow real GTE hardware intrinsics around C logic; its shift-domain
+assumption and raw hardware addresses still require native-port adaptation.
+No original ASM, reference bytes, hashes, jump-table ownership or linker
+placement was changed.
+
+Worker B9DCC commits `a02888f` and `41827b2` were integrated as `ca80be7`
+and `0d8c2a3`; E4E0 `575b84a` became `b4a15af`; AAE5C `8905f6f` became
+`7a89951`. The last handoff was conditional while its worker gates ran: no
+publication was permitted before the final verification completed. Root
+reviewed the final sources and minimization evidence, checked SELECT and ENTER
+after their integrations, and independently compared every new linked function
+slice with its original instruction bytes. The combined original uncached
+all-five-overlay build, resident executable and all twelve tooling tests passed,
+with every complete reference hash and size unchanged.
+
+This batch adds 2,996 matching code bytes and three functions. Counts are
+SELECT 332, ENTER 27, SELFORM 10, UNIFORM 1 and SELSND 0: 370 matching C
+functions, with 42 confirmed overlay functions still assembly-backed. The
+treemap uses the clean `7a89951` code snapshot: 370/412 (89.8%) for confirmed
+overlays and 370/1,685 (22.0%) for the known inventory. The known inventory is
+not the whole-game denominator or remaining-effort estimate. Resident C and
+the native-PC lane are not started. The user authorized pushing this batch
+after completion.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 
