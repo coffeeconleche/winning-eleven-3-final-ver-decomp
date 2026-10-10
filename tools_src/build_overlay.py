@@ -380,6 +380,7 @@ PER_FUNC_COMPILERS: dict[str, str] = {
     "func_801A346C": "gcc272-dos",
     "func_8018F188": "gcc272-dos",
     "func_801930F4": "gcc272-dos",
+    "func_801AAE5C": "gcc272-dos",
 }
 
 # Original read-only table ownership, excluding any trailing padding words.
@@ -728,6 +729,7 @@ PER_FUNC_CC1_FLAGS = {
     "func_801B8EB8": ["-quiet", "-O2", "-G0", "-mno-split-addresses"],
     "func_8018E4AC": ["-quiet", "-O2", "-G0", "-mno-split-addresses"],
     "func_8018EBA4": ["-quiet", "-O2", "-G0", "-mno-split-addresses"],
+    "func_801AAE5C": ["-quiet", "-O2", "-G0"],
 }
 
 OVERLAYS = {
