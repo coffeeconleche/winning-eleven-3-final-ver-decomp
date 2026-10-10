@@ -38,6 +38,7 @@ CPP_FLAGS = [
 PER_FUNC_COMPILERS: dict[str, str] = {
     # Resident C substitutions use the same verified compiler pipeline.
     "func_800171C4": "gcc272-dos",
+    "func_800171DC": "gcc272-dos",
     "func_8001E6B8": "gcc272-dos",
     "func_8001E730": "gcc272-dos",
     "func_8018E4E0": "gcc272-dos",
