@@ -691,6 +691,18 @@ fence. Three trial bindings in 49D94 were removed jointly. Reread qualifiers des
 measured accesses, not a hardware-volatility claim; no original full APIs or layouts are
 claimed.
 
+Resident run group 13 adds 576 matching bytes:
+
+func_8005AD84 uses default GCC 2.8.1 and one actual v0 result binding. func_8006F07C uses
+basic DOS GCC, a matching-only scalar reservation with a memory operand for the observed
+eight-byte frame, actual v1/saved-a1 capture bindings and real argument constraints;
+individual and related removals fail. func_8009E244 uses DOS GCC with -fno-schedule-insns
+and its actual v0 result binding; single and paired removals fail. The other three use
+basic DOS GCC without aids. Frame reservations do not establish historical stack data. The
+5AD84 worker commit preceded its running restore gate; sources stayed frozen, the original
+restore completed successfully, and post-completion independent audit/tests passed before
+acceptance. Root independently revalidated the combined checkpoint.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:
