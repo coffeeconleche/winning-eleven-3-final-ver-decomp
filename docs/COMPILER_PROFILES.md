@@ -674,6 +674,13 @@ unsigned expression; standard C does not specify that expression's call order. A
 adaptation must explicitly sequence them. Separate ordinary locals changed the measured
 24-byte frame to 32 bytes. No historical helper APIs or complete layouts are claimed.
 
+Resident run group 11 adds 488 matching bytes:
+
+All six use DOS GCC. Only func_8006F310 adds -fno-strength-reduce: removal changes its 80
+bytes to 88. Only func_80052E68 retains one conditional empty input of the actual state;
+the other five have no source matching aids. These per-function choices do not change the
+global compiler profile or establish historical layouts, domains or APIs.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:
