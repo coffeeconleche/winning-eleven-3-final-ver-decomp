@@ -583,6 +583,23 @@ comparison constants in `$v0` without asserting historical return contracts;
 the halfword helper's word result models its first reread. Strides, offsets and
 access widths are evidenced, but complete layouts, ownership and APIs are not.
 
+The fourth group adds six 48-byte functions (288 bytes): `func_80059E4C`,
+`func_8005A4C4`, `func_8006F84C`, `func_800898D0`, `func_80089BD8` and
+`func_80094444`. The descending halfword reset uses default GCC 2.8.1;
+both basic profiles match it. The other five use basic DOS GCC. All use
+`-quiet -O2 -G0` without extra flags, bindings, constraints, volatile views or
+reservations. Three wrappers have natural 24-byte frames; three leaves have
+zero-byte frames.
+
+The reset's final ordinary C initializes scratch/fill before its loop variables;
+cumulative removal eliminated every provisional aid. Its 120 descending stores
+end at `0x800FB5D0`, with the unused next address represented as integer arithmetic
+to avoid a before-array pointer. The selector helper retains three ordered byte
+stores; the clamp narrows the actual bound register to unsigned low 16 bits before
+its signed comparisons/negation. The conditional wrappers preserve callback and
+register chronology without inventing unused arguments or historical return
+contracts. Layouts, ownership, valid domains and original APIs remain provisional.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:

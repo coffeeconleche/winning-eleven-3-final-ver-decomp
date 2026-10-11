@@ -1957,6 +1957,41 @@ of known inventory, with 1,270 assembly-backed. Overlays remain 371/412 (90.0%);
 these are not whole-game or effort percentages, and the native-PC lane is unstarted.
 All six targets are completed, not available assignments.
 
+### 180-function resident run: group 4
+
+Each worker continued from its own verified group-3 commit (34 resident C).
+Root integrated in order, checked unchanged source blobs and rebuilt/audited
+the complete resident after every pick:
+
+| Function | Bytes | Integrated commit | Measured behavior |
+|---|---:|---|---|
+| `func_80059E4C` | 48 | `2a3db29` | Call helper(3), then dispatch DFB only for a nonzero result |
+| `func_8005A4C4` | 48 | `7c0c2f7` | Dispatch 51C unless scratch mode equals 5 |
+| `func_8006F84C` | 48 | `836e8ce` | Store one low byte at offsets 18, 17 and 16 of a 40-byte-stride entry, return 1 |
+| `func_800898D0` | 48 | `8bfa796` | Conditionally invoke the accepted byte setter with 10 after helper(0) |
+| `func_80089BD8` | 48 | `62b0d0c` | Perform 120 descending 7FFF halfword stores, then clear scratch halfword 288 and byte 2C0 |
+| `func_80094444` | 48 | `2e6581a` | Clamp a signed word to plus/minus its unsigned low-halfword bound |
+
+The reset uses default GCC 2.8.1 (both basic profiles match); the other five
+use DOS GCC 2.7.2, all with `-quiet -O2 -G0`. All final sources are ordinary C:
+no extra flags or matching aids. Natural frames are 24 bytes for the three
+wrappers and zero for the three leaves. The reset's provisional aids were all
+removed cumulatively; its unused terminal address remains integer arithmetic.
+Layouts, domains, callback APIs and original return contracts remain provisional.
+
+Workers passed fresh baseline, independent original ASM/retail/standalone and
+full-linked byte comparisons, C/assembly-only/restored resident builds and
+18 tests. Root's final combined resident modes, original uncached five overlays
+and 18 tests pass with unchanged complete hashes/sizes. Both compiler-map
+conflicts retained all verified entries. Original ASM, inputs, storage, placement
+and expected hashes were untouched.
+
+This 288-byte group completes 24/180 additional functions. Snapshot `2e6581a`
+has 421 matches (371 overlay, 50 resident): 421/1,685 (25.0%) of known inventory,
+with 1,264 assembly-backed. Overlays remain 371/412 (90.0%). These are not
+whole-game or effort percentages; the native-PC lane remains unstarted.
+All six targets are completed, not available assignments.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 
