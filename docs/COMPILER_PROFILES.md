@@ -901,6 +901,15 @@ receipt. A fresh after-commit recheck of its immutable 33-C parent passed with a
 zero, full retail byte equality and frozen parent-source evidence; it does not recreate
 the missing historical pre-commit receipt.
 
+Resident 90-function run round 3 adds 120 matching bytes:
+
+All six are ordinary ordered packet-byte setters with no matching aids or extra flags.
+ADD44 uses the basic DOS profile; the other five use basic GCC281. ADD58's initial
+resident-only caller inventory was corrected before integration to include two overlay
+callers, with argument/result flow inspected and unchanged source/byte evidence. Proved
+byte offsets are partial access views, not recovered complete packet types or historical
+APIs.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:

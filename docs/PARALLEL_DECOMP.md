@@ -3057,6 +3057,44 @@ Snapshot `9bd6461`: 589 matching functions (371 overlay, 218 resident),
 Overlays remain 371/412; native-PC work has not started. These are function-count
 percentages, not whole-game discovery or development-effort percentages.
 
+### 90-function resident run: round 3
+
+Workers used separate 34-function resident C baselines; historical
+baseline receipts do not uniformly include source hashes or precise timing.
+Missing historical evidence is not reconstructed from candidate receipts.
+Root reviewed source, profiles and evidence, preserved source blobs, and freshly
+recompiled each function against original ASM and retail bytes before the
+complete combined six-function build and independent audit.
+
+| Function | Bytes | Integrated commit | Compiler | Frame |
+|---|---:|---|---|---:|
+| `func_800ADD08` | 20 | `5e1731b` | gcc281 | 0 |
+| `func_800ADD1C` | 20 | `38a5424` | gcc281 | 0 |
+| `func_800ADD30` | 20 | `c70c488` | gcc281 | 0 |
+| `func_800ADD44` | 20 | `abdd696` | gcc272-dos | 0 |
+| `func_800ADD58` | 20 | `9bff3a3` | gcc281 | 0 |
+| `func_800ADD6C` | 20 | `f4a7e79` | gcc281 | 0 |
+
+All six are ordinary ordered packet-byte setters with no matching aids or extra flags.
+ADD44 uses the basic DOS profile; the other five use basic GCC281. ADD58's initial
+resident-only caller inventory was corrected before integration to include two overlay
+callers, with argument/result flow inspected and unchanged source/byte evidence. Proved
+byte offsets are partial access views, not recovered complete packet types or historical
+APIs.
+
+Worker five-view comparisons cover annotated and independently assembled original
+instructions, retail slices, relocated compiled C and full-linked C. Root passed
+the original uncached full-C, assembly-only and restored-C resident modes, all
+five overlays and all 18 tests. Full image bytes, hashes and sizes are unchanged.
+Original ASM, inputs, storage and placement remain unchanged; complete gameplay
+meaning, object layouts and nested or indirect APIs are not claimed.
+
+This 120-byte round brings the new run to 18/90 additional functions.
+Snapshot `f4a7e79`: 595 matching functions (371 overlay, 224 resident),
+595/1,685 (35.3%) of the known inventory; 1090 remain assembly-backed.
+Overlays remain 371/412; native-PC work has not started. These are function-count
+percentages, not whole-game discovery or development-effort percentages.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 
