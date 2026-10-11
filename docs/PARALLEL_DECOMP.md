@@ -2720,6 +2720,45 @@ Overlays remain 371/412 (90.0%), with 41 remaining. These are not whole-game or
 effort percentages; the native-PC lane remains unstarted. All six targets are
 completed, not available assignments.
 
+### 180-function resident run: group 25
+
+Each worker continued from its own verified prior-group commit (55 resident C).
+Root reviewed all six source/compiler changes, preserved their source blobs and
+commit order, and rebuilt and independently audited the resident after each
+serial integration. The accepted functions are:
+
+| Function | Bytes | Integrated commit |
+|---|---:|---|
+| `func_8007CEDC` | 160 | `813fde0` |
+| `func_80087AB8` | 160 | `9e414ee` |
+| `func_80087B58` | 160 | `9590319` |
+| `func_8005B864` | 164 | `e8ddb1a` |
+| `func_8001CF5C` | 168 | `f6d20df` |
+| `func_8004FAC0` | 168 | `44a2407` |
+
+All six use basic DOS GCC. Only func_80087AB8 retains one empty input of the existing data
+pointer on its false-flag branch; other sources are ordinary C without matching aids.
+Frames are 24/0/0/32/72/72 bytes. func_8005B864 preserves the captured phase/update and
+defined wrapping helper-word additions before halfword stores. func_8001CF5C retains
+twelve measured incoming word/low-width views and its sixteen outgoing slots, forwarding
+the third word unchanged. func_8004FAC0 compares the full signed state and uses defined
+full-word unsigned subtraction/multiplication, narrowing only the calculated shade rather
+than the incoming state. APIs, layouts and domains remain provisional.
+
+Workers passed fresh baselines, independent annotated/assembled original ASM,
+retail, standalone and full-linked byte comparisons, complete C/assembly-only/
+restored resident modes and 18 tests. Root passed the combined resident modes,
+original uncached five-overlay build and all 18 tests, with unchanged complete
+image hashes and sizes. Original ASM, inputs, storage, placement and expected
+hashes remain unchanged; compiler-map conflicts retain all justified additions.
+
+This 980-byte group brings the run to 150/180 additional functions.
+Snapshot `44a2407` records 547 matches (371 overlay, 176 resident):
+547/1,685 (32.5%) of known inventory, with 1138 assembly-backed.
+Overlays remain 371/412 (90.0%), with 41 remaining. These are not whole-game or
+effort percentages; the native-PC lane remains unstarted. All six targets are
+completed, not available assignments.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 

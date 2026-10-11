@@ -795,6 +795,17 @@ no-storage numeric pointer-slot view preserves the physical post-store pointer r
 without volatility or a matching constraint. func_80050140's request (16,1) and measured
 64-byte passed buffer do not establish a full buffer format/capacity contract.
 
+Resident run group 25 adds 980 matching bytes:
+
+All six use basic DOS GCC. Only func_80087AB8 retains one empty input of the existing data
+pointer on its false-flag branch; other sources are ordinary C without matching aids.
+Frames are 24/0/0/32/72/72 bytes. func_8005B864 preserves the captured phase/update and
+defined wrapping helper-word additions before halfword stores. func_8001CF5C retains
+twelve measured incoming word/low-width views and its sixteen outgoing slots, forwarding
+the third word unchanged. func_8004FAC0 compares the full signed state and uses defined
+full-word unsigned subtraction/multiplication, narrowing only the calculated shade rather
+than the incoming state. APIs, layouts and domains remain provisional.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:
