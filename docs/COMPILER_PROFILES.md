@@ -600,6 +600,22 @@ its signed comparisons/negation. The conditional wrappers preserve callback and
 register chronology without inventing unused arguments or historical return
 contracts. Layouts, ownership, valid domains and original APIs remain provisional.
 
+The fifth group adds 320 bytes: `func_8004A07C`, `func_8004FCE0`,
+`func_80067F78`, `func_8006F1EC`, `func_8009568C` (52 bytes each), and
+`func_80049D58` (60). All six use basic `gcc272-dos -quiet -O2 -G0`
+without extra flags, bindings, constraints, volatile accesses or reservations.
+The callback wrapper has a natural 24-byte frame; the five leaves have none.
+
+The conditional lookups preserve selected-source access and unsigned-byte
+results, without claiming table extents or selector domains. The reset retains
+18 ordered stride-90 clears and its final separate clear. The classifier keeps
+sentinel 255 distinct from the remaining 0/1 predicates. Scratch and halfword
+stores occur before the callback; the state predicate preserves short-circuit
+reads (all 65,536 byte pairs were checked). The interleaved lookup retains both
+record captures and its conditional companion-byte access. Numeric scratch
+views allocate no storage; full layouts, APIs and gameplay meanings remain
+provisional. Complete independent byte and unchanged-image gates still apply.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:
