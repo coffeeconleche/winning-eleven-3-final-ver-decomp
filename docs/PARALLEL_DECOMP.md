@@ -3210,6 +3210,46 @@ Snapshot `9c2e8c8`: 613 matching functions (371 overlay, 242 resident),
 Overlays remain 371/412; native-PC work has not started. These are function-count
 percentages, not whole-game discovery or development-effort percentages.
 
+### 90-function resident run: round 7
+
+Workers used separate 38-function resident C baselines; historical
+baseline receipts do not uniformly include source hashes or precise timing.
+Missing historical evidence is not reconstructed from candidate receipts.
+Root reviewed source, profiles and evidence, preserved source blobs, and freshly
+recompiled each function against original ASM and retail bytes before the
+complete combined six-function build and independent audit.
+
+| Function | Bytes | Integrated commit | Compiler | Frame |
+|---|---:|---|---|---:|
+| `func_800ADCA0` | 24 | `b1e4fc0` | gcc281 | 0 |
+| `func_800AF9EC` | 24 | `7a211c9` | gcc281 | 0 |
+| `func_800C3FB0` | 24 | `646289b` | gcc281 | 0 |
+| `func_800C546C` | 24 | `90c0751` | gcc272-dos | 0 |
+| `func_800ADC40` | 60 | `65a466a` | gcc281 | 0 |
+| `func_800ADBCC` | 28 | `f7799ab` | gcc281 | 0 |
+
+ADC40 retains one initialized low-mask a3 binding. Either initial mask binding could be
+removed separately while matching, but their joint removal fails; only one was retained
+and its final removal fails. It preserves the tag reread after a potentially aliasing tail
+store. The other five have no allocation aids. C546C uses basic DOS GCC and a volatile
+pointee for the initialized hardware status port; AF9EC's unnecessary qualifier was
+removed, and native ports must model hardware reads explicitly. All others use basic
+GCC281. AA9CC remains assembly-backed after ORI/GP-address mismatch and is replaced by
+ADC40; no complete dispatch lifecycle or historical API is claimed.
+
+Worker five-view comparisons cover annotated and independently assembled original
+instructions, retail slices, relocated compiled C and full-linked C. Root passed
+the original uncached full-C, assembly-only and restored-C resident modes, all
+five overlays and all 18 tests. Full image bytes, hashes and sizes are unchanged.
+Original ASM, inputs, storage and placement remain unchanged; complete gameplay
+meaning, object layouts and nested or indirect APIs are not claimed.
+
+This 184-byte round brings the new run to 42/90 additional functions.
+Snapshot `f7799ab`: 619 matching functions (371 overlay, 248 resident),
+619/1,685 (36.7%) of the known inventory; 1066 remain assembly-backed.
+Overlays remain 371/412; native-PC work has not started. These are function-count
+percentages, not whole-game discovery or development-effort percentages.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 

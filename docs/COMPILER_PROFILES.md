@@ -938,6 +938,17 @@ preserves target signed right shift and unsigned left shift. B700C and BB218 rem
 unmatched and uncounted, replaced by BC628 and ADFD4; instruction-copy fallback C5C54 was
 skipped.
 
+Resident 90-function run round 7 adds 184 matching bytes:
+
+ADC40 retains one initialized low-mask a3 binding. Either initial mask binding could be
+removed separately while matching, but their joint removal fails; only one was retained
+and its final removal fails. It preserves the tag reread after a potentially aliasing tail
+store. The other five have no allocation aids. C546C uses basic DOS GCC and a volatile
+pointee for the initialized hardware status port; AF9EC's unnecessary qualifier was
+removed, and native ports must model hardware reads explicitly. All others use basic
+GCC281. AA9CC remains assembly-backed after ORI/GP-address mismatch and is replaced by
+ADC40; no complete dispatch lifecycle or historical API is claimed.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:
