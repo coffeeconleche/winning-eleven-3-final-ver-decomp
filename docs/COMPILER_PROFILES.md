@@ -736,6 +736,14 @@ need no frame aid; func_8006F290's compound assignment naturally reproduces the 
 RA-only frame after its trial reservation was removed. Historical frame purpose and
 complete helper APIs remain unknown.
 
+Resident run group 18 adds 768 matching bytes:
+
+All six use basic DOS GCC and ordinary C without matching aids. Measured frames are
+40/0/0/24/24/24 bytes in table order. func_8006F360's actual mixed-width local argument
+retains untouched padding; 65536 cases and the inspected callee's accesses were checked.
+Its padding/layout view is not a recovered historical structure contract. No frame
+reservation, emitted assembly or new storage is introduced.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:
