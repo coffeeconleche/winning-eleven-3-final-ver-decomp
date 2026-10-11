@@ -876,6 +876,18 @@ as an unsigned result. The 59D84 caller coverage is the approved complete
 callsite/register-flow/result-use audit, not every whole large caller body or recovered
 indirect API. Complete original layouts and APIs remain provisional.
 
+Resident 90-function run round 1 adds 116 matching bytes:
+
+AD088 retains an initialized high-address $1 binding and an empty identity of that actual
+base; individual and joint removals fail. The other five have no matching aids. BA798 uses
+the basic DOS compiler and forwards four incoming words through the partial callback
+table; the others use basic GCC281. AA7B4 remains assembly-backed: its GP-relative access
+needs unsupported infrastructure, so BA798 replaces it. First-slot worker2 exits were
+observed directly and logs/proofs persisted before status-array recording was added.
+Worker3's first wrapper failed only in metadata writing after successful gates and git
+commit; recovery rechecked five views and tests, with the original failure preserved.
+Rejected mutated baselines were rerun unchanged before acceptance.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:

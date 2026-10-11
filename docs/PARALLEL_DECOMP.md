@@ -2974,6 +2974,47 @@ Overlays remain 371/412 (90.0%), with 41 remaining. These are not whole-game or
 effort percentages; the native-PC lane remains unstarted. All six targets are
 completed, not available assignments.
 
+### 90-function resident run: round 1
+
+Workers used separate 32-function resident C baselines; historical
+baseline receipts do not uniformly include source hashes or precise timing.
+Missing historical evidence is not reconstructed from candidate receipts.
+Root reviewed source, profiles and evidence, preserved source blobs, and freshly
+recompiled each function against original ASM and retail bytes before the
+complete combined six-function build and independent audit.
+
+| Function | Bytes | Integrated commit | Compiler | Frame |
+|---|---:|---|---|---:|
+| `func_80052714` | 12 | `744d503` | gcc281 | 0 |
+| `func_800AD088` | 12 | `252baa3` | gcc281 | 0 |
+| `func_800B6EB8` | 12 | `f4f81d9` | gcc281 | 0 |
+| `func_800BA798` | 48 | `20d5eec` | gcc272-dos | 24 |
+| `func_800AD094` | 16 | `8eca29d` | gcc281 | 0 |
+| `func_800AE42C` | 16 | `d9f7e1b` | gcc281 | 0 |
+
+AD088 retains an initialized high-address $1 binding and an empty identity of that actual
+base; individual and joint removals fail. The other five have no matching aids. BA798 uses
+the basic DOS compiler and forwards four incoming words through the partial callback
+table; the others use basic GCC281. AA7B4 remains assembly-backed: its GP-relative access
+needs unsupported infrastructure, so BA798 replaces it. First-slot worker2 exits were
+observed directly and logs/proofs persisted before status-array recording was added.
+Worker3's first wrapper failed only in metadata writing after successful gates and git
+commit; recovery rechecked five views and tests, with the original failure preserved.
+Rejected mutated baselines were rerun unchanged before acceptance.
+
+Worker five-view comparisons cover annotated and independently assembled original
+instructions, retail slices, relocated compiled C and full-linked C. Root passed
+the original uncached full-C, assembly-only and restored-C resident modes, all
+five overlays and all 18 tests. Full image bytes, hashes and sizes are unchanged.
+Original ASM, inputs, storage and placement remain unchanged; complete gameplay
+meaning, object layouts and nested or indirect APIs are not claimed.
+
+This 116-byte round brings the new run to 6/90 additional functions.
+Snapshot `d9f7e1b`: 583 matching functions (371 overlay, 212 resident),
+583/1,685 (34.6%) of the known inventory; 1102 remain assembly-backed.
+Overlays remain 371/412; native-PC work has not started. These are function-count
+percentages, not whole-game discovery or development-effort percentages.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 
