@@ -888,6 +888,19 @@ Worker3's first wrapper failed only in metadata writing after successful gates a
 commit; recovery rechecked five views and tests, with the original failure preserved.
 Rejected mutated baselines were rerun unchanged before acceptance.
 
+Resident 90-function run round 2 adds 172 matching bytes:
+
+C0B78 retains an initialized high-page $1 binding and one empty input of that real page;
+all individual and joint retained-aid removals fail. The other five have no matching aids.
+989B4 uses a no-storage fixed scratch-halfword view. 989B4 and AD1D4 use basic DOS GCC;
+the other four use basic GCC281. AD1D4 forwards the original four incoming words to its
+first BIOS wrapper; nested callbacks remain provisional. A96EC and A9700 remain uncounted
+after reasoned unmatched ORI/source-shape probes; AF1FC and AD1D4 replace them
+respectively. B6E88 has a preserved historical baseline log but no persisted baseline exit
+receipt. A fresh after-commit recheck of its immutable 33-C parent passed with actual exit
+zero, full retail byte equality and frozen parent-source evidence; it does not recreate
+the missing historical pre-commit receipt.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:
