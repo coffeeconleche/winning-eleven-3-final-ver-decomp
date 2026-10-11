@@ -222,6 +222,7 @@ PER_FUNC_COMPILERS: dict[str, str] = {
     "func_80087AB8": "gcc272-dos",
     "func_8009CF84": "gcc272-dos",
     "func_8009D444": "gcc272-dos",
+    "func_8009F574": "gcc272-dos",
     "func_8009F62C": "gcc272-dos",
     "func_8009FDC8": "gcc272-dos",
     "func_8009D3C8": "gcc272-dos",
@@ -635,6 +636,8 @@ PER_FUNC_CC1_FLAGS = {
     # Avoid the measured second-cursor induction rewrite (88 -> 80 bytes).
     "func_8006F310": ["-quiet", "-O2", "-G0", "-fno-strength-reduce"],
     "func_8009E244": ["-quiet", "-O2", "-G0", "-fno-schedule-insns"],
+    # Retain one record cursor (measured 200 -> 184 bytes with physical reads).
+    "func_8009F574": ["-quiet", "-O2", "-G0", "-fno-strength-reduce"],
     # Retain the single measured record cursor rather than a second induction.
     "func_8009F62C": ["-quiet", "-O2", "-G0", "-fno-strength-reduce"],
     "func_800537D0": ["-quiet", "-O2", "-G0", "-fno-schedule-insns", "-fno-schedule-insns2"],
