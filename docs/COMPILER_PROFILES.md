@@ -806,6 +806,20 @@ the third word unchanged. func_8004FAC0 compares the full signed state and uses 
 full-word unsigned subtraction/multiplication, narrowing only the calculated shade rather
 than the incoming state. APIs, layouts and domains remain provisional.
 
+Resident run group 26 adds 1112 matching bytes:
+
+All six use basic DOS GCC. func_80068FC0 retains two actual magnitude/first-word bindings
+and one tied magnitude identity consuming the first word; all seven
+individual/related/cumulative removal probes fail. func_8004840C retains one empty memory
+scheduling boundary; pointer inputs/outputs were removed and dropping the boundary or
+clobber fails byte comparison. func_80049778 retains only its actual base-address a1
+binding. The other three use ordinary C without aids. These constraints emit no
+instructions; original frame purposes, layouts and APIs remain provisional. Unresolved
+53728 and 6DA9C remain assembly-backed and uncounted, replaced by verified 68FC0 and
+495B8. The latter preserves callback-relative selector/scratch rereads and defined
+low-word squared-sum arithmetic without assuming binary selectors. Group size is 1112
+bytes after replacements.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:

@@ -2759,6 +2759,52 @@ Overlays remain 371/412 (90.0%), with 41 remaining. These are not whole-game or
 effort percentages; the native-PC lane remains unstarted. All six targets are
 completed, not available assignments.
 
+### 180-function resident run: group 26
+
+Each worker continued from its own verified prior-group commit (56 resident C).
+Root reviewed all six source/compiler changes, preserved their source blobs and
+commit order, and rebuilt and independently audited the resident after each
+serial integration. The accepted functions are:
+
+| Function | Bytes | Integrated commit |
+|---|---:|---|
+| `func_80068FC0` | 212 | `1381af5` |
+| `func_80068040` | 168 | `c234a4d` |
+| `func_8004840C` | 172 | `e80c113` |
+| `func_80057968` | 172 | `28d9419` |
+| `func_800495B8` | 212 | `23403d3` |
+| `func_80049778` | 176 | `ae1f6bf` |
+
+All six use basic DOS GCC. func_80068FC0 retains two actual magnitude/first-word bindings
+and one tied magnitude identity consuming the first word; all seven
+individual/related/cumulative removal probes fail. func_8004840C retains one empty memory
+scheduling boundary; pointer inputs/outputs were removed and dropping the boundary or
+clobber fails byte comparison. func_80049778 retains only its actual base-address a1
+binding. The other three use ordinary C without aids. These constraints emit no
+instructions; original frame purposes, layouts and APIs remain provisional. Unresolved
+53728 and 6DA9C remain assembly-backed and uncounted, replaced by verified 68FC0 and
+495B8. The latter preserves callback-relative selector/scratch rereads and defined
+low-word squared-sum arithmetic without assuming binary selectors. Group size is 1112
+bytes after replacements.
+
+Workers passed fresh baselines, independent annotated/assembled original ASM,
+retail, standalone and full-linked byte comparisons, complete C/assembly-only/
+restored resident modes and 18 tests. Root passed the combined resident modes,
+original uncached five-overlay build and all 18 tests, with unchanged complete
+image hashes and sizes. Original ASM, inputs, storage, placement and expected
+hashes remain unchanged; compiler-map conflicts retain all justified additions.
+
+This 1112-byte group brings the run to 156/180 additional functions.
+Snapshot `ae1f6bf` records 553 matches (371 overlay, 182 resident):
+553/1,685 (32.8%) of known inventory, with 1132 assembly-backed.
+Overlays remain 371/412 (90.0%), with 41 remaining. These are not whole-game or
+effort percentages; the native-PC lane remains unstarted. All six targets are
+completed, not available assignments.
+
+At the user's request, this run stopped after group 26: 156 additional resident
+functions were integrated and pushed. Groups 27–30 were not integrated or
+pushed; their local worker commits and research are preserved.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 
