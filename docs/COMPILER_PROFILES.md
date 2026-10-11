@@ -657,6 +657,15 @@ Capture-before-store, ordered global clears, callback-relative byte reads and fu
 result-register residues remain explicit; complete layouts, domains and original APIs are
 provisional.
 
+Resident run group 9 adds 436 matching bytes:
+
+func_8005BD1C uses the default GCC 2.8.1 profile without an override or matching aids. The
+other five use basic DOS GCC. Only func_80067E34 has one empty control fence and
+func_800526C8 two extended empty fences; their individual and joint removals fail. The
+latter's trial predicate binding and input were removed jointly. The other four have no
+matching aids. These sites emit no instructions or extra accesses; APIs and complete
+layouts remain provisional.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:
