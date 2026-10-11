@@ -632,6 +632,22 @@ wrapper stores a signed scratch halfword before forwarding signed/unsigned
 low-halfword arguments and returning the helper's low byte. Access views add
 no storage; complete layouts, domains, ownership and APIs remain provisional.
 
+The seventh group adds 388 bytes: `func_8004ED28`, `func_80050888`,
+`func_8005A72C`, `func_800659E0`, `func_800807B0` (64 bytes each), and
+`func_800597C8` (68). The halfword lookup uses default GCC 2.8.1 (both basic
+profiles match); the other five use DOS GCC 2.7.2. All use `-quiet -O2 -G0`
+without extra flags. Three wrappers have natural 24-byte frames; three leaves
+have none.
+
+Only `func_800659E0` retains matching aids: two empty control fences keep its
+measured return branches. Removing the first, second or both gives 52, 56 or
+44 bytes instead of 64; ordinary/profile probes also failed. No instructions,
+memory accesses, bindings, clobbers or reservations are emitted by these fences.
+The other five sources are ordinary C without aids. Word updates use explicit
+unsigned wrapping; the lookup narrows before indexing; callbacks preserve
+ordered pre/post-call field reads and stores, low-byte stores and full result
+register residue. Table extents, layouts, helper APIs and meanings are provisional.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:

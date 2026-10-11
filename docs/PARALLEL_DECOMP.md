@@ -2061,6 +2061,42 @@ of known inventory, with 1,252 assembly-backed. Overlays remain 371/412 (90.0%).
 These are not whole-game or effort percentages; the native-PC lane is unstarted.
 All six targets are completed, not available assignments.
 
+### 180-function resident run: group 7
+
+Workers continued from their own verified group-6 commits (37 resident C).
+Root kept their source blobs unchanged and ran complete resident builds and
+independent audits after each serial integration:
+
+| Function | Bytes | Integrated commit | Measured behavior |
+|---|---:|---|---|
+| `func_8004ED28` | 64 | `830ab6f` | Add 20 times the low-byte input to a wrapping scratch word, then apply its signed 900 cap |
+| `func_80050888` | 64 | `dd95156` | Copy a selected six-halfword-stride table entry to scratch halfword 00E |
+| `func_8005A72C` | 64 | `47cbe03` | Clear two record halves, store helper(10)'s low byte, then clear two record bytes |
+| `func_800659E0` | 64 | `508b4ca` | Compare membership of the record byte and low-byte selector in the below-12 range |
+| `func_800807B0` | 64 | `0eae418` | Pass captured record bytes and the low input byte to a helper, then store its low byte twice |
+| `func_800597C8` | 68 | `905259a` | Select helper(3) or helper(5), add a wrapping word offset, then dispatch |
+
+The table lookup uses default GCC 2.8.1 (both basic profiles match); five use
+basic DOS GCC. All use `-quiet -O2 -G0`, without extra flags. Only the membership
+predicate retains two empty control fences: single and joint removal tests fail
+at 52/56/44 bytes instead of 64. They emit no instructions or accesses; no
+bindings, clobbers or reservations remain. Other sources are ordinary C with
+natural 24-byte wrapper or zero-byte leaf frames. APIs, layouts, ownership,
+selector domains and original return contracts remain provisional.
+
+Workers passed fresh baselines, independent annotated/assembled original ASM,
+retail, standalone and full-linked byte comparisons, complete C/assembly-only/
+restored resident modes and 18 tests. One compiler-map conflict retained all
+verified entries. This checkpoint passed combined resident modes, original
+uncached five overlays and 18 tests with unchanged complete hashes/sizes.
+Original ASM, inputs, storage, placement and expected hashes are untouched.
+
+This 388-byte group brings the run to 42/180 additional functions. Snapshot
+`905259a` has 439 matches (371 overlay, 68 resident): 439/1,685 (26.1%) of
+known inventory, with 1,246 assembly-backed. Overlays remain 371/412 (90.0%);
+these are not whole-game or effort percentages, and the native-PC lane is unstarted.
+All six targets are completed, not available assignments.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 
