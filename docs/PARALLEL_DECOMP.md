@@ -2501,6 +2501,41 @@ Overlays remain 371/412 (90.0%), with 41 remaining. These are not whole-game or
 effort percentages; the native-PC lane remains unstarted. All six targets are
 completed, not available assignments.
 
+### 180-function resident run: group 19
+
+Each worker continued from its own verified prior-group commit (49 resident C).
+Root reviewed all six source/compiler changes, preserved their source blobs and
+commit order, and rebuilt and independently audited the resident after each
+serial integration. The accepted functions are:
+
+| Function | Bytes | Integrated commit |
+|---|---:|---|
+| `func_80083EE8` | 128 | `0fbf23b` |
+| `func_8009D444` | 128 | `1cffd84` |
+| `func_80049828` | 132 | `f46962d` |
+| `func_8005715C` | 132 | `b6d7e7f` |
+| `func_8005A218` | 132 | `2b877d7` |
+| `func_8005A4FC` | 132 | `0e57c74` |
+
+All six use basic DOS GCC and ordinary C without matching aids, with natural 24-byte
+frames. Partial access views retain original widths, callback chronology and
+result-register behavior without claiming full historical APIs, layouts or gameplay
+meanings.
+
+Workers passed fresh baselines, independent annotated/assembled original ASM,
+retail, standalone and full-linked byte comparisons, complete C/assembly-only/
+restored resident modes and 18 tests. Root passed the combined resident modes,
+original uncached five-overlay build and all 18 tests, with unchanged complete
+image hashes and sizes. Original ASM, inputs, storage, placement and expected
+hashes remain unchanged; compiler-map conflicts retain all justified additions.
+
+This 784-byte group brings the run to 114/180 additional functions.
+Snapshot `0e57c74` records 511 matches (371 overlay, 140 resident):
+511/1,685 (30.3%) of known inventory, with 1174 assembly-backed.
+Overlays remain 371/412 (90.0%), with 41 remaining. These are not whole-game or
+effort percentages; the native-PC lane remains unstarted. All six targets are
+completed, not available assignments.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 

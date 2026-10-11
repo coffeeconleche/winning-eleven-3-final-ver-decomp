@@ -744,6 +744,13 @@ retains untouched padding; 65536 cases and the inspected callee's accesses were 
 Its padding/layout view is not a recovered historical structure contract. No frame
 reservation, emitted assembly or new storage is introduced.
 
+Resident run group 19 adds 784 matching bytes:
+
+All six use basic DOS GCC and ordinary C without matching aids, with natural 24-byte
+frames. Partial access views retain original widths, callback chronology and
+result-register behavior without claiming full historical APIs, layouts or gameplay
+meanings.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:
