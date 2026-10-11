@@ -726,6 +726,16 @@ complementary signed-halfword interpolation divided by 100 with the weight clamp
 0..100; it is not a mask helper. Defined word arithmetic and exhaustive/boundary numerator
 checks preserve measured narrowing. Original complete layouts and APIs remain provisional.
 
+Resident run group 17 adds 756 matching bytes:
+
+All six use basic DOS GCC. Only func_8009D3C8 retains two identities of initialized record
+pointers; func_8003DB08 retains two actual depth identities and a matching-only 16-byte
+reservation for the observed 40-byte frame. Individual/related removal tests fail. The
+other four have no aids. func_8006FF48's byte-typed shade and actual sixteen-word call
+need no frame aid; func_8006F290's compound assignment naturally reproduces the 32-byte
+RA-only frame after its trial reservation was removed. Historical frame purpose and
+complete helper APIs remain unknown.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:
