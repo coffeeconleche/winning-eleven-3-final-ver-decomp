@@ -2097,6 +2097,43 @@ known inventory, with 1,246 assembly-backed. Overlays remain 371/412 (90.0%);
 these are not whole-game or effort percentages, and the native-PC lane is unstarted.
 All six targets are completed, not available assignments.
 
+### 180-function resident run: group 8
+
+Each worker continued from its own verified prior-group commit (38 resident C).
+Root reviewed all six source/compiler changes, preserved their source blobs and
+commit order, and rebuilt and independently audited the resident after each
+serial integration. The accepted functions are:
+
+| Function | Bytes | Integrated commit |
+|---|---:|---|
+| `func_800667E8` | 68 | `6a54d34` |
+| `func_8006FFC4` | 68 | `d363f10` |
+| `func_80096050` | 68 | `87d954b` |
+| `func_80097D6C` | 68 | `d59e6ad` |
+| `func_8004FD14` | 72 | `9f4e7bf` |
+| `func_80059D3C` | 72 | `d699b31` |
+
+All six use basic gcc272-dos quiet/O2/G0. Only func_8006FFC4 retains matching aids: its
+actual secondary-byte v1 capture binding and one empty actual-value input on the equality
+path; individual and joint removals fail. The other five use ordinary C without aids.
+Capture-before-store, ordered global clears, callback-relative byte reads and full
+result-register residues remain explicit; complete layouts, domains and original APIs are
+provisional.
+
+Workers passed fresh baselines, independent annotated/assembled original ASM,
+retail, standalone and full-linked byte comparisons, complete C/assembly-only/
+restored resident modes and 18 tests. Root passed the combined resident modes,
+original uncached five-overlay build and all 18 tests, with unchanged complete
+image hashes and sizes. Original ASM, inputs, storage, placement and expected
+hashes remain unchanged; compiler-map conflicts retain all justified additions.
+
+This 416-byte group brings the run to 48/180 additional functions.
+Snapshot `d699b31` records 445 matches (371 overlay, 74 resident):
+445/1,685 (26.4%) of known inventory, with 1240 assembly-backed.
+Overlays remain 371/412 (90.0%), with 41 remaining. These are not whole-game or
+effort percentages; the native-PC lane remains unstarted. All six targets are
+completed, not available assignments.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 

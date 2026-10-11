@@ -648,6 +648,15 @@ unsigned wrapping; the lookup narrows before indexing; callbacks preserve
 ordered pre/post-call field reads and stores, low-byte stores and full result
 register residue. Table extents, layouts, helper APIs and meanings are provisional.
 
+Resident run group 8 adds 416 matching bytes:
+
+All six use basic gcc272-dos quiet/O2/G0. Only func_8006FFC4 retains matching aids: its
+actual secondary-byte v1 capture binding and one empty actual-value input on the equality
+path; individual and joint removals fail. The other five use ordinary C without aids.
+Capture-before-store, ordered global clears, callback-relative byte reads and full
+result-register residues remain explicit; complete layouts, domains and original APIs are
+provisional.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:
