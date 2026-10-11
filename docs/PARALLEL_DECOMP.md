@@ -1923,6 +1923,40 @@ Known inventory progress is 409/1,685 (24.3%), with 1,276 assembly-backed functi
 Confirmed overlays remain 371/412 (90.0%). These are not whole-game or effort
 percentages; the native-PC lane is unstarted. All six targets are completed.
 
+### 180-function resident run: group 3
+
+Workers continued from their own verified group-2 commits (33 resident C),
+not the combined main checkout. Root preserved each worker's order and checked
+the complete resident image after each integration:
+
+| Function | Bytes | Integrated commit | Measured behavior |
+|---|---:|---|---|
+| `func_8006FA60` | 36 | `ec1bf9c` | Store a low byte at the selector's 40-byte stride, return 1 |
+| `func_8006FA84` | 36 | `1fc1492` | Store a low byte at a second 40-byte-stride field, return 1 |
+| `func_8009D35C` | 36 | `cb3d50d` | Unless scratch mode equals 9, clear record bytes 3E2 then 3E3 |
+| `func_8009D380` | 36 | `874c52a` | Unless scratch mode equals 8, perform the same ordered clears |
+| `func_8009D3A4` | 36 | `d1065b3` | Unless scratch mode equals 2, perform the same ordered clears |
+| `func_8009F554` | 32 | `b7b0488` | Store/reread halfwords 2 and 6, clear 4, then copy the captured values to 3BC/3BE |
+
+The mode-2 helper uses default GCC 2.8.1; the other five use basic DOS GCC
+2.7.2, all with `-quiet -O2 -G0` and zero-byte frames. Only the halfword helper
+needs aids: two minimized read-only volatile casts preserve physical rereads,
+not MMIO or general volatility. No bindings, empty constraints or reservations
+are needed. APIs, complete layouts and ownership remain provisional.
+
+Workers passed fresh baseline, independent original ASM/retail/standalone and
+full-linked byte checks, complete C/assembly-only/restored resident builds and
+18 tooling tests. Root's final combined resident modes, original uncached five
+overlays and 18 tests pass with unchanged complete hashes and sizes. Compiler-map
+conflicts retained all verified entries; original inputs/ASM/storage/placement
+and expected hashes were untouched.
+
+This 212-byte group completes 18/180 additional functions. Snapshot `b7b0488`
+records 415 matching functions (371 overlay, 44 resident): 415/1,685 (24.6%)
+of known inventory, with 1,270 assembly-backed. Overlays remain 371/412 (90.0%);
+these are not whole-game or effort percentages, and the native-PC lane is unstarted.
+All six targets are completed, not available assignments.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 

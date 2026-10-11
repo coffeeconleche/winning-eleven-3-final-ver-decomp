@@ -570,6 +570,19 @@ place, narrows `$a0`, and passes their word sum while preserving untouched
 contracts, table ownership and layouts remain provisional. All accepted code
 still requires independent bytes and unchanged complete-image gates.
 
+The third group adds 212 bytes: `func_8006FA60`, `func_8006FA84`,
+`func_8009D35C`, `func_8009D380`, `func_8009D3A4` (36 bytes each), and
+`func_8009F554` (32). The scratch comparison against 2 uses default
+`gcc281 -quiet -O2 -G0`; the other five use basic DOS GCC with the same flags.
+All have natural zero-byte frames and need no extra flags or allocation aids.
+The first five also need no volatile accesses. The halfword-copy helper retains
+two scoped volatile read casts: individual and combined removal fail to retain
+the measured physical rereads. Store-wide volatility was removed. These casts
+do not assert MMIO or general record volatility. Void views retain the three
+comparison constants in `$v0` without asserting historical return contracts;
+the halfword helper's word result models its first reread. Strides, offsets and
+access widths are evidenced, but complete layouts, ownership and APIs are not.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:
