@@ -616,6 +616,22 @@ record captures and its conditional companion-byte access. Numeric scratch
 views allocate no storage; full layouts, APIs and gameplay meanings remain
 provisional. Complete independent byte and unchanged-image gates still apply.
 
+The sixth group adds 364 bytes: `func_8006FAF4`, `func_8006FB90`,
+`func_8006FBCC`, `func_80089C70`, `func_80094474` (60 bytes each), and
+`func_800484B8` (64). All use basic `gcc272-dos -quiet -O2 -G0`, with
+ordinary C and no matching aids or extra flags. The two wrappers have natural
+24-byte frames; the four leaves have none.
+
+The setters narrow both selectors to bytes, load a pointer at a 40-byte
+stride, then store a byte at offsets `0x0A`, `0x03` or `0x04` of a
+12-byte-stride item.
+The dispatcher preserves all four incoming argument words. The clamp retains
+upper-first signed-low-halfword tests, including inverted bounds, and the
+observed raw result-register residue without claiming a return API. The last
+wrapper stores a signed scratch halfword before forwarding signed/unsigned
+low-halfword arguments and returning the helper's low byte. Access views add
+no storage; complete layouts, domains, ownership and APIs remain provisional.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:
