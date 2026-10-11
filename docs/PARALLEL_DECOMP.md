@@ -2571,6 +2571,42 @@ Overlays remain 371/412 (90.0%), with 41 remaining. These are not whole-game or
 effort percentages; the native-PC lane remains unstarted. All six targets are
 completed, not available assignments.
 
+### 180-function resident run: group 21
+
+Each worker continued from its own verified prior-group commit (51 resident C).
+Root reviewed all six source/compiler changes, preserved their source blobs and
+commit order, and rebuilt and independently audited the resident after each
+serial integration. The accepted functions are:
+
+| Function | Bytes | Integrated commit |
+|---|---:|---|
+| `func_8008820C` | 204 | `9dd80b2` |
+| `func_8001BD78` | 136 | `eea389d` |
+| `func_8002C204` | 136 | `7e221ed` |
+| `func_800537D0` | 140 | `2341293` |
+| `func_800571E0` | 140 | `7186b23` |
+| `func_800769C0` | 140 | `720a04e` |
+
+All six use DOS GCC and ordinary C without source matching aids. Only func_800537D0 adds
+the paired -fno-schedule-insns/-fno-schedule-insns2; either alone or neither fails. Other
+profiles are basic, and measured frames are 24/32/0/24/24/24 bytes. Unresolved
+func_8001BCF4 remains assembly-backed and uncounted; func_8008820C is its verified
+same-scope replacement. Original APIs and layouts remain provisional.
+
+Workers passed fresh baselines, independent annotated/assembled original ASM,
+retail, standalone and full-linked byte comparisons, complete C/assembly-only/
+restored resident modes and 18 tests. Root passed the combined resident modes,
+original uncached five-overlay build and all 18 tests, with unchanged complete
+image hashes and sizes. Original ASM, inputs, storage, placement and expected
+hashes remain unchanged; compiler-map conflicts retain all justified additions.
+
+This 896-byte group brings the run to 126/180 additional functions.
+Snapshot `720a04e` records 523 matches (371 overlay, 152 resident):
+523/1,685 (31.0%) of known inventory, with 1162 assembly-backed.
+Overlays remain 371/412 (90.0%), with 41 remaining. These are not whole-game or
+effort percentages; the native-PC lane remains unstarted. All six targets are
+completed, not available assignments.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 

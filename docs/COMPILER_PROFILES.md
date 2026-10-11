@@ -758,6 +758,14 @@ its actual masked value, with a zero-byte frame. The other five use ordinary C w
 aids; frames are 24 bytes except func_8004FC54's natural 32 bytes. No source instruction,
 reference hash, storage or linker placement is patched.
 
+Resident run group 21 adds 896 matching bytes:
+
+All six use DOS GCC and ordinary C without source matching aids. Only func_800537D0 adds
+the paired -fno-schedule-insns/-fno-schedule-insns2; either alone or neither fails. Other
+profiles are basic, and measured frames are 24/32/0/24/24/24 bytes. Unresolved
+func_8001BCF4 remains assembly-backed and uncounted; func_8008820C is its verified
+same-scope replacement. Original APIs and layouts remain provisional.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:
