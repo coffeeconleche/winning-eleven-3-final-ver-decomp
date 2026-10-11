@@ -3095,6 +3095,42 @@ Snapshot `f4a7e79`: 595 matching functions (371 overlay, 224 resident),
 Overlays remain 371/412; native-PC work has not started. These are function-count
 percentages, not whole-game discovery or development-effort percentages.
 
+### 90-function resident run: round 4
+
+Workers used separate 35-function resident C baselines; historical
+baseline receipts do not uniformly include source hashes or precise timing.
+Missing historical evidence is not reconstructed from candidate receipts.
+Root reviewed source, profiles and evidence, preserved source blobs, and freshly
+recompiled each function against original ASM and retail bytes before the
+complete combined six-function build and independent audit.
+
+| Function | Bytes | Integrated commit | Compiler | Frame |
+|---|---:|---|---|---:|
+| `func_800ADD80` | 20 | `f166a1b` | gcc281 | 0 |
+| `func_800ADD94` | 20 | `fc49d21` | gcc281 | 0 |
+| `func_800ADDA8` | 20 | `59aa11c` | gcc281 | 0 |
+| `func_800ADDBC` | 20 | `85b49e2` | gcc272-dos | 0 |
+| `func_800ADDD0` | 20 | `8f53e27` | gcc281 | 0 |
+| `func_800ADDE4` | 20 | `b0a0f7d` | gcc281 | 0 |
+
+All six are ordinary ordered packet-byte setters with no matching aids or extra flags.
+ADDBC uses basic DOS GCC; the other five use basic GCC281. Known caller dataflow and
+original bounds were inspected; complete packet layouts and historical APIs remain
+provisional.
+
+Worker five-view comparisons cover annotated and independently assembled original
+instructions, retail slices, relocated compiled C and full-linked C. Root passed
+the original uncached full-C, assembly-only and restored-C resident modes, all
+five overlays and all 18 tests. Full image bytes, hashes and sizes are unchanged.
+Original ASM, inputs, storage and placement remain unchanged; complete gameplay
+meaning, object layouts and nested or indirect APIs are not claimed.
+
+This 120-byte round brings the new run to 24/90 additional functions.
+Snapshot `b0a0f7d`: 601 matching functions (371 overlay, 230 resident),
+601/1,685 (35.7%) of the known inventory; 1084 remain assembly-backed.
+Overlays remain 371/412; native-PC work has not started. These are function-count
+percentages, not whole-game discovery or development-effort percentages.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 

@@ -910,6 +910,13 @@ callers, with argument/result flow inspected and unchanged source/byte evidence.
 byte offsets are partial access views, not recovered complete packet types or historical
 APIs.
 
+Resident 90-function run round 4 adds 120 matching bytes:
+
+All six are ordinary ordered packet-byte setters with no matching aids or extra flags.
+ADDBC uses basic DOS GCC; the other five use basic GCC281. Known caller dataflow and
+original bounds were inspected; complete packet layouts and historical APIs remain
+provisional.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:
