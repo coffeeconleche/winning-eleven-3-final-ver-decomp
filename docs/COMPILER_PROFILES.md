@@ -711,6 +711,13 @@ actual keyword, verified across 327724 unsigned cases. The other four use the ba
 profile and ordinary C without aids. Layouts, domains and complete original APIs remain
 provisional.
 
+Resident run group 15 adds 696 matching bytes:
+
+All six use basic DOS GCC. Only func_8006F220 retains an actual v1 capture binding and a
+matching-only scalar/memory reservation reproducing its measured 32-byte frame; individual
+and joint removals fail. The other five use ordinary C without aids. The reservation's
+historical purpose is unknown, and full layouts and APIs are not claimed.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:
