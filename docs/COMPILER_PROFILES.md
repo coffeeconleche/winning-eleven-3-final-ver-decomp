@@ -991,6 +991,16 @@ read and requires hardware adaptation for a native port. B01D0, A961C, AAC24 and
 remain assembly-backed after reasoned unmatched probes, replaced by AF198, BA738, ACFB4
 and AF2B4 respectively; ambiguous fallback C4DF8 was skipped.
 
+Resident 90-function run round 12 adds 232 matching bytes:
+
+All six have no matching aids or extra flags. B02C0, B7450, ADCB8 and ADCE0 use basic DOS
+GCC; AF2F4 and AF31C use basic GCC281. B02C0 remaps its third incoming word to the fourth
+helper argument with a zero third argument. B7450 preserves raw inherited a2/a3 in
+addition to its constant selector and remapped value. ADCB8/ADCE0 retain conditional byte
+reads and full-word flag tests. AF2F4/AF31C preserve their proved byte/word writes.
+Complete indirect APIs, packet layouts and historical return declarations remain
+provisional.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:

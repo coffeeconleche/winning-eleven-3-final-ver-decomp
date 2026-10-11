@@ -3408,6 +3408,45 @@ Snapshot `1902692`: 643 matching functions (371 overlay, 272 resident),
 Overlays remain 371/412; native-PC work has not started. These are function-count
 percentages, not whole-game discovery or development-effort percentages.
 
+### 90-function resident run: round 12
+
+Workers used separate 43-function resident C baselines; historical
+baseline receipts do not uniformly include source hashes or precise timing.
+Missing historical evidence is not reconstructed from candidate receipts.
+Root reviewed source, profiles and evidence, preserved source blobs, and freshly
+recompiled each function against original ASM and retail bytes before the
+complete combined six-function build and independent audit.
+
+| Function | Bytes | Integrated commit | Compiler | Frame |
+|---|---:|---|---|---:|
+| `func_800B02C0` | 36 | `19e9184` | gcc272-dos | 24 |
+| `func_800B7450` | 36 | `eab35f0` | gcc272-dos | 24 |
+| `func_800ADCB8` | 40 | `992aeae` | gcc272-dos | 0 |
+| `func_800ADCE0` | 40 | `5de2119` | gcc272-dos | 0 |
+| `func_800AF2F4` | 40 | `c781bb2` | gcc281 | 0 |
+| `func_800AF31C` | 40 | `2d4539f` | gcc281 | 0 |
+
+All six have no matching aids or extra flags. B02C0, B7450, ADCB8 and ADCE0 use basic DOS
+GCC; AF2F4 and AF31C use basic GCC281. B02C0 remaps its third incoming word to the fourth
+helper argument with a zero third argument. B7450 preserves raw inherited a2/a3 in
+addition to its constant selector and remapped value. ADCB8/ADCE0 retain conditional byte
+reads and full-word flag tests. AF2F4/AF31C preserve their proved byte/word writes.
+Complete indirect APIs, packet layouts and historical return declarations remain
+provisional.
+
+Worker five-view comparisons cover annotated and independently assembled original
+instructions, retail slices, relocated compiled C and full-linked C. Root passed
+the original uncached full-C, assembly-only and restored-C resident modes, all
+five overlays and all 18 tests. Full image bytes, hashes and sizes are unchanged.
+Original ASM, inputs, storage and placement remain unchanged; complete gameplay
+meaning, object layouts and nested or indirect APIs are not claimed.
+
+This 232-byte round brings the new run to 72/90 additional functions.
+Snapshot `2d4539f`: 649 matching functions (371 overlay, 278 resident),
+649/1,685 (38.5%) of the known inventory; 1036 remain assembly-backed.
+Overlays remain 371/412; native-PC work has not started. These are function-count
+percentages, not whole-game discovery or development-effort percentages.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 
