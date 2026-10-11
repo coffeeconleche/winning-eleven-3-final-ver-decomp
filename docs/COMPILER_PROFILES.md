@@ -718,6 +718,14 @@ matching-only scalar/memory reservation reproducing its measured 32-byte frame; 
 and joint removals fail. The other five use ordinary C without aids. The reservation's
 historical purpose is unknown, and full layouts and APIs are not claimed.
 
+Resident run group 16 adds 724 matching bytes:
+
+All six use basic DOS GCC and ordinary C without matching aids. func_8005A76C preserves
+signed-halfword weighted interpolation divided by 10. func_8005A7E4 preserves
+complementary signed-halfword interpolation divided by 100 with the weight clamped to
+0..100; it is not a mask helper. Defined word arithmetic and exhaustive/boundary numerator
+checks preserve measured narrowing. Original complete layouts and APIs remain provisional.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:

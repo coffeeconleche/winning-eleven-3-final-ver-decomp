@@ -2391,6 +2391,42 @@ Overlays remain 371/412 (90.0%), with 41 remaining. These are not whole-game or
 effort percentages; the native-PC lane remains unstarted. All six targets are
 completed, not available assignments.
 
+### 180-function resident run: group 16
+
+Each worker continued from its own verified prior-group commit (46 resident C).
+Root reviewed all six source/compiler changes, preserved their source blobs and
+commit order, and rebuilt and independently audited the resident after each
+serial integration. The accepted functions are:
+
+| Function | Bytes | Integrated commit |
+|---|---:|---|
+| `func_80050308` | 120 | `f5c2499` |
+| `func_80052BF4` | 120 | `a3fb6b5` |
+| `func_800533F4` | 120 | `837f121` |
+| `func_8005A76C` | 120 | `930d166` |
+| `func_8005A7E4` | 120 | `e59d252` |
+| `func_80050510` | 124 | `2a3a674` |
+
+All six use basic DOS GCC and ordinary C without matching aids. func_8005A76C preserves
+signed-halfword weighted interpolation divided by 10. func_8005A7E4 preserves
+complementary signed-halfword interpolation divided by 100 with the weight clamped to
+0..100; it is not a mask helper. Defined word arithmetic and exhaustive/boundary numerator
+checks preserve measured narrowing. Original complete layouts and APIs remain provisional.
+
+Workers passed fresh baselines, independent annotated/assembled original ASM,
+retail, standalone and full-linked byte comparisons, complete C/assembly-only/
+restored resident modes and 18 tests. Root passed the combined resident modes,
+original uncached five-overlay build and all 18 tests, with unchanged complete
+image hashes and sizes. Original ASM, inputs, storage, placement and expected
+hashes remain unchanged; compiler-map conflicts retain all justified additions.
+
+This 724-byte group brings the run to 96/180 additional functions.
+Snapshot `2a3a674` records 493 matches (371 overlay, 122 resident):
+493/1,685 (29.3%) of known inventory, with 1192 assembly-backed.
+Overlays remain 371/412 (90.0%), with 41 remaining. These are not whole-game or
+effort percentages; the native-PC lane remains unstarted. All six targets are
+completed, not available assignments.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 
