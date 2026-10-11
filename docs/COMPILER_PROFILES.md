@@ -1001,6 +1001,22 @@ reads and full-word flag tests. AF2F4/AF31C preserve their proved byte/word writ
 Complete indirect APIs, packet layouts and historical return declarations remain
 provisional.
 
+Resident 90-function run round 13 adds 336 matching bytes:
+
+ADC04 retains one initialized low-24-bit mask a2 binding; its only retained-aid removal
+fails. ADF08 retains only an initialized length-five a0 binding: the trial destination
+binding was removed, and final length removal fails. The other four have no aids. C1DC0,
+C1DE8 and ADC04 use basic DOS GCC; the others use basic GCC281. C1DC0/C1DE8 preserve one
+read/mask/write through the existing hardware pointer, which will require native hardware
+adaptation. ADC04 retains the alias-sensitive tag reread. AF1CC preserves four-word
+callback forwarding and its high-bit result predicate; AED30 copies the existing 92-byte
+block and returns the captured destination. ADF08 preserves ordered conditional rectangle
+reads and packed packet stores as a partial access view. BA88C and C4E2C have multiple
+return bodies in their declared spans, C3F88 has an unmatched store scheduling shape, and
+A91E4 has an unmatched ORI argument; they remain uncounted and are replaced by AF1CC,
+ADF08, ADC04 and AED30 respectively. No complete callback lifecycle, packet layout or
+historical API is claimed.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:

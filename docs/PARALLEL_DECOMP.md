@@ -3447,6 +3447,51 @@ Snapshot `2d4539f`: 649 matching functions (371 overlay, 278 resident),
 Overlays remain 371/412; native-PC work has not started. These are function-count
 percentages, not whole-game discovery or development-effort percentages.
 
+### 90-function resident run: round 13
+
+Workers used separate 44-function resident C baselines; historical
+baseline receipts do not uniformly include source hashes or precise timing.
+Missing historical evidence is not reconstructed from candidate receipts.
+Root reviewed source, profiles and evidence, preserved source blobs, and freshly
+recompiled each function against original ASM and retail bytes before the
+complete combined six-function build and independent audit.
+
+| Function | Bytes | Integrated commit | Compiler | Frame |
+|---|---:|---|---|---:|
+| `func_800AF1CC` | 48 | `714f7e0` | gcc281 | 24 |
+| `func_800C1DC0` | 40 | `67df9ee` | gcc272-dos | 0 |
+| `func_800C1DE8` | 40 | `e9b8781` | gcc272-dos | 0 |
+| `func_800ADC04` | 60 | `f20347f` | gcc272-dos | 0 |
+| `func_800ADF08` | 96 | `374a648` | gcc281 | 0 |
+| `func_800AED30` | 52 | `2a94a45` | gcc281 | 24 |
+
+ADC04 retains one initialized low-24-bit mask a2 binding; its only retained-aid removal
+fails. ADF08 retains only an initialized length-five a0 binding: the trial destination
+binding was removed, and final length removal fails. The other four have no aids. C1DC0,
+C1DE8 and ADC04 use basic DOS GCC; the others use basic GCC281. C1DC0/C1DE8 preserve one
+read/mask/write through the existing hardware pointer, which will require native hardware
+adaptation. ADC04 retains the alias-sensitive tag reread. AF1CC preserves four-word
+callback forwarding and its high-bit result predicate; AED30 copies the existing 92-byte
+block and returns the captured destination. ADF08 preserves ordered conditional rectangle
+reads and packed packet stores as a partial access view. BA88C and C4E2C have multiple
+return bodies in their declared spans, C3F88 has an unmatched store scheduling shape, and
+A91E4 has an unmatched ORI argument; they remain uncounted and are replaced by AF1CC,
+ADF08, ADC04 and AED30 respectively. No complete callback lifecycle, packet layout or
+historical API is claimed.
+
+Worker five-view comparisons cover annotated and independently assembled original
+instructions, retail slices, relocated compiled C and full-linked C. Root passed
+the original uncached full-C, assembly-only and restored-C resident modes, all
+five overlays and all 18 tests. Full image bytes, hashes and sizes are unchanged.
+Original ASM, inputs, storage and placement remain unchanged; complete gameplay
+meaning, object layouts and nested or indirect APIs are not claimed.
+
+This 336-byte round brings the new run to 78/90 additional functions.
+Snapshot `2a94a45`: 655 matching functions (371 overlay, 284 resident),
+655/1,685 (38.9%) of the known inventory; 1030 remain assembly-backed.
+Overlays remain 371/412; native-PC work has not started. These are function-count
+percentages, not whole-game discovery or development-effort percentages.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 
