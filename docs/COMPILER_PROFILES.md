@@ -949,6 +949,15 @@ removed, and native ports must model hardware reads explicitly. All others use b
 GCC281. AA9CC remains assembly-backed after ORI/GP-address mismatch and is replaced by
 ADC40; no complete dispatch lifecycle or historical API is claimed.
 
+Resident 90-function run round 8 adds 180 matching bytes:
+
+All six use ordinary C with no matching aids or extra flags. ADE5C uses basic DOS GCC; the
+others use basic GCC281. AF950 uses bounded unsigned coordinate masks and shifts. B652C
+returns zero for nonpositive signed values before its positive right-shift/count loop.
+ADE5C, ADE7C and ADE9C preserve their byte stores and pattern words at proved distinct
+offsets; these are partial access views, not recovered complete packet layouts. ADBE8
+tests only the low 24 bits.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:

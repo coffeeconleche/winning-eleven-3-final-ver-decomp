@@ -3250,6 +3250,44 @@ Snapshot `f7799ab`: 619 matching functions (371 overlay, 248 resident),
 Overlays remain 371/412; native-PC work has not started. These are function-count
 percentages, not whole-game discovery or development-effort percentages.
 
+### 90-function resident run: round 8
+
+Workers used separate 39-function resident C baselines; historical
+baseline receipts do not uniformly include source hashes or precise timing.
+Missing historical evidence is not reconstructed from candidate receipts.
+Root reviewed source, profiles and evidence, preserved source blobs, and freshly
+recompiled each function against original ASM and retail bytes before the
+complete combined six-function build and independent audit.
+
+| Function | Bytes | Integrated commit | Compiler | Frame |
+|---|---:|---|---|---:|
+| `func_800ADBE8` | 28 | `7d47b0c` | gcc281 | 0 |
+| `func_800AF950` | 28 | `0d06cbc` | gcc281 | 0 |
+| `func_800B652C` | 28 | `2c4de90` | gcc281 | 0 |
+| `func_800ADE5C` | 32 | `283232d` | gcc272-dos | 0 |
+| `func_800ADE7C` | 32 | `3035e6f` | gcc281 | 0 |
+| `func_800ADE9C` | 32 | `82d8c04` | gcc281 | 0 |
+
+All six use ordinary C with no matching aids or extra flags. ADE5C uses basic DOS GCC; the
+others use basic GCC281. AF950 uses bounded unsigned coordinate masks and shifts. B652C
+returns zero for nonpositive signed values before its positive right-shift/count loop.
+ADE5C, ADE7C and ADE9C preserve their byte stores and pattern words at proved distinct
+offsets; these are partial access views, not recovered complete packet layouts. ADBE8
+tests only the low 24 bits.
+
+Worker five-view comparisons cover annotated and independently assembled original
+instructions, retail slices, relocated compiled C and full-linked C. Root passed
+the original uncached full-C, assembly-only and restored-C resident modes, all
+five overlays and all 18 tests. Full image bytes, hashes and sizes are unchanged.
+Original ASM, inputs, storage and placement remain unchanged; complete gameplay
+meaning, object layouts and nested or indirect APIs are not claimed.
+
+This 180-byte round brings the new run to 48/90 additional functions.
+Snapshot `82d8c04`: 625 matching functions (371 overlay, 254 resident),
+625/1,685 (37.1%) of the known inventory; 1060 remain assembly-backed.
+Overlays remain 371/412; native-PC work has not started. These are function-count
+percentages, not whole-game discovery or development-effort percentages.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 
