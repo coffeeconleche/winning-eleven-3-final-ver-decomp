@@ -1,11 +1,13 @@
 #include "common.h"
 
 /* Private call-site views only: complete helper APIs, pointed-to layouts,
- * global meanings and return contract remain provisional. The argumentless
- * dispatchers overwrite incoming argument words before consuming them;
- * 2283C first forwards residues to 66A94/66BD8, which overwrite them. No
- * explicit arguments preserves those measured register residues, not a
- * historical API; a native port must reconcile the known forwarding. */
+ * global meanings and return contract remain provisional. Calls without
+ * explicit arguments preserve measured register residues, not a historical
+ * API. 2283C forwards residues into 66A94/66BD8; the inspected prefixes
+ * overwrite incoming argument words before use. 51810 forwards a0-a3 through
+ * some switch arms; nested APIs and pre-use definitions are not fully audited.
+ * 83CC0 coverage is wrapper-only. A native port must explicitly reconcile
+ * forwarded arguments and unresolved helper APIs. */
 extern s32 func_8004FB68(u32);
 extern u8 *func_8001D004(u32);
 extern void func_800477A0(u8 *, u32);
