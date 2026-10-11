@@ -550,6 +550,26 @@ instruction scheduling or allocation. These measured access/ABI views do not
 recover complete object ownership, valid domains, historical APIs or gameplay
 meanings. Independent function and complete-image gates remain mandatory.
 
+The run's second group adds 192 bytes: `func_8005CE14` (28 bytes),
+`func_8005CE30` (28), `func_8005E0E8` (28), `func_8006FDB4` (32),
+`func_8006EC5C` (36), and `func_8005A1F0` (40). The first uses default
+`gcc281 -quiet -O2 -G0` without a compiler-map entry; DOS GCC also matches.
+The other five use basic `gcc272-dos -quiet -O2 -G0`. None needs extra flags,
+bindings, empty constraints, volatile memory views or reservations. The four
+leaf helpers have zero-byte frames; the two wrappers have 24-byte frames.
+
+The classifiers explicitly narrow the incoming word, initialize their respective
+results and conditionally replace them; ternary probes changed branch direction.
+The lookup retains logical shift and an even byte-offset mask selecting eight
+evidenced halfwords. The guarded clear leaves the pointer untouched for zero,
+otherwise clears its byte and returns one. The first wrapper's helper consumes
+only three argument registers, so its source passes the incoming pointer and
+14/15 without invented fourth-argument forwarding. The second masks `$a1` in
+place, narrows `$a0`, and passes their word sum while preserving untouched
+`$a2/$a3` and unknown result residue. Historical formal/return types, helper
+contracts, table ownership and layouts remain provisional. All accepted code
+still requires independent bytes and unchanged complete-image gates.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:

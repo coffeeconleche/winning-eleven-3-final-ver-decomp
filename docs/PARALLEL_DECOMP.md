@@ -1887,6 +1887,42 @@ functions still assembly-backed. Confirmed overlays remain 371/412 (90.0%).
 These are not whole-game or effort percentages; the native-PC lane is unstarted.
 All six targets above are completed, not available assignments.
 
+### 180-function resident run: group 2
+
+The six workers started from the verified group-1 code snapshot `37f1569`
+(32 resident C), while root finished its overlay checks and documentation push.
+They completed six exclusive targets without modifying the integrating checkout:
+
+| Function | Bytes | Integrated commit | Measured behavior |
+|---|---:|---|---|
+| `func_8005CE14` | 28 | `fa7760f` | Return 1 below narrowed byte 12, otherwise 12 |
+| `func_8005CE30` | 28 | `fc51860` | Return 12 below narrowed byte 12, otherwise 1 |
+| `func_8005E0E8` | 28 | `7a7b29a` | Load a zero-extended halfword at the masked logical-shift byte offset |
+| `func_8006FDB4` | 32 | `93576b6` | For a nonzero low byte, clear the pointed byte and return 1; otherwise return 0 without access |
+| `func_8006EC5C` | 36 | `daec817` | Call the helper with the incoming pointer and literal arguments 14 and 15 |
+| `func_8005A1F0` | 40 | `68013d6` | Narrow two incoming words and call the dispatcher with their sum |
+
+The first uses default `gcc281 -quiet -O2 -G0`, with no compiler-map addition;
+DOS GCC also matches. The other five use basic `gcc272-dos -quiet -O2 -G0`.
+No additional flags or matching aids are required. Natural frames are zero for
+the four leaf helpers and 24 bytes for both wrappers. Complete API/return
+declarations, selector meanings, table ownership and layouts remain provisional.
+
+Each worker passed its fresh baseline, independent ASM/retail/standalone and
+full-linked function-byte checks, C/assembly-only/restored resident builds and
+all 18 tooling tests. Root integrated serially, preserving every profile addition
+in the two map conflicts, and rebuilt/audited the full resident after every pick.
+Final combined resident-mode, original uncached five-overlay and 18-test gates
+pass with unchanged complete hashes and sizes. Only C files and their justified
+profile selections changed; original ASM, inputs, hashes, storage and placement
+were untouched.
+
+This group adds 192 bytes and brings the requested run to 12/180 new functions.
+The `68013d6` snapshot records 409 matching functions: 371 overlay and 38 resident.
+Known inventory progress is 409/1,685 (24.3%), with 1,276 assembly-backed functions.
+Confirmed overlays remain 371/412 (90.0%). These are not whole-game or effort
+percentages; the native-PC lane is unstarted. All six targets are completed.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 
