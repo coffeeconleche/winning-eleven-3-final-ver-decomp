@@ -862,6 +862,20 @@ layout/domain/historical API is claimed; read qualifiers describe matching acces
 than hardware volatility. Original 5E9D4 matched, so its conditional replacement 9FEDC was
 not used or counted.
 
+Resident run group 30 adds 1204 matching bytes:
+
+All six use basic DOS GCC. Only func_800501DC retains one empty memory input of its actual
+initialized second halfword; the trial explicit register clobber and extra pointer
+variable were removed. Other sources are ordinary C without matching aids. Frames are
+0/24/32/32/32/0 bytes. Unresolved 1BC30 remains assembly-backed and uncounted, replaced by
+verified 814EC. The replacement preserves signed halfword branches, signed remainder,
+physical coordinate rereads and target stores before the callback. func_8009FE1C reads
+both source bytes even when the first qualifies; func_80072904 preserves conditional
+overlapping byte rereads. func_80056A98 interprets the helper's low-word squared sum only
+as an unsigned result. The 59D84 caller coverage is the approved complete
+callsite/register-flow/result-use audit, not every whole large caller body or recovered
+indirect API. Complete original layouts and APIs remain provisional.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:
