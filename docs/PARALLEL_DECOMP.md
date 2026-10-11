@@ -2320,6 +2320,42 @@ Overlays remain 371/412 (90.0%), with 41 remaining. These are not whole-game or
 effort percentages; the native-PC lane remains unstarted. All six targets are
 completed, not available assignments.
 
+### 180-function resident run: group 14
+
+Each worker continued from its own verified prior-group commit (44 resident C).
+Root reviewed all six source/compiler changes, preserved their source blobs and
+commit order, and rebuilt and independently audited the resident after each
+serial integration. The accepted functions are:
+
+| Function | Bytes | Integrated commit |
+|---|---:|---|
+| `func_8004A0B0` | 100 | `5c21ff5` |
+| `func_8009F62C` | 100 | `bc45a9f` |
+| `func_8004B278` | 104 | `7bf5216` |
+| `func_800502A0` | 104 | `c68870d` |
+| `func_800653D4` | 108 | `2577b98` |
+| `func_800570F0` | 108 | `feb3e63` |
+
+All six use DOS GCC. Only func_8009F62C adds -fno-strength-reduce, with no source aid;
+removing it changes 100 bytes to 108. Only func_800502A0 retains one empty identity of the
+actual keyword, verified across 327724 unsigned cases. The other four use the basic
+profile and ordinary C without aids. Layouts, domains and complete original APIs remain
+provisional.
+
+Workers passed fresh baselines, independent annotated/assembled original ASM,
+retail, standalone and full-linked byte comparisons, complete C/assembly-only/
+restored resident modes and 18 tests. Root passed the combined resident modes,
+original uncached five-overlay build and all 18 tests, with unchanged complete
+image hashes and sizes. Original ASM, inputs, storage, placement and expected
+hashes remain unchanged; compiler-map conflicts retain all justified additions.
+
+This 624-byte group brings the run to 84/180 additional functions.
+Snapshot `feb3e63` records 481 matches (371 overlay, 110 resident):
+481/1,685 (28.5%) of known inventory, with 1204 assembly-backed.
+Overlays remain 371/412 (90.0%), with 41 remaining. These are not whole-game or
+effort percentages; the native-PC lane remains unstarted. All six targets are
+completed, not available assignments.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 

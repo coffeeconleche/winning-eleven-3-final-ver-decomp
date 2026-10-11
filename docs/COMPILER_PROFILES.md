@@ -703,6 +703,14 @@ basic DOS GCC without aids. Frame reservations do not establish historical stack
 restore completed successfully, and post-completion independent audit/tests passed before
 acceptance. Root independently revalidated the combined checkpoint.
 
+Resident run group 14 adds 624 matching bytes:
+
+All six use DOS GCC. Only func_8009F62C adds -fno-strength-reduce, with no source aid;
+removing it changes 100 bytes to 108. Only func_800502A0 retains one empty identity of the
+actual keyword, verified across 327724 unsigned cases. The other four use the basic
+profile and ordinary C without aids. Layouts, domains and complete original APIs remain
+provisional.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:
