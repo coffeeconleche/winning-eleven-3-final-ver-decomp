@@ -980,6 +980,17 @@ forwards inherited a1-a3 into BA738 before later definitions, with dynamic callb
 consumption unresolved. Native conversion must reconcile that flow; current exact-byte
 evidence is unchanged.
 
+Resident 90-function run round 11 adds 292 matching bytes:
+
+ACFB4 retains an initialized narrow v1 binding and one empty identity of that actual
+value; all three nonempty retained-aid removal subsets fail, and an extra full-selector
+input was removed. Other functions have no aids. BA738, ACFB4, AAC48 and AAC90 use basic
+DOS GCC; AF198 and AF2B4 use basic GCC281. BA738 forwards four incoming words through the
+proved +0x0C callback slot. ACFB4 narrows the selector before its conditional halfword
+read and requires hardware adaptation for a native port. B01D0, A961C, AAC24 and AAC6C
+remain assembly-backed after reasoned unmatched probes, replaced by AF198, BA738, ACFB4
+and AF2B4 respectively; ambiguous fallback C4DF8 was skipped.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:

@@ -3368,6 +3368,46 @@ Snapshot `62ad68b`: 637 matching functions (371 overlay, 266 resident),
 Overlays remain 371/412; native-PC work has not started. These are function-count
 percentages, not whole-game discovery or development-effort percentages.
 
+### 90-function resident run: round 11
+
+Workers used separate 42-function resident C baselines; historical
+baseline receipts do not uniformly include source hashes or precise timing.
+Missing historical evidence is not reconstructed from candidate receipts.
+Root reviewed source, profiles and evidence, preserved source blobs, and freshly
+recompiled each function against original ASM and retail bytes before the
+complete combined six-function build and independent audit.
+
+| Function | Bytes | Integrated commit | Compiler | Frame |
+|---|---:|---|---|---:|
+| `func_800AF198` | 52 | `a06340b` | gcc281 | 24 |
+| `func_800BA738` | 48 | `1efa298` | gcc272-dos | 24 |
+| `func_800ACFB4` | 56 | `3edb5c3` | gcc272-dos | 0 |
+| `func_800AAC48` | 36 | `1f57401` | gcc272-dos | 24 |
+| `func_800AF2B4` | 64 | `bcf283b` | gcc281 | 24 |
+| `func_800AAC90` | 36 | `1902692` | gcc272-dos | 24 |
+
+ACFB4 retains an initialized narrow v1 binding and one empty identity of that actual
+value; all three nonempty retained-aid removal subsets fail, and an extra full-selector
+input was removed. Other functions have no aids. BA738, ACFB4, AAC48 and AAC90 use basic
+DOS GCC; AF198 and AF2B4 use basic GCC281. BA738 forwards four incoming words through the
+proved +0x0C callback slot. ACFB4 narrows the selector before its conditional halfword
+read and requires hardware adaptation for a native port. B01D0, A961C, AAC24 and AAC6C
+remain assembly-backed after reasoned unmatched probes, replaced by AF198, BA738, ACFB4
+and AF2B4 respectively; ambiguous fallback C4DF8 was skipped.
+
+Worker five-view comparisons cover annotated and independently assembled original
+instructions, retail slices, relocated compiled C and full-linked C. Root passed
+the original uncached full-C, assembly-only and restored-C resident modes, all
+five overlays and all 18 tests. Full image bytes, hashes and sizes are unchanged.
+Original ASM, inputs, storage and placement remain unchanged; complete gameplay
+meaning, object layouts and nested or indirect APIs are not claimed.
+
+This 292-byte round brings the new run to 66/90 additional functions.
+Snapshot `1902692`: 643 matching functions (371 overlay, 272 resident),
+643/1,685 (38.2%) of the known inventory; 1042 remain assembly-backed.
+Overlays remain 371/412; native-PC work has not started. These are function-count
+percentages, not whole-game discovery or development-effort percentages.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 
