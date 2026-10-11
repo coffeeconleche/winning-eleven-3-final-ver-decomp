@@ -958,6 +958,17 @@ ADE5C, ADE7C and ADE9C preserve their byte stores and pattern words at proved di
 offsets; these are partial access views, not recovered complete packet layouts. ADBE8
 tests only the low 24 bits.
 
+Resident 90-function run round 9 adds 208 matching bytes:
+
+AF800 retains one initialized masked-bits v0 binding; a trial empty input was removed and
+final binding removal fails. The other five have no aids. BA768, B53D8, B6FCC and B6FEC
+use basic DOS GCC; ADEBC and AF800 use basic GCC281. BA768 forwards four incoming words
+through the proved callback slot at +8. B53D8 forwards its word to the unchanged original
+COP2-writing callee; no new handwritten hardware instructions are introduced. B6FCC and
+B6FEC preserve two-word forwarding and raw returns, with nested APIs provisional. B6E98
+remains assembly-backed because its declared span contains two return bodies, replaced by
+BA768 without boundary edits.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:
