@@ -148,6 +148,7 @@ PER_FUNC_COMPILERS: dict[str, str] = {
     "func_8009D35C": "gcc272-dos",
     "func_8006FAF4": "gcc272-dos",
     "func_8006FB90": "gcc272-dos",
+    "func_8006FF48": "gcc272-dos",
     "func_8006FFC4": "gcc272-dos",
     "func_80075B50": "gcc272-dos",
     "func_8009F500": "gcc272-dos",
