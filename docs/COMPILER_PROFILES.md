@@ -847,6 +847,21 @@ Unresolved 2A83C, 6F87C and 6F934 remain assembly-backed and uncounted, replaced
 verified 4FD5C, 83CC0 and 6FDD4. Complete layouts, domains and original APIs remain
 provisional.
 
+Resident run group 29 adds 1128 matching bytes:
+
+All six use DOS GCC. Only func_8009F574 adds -fno-strength-reduce and two narrowly
+qualified physical-read views: its separate unsigned halfword read and post-store byte
+reread. All seven nonempty removal subsets fail; the trial tied scratch constraint was
+removed. func_8005E9D4 retains only one conditional empty input of its actual base
+pointer; trial base identity and state input were removed jointly. The other four use the
+basic profile and ordinary C without matching aids. Frames are 24/32/24/24/32/24 bytes.
+func_80095F40 retains the full signed coordinate quotient, signed-low-half helper argument
+and post-callback pointer/coordinate rereads before its clamp. func_80081FE0 explicitly
+forwards its initial raw argument words to the original dispatcher. No full
+layout/domain/historical API is claimed; read qualifiers describe matching accesses rather
+than hardware volatility. Original 5E9D4 matched, so its conditional replacement 9FEDC was
+not used or counted.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:
