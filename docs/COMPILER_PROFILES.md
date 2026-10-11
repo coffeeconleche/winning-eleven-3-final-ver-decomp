@@ -926,6 +926,18 @@ B01F4 preserves unsigned word-wrap address arithmetic and one unsigned byte read
 dispatch-table reference is known but exhaustive dynamic coverage is not claimed. The five
 setters preserve their ordered byte accesses.
 
+Resident 90-function run round 6 adds 192 matching bytes:
+
+B7020 and B9510 each retain one initialized store-page $1 binding and two empty uses of
+actual previous-word/address values; all seven nonempty removal subsets fail. The other
+four have no aids. BC628, ADFD4 and 6845C use basic DOS GCC; the others use basic GCC281.
+BC628 forwards the original four words through its first call; nested callback contracts
+remain provisional. ADFD4 uses ordinary predicate/result reuse and conditional packet
+writes. 6845C accesses the existing scratch byte through a no-storage numeric view. ADB14
+preserves target signed right shift and unsigned left shift. B700C and BB218 remain
+unmatched and uncounted, replaced by BC628 and ADFD4; instruction-copy fallback C5C54 was
+skipped.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:
