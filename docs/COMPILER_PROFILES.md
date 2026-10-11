@@ -820,6 +820,20 @@ instructions; original frame purposes, layouts and APIs remain provisional. Unre
 low-word squared-sum arithmetic without assuming binary selectors. Group size is 1112
 bytes after replacements.
 
+Resident run group 27 adds 1108 matching bytes:
+
+All six use basic DOS GCC and ordinary C without matching aids. Frames are
+24/32/32/24/24/24 bytes. Unresolved 54BA4 and 6FCFC remain assembly-backed and uncounted,
+replaced by verified 17414 and 823C4. The latter's no-explicit-argument call-site views
+preserve actual original raw register residues; 2283C forwards them into the inspected
+66A94/66BD8 pre-use definitions, while 51810 forwards residues through several switch arms
+whose nested APIs remain unresolved. A native adaptation must explicitly reconcile this
+forwarding. Root narrowed only the overly broad coverage comment before independent
+resident/audit checks, leaving instruction-generating C unchanged. The 79BA0 caller
+coverage includes all known callsites/dataflow plus representative whole callers, not
+every whole large caller body or indirect API. Full original layouts and meanings remain
+provisional.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:

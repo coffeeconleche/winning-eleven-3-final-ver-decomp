@@ -2801,9 +2801,52 @@ Overlays remain 371/412 (90.0%), with 41 remaining. These are not whole-game or
 effort percentages; the native-PC lane remains unstarted. All six targets are
 completed, not available assignments.
 
-At the user's request, this run stopped after group 26: 156 additional resident
-functions were integrated and pushed. Groups 27–30 were not integrated or
-pushed; their local worker commits and research are preserved.
+At the user's request, this run paused after group 26 with 156 additional resident
+functions pushed. The user subsequently resumed groups 27–30; the checkpoints
+below record the resumed work.
+
+### 180-function resident run: group 27
+
+Each worker continued from its own verified prior-group commit (57 resident C).
+Root reviewed all six source/compiler changes and preserved worker commit order.
+Instruction-generating C is unchanged; one coverage comment was narrowed as
+described below. Root rebuilt and independently audited the resident after
+each serial integration. The accepted functions are:
+
+| Function | Bytes | Integrated commit |
+|---|---:|---|
+| `func_80017414` | 204 | `49135f9` |
+| `func_80055AD4` | 176 | `918fbb6` |
+| `func_80056C60` | 176 | `3e779b3` |
+| `func_800823C4` | 200 | `e881f78` |
+| `func_80079BA0` | 176 | `2c01661` |
+| `func_8007AC70` | 176 | `125e8d0` |
+
+All six use basic DOS GCC and ordinary C without matching aids. Frames are
+24/32/32/24/24/24 bytes. Unresolved 54BA4 and 6FCFC remain assembly-backed and uncounted,
+replaced by verified 17414 and 823C4. The latter's no-explicit-argument call-site views
+preserve actual original raw register residues; 2283C forwards them into the inspected
+66A94/66BD8 pre-use definitions, while 51810 forwards residues through several switch arms
+whose nested APIs remain unresolved. A native adaptation must explicitly reconcile this
+forwarding. Root narrowed only the overly broad coverage comment before independent
+resident/audit checks, leaving instruction-generating C unchanged. The 79BA0 caller
+coverage includes all known callsites/dataflow plus representative whole callers, not
+every whole large caller body or indirect API. Full original layouts and meanings remain
+provisional.
+
+Workers passed fresh baselines, independent annotated/assembled original ASM,
+retail, standalone and full-linked byte comparisons, complete C/assembly-only/
+restored resident modes and 18 tests. Root passed the combined resident modes,
+original uncached five-overlay build and all 18 tests, with unchanged complete
+image hashes and sizes. Original ASM, inputs, storage, placement and expected
+hashes remain unchanged; compiler-map conflicts retain all justified additions.
+
+This 1108-byte group brings the run to 162/180 additional functions.
+Snapshot `125e8d0` records 559 matches (371 overlay, 188 resident):
+559/1,685 (33.2%) of known inventory, with 1126 assembly-backed.
+Overlays remain 371/412 (90.0%), with 41 remaining. These are not whole-game or
+effort percentages; the native-PC lane remains unstarted. All six targets are
+completed, not available assignments.
 
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
