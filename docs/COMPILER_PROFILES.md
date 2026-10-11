@@ -834,6 +834,19 @@ coverage includes all known callsites/dataflow plus representative whole callers
 every whole large caller body or indirect API. Full original layouts and meanings remain
 provisional.
 
+Resident run group 28 adds 1184 matching bytes:
+
+All six use basic DOS GCC. func_80095E8C retains two actual adjustment/record-byte
+bindings, with individual and joint removal failures. func_8004FE30 retains one identity
+on the initialized selector 50; its trial binding was removed. func_80083CC0 retains a
+no-storage numeric pointer-slot view and a narrowly qualified second physical counter
+reread; individual and joint removals fail. func_8006FDD4 retains only its actual
+base-address a2 binding. The other two use ordinary C without matching aids. Frames are
+32/0/40/0/24/24 bytes. Qualifiers describe measured rereads, not hardware volatility.
+Unresolved 2A83C, 6F87C and 6F934 remain assembly-backed and uncounted, replaced by
+verified 4FD5C, 83CC0 and 6FDD4. Complete layouts, domains and original APIs remain
+provisional.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:
