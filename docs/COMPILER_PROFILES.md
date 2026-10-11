@@ -785,6 +785,16 @@ eliminated all provisional pointer identities, volatile qualifiers and bindings 
 retaining its full ten-record scan and conditional pointer rereads. Original complete
 layouts, domains and APIs remain unknown.
 
+Resident run group 24 adds 940 matching bytes:
+
+All six use basic DOS GCC. Only func_8006FEA8 retains an actual base-address a1 binding;
+other sources use ordinary C without aids. Frames are 0/24/24/112/24/0 bytes.
+func_80042B44 uses defined wide squares, low-word sum wrapping and signed interpretation
+at threshold 0x90000, checked against original instruction bytes. func_80094FF4's
+no-storage numeric pointer-slot view preserves the physical post-store pointer reread
+without volatility or a matching constraint. func_80050140's request (16,1) and measured
+64-byte passed buffer do not establish a full buffer format/capacity contract.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:

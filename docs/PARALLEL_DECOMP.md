@@ -2682,6 +2682,44 @@ Overlays remain 371/412 (90.0%), with 41 remaining. These are not whole-game or
 effort percentages; the native-PC lane remains unstarted. All six targets are
 completed, not available assignments.
 
+### 180-function resident run: group 24
+
+Each worker continued from its own verified prior-group commit (54 resident C).
+Root reviewed all six source/compiler changes, preserved their source blobs and
+commit order, and rebuilt and independently audited the resident after each
+serial integration. The accepted functions are:
+
+| Function | Bytes | Integrated commit |
+|---|---:|---|
+| `func_80042B44` | 156 | `58e9fae` |
+| `func_800492FC` | 156 | `f9892f8` |
+| `func_8004F790` | 156 | `4290354` |
+| `func_80050140` | 156 | `b55a233` |
+| `func_80094FF4` | 156 | `60bb65a` |
+| `func_8006FEA8` | 160 | `940e0ad` |
+
+All six use basic DOS GCC. Only func_8006FEA8 retains an actual base-address a1 binding;
+other sources use ordinary C without aids. Frames are 0/24/24/112/24/0 bytes.
+func_80042B44 uses defined wide squares, low-word sum wrapping and signed interpretation
+at threshold 0x90000, checked against original instruction bytes. func_80094FF4's
+no-storage numeric pointer-slot view preserves the physical post-store pointer reread
+without volatility or a matching constraint. func_80050140's request (16,1) and measured
+64-byte passed buffer do not establish a full buffer format/capacity contract.
+
+Workers passed fresh baselines, independent annotated/assembled original ASM,
+retail, standalone and full-linked byte comparisons, complete C/assembly-only/
+restored resident modes and 18 tests. Root passed the combined resident modes,
+original uncached five-overlay build and all 18 tests, with unchanged complete
+image hashes and sizes. Original ASM, inputs, storage, placement and expected
+hashes remain unchanged; compiler-map conflicts retain all justified additions.
+
+This 940-byte group brings the run to 144/180 additional functions.
+Snapshot `940e0ad` records 541 matches (371 overlay, 170 resident):
+541/1,685 (32.1%) of known inventory, with 1144 assembly-backed.
+Overlays remain 371/412 (90.0%), with 41 remaining. These are not whole-game or
+effort percentages; the native-PC lane remains unstarted. All six targets are
+completed, not available assignments.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 
