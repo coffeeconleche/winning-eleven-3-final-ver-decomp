@@ -56,6 +56,7 @@ PER_FUNC_COMPILERS: dict[str, str] = {
     # Resident C substitutions use the same verified compiler pipeline.
     "func_800AD1D4": "gcc272-dos",
     "func_800B6FEC": "gcc272-dos",
+    "func_800AAC90": "gcc272-dos",
     "func_8006EC5C": "gcc272-dos",
     "func_800363B8": "gcc272-dos",
     "func_800484B8": "gcc272-dos",
