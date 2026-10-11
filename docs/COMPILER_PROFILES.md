@@ -969,6 +969,17 @@ B6FEC preserve two-word forwarding and raw returns, with nested APIs provisional
 remains assembly-backed because its declared span contains two return bodies, replaced by
 BA768 without boundary edits.
 
+Resident 90-function run round 10 adds 196 matching bytes:
+
+All six use ordinary C without matching aids or extra flags. B7474 and C11B8 use basic DOS
+GCC; the others use basic GCC281. B73F0 preserves four-word forwarding and constant
+return, B7410/B7430 preserve their unconditional two-word call and result predicate, B7474
+forwards its word and result, and ADC7C preserves one masked word read/modify/write.
+C11B8's one-word call is a matching MIPS view, not a complete native API: C11D8 initially
+forwards inherited a1-a3 into BA738 before later definitions, with dynamic callback
+consumption unresolved. Native conversion must reconcile that flow; current exact-byte
+evidence is unchanged.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:

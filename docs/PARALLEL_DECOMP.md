@@ -3328,6 +3328,46 @@ Snapshot `38b15f9`: 631 matching functions (371 overlay, 260 resident),
 Overlays remain 371/412; native-PC work has not started. These are function-count
 percentages, not whole-game discovery or development-effort percentages.
 
+### 90-function resident run: round 10
+
+Workers used separate 41-function resident C baselines; historical
+baseline receipts do not uniformly include source hashes or precise timing.
+Missing historical evidence is not reconstructed from candidate receipts.
+Root reviewed source, profiles and evidence, preserved source blobs, and freshly
+recompiled each function against original ASM and retail bytes before the
+complete combined six-function build and independent audit.
+
+| Function | Bytes | Integrated commit | Compiler | Frame |
+|---|---:|---|---|---:|
+| `func_800B73F0` | 32 | `ea1de8d` | gcc281 | 24 |
+| `func_800B7410` | 32 | `7db8761` | gcc281 | 24 |
+| `func_800B7430` | 32 | `ddc200b` | gcc281 | 24 |
+| `func_800B7474` | 32 | `70cfc25` | gcc272-dos | 24 |
+| `func_800C11B8` | 32 | `74e57fb` | gcc272-dos | 24 |
+| `func_800ADC7C` | 36 | `62ad68b` | gcc281 | 0 |
+
+All six use ordinary C without matching aids or extra flags. B7474 and C11B8 use basic DOS
+GCC; the others use basic GCC281. B73F0 preserves four-word forwarding and constant
+return, B7410/B7430 preserve their unconditional two-word call and result predicate, B7474
+forwards its word and result, and ADC7C preserves one masked word read/modify/write.
+C11B8's one-word call is a matching MIPS view, not a complete native API: C11D8 initially
+forwards inherited a1-a3 into BA738 before later definitions, with dynamic callback
+consumption unresolved. Native conversion must reconcile that flow; current exact-byte
+evidence is unchanged.
+
+Worker five-view comparisons cover annotated and independently assembled original
+instructions, retail slices, relocated compiled C and full-linked C. Root passed
+the original uncached full-C, assembly-only and restored-C resident modes, all
+five overlays and all 18 tests. Full image bytes, hashes and sizes are unchanged.
+Original ASM, inputs, storage and placement remain unchanged; complete gameplay
+meaning, object layouts and nested or indirect APIs are not claimed.
+
+This 196-byte round brings the new run to 60/90 additional functions.
+Snapshot `62ad68b`: 637 matching functions (371 overlay, 266 resident),
+637/1,685 (37.8%) of the known inventory; 1048 remain assembly-backed.
+Overlays remain 371/412; native-PC work has not started. These are function-count
+percentages, not whole-game discovery or development-effort percentages.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 
