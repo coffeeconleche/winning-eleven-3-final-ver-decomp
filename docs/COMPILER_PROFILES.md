@@ -666,6 +666,14 @@ latter's trial predicate binding and input were removed jointly. The other four 
 matching aids. These sites emit no instructions or extra accesses; APIs and complete
 layouts remain provisional.
 
+Resident run group 10 adds 460 matching bytes:
+
+All six use basic gcc272-dos quiet/O2/G0 and ordinary C without matching aids.
+func_8005C7A0's two helper calls are ordered left-first by the matching compiler in an
+unsigned expression; standard C does not specify that expression's call order. A native
+adaptation must explicitly sequence them. Separate ordinary locals changed the measured
+24-byte frame to 32 bytes. No historical helper APIs or complete layouts are claimed.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:
