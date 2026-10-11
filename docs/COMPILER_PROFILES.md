@@ -766,6 +766,17 @@ profiles are basic, and measured frames are 24/32/0/24/24/24 bytes. Unresolved
 func_8001BCF4 remains assembly-backed and uncounted; func_8008820C is its verified
 same-scope replacement. Original APIs and layouts remain provisional.
 
+Resident run group 22 adds 868 matching bytes:
+
+All six use basic DOS GCC. Only func_8004FBC4 retains its actual v0 result binding; its
+related trial word binding was removed. Other sources are ordinary C without aids. Frames
+are 24/24/24/112/24/24 bytes. func_800500B0's measured eight-byte request and 64-byte
+passed buffer are access/frame views, not a full format or capacity contract.
+func_8001DC80's local unprototyped DD50 call preserves actual a1-a3 residues after
+preceding callbacks/syscall; a native adaptation requires explicit arguments. B908 caller
+coverage includes all known callsites/dataflow and representative whole callers, not every
+whole caller body or indirect API. Commit authors use privacy-safe noreply addresses.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:

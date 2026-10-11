@@ -2607,6 +2607,45 @@ Overlays remain 371/412 (90.0%), with 41 remaining. These are not whole-game or
 effort percentages; the native-PC lane remains unstarted. All six targets are
 completed, not available assignments.
 
+### 180-function resident run: group 22
+
+Each worker continued from its own verified prior-group commit (52 resident C).
+Root reviewed all six source/compiler changes, preserved their source blobs and
+commit order, and rebuilt and independently audited the resident after each
+serial integration. The accepted functions are:
+
+| Function | Bytes | Integrated commit |
+|---|---:|---|
+| `func_800956C0` | 140 | `7d97e0b` |
+| `func_8001DC80` | 144 | `004297d` |
+| `func_8004FBC4` | 144 | `4933130` |
+| `func_800500B0` | 144 | `87e7370` |
+| `func_8005B908` | 148 | `e5aadf4` |
+| `func_80067FAC` | 148 | `17a9e98` |
+
+All six use basic DOS GCC. Only func_8004FBC4 retains its actual v0 result binding; its
+related trial word binding was removed. Other sources are ordinary C without aids. Frames
+are 24/24/24/112/24/24 bytes. func_800500B0's measured eight-byte request and 64-byte
+passed buffer are access/frame views, not a full format or capacity contract.
+func_8001DC80's local unprototyped DD50 call preserves actual a1-a3 residues after
+preceding callbacks/syscall; a native adaptation requires explicit arguments. B908 caller
+coverage includes all known callsites/dataflow and representative whole callers, not every
+whole caller body or indirect API. Commit authors use privacy-safe noreply addresses.
+
+Workers passed fresh baselines, independent annotated/assembled original ASM,
+retail, standalone and full-linked byte comparisons, complete C/assembly-only/
+restored resident modes and 18 tests. Root passed the combined resident modes,
+original uncached five-overlay build and all 18 tests, with unchanged complete
+image hashes and sizes. Original ASM, inputs, storage, placement and expected
+hashes remain unchanged; compiler-map conflicts retain all justified additions.
+
+This 868-byte group brings the run to 132/180 additional functions.
+Snapshot `17a9e98` records 529 matches (371 overlay, 158 resident):
+529/1,685 (31.4%) of known inventory, with 1156 assembly-backed.
+Overlays remain 371/412 (90.0%), with 41 remaining. These are not whole-game or
+effort percentages; the native-PC lane remains unstarted. All six targets are
+completed, not available assignments.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 
