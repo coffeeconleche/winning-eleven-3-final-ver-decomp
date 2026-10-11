@@ -751,6 +751,13 @@ frames. Partial access views retain original widths, callback chronology and
 result-register behavior without claiming full historical APIs, layouts or gameplay
 meanings.
 
+Resident run group 20 adds 812 matching bytes:
+
+All six use basic DOS GCC. Only func_80087BF8 retains one input-only empty constraint on
+its actual masked value, with a zero-byte frame. The other five use ordinary C without
+aids; frames are 24 bytes except func_8004FC54's natural 32 bytes. No source instruction,
+reference hash, storage or linker placement is patched.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:

@@ -2536,6 +2536,41 @@ Overlays remain 371/412 (90.0%), with 41 remaining. These are not whole-game or
 effort percentages; the native-PC lane remains unstarted. All six targets are
 completed, not available assignments.
 
+### 180-function resident run: group 20
+
+Each worker continued from its own verified prior-group commit (50 resident C).
+Root reviewed all six source/compiler changes, preserved their source blobs and
+commit order, and rebuilt and independently audited the resident after each
+serial integration. The accepted functions are:
+
+| Function | Bytes | Integrated commit |
+|---|---:|---|
+| `func_80087BF8` | 132 | `402bf81` |
+| `func_8009CF84` | 132 | `30805a8` |
+| `func_800578E0` | 136 | `2ec6b15` |
+| `func_80076938` | 136 | `39a840f` |
+| `func_80077270` | 136 | `b24bd79` |
+| `func_8004FC54` | 140 | `dec40a7` |
+
+All six use basic DOS GCC. Only func_80087BF8 retains one input-only empty constraint on
+its actual masked value, with a zero-byte frame. The other five use ordinary C without
+aids; frames are 24 bytes except func_8004FC54's natural 32 bytes. No source instruction,
+reference hash, storage or linker placement is patched.
+
+Workers passed fresh baselines, independent annotated/assembled original ASM,
+retail, standalone and full-linked byte comparisons, complete C/assembly-only/
+restored resident modes and 18 tests. Root passed the combined resident modes,
+original uncached five-overlay build and all 18 tests, with unchanged complete
+image hashes and sizes. Original ASM, inputs, storage, placement and expected
+hashes remain unchanged; compiler-map conflicts retain all justified additions.
+
+This 812-byte group brings the run to 120/180 additional functions.
+Snapshot `dec40a7` records 517 matches (371 overlay, 146 resident):
+517/1,685 (30.7%) of known inventory, with 1168 assembly-backed.
+Overlays remain 371/412 (90.0%), with 41 remaining. These are not whole-game or
+effort percentages; the native-PC lane remains unstarted. All six targets are
+completed, not available assignments.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 
