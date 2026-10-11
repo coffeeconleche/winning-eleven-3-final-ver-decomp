@@ -1032,6 +1032,23 @@ partial access view. A95C0 remains unmatched and uncounted after an ORI-versus-a
 probe, replaced by AD2B4. Nested BIOS/callback contracts, full object layouts and
 historical return declarations remain provisional.
 
+Resident 90-function run round 15 adds 284 matching bytes:
+
+ACFEC retains one initialized four-byte table-offset a0 binding; its only retained-aid
+removal differs in two words. B0290 uses volatile pointees for the proved GPU registers,
+which are hardware semantics rather than allocation aids. The other four have no aids.
+ACFEC, B0290 and AD204 use basic DOS GCC; the others use basic GCC281. B49E8 preserves
+ordered halfword/word resets through a partial access view, BA344 preserves unsigned-count
+forward word-copy chronology including zero count, and B4A14 preserves calls to unchanged
+original GTE matrix-load helpers. ACFEC keeps the original un-clamped index and result
+predicate, and B0290 keeps the ordered GPU command write and masked read. AD204 forwards
+four words to its first callback and preserves subsequent call order and the global clear;
+its later no-argument AD2B4 declaration is only a matching MIPS view, while AD2B4
+initially forwards inherited argument words to its syscall. Native APIs must reconcile
+that flow rather than assume those words are unused. C3E18 remains unmatched and uncounted
+after reasoned switch/store-scheduling probes, replaced by AD204. Complete historical
+APIs, callback behavior, object extents and native hardware adaptation remain provisional.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:

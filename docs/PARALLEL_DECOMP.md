@@ -3536,6 +3536,52 @@ Snapshot `3b149cf`: 661 matching functions (371 overlay, 290 resident),
 Overlays remain 371/412; native-PC work has not started. These are function-count
 percentages, not whole-game discovery or development-effort percentages.
 
+### 90-function resident run: round 15
+
+Workers used separate 46-function resident C baselines; historical
+baseline receipts do not uniformly include source hashes or precise timing.
+Missing historical evidence is not reconstructed from candidate receipts.
+Root reviewed source, profiles and evidence, preserved source blobs, and freshly
+recompiled each function against original ASM and retail bytes before the
+complete combined six-function build and independent audit.
+
+| Function | Bytes | Integrated commit | Compiler | Frame |
+|---|---:|---|---|---:|
+| `func_800B49E8` | 44 | `06015a4` | gcc281 | 0 |
+| `func_800BA344` | 44 | `9ce3f2f` | gcc281 | 0 |
+| `func_800B4A14` | 44 | `e6a5b15` | gcc281 | 24 |
+| `func_800ACFEC` | 48 | `b01739a` | gcc272-dos | 0 |
+| `func_800B0290` | 48 | `78206da` | gcc272-dos | 0 |
+| `func_800AD204` | 56 | `0fc892e` | gcc272-dos | 24 |
+
+ACFEC retains one initialized four-byte table-offset a0 binding; its only retained-aid
+removal differs in two words. B0290 uses volatile pointees for the proved GPU registers,
+which are hardware semantics rather than allocation aids. The other four have no aids.
+ACFEC, B0290 and AD204 use basic DOS GCC; the others use basic GCC281. B49E8 preserves
+ordered halfword/word resets through a partial access view, BA344 preserves unsigned-count
+forward word-copy chronology including zero count, and B4A14 preserves calls to unchanged
+original GTE matrix-load helpers. ACFEC keeps the original un-clamped index and result
+predicate, and B0290 keeps the ordered GPU command write and masked read. AD204 forwards
+four words to its first callback and preserves subsequent call order and the global clear;
+its later no-argument AD2B4 declaration is only a matching MIPS view, while AD2B4
+initially forwards inherited argument words to its syscall. Native APIs must reconcile
+that flow rather than assume those words are unused. C3E18 remains unmatched and uncounted
+after reasoned switch/store-scheduling probes, replaced by AD204. Complete historical
+APIs, callback behavior, object extents and native hardware adaptation remain provisional.
+
+Worker five-view comparisons cover annotated and independently assembled original
+instructions, retail slices, relocated compiled C and full-linked C. Root passed
+the original uncached full-C, assembly-only and restored-C resident modes, all
+five overlays and all 18 tests. Full image bytes, hashes and sizes are unchanged.
+Original ASM, inputs, storage and placement remain unchanged; complete gameplay
+meaning, object layouts and nested or indirect APIs are not claimed.
+
+This 284-byte round brings the new run to 90/90 additional functions.
+Snapshot `0fc892e`: 667 matching functions (371 overlay, 296 resident),
+667/1,685 (39.6%) of the known inventory; 1018 remain assembly-backed.
+Overlays remain 371/412; native-PC work has not started. These are function-count
+percentages, not whole-game discovery or development-effort percentages.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 
