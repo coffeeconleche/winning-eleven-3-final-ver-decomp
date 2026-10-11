@@ -681,6 +681,16 @@ bytes to 88. Only func_80052E68 retains one conditional empty input of the actua
 the other five have no source matching aids. These per-function choices do not change the
 global compiler profile or establish historical layouts, domains or APIs.
 
+Resident run group 12 adds 532 matching bytes:
+
+All six use basic DOS GCC. Minimized matching aids are: func_8009F500's incoming-step a2
+binding; func_8009FDC8's one actual-value input; func_80095FF8's v0 result capture and
+identity; func_80049D94's scratch-pointer identity and two narrowly qualified physical
+byte rereads; func_8004FB68's actual v0 result binding; and func_80055700's one empty
+fence. Three trial bindings in 49D94 were removed jointly. Reread qualifiers describe
+measured accesses, not a hardware-volatility claim; no original full APIs or layouts are
+claimed.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:
