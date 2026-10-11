@@ -2646,6 +2646,42 @@ Overlays remain 371/412 (90.0%), with 41 remaining. These are not whole-game or
 effort percentages; the native-PC lane remains unstarted. All six targets are
 completed, not available assignments.
 
+### 180-function resident run: group 23
+
+Each worker continued from its own verified prior-group commit (53 resident C).
+Root reviewed all six source/compiler changes, preserved their source blobs and
+commit order, and rebuilt and independently audited the resident after each
+serial integration. The accepted functions are:
+
+| Function | Bytes | Integrated commit |
+|---|---:|---|
+| `func_8001DBE8` | 152 | `f256de5` |
+| `func_80057848` | 152 | `f0c949e` |
+| `func_8005B7CC` | 152 | `51b130c` |
+| `func_80067A88` | 152 | `30d332c` |
+| `func_8007BE38` | 152 | `e6f3669` |
+| `func_80087CCC` | 152 | `3b0a008` |
+
+All six use basic DOS GCC and ordinary C without matching aids. Frames are 24/24/0/0/24/24
+bytes. func_80067A88's actual difference updates and no-storage scratch-base access view
+eliminated all provisional pointer identities, volatile qualifiers and bindings jointly,
+retaining its full ten-record scan and conditional pointer rereads. Original complete
+layouts, domains and APIs remain unknown.
+
+Workers passed fresh baselines, independent annotated/assembled original ASM,
+retail, standalone and full-linked byte comparisons, complete C/assembly-only/
+restored resident modes and 18 tests. Root passed the combined resident modes,
+original uncached five-overlay build and all 18 tests, with unchanged complete
+image hashes and sizes. Original ASM, inputs, storage, placement and expected
+hashes remain unchanged; compiler-map conflicts retain all justified additions.
+
+This 912-byte group brings the run to 138/180 additional functions.
+Snapshot `3b0a008` records 535 matches (371 overlay, 164 resident):
+535/1,685 (31.8%) of known inventory, with 1150 assembly-backed.
+Overlays remain 371/412 (90.0%), with 41 remaining. These are not whole-game or
+effort percentages; the native-PC lane remains unstarted. All six targets are
+completed, not available assignments.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 

@@ -777,6 +777,14 @@ preceding callbacks/syscall; a native adaptation requires explicit arguments. B9
 coverage includes all known callsites/dataflow and representative whole callers, not every
 whole caller body or indirect API. Commit authors use privacy-safe noreply addresses.
 
+Resident run group 23 adds 912 matching bytes:
+
+All six use basic DOS GCC and ordinary C without matching aids. Frames are 24/24/0/0/24/24
+bytes. func_80067A88's actual difference updates and no-storage scratch-base access view
+eliminated all provisional pointer identities, volatile qualifiers and bindings jointly,
+retaining its full ten-record scan and conditional pointer rereads. Original complete
+layouts, domains and APIs remain unknown.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:
