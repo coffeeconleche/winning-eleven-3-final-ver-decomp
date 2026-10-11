@@ -115,6 +115,7 @@ PER_FUNC_COMPILERS: dict[str, str] = {
     "func_80075BBC": "gcc272-dos",
     "func_8005715C": "gcc272-dos",
     "func_80076938": "gcc272-dos",
+    "func_800537D0": "gcc272-dos",
     "func_8001DD50": "gcc272-dos",
     "func_8001E0F4": "gcc272-dos",
     "func_8001E138": "gcc272-dos",
@@ -591,6 +592,7 @@ PER_FUNC_CC1_FLAGS = {
     "func_8009E244": ["-quiet", "-O2", "-G0", "-fno-schedule-insns"],
     # Retain the single measured record cursor rather than a second induction.
     "func_8009F62C": ["-quiet", "-O2", "-G0", "-fno-strength-reduce"],
+    "func_800537D0": ["-quiet", "-O2", "-G0", "-fno-schedule-insns", "-fno-schedule-insns2"],
     "func_8018E4E0": ["-quiet", "-O2", "-G0"],
     "func_8018DBBC": ["-quiet", "-O2", "-G0", "-fno-strength-reduce"],
     "func_80192A30": ["-quiet", "-O2", "-G0"],
