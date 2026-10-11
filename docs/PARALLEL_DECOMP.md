@@ -1847,6 +1847,46 @@ whole-game or effort percentages; the native-PC lane remains unstarted.
 The user requested pushing after completion. All targets above are completed,
 not available assignments.
 
+### 180-function resident run: group 1
+
+The user requested 180 additional resident functions in groups of six, with
+a push after each verified group. Starting from `1517d8e` (397 total matching
+functions, 26 resident), six isolated GPT-6.1 sol/high workers completed:
+
+| Function | Bytes | Integrated commit | Measured behavior |
+|---|---:|---|---|
+| `func_800198B4` | 52 | `63d9e16` | OR `0x8000` into an unsigned word-counted sequence of halfwords |
+| `func_80015F28` | 88 | `37f1569` | Preserve four callbacks and three ordered scratch-byte clears |
+| `func_80020DB8` | 120 | `f35163b` | Set three bytes, set only the first, or leave them untouched according to two scratch selectors |
+| `func_8001CEE0` | 124 | `b83bc8f` | Narrow eight incoming arguments and forward sixteen arguments with fixed constants |
+| `func_8001DD50` | 128 | `8363ada` | Capture state before pointer/word stores and call the helper for states 3, 5 or 6 |
+| `func_8002283C` | 128 | `db8858f` | Clear two descriptors, conditionally process 22 records, and call the final helper |
+
+All use basic `gcc272-dos -quiet -O2 -G0` without additional flags, bindings,
+empty constraints, volatile memory views or artificial frame reservations.
+Natural frames are 8, 24, 0, 72, 24 and 32 bytes respectively. Complete APIs,
+return declarations, layouts, ownership and gameplay meanings remain provisional.
+Numeric scratch views allocate no storage. The unspecified setup call preserves
+the original post-callback register residue; the typed wrapper's stack parameter
+loads, narrowing and signed extension match the observed instructions.
+
+Workers passed fresh full-resident baselines, independent ASM/retail/standalone
+and complete-linked function comparisons, resident C, assembly-only, restored C
+and all 18 tooling tests. For this long resident-only run, root owns the original
+uncached five-overlay check after each combined group instead of six redundant
+worker overlay rebuilds. Root serially rebuilt and independently audited the
+resident after every commit, preserving both compiler rows in the one conflict.
+Final combined resident-mode, original uncached five-overlay and 18-test gates
+pass with unchanged complete image hashes and sizes. No original ASM, reference
+input, expected hash, generated instruction, storage or linker placement changed.
+
+This first group adds 740 matching bytes and accounts for 6/180 requested new
+functions. The `37f1569` snapshot records 403 matching functions: 371 overlay and
+32/1,273 resident. Known inventory progress is 403/1,685 (23.9%), with 1,282
+functions still assembly-backed. Confirmed overlays remain 371/412 (90.0%).
+These are not whole-game or effort percentages; the native-PC lane is unstarted.
+All six targets above are completed, not available assignments.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 

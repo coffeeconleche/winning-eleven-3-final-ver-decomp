@@ -518,6 +518,38 @@ all 65,536 values passed an independent comparison audit for modes 0, 1 and
 layout, gameplay meanings and original APIs remain unknown. Acceptance still
 requires independent instruction checks and unchanged complete-image gates.
 
+The first group of the 180-resident-function run adds 740 bytes using basic
+`gcc272-dos -quiet -O2 -G0`: `func_800198B4` (52 bytes), `func_80015F28` (88),
+`func_80020DB8` (120), `func_8001CEE0` (124), `func_8001DD50` (128), and
+`func_8002283C` (128). None needs extra flags, register bindings, empty
+constraints, volatile memory views or artificial frame reservations.
+
+The unsigned halfword loop has a natural eight-byte frame under DOS GCC;
+GCC 2.8.1 omitted that frame. Its zero guard and unsigned post-decrement retain
+word wrap, and the known caller ignores the original result residue.
+The four-call setup wrapper needs only direct byte stores; three numeric
+scratch declarations were removed together after a successful minimization
+probe. Its unspecified `func_8001951C()` call-site view deliberately retains
+post-callback argument-register residue, not a complete recovered helper API.
+
+The three-byte mode updater uses two no-storage numeric scratch views and a
+shared first-only-store label to retain both original store blocks and branch
+scheduling. The typed eight-parameter wrapper forwards sixteen arguments;
+its final signed-halfword formal produces the measured full-word load followed
+by shift/sign extension, unlike the word-plus-cast probe's halfword load.
+Its 72-byte outgoing-argument frame is natural.
+
+The buffer-state setup captures the byte before publishing pointers and words,
+then its ordinary switch selects the callback for states 3, 5 and 6 without
+generated rodata. Four incoming words remain unchanged at that callback.
+The record traversal clears two descriptor bytes in order, visits 22 records
+at a 1,000-byte stride and conditionally calls the helper before the next
+record read; its two saved cursors give a natural 32-byte frame. The setup,
+mode, buffer-state and traversal GCC 2.8.1 probes differ in
+instruction scheduling or allocation. These measured access/ABI views do not
+recover complete object ownership, valid domains, historical APIs or gameplay
+meanings. Independent function and complete-image gates remain mandatory.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:
