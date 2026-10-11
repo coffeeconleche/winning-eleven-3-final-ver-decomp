@@ -3492,6 +3492,50 @@ Snapshot `2a94a45`: 655 matching functions (371 overlay, 284 resident),
 Overlays remain 371/412; native-PC work has not started. These are function-count
 percentages, not whole-game discovery or development-effort percentages.
 
+### 90-function resident run: round 14
+
+Workers used separate 45-function resident C baselines; historical
+baseline receipts do not uniformly include source hashes or precise timing.
+Missing historical evidence is not reconstructed from candidate receipts.
+Root reviewed source, profiles and evidence, preserved source blobs, and freshly
+recompiled each function against original ASM and retail bytes before the
+complete combined six-function build and independent audit.
+
+| Function | Bytes | Integrated commit | Compiler | Frame |
+|---|---:|---|---|---:|
+| `func_800AD2B4` | 56 | `3424e16` | gcc272-dos | 24 |
+| `func_800AA9E8` | 40 | `ba5deb2` | gcc272-dos | 24 |
+| `func_800B10B0` | 40 | `8e0c98a` | gcc272-dos | 24 |
+| `func_800A96C4` | 40 | `dde1727` | gcc272-dos | 24 |
+| `func_800AA7C4` | 40 | `b9bbe30` | gcc272-dos | 24 |
+| `func_800ADEDC` | 44 | `3b149cf` | gcc281 | 0 |
+
+ADEDC retains one initialized masked-input v0 binding; its lone removal fails, with no
+empty constraints. The other five have no aids. ADEDC uses basic GCC281; the others use
+basic DOS GCC. AD2B4 forwards four raw incoming words into its first BIOS wrapper, then
+preserves the ordered constant/pointer call and final syscall. AA9E8 passes the existing
+output-byte array to the unchanged original 24-entry helper. B10B0 retains the callback
+pointer and raw result; its four known address registrations and callback initializer were
+inspected. A96C4 and AA7C4 preserve their ordered calls; AA7C4's last callee result
+escapes unchanged, so its void declaration represents observed result non-use, not a
+recovered complete return API. ADEDC preserves flag tests and low-bit packet writes as a
+partial access view. A95C0 remains unmatched and uncounted after an ORI-versus-addiu
+probe, replaced by AD2B4. Nested BIOS/callback contracts, full object layouts and
+historical return declarations remain provisional.
+
+Worker five-view comparisons cover annotated and independently assembled original
+instructions, retail slices, relocated compiled C and full-linked C. Root passed
+the original uncached full-C, assembly-only and restored-C resident modes, all
+five overlays and all 18 tests. Full image bytes, hashes and sizes are unchanged.
+Original ASM, inputs, storage and placement remain unchanged; complete gameplay
+meaning, object layouts and nested or indirect APIs are not claimed.
+
+This 260-byte round brings the new run to 84/90 additional functions.
+Snapshot `3b149cf`: 661 matching functions (371 overlay, 290 resident),
+661/1,685 (39.2%) of the known inventory; 1024 remain assembly-backed.
+Overlays remain 371/412; native-PC work has not started. These are function-count
+percentages, not whole-game discovery or development-effort percentages.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 

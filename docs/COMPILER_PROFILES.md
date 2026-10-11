@@ -1017,6 +1017,21 @@ A91E4 has an unmatched ORI argument; they remain uncounted and are replaced by A
 ADF08, ADC04 and AED30 respectively. No complete callback lifecycle, packet layout or
 historical API is claimed.
 
+Resident 90-function run round 14 adds 260 matching bytes:
+
+ADEDC retains one initialized masked-input v0 binding; its lone removal fails, with no
+empty constraints. The other five have no aids. ADEDC uses basic GCC281; the others use
+basic DOS GCC. AD2B4 forwards four raw incoming words into its first BIOS wrapper, then
+preserves the ordered constant/pointer call and final syscall. AA9E8 passes the existing
+output-byte array to the unchanged original 24-entry helper. B10B0 retains the callback
+pointer and raw result; its four known address registrations and callback initializer were
+inspected. A96C4 and AA7C4 preserve their ordered calls; AA7C4's last callee result
+escapes unchanged, so its void declaration represents observed result non-use, not a
+recovered complete return API. ADEDC preserves flag tests and low-bit packet writes as a
+partial access view. A95C0 remains unmatched and uncounted after an ORI-versus-addiu
+probe, replaced by AD2B4. Nested BIOS/callback contracts, full object layouts and
+historical return declarations remain provisional.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:
