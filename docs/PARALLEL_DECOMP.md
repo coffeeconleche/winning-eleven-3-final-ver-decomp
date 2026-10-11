@@ -3131,6 +3131,44 @@ Snapshot `b0a0f7d`: 601 matching functions (371 overlay, 230 resident),
 Overlays remain 371/412; native-PC work has not started. These are function-count
 percentages, not whole-game discovery or development-effort percentages.
 
+### 90-function resident run: round 5
+
+Workers used separate 36-function resident C baselines; historical
+baseline receipts do not uniformly include source hashes or precise timing.
+Missing historical evidence is not reconstructed from candidate receipts.
+Root reviewed source, profiles and evidence, preserved source blobs, and freshly
+recompiled each function against original ASM and retail bytes before the
+complete combined six-function build and independent audit.
+
+| Function | Bytes | Integrated commit | Compiler | Frame |
+|---|---:|---|---|---:|
+| `func_800ADDF8` | 20 | `0082cf6` | gcc281 | 0 |
+| `func_800ADE0C` | 20 | `7d969c7` | gcc281 | 0 |
+| `func_800ADE20` | 20 | `89270a1` | gcc281 | 0 |
+| `func_800ADE34` | 20 | `c0e17d4` | gcc272-dos | 0 |
+| `func_800ADE48` | 20 | `035139e` | gcc281 | 0 |
+| `func_800B01F4` | 20 | `d099024` | gcc281 | 0 |
+
+B01F4 retains only an empty identity of the real initialized high-address base; a trial
+hard binding was removed, and removing the last identity changes an addu operand-order
+word. The other five have no aids. ADE34 uses basic DOS GCC; the others use basic GCC281.
+B01F4 preserves unsigned word-wrap address arithmetic and one unsigned byte read; its
+dispatch-table reference is known but exhaustive dynamic coverage is not claimed. The five
+setters preserve their ordered byte accesses.
+
+Worker five-view comparisons cover annotated and independently assembled original
+instructions, retail slices, relocated compiled C and full-linked C. Root passed
+the original uncached full-C, assembly-only and restored-C resident modes, all
+five overlays and all 18 tests. Full image bytes, hashes and sizes are unchanged.
+Original ASM, inputs, storage and placement remain unchanged; complete gameplay
+meaning, object layouts and nested or indirect APIs are not claimed.
+
+This 120-byte round brings the new run to 30/90 additional functions.
+Snapshot `d099024`: 607 matching functions (371 overlay, 236 resident),
+607/1,685 (36.0%) of the known inventory; 1078 remain assembly-backed.
+Overlays remain 371/412; native-PC work has not started. These are function-count
+percentages, not whole-game discovery or development-effort percentages.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 

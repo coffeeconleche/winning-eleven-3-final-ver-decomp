@@ -917,6 +917,15 @@ ADDBC uses basic DOS GCC; the other five use basic GCC281. Known caller dataflow
 original bounds were inspected; complete packet layouts and historical APIs remain
 provisional.
 
+Resident 90-function run round 5 adds 120 matching bytes:
+
+B01F4 retains only an empty identity of the real initialized high-address base; a trial
+hard binding was removed, and removing the last identity changes an addu operand-order
+word. The other five have no aids. ADE34 uses basic DOS GCC; the others use basic GCC281.
+B01F4 preserves unsigned word-wrap address arithmetic and one unsigned byte read; its
+dispatch-table reference is known but exhaustive dynamic coverage is not claimed. The five
+setters preserve their ordered byte accesses.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:
