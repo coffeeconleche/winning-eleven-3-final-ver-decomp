@@ -1139,6 +1139,17 @@ py -B tools_src\build.py --bin-dir 'C:\path\to\mips\bin' --psyq-bin 'C:\path\to\
 assembly baseline. Unknown resident C slots and generated resident rodata fail
 closed; overlay switch-table placement is not automatically a resident feature.
 
+### Eleven verified resident matches (2026-10-14)
+
+`func_80017258`, `func_8006EE60`, `func_8001CDAC`, `func_8006F714`, `func_8004419C`, `func_80081210`, `func_800B0248`, `func_800B0208`, `func_800AC06C`, `func_800189E8`, `func_80057074`.
+
+Profiles remain individually verified through complete function and image
+equality; these additions do not change global compiler defaults. Their
+source comments and matching annotations describe observed legacy codegen,
+not complete historical declarations or native-portability guarantees.
+No generated resident rodata, added storage, instruction-output patches
+or artificial frame reservations are introduced by this publication.
+
 ## Wrapper checks
 
 The wrapper's SDK-free tests cover successful verbatim copying, failed or

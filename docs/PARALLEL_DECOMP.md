@@ -3731,6 +3731,55 @@ The six accepted targets contribute 2,068 matching bytes. Overlays remain
 treemap is regenerated from this tracked-clean code snapshot; the separate
 private byte-weighted image is unchanged.
 
+### Eleven verified resident matches (2026-10-14)
+
+| Function | Bytes | Code commit | Compiler |
+| --- | ---: | --- | --- |
+| `func_80017258` | 444 | `753e5d3` | gcc272-dos |
+| `func_8006EE60` | 304 | `3fd349a` | gcc272-dos |
+| `func_8001CDAC` | 308 | `3d0e02c` | gcc272-dos |
+| `func_8006F714` | 312 | `ea30115` | gcc272-dos |
+| `func_8004419C` | 296 | `fa90fc5` | gcc272-dos |
+| `func_80081210` | 356 | `a002eb3` | gcc272-dos |
+| `func_800B0248` | 72 | `9dbd612` | gcc281 |
+| `func_800B0208` | 64 | `2c124c8` | gcc272-dos |
+| `func_800AC06C` | 8 | `879f4d8` | gcc281 |
+| `func_800189E8` | 8 | `ec7dfe3` | gcc281 |
+| `func_80057074` | 8 | `a1202db` | gcc281 |
+
+All sources passed independent function-byte proofs and fresh combined-master
+resident C/assembly-only/restored-C builds, all five confirmed overlays and
+all 18 tests. Complete before/after manifests include every new C file;
+the aggregate audit confirms each resident substitution uses compiled C.
+Original instructions, retail slices, separately assembled original ASM,
+relocated C and full-linked C agree. No reference hash, original ASM,
+placement, game storage or build logic was changed.
+
+Six medium matches contribute 2,020 bytes; the five smaller matches add 160
+bytes, including three empty hooks. The other AI had committed four;
+its fifth draft was independently preserved and verified before publishing.
+An inaccurate adjacency comment was corrected. Its historical tracked-only
+manifests omitted new C candidates; fresh independent and combined freezes
+close that verification gap without reconstructing missing old evidence.
+
+The medium sources use basic DOS GCC settings. Two need no matching aids;
+the others retain measured real-value bindings/empty identities. Removed
+aids and failed attempts are preserved privately. The input-repeat source
+had a comment-only correction after its worker gates, with explicitly
+measured identical compiler inputs/output and a fresh full resident build;
+the integrated corrected source passes the new combined gates as well.
+
+The original 8001A814 and 800228BC assignments remain unmatched research
+and are not counted; their active edits were restored before replacements.
+
+Snapshot `879f4d8`: 690 matching functions (371 overlay, 319 resident),
+690/1,685 (40.9%) of the known inventory; 995 remain assembly-backed.
+Overlays remain 371/412; native-PC and online work have not started. These
+are function-count percentages, not whole-game discovery or effort estimates.
+Historical APIs, full layouts, indirect users and native arithmetic/alias
+contracts remain provisional. The public count-weighted treemap is refreshed
+from this tracked-clean code snapshot; private size-weighted images are unchanged.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 
