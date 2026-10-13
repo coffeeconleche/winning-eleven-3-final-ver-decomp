@@ -3582,6 +3582,60 @@ Snapshot `0fc892e`: 667 matching functions (371 overlay, 296 resident),
 Overlays remain 371/412; native-PC work has not started. These are function-count
 percentages, not whole-game discovery or development-effort percentages.
 
+### Small resident handoffs: six-function integration, 2026-10-13
+
+The one-function handoff and its five-function follow-up were reviewed on their
+local worker branch, then integrated serially. Six new C files and one own-function
+compiler-map entry add 196 matching bytes. The follow-up itself adds 188 bytes,
+not the 244 reported in its original handoff; the previous empty hook adds eight.
+
+| Function | Bytes | Integrated commit | Compiler | Frame |
+|---|---:|---|---|---:|
+| `func_800AC074` | 8 | `c987d67` | gcc281 | 0 |
+| `func_800ADAD8` | 60 | `da5604d` | gcc281 | 0 |
+| `func_800B0A80` | 52 | `b9e4b31` | gcc272-dos | 24 |
+| `func_800ADA9C` | 60 | `07f1ea0` | gcc281 | 0 |
+| `func_800156BC` | 8 | `8064c77` | gcc281 | 0 |
+| `func_8005A4F4` | 8 | `8d4f21e` | gcc281 | 0 |
+
+ADAD8 retains masked word inputs and ordered shifts/ORs without aids. B0A80
+preserves the existing helper call, addition and two global stores without aids.
+ADA9C retains one initialized real-value pointer binding; an independent removal
+test reproduces 56 rather than 60 bytes. Its ordered halfword/byte stores describe
+only a partial access view. The other three functions are empty return stubs.
+Comment-only follow-up `a7cb7b2` clarifies tested allocation shapes and possible
+caller return-register residue without changing any function body.
+
+The worker evidence has explicit limitations: final manifests omit their new
+untracked C candidates and do not cover every build input; full-build runners
+do not enforce complete before/after freezes. Later parent baselines have successful
+logs but lack separate parent manifests. Some failed proof/extraction logs were
+overwritten by successful reruns. Missing historical evidence is not reconstructed.
+ADAD8 has 16 static direct call sites in ten functions, including ENTER overlays;
+representative caller notes are not a complete census. AC074 has four direct sites
+in three caller functions. Caller-local result non-use does not establish a full
+return API when register residue can escape through epilogues. ADA9C's lack of
+discovered static references does not prove dead code or that adjacent helpers
+are unused. Full packet meanings, native arithmetic and complete APIs remain
+provisional; the original worker source and available research stay preserved.
+
+Root independently recompiled all six final integrated sources and compared
+annotated original words, separately assembled original ASM, retail slices,
+relocated compiled C and fresh full-linked C bytes. Complete source/input-set
+guards ran before and after commands. Original uncached full-C, assembly-only
+and restored-C resident modes, the independent aggregate audit, all five overlays
+and all 18 tests passed with unchanged full image bytes, hashes and sizes.
+The publication helper then failed on a Windows slash-key lookup while writing
+its receipt, after all required commands had returned zero. Completion rechecked
+retained proofs and actual gate logs; lost command timestamps remain missing,
+and the saved publication manifest is explicitly recorded after the gates.
+No original ASM, expected hashes, layouts or build logic were changed.
+
+Snapshot `a7cb7b2`: 673 matching functions (371 overlay, 302 resident),
+673/1,685 (39.9%) of the known inventory; 1012 remain assembly-backed.
+Overlays remain 371/412; native-PC work has not started. These are function-count
+percentages, not whole-game discovery or development-effort percentages.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 

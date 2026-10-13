@@ -1049,6 +1049,30 @@ that flow rather than assume those words are unused. C3E18 remains unmatched and
 after reasoned switch/store-scheduling probes, replaced by AD204. Complete historical
 APIs, callback behavior, object extents and native hardware adaptation remain provisional.
 
+The reviewed small-resident handoffs integrated on 2026-10-13 add six functions
+and 196 matching bytes (the five-function follow-up contributes 188 bytes).
+`func_800AC074`, `func_800156BC` and `func_8005A4F4` are empty eight-byte
+functions; `func_800ADAD8` is a 60-byte masked bit-pack leaf. These four use
+basic `gcc281 -quiet -O2 -G0` without allocation aids or compiler-map entries.
+`func_800B0A80` uses basic `gcc272-dos -quiet -O2 -G0`, one compiler-map entry
+and no aids; its 52-byte implementation retains the natural 24-byte RA frame,
+the original helper call with -1, the 0xF0 addition and two ordered global stores.
+Its helper contract and host-side wrapping arithmetic remain provisional.
+
+`func_800ADA9C` uses basic GCC281 with one initialized real-value `$2` pointer
+binding and no other aids. Removing that binding independently reproduces a
+56-byte allocation instead of the original 60 bytes. The retained binding
+preserves the initial fifth-argument load, base copy and twelve ordered stores
+through a partial 20-byte access view; no new storage or full packet API is
+claimed. The absence of discovered static callers does not establish runtime dead code.
+Empty-function result-register residue can escape through caller epilogues;
+void declarations are matching MIPS views, not recovered complete native APIs.
+
+All six integrated sources were freshly compiled and checked against original
+instructions, independently assembled original ASM, retail slices and full-linked
+C. The original uncached resident C/ASM/restored-C modes, all five overlays and
+all 18 tests pass; original bytes, storage and placement remain unchanged.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:
