@@ -1073,6 +1073,33 @@ instructions, independently assembled original ASM, retail slices and full-linke
 C. The original uncached resident C/ASM/restored-C modes, all five overlays and
 all 18 tests pass; original bytes, storage and placement remain unchanged.
 
+The medium-resident batch reviewed on 2026-10-13 adds five functions and 1,760
+matching bytes. All five use basic `gcc272-dos -quiet -O2 -G0`, with one own-target
+compiler-map entry each and no extra flags. `func_8001D568` (320 bytes, frame 24),
+`func_80026B3C` (472 bytes, frame 32), `func_80081A6C` (296 bytes, frame 40), and
+`func_800A3450` (320 bytes, frame 0) need no allocation aids or new storage.
+
+`func_80020AB4` matches 352 bytes with its natural 24-byte frame. One scoped,
+initialized `$2` binding retains the second real byte load and copy. Two empty
+identities consume actual narrowed units values before their word-width shifts.
+Removing any one retained aid emits 348 bytes; cumulative removal emits 340.
+Two earlier tens identities and a selected-value input were removed together.
+No artificial frame, clobbers, instruction-producing ASM or output patches remain.
+
+Scratch scalar/array aliases are access views of existing addresses, not new
+storage or MMIO claims. The constructor and formatter can leave result-register
+residue that survives caller epilogues; provisional void views do not establish
+complete historical return APIs. The distance routine's signed squares can
+overflow before their unsigned casts: exact tested legacy compiler output is
+not a portable/native arithmetic contract. Full layouts and helper APIs remain
+provisional. `func_8004B2E0` remains uncounted research with five differing words;
+its apparent scheduling near-match is not an accepted conversion.
+
+Worker and root isolated proofs, full resident C/ASM/restored-C verification,
+all five overlays and all 18 tests preserve the complete original image bytes.
+The matrix-copy source had an inaccurate padding comment corrected before its
+final commit; both runs remain separate and the corrected source was reverified.
+
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
 For shared read-only installations, use your actual local paths:

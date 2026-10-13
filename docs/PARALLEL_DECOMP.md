@@ -3636,6 +3636,58 @@ Snapshot `a7cb7b2`: 673 matching functions (371 overlay, 302 resident),
 Overlays remain 371/412; native-PC work has not started. These are function-count
 percentages, not whole-game discovery or development-effort percentages.
 
+### Medium resident batch: five verified matches, 2026-10-13
+
+Six workers started from `775681b` with exclusive targets and separate worktrees.
+Five functions passed independent review and were integrated serially; the sixth
+remains research. Compiler-map conflicts were resolved by retaining all prior
+entries and adding only the five target profiles. The new sources add 1,760 bytes.
+
+| Function | Bytes | Integrated commit | Compiler | Frame |
+|---|---:|---|---|---:|
+| `func_8001D568` | 320 | `6c06db9` | gcc272-dos | 24 |
+| `func_80020AB4` | 352 | `754e603` | gcc272-dos | 24 |
+| `func_80026B3C` | 472 | `bb20b5c` | gcc272-dos | 32 |
+| `func_80081A6C` | 296 | `379c07b` | gcc272-dos | 40 |
+| `func_800A3450` | 320 | `d8e0802` | gcc272-dos | 0 |
+
+All use basic `-quiet -O2 -G0`. Four need no allocation aids. The decimal
+formatter retains one initialized loaded-value binding and two identities on
+actual narrowed units; each removal yields 348 bytes and combined removal 340.
+The other routines preserve ordered scratch/matrix transfers, staged updates,
+direction/distance callbacks and mode-selected halfword adjustments. These are
+behavioral descriptions, not recovered gameplay names or complete layouts.
+Result-register residue can escape from the constructor and formatter through
+caller epilogues. The distance source's signed squares are not native-safe at
+all halfword extremes. No complete historical return or helper API is claimed.
+
+Each worker ran fresh parent and final checks with unique logs and source/input
+snapshots including the new untracked C. Failed attempts were retained separately.
+An incorrect matrix-padding comment was removed; the corrected exact source then
+passed a separate complete verification run before its commit. Root reviewed
+source/callers, independently recompiled every committed candidate, audited all
+303 substitutions in each worker image, and checked that no data/BSS was added.
+
+After integration, root freshly compared all five integrated sources through
+annotated words, independently assembled original ASM, retail slices and relocated
+C. Original uncached combined resident C/ASM/restored-C modes, the aggregate audit,
+all five overlays and all 18 tests preserve full bytes, hashes and sizes. The
+combined runner guards its inputs before and after each command; the additional
+saved publication snapshot was taken after that runner started. Missing original
+combined-command timestamps are not reconstructed. No original ASM, storage,
+layout, reference hash or build logic was changed.
+
+`func_8004B2E0` remains uncounted: its 308-byte, natural 48-byte-frame candidate
+differs at five words because two setup instructions move. Its private draft and
+28 baseline/proof runs are preserved. The unmatched active C and its temporary
+profile entry were removed, restoring that worker's parent source/input set.
+Final candidate gates and an accepted commit were not claimed for this target.
+
+Snapshot `d8e0802`: 678 matching functions (371 overlay, 307 resident),
+678/1,685 (40.2%) of the known inventory; 1007 remain assembly-backed.
+Overlays remain 371/412; native-PC work has not started. These are function-count
+percentages, not whole-game discovery or development-effort percentages.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 
