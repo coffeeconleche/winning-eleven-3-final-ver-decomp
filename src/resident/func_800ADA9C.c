@@ -6,8 +6,8 @@
  * last, in the return delay slot. */
 void func_800ADA9C(u32 base, u32 b, u32 c, u32 d, u32 e)
 {
-    /* One measured allocation aid: without this binding every natural
-     * source shape stores through the incoming $a0 and loads the fifth
+    /* One measured allocation aid: without this binding the tested natural
+     * source shapes store through the incoming $a0 and load the fifth
      * argument into $v0, differing in all twelve store base fields; with
      * it the original $v0 base copy and $v1 argument load appear under
      * both basic profiles. It emits no game instructions beyond the

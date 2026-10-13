@@ -1,7 +1,8 @@
 #include "common.h"
 
-/* Empty hook: the three known callers jal here with no argument setup and
- * ignore any result. The historical purpose and return contract are unknown. */
+/* Empty hook: four known call sites in three caller functions have no
+ * dedicated argument setup. Some caller paths return with unchanged result
+ * register residue; the historical purpose and full return API are unknown. */
 void func_800AC074(void)
 {
 }
