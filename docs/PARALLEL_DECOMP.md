@@ -3677,16 +3677,59 @@ saved publication snapshot was taken after that runner started. Missing original
 combined-command timestamps are not reconstructed. No original ASM, storage,
 layout, reference hash or build logic was changed.
 
-`func_8004B2E0` remains uncounted: its 308-byte, natural 48-byte-frame candidate
-differs at five words because two setup instructions move. Its private draft and
-28 baseline/proof runs are preserved. The unmatched active C and its temporary
-profile entry were removed, restoring that worker's parent source/input set.
-Final candidate gates and an accepted commit were not claimed for this target.
+At this checkpoint, `func_8004B2E0` was uncounted: its 308-byte, natural
+48-byte-frame candidate differed at five words because two setup instructions
+moved. Its private draft and 28 baseline/proof runs were preserved. The unmatched
+active C and its temporary profile entry were removed, restoring that worker's
+parent source/input set. Final candidate gates and an accepted commit were not
+claimed for that candidate.
 
 Snapshot `d8e0802`: 678 matching functions (371 overlay, 307 resident),
 678/1,685 (40.2%) of the known inventory; 1007 remain assembly-backed.
 Overlays remain 371/412; native-PC work has not started. These are function-count
 percentages, not whole-game discovery or development-effort percentages.
+
+### Resumed sixth medium-resident target (2026-10-13)
+
+After the first five were pushed, the sixth worker resumed from `d6fc30a`
+(307 resident C functions). A fresh parent build passed before adding the
+candidate. Root review independently recompiled the committed source, checked
+its exact bytes and empty data/BSS sections, and audited all 308 resident C
+substitutions in the worker's restored full image before integration.
+
+| Function | Bytes | Integrated commit | Profile | Frame |
+| --- | ---: | --- | --- | ---: |
+| `func_8004B2E0` | 308 | `9354549` | gcc272-dos | 48 |
+
+The source uses basic `-quiet -O2 -G0`, one compiler-map entry and no allocation
+aids, volatile accesses, added storage or forced frame. A literal scratch
+pointer changes raw compiler `LA` to `LI` and places the single assembled `LUI`
+in the original branch delay slot; the loop-index initialization also moves
+into its original gap. The scheduling difference is measured. Different
+compiler treatment of symbolic and literal addresses is an inference, not
+recovered historical source. Removing the earlier volatile halfword qualifier
+still matches. Two failed extra-flag hypotheses, the original 28-attempt
+research package and the successful resumed proofs are all preserved separately.
+
+The descriptor-to-scratch read/store widths and order, callback reloads,
+unsigned argument narrowing and conditional early return are preserved.
+Descriptor meaning, full layout and historical helper/signature APIs remain
+provisional. No original ASM, game storage, placement, reference hashes or
+build logic was modified.
+
+Worker final gates and fresh combined-master resident C/ASM/restored-C,
+all five overlays and all 18 tests passed. Five function-byte views agree
+against the exact retail slice and full-linked C. Before/after manifests
+include the new C file and preserve all source/input file sets and hashes.
+Actual command starts, ends, exits and unique logs are retained in the resumed
+private receipts; no old near-match or missing gate is relabelled as a pass.
+
+Snapshot `9354549`: 679 matching functions (371 overlay, 308 resident),
+679/1,685 (40.3%) of the known inventory; 1006 remain assembly-backed.
+The six accepted targets contribute 2,068 matching bytes. Overlays remain
+371/412; native-PC and online work have not started. The public count-weighted
+treemap is regenerated from this tracked-clean code snapshot; the separate
+private byte-weighted image is unchanged.
 
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.

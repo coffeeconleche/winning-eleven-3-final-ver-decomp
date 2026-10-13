@@ -1092,13 +1092,40 @@ residue that survives caller epilogues; provisional void views do not establish
 complete historical return APIs. The distance routine's signed squares can
 overflow before their unsigned casts: exact tested legacy compiler output is
 not a portable/native arithmetic contract. Full layouts and helper APIs remain
-provisional. `func_8004B2E0` remains uncounted research with five differing words;
-its apparent scheduling near-match is not an accepted conversion.
+provisional. At that first checkpoint, `func_8004B2E0` remained uncounted
+research with five differing words, not an accepted conversion.
 
 Worker and root isolated proofs, full resident C/ASM/restored-C verification,
 all five overlays and all 18 tests preserve the complete original image bytes.
 The matrix-copy source had an inaccurate padding comment corrected before its
 final commit; both runs remain separate and the corrected source was reverified.
+
+The resumed sixth target, `func_8004B2E0`, now matches all 308 bytes with basic
+`gcc272-dos -quiet -O2 -G0`, one own-target compiler entry and its natural
+48-byte frame. It needs no allocation bindings, empty constraints, volatile
+accesses, frame reservations or extra flags, and introduces no storage.
+Changing the scratch base from a symbolic array to `(u8 *)0x1F800000` changes
+raw compiler output from `LA` outside the initial branch's delay slot to `LI`
+inside it; the latter assembles to the original single `LUI`. The associated
+index initialization also moves into its original load-delay gap. These
+scheduling changes are observed; different compiler treatment of symbolic
+and literal address expressions is the inferred explanation, not a claim to
+have recovered the historical source. The former volatile halfword access
+was then removed without losing the match. Two unsuccessful extra-flag trials
+and all earlier near-match evidence remain separate and are not counted as
+successful proofs.
+
+This function preserves ordered descriptor-to-scratch copies, per-callback
+word and halfword reloads, byte-count narrowing and its conditional low-byte
+early return. Descriptor layouts and complete historical APIs remain
+provisional. The known callers pass 255 and discard the return value; static
+searches do not disprove undiscovered indirect references. The six accepted
+medium functions contribute 2,068 matching bytes in total.
+
+The resumed committed source passed worker and independent root function
+proofs, then fresh combined-master resident C/ASM/restored-C builds, all five
+overlays and all 18 tests. Five function-byte views agree, complete retail
+images are unchanged, and before/after source/input file sets and hashes match.
 
 `build.py` uses the shared per-function compiler map for `src/resident/`, with
 the same `--psyq-bin`, `--maspsx`, `--dosbox` and `--dos-cc1` local-tool options.
