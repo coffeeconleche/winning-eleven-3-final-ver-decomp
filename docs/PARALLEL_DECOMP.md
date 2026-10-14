@@ -4010,6 +4010,42 @@ The public count-weighted treemap is refreshed from this code snapshot;
 private size-weighted images are unchanged. Deferred medium batches remain
 stopped; this publication does not resume them.
 
+### Independently reviewed resident func_8002BAEC (2026-10-14)
+
+| Function | Bytes | Code commit | Compiler |
+| --- | ---: | --- | --- |
+| `func_8002BAEC` | 396 | `52ec079` | gcc272-dos |
+
+The worker commit `7071784` adds a conditional two-record classifier.
+Independent review confirms two caller sites in `func_80029928`, at
+`0x80029B4C` and `0x80029D5C`, both testing the boolean result.
+The original has three static angle-helper call sites; after the gates
+pass, a path executes the first call and one of the two branch calls.
+The kind bytes, table extent, full record layouts and gameplay meaning
+remain provisional. Source control-flow labels preserve the original's
+duplicated low-byte mask/threshold tests without matching-specific aids.
+
+Integration corrects signed-product overflow: the operands, not merely
+the completed products, are converted to unsigned words before squaring.
+The final 396 bytes still exactly match the original, including the signed
+threshold comparison and wrapped sum. The worker's five failed attempts
+retain distinct logs. Its final manifest omitted the new C file; complete
+fresh before/after manifests on master include the final corrected source.
+
+Independent annotated-word, original-ASM, retail-slice, relocated-C and
+full-linked-C views agree. Fresh resident C/assembly-only/restored-C builds,
+all five confirmed overlays and all 18 tests pass; the aggregate audit
+confirms all 360 resident C substitutions. No original ASM, reference hash,
+placement, game storage or build logic was changed. Only the measured
+per-function compiler-map entry was added.
+
+Snapshot `52ec079`: 731 matching functions (371 overlay, 360 resident),
+731/1,685 (43.4%) of the known inventory; 954 remain assembly-backed.
+Overlays remain 371/412. The public count-weighted treemap reflects this
+snapshot; private size-weighted images are unchanged. These percentages
+are not whole-game discovery or effort estimates. Native-PC and online
+work have not started, and deferred medium batches remain stopped.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 

@@ -1237,6 +1237,24 @@ proofs cover all four functions. Complete new input manifests include
 every new C source; there are no matching aids, added game storage,
 resident rodata, output patches or global compiler-default changes.
 
+### Reviewed resident func_8002BAEC (2026-10-14)
+
+`func_8002BAEC` matches all 396 original bytes with
+`gcc272-dos -quiet -O2 -G0` and one measured compiler-map entry.
+Its shared `near`/`squared`/`zero` control graph preserves separate
+masked-delta tests that other source shapes tail-merged. No register
+bindings, artificial frame reservations or instruction patches are used.
+
+Integration converts coordinate differences to `u32` before multiplication;
+casting a signed product afterward does not prevent overflow. The resulting
+word products and wrapped sum retain the original `mult`/`mflo`/`addu`
+instructions and signed threshold comparison. Signed result interpretations
+remain measured 32-bit target ABI views, not a complete native contract.
+
+Fresh resident C/all-assembly/restored-C builds, all five confirmed overlays
+and all 18 tests pass. Independent five-view proof and complete input freezes
+cover the final integrated source. There is no added storage or resident rodata.
+
 ## Wrapper checks
 
 The wrapper's SDK-free tests cover successful verbatim copying, failed or
