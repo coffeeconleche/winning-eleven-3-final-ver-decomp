@@ -3972,6 +3972,44 @@ Historical APIs, full layouts, indirect users and native arithmetic/alias
 contracts remain provisional. The public count-weighted treemap is refreshed
 from this tracked-clean code snapshot; private size-weighted images are unchanged.
 
+### Four independently reviewed small resident matches (2026-10-14)
+
+| Function | Bytes | Code commit | Compiler |
+| --- | ---: | --- | --- |
+| `func_800AC07C` | 8 | `9f17fd0` | gcc281 |
+| `func_8006FDAC` | 8 | `f9f6b1d` | gcc281 |
+| `func_800ACE10` | 8 | `d5e2d1f` | gcc281 |
+| `func_800B6648` | 60 | `6298b49` | gcc272-dos |
+
+These four functions add 84 matching bytes. The three empty hooks have
+unknown historical purposes and return contracts. `func_800B6648` is
+a signed, 12-bit-masked helper wrapper; integration replaced signed
+negation with unsigned word wrapping while retaining the exact retail
+instructions. Its original helper purpose and complete API remain unknown.
+
+The worker's recorded source hashes and committed blobs agree, and all
+24 failed attempts retain distinct logs. Its original final manifests
+omitted each newly untracked C file; fresh complete before/after manifests
+on the integrated master include all four sources and supersede that gap.
+The original handoff's 164-byte total is corrected to 84 bytes. Rejected
+experiments are research, not evidence that all easy targets are exhausted.
+
+Fresh resident C/assembly-only/restored-C builds reproduce the complete
+retail executable. All five confirmed overlays and all 18 tests pass.
+Annotated instructions, original ASM linkage, retail slices, independently
+compiled and relocated C, and full-linked C agree for every new function.
+The aggregate audit verifies all 359 resident matching-C substitutions.
+No original ASM, reference hash, placement, game storage or production
+build logic changed; only the measured per-function compiler entry was added.
+
+Snapshot `6298b49`: 730 matching functions (371 overlay, 359 resident),
+730/1,685 (43.3%) of the known inventory; 955 remain assembly-backed.
+Overlays remain 371/412. These are function-count percentages, not full-game
+discovery or effort estimates. Native-PC and online work have not started.
+The public count-weighted treemap is refreshed from this code snapshot;
+private size-weighted images are unchanged. Deferred medium batches remain
+stopped; this publication does not resume them.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 

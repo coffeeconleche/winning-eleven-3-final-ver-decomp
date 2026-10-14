@@ -1216,6 +1216,27 @@ not complete historical declarations or native-portability guarantees.
 No generated resident rodata, added storage, instruction-output patches
 or artificial frame reservations are introduced by this publication.
 
+### Four reviewed small resident matches (2026-10-14)
+
+`func_800AC07C`, `func_8006FDAC` and `func_800ACE10` are eight-byte
+empty hooks that match with the default `gcc281 -quiet -O2 -G0` profile.
+Their original return contracts and historical purposes remain unknown;
+the replacements do not manufacture return values.
+
+`func_800B6648` matches all 60 original bytes with
+`gcc272-dos -quiet -O2 -G0` and one `PER_FUNC_COMPILERS` entry.
+It masks the input magnitude to 12 bits and negates the helper result
+for negative input. Unsigned subtraction preserves the original `negu`
+word wrapping, including `INT_MIN`, without changing the original frame
+or instructions. The signed input/result remain measured 32-bit target
+ABI views, not complete historical declarations or a finished native ABI.
+
+Fresh combined-master resident C, all-assembly and restored-C builds,
+all five confirmed overlays and all 18 tests pass. Independent five-view
+proofs cover all four functions. Complete new input manifests include
+every new C source; there are no matching aids, added game storage,
+resident rodata, output patches or global compiler-default changes.
+
 ## Wrapper checks
 
 The wrapper's SDK-free tests cover successful verbatim copying, failed or
