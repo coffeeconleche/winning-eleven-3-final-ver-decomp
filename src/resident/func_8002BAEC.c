@@ -10,7 +10,8 @@ extern u32 func_8005B36C(s32, s32, s32, s32);
  * before the measured low-byte masks; the 0x81 comparison is unsigned
  * and both 0x21 comparisons and the final 0x18FFFF comparison are
  * signed, as measured. The squared-coordinate sum wraps as a word; the
- * products use the signed mult/mflo low words. The mask and threshold
+ * operands are converted before multiplication to avoid signed overflow;
+ * their low words match the original signed mult/mflo products. The mask and threshold
  * test live inside each delta branch as measured. */
 s32 func_8002BAEC(u8 *first, u8 *second, u32 reference)
 {
@@ -56,7 +57,7 @@ near:
 squared:
     dx = *(s16 *)(first + 2) - *(s16 *)(second + 2);
     dy = *(s16 *)(first + 6) - *(s16 *)(second + 6);
-    squared = (u32)(dx * dx) + (u32)(dy * dy);
+    squared = (u32)dx * (u32)dx + (u32)dy * (u32)dy;
     if ((s32)squared > 0x18FFFF) {
         goto zero;
     }
