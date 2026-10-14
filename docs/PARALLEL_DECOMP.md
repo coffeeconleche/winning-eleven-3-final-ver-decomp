@@ -4046,6 +4046,59 @@ snapshot; private size-weighted images are unchanged. These percentages
 are not whole-game discovery or effort estimates. Native-PC and online
 work have not started, and deferred medium batches remain stopped.
 
+### Six reviewed medium resident matches (2026-10-15)
+
+| Function | Bytes | Code commit | Compiler |
+| --- | ---: | --- | --- |
+| `func_80035944` | 280 | `10ba31d` | gcc272-dos |
+| `func_8003EF94` | 316 | `7589fda` | gcc272-dos |
+| `func_8004F66C` | 292 | `f87dbe9` | gcc272-dos |
+| `func_80052A68` | 396 | `abfc32b` | gcc272-dos |
+| `func_80055974` | 352 | `d3139a7` | gcc272-dos |
+| `func_80055B84` | 336 | `e085dd6` | gcc272-dos |
+
+All sources passed independent function-byte proofs and fresh combined-master
+resident C/assembly-only/restored-C builds, all five confirmed overlays and
+all 18 tests. Complete before/after manifests include every new C file;
+the aggregate audit confirms each resident substitution uses compiled C.
+Original instructions, retail slices, separately assembled original ASM,
+relocated C and full-linked C agree. No reference hash, original ASM,
+placement, game storage or production build logic was changed.
+
+These six matches add 1,972 exact code bytes. The fresh
+parent baseline and isolated workers use the same verified published inputs:
+tracked text is compared by Git blob (including two CRLF/LF differences),
+binary inputs byte-for-byte. The unused, ignored monolithic Splat C projection
+present only in the parent checkout is recorded but is not a compiler input.
+Source comments document partial access views, not complete recovered APIs.
+Per-function aids, removal tests and unresolved native contracts remain
+recorded in the independently reviewed sources and private receipts.
+
+`func_8004F66C` uses measured row strides. The known retail caller and
+inspected helper chain keep accesses within those views; changed counts,
+unknown writers or undiscovered callers require rechecking their bounds.
+No artificial frame padding was introduced.
+
+`func_80052A68` retains six real-value register bindings and two empty
+constraints for measured allocation and control/load ordering. A second
+worker independently reproduced the exact final source and all eight
+single-aid removal failures, plus the all-aids-removed failure, without
+source drift. This is minimization within tested candidates, not proof
+of a global minimum, historical declarations or native portability.
+The other five new sources need no register or instruction constraints.
+
+`func_8002F0FC` remains reserved for the other AI and is not part of this
+batch. This publication completes only the six newly requested functions;
+it does not resume the older multi-batch queue.
+
+Snapshot `abfc32b`: 737 matching functions (371 overlay, 366 resident),
+737/1,685 (43.7%) of the known inventory; 948 remain assembly-backed.
+Overlays remain 371/412; native-PC and online work have not started. These
+are function-count percentages, not whole-game discovery or effort estimates.
+Historical APIs, full layouts, indirect users and native arithmetic/alias
+contracts remain provisional. The public count-weighted treemap is refreshed
+from this tracked-clean code snapshot; private size-weighted images are unchanged.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 

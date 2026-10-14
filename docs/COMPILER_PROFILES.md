@@ -1255,6 +1255,21 @@ Fresh resident C/all-assembly/restored-C builds, all five confirmed overlays
 and all 18 tests pass. Independent five-view proof and complete input freezes
 cover the final integrated source. There is no added storage or resident rodata.
 
+### Six reviewed medium resident matches (2026-10-15)
+
+`func_80035944`, `func_8003EF94`, `func_8004F66C`, `func_80052A68`, `func_80055974`, `func_80055B84`.
+
+Profiles remain individually verified through complete function and image
+equality; these additions do not change global compiler defaults. Their
+source comments and matching annotations describe observed legacy codegen,
+not complete historical declarations or native-portability guarantees.
+All six use `gcc272-dos` with `-quiet -O2 -G0`; only their measured
+compiler-map keys are added. The six real-value bindings and two empty
+constraints in `func_80052A68` are independently removal-tested against
+the final source hash. The other five sources need no such constraints.
+No generated resident rodata, added storage, instruction-output patches
+or artificial frame reservations are introduced by this publication.
+
 ## Wrapper checks
 
 The wrapper's SDK-free tests cover successful verbatim copying, failed or
