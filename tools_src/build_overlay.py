@@ -36,6 +36,7 @@ CPP_FLAGS = [
 ]
 
 PER_FUNC_COMPILERS: dict[str, str] = {
+    "func_8004A114": "gcc272-dos",
     "func_8009D008": "gcc272-dos",
     "func_800987CC": "gcc272-dos",
     "func_800944B0": "gcc272-dos",
@@ -724,6 +725,7 @@ PER_FUNC_JUMP_TABLES: dict[str, JumpTableSlot | tuple[JumpTableSlot, ...]] = {
 }
 
 PER_FUNC_CC1_FLAGS = {
+    "func_8004A114": ["-quiet", "-O2", "-G0", "-fno-cse-follow-jumps"],
     "func_800688B8": ["-quiet", "-O2", "-G0", "-fno-strength-reduce"],
     # Avoid the measured second-cursor induction rewrite (88 -> 80 bytes).
     "func_8006F310": ["-quiet", "-O2", "-G0", "-fno-strength-reduce"],
