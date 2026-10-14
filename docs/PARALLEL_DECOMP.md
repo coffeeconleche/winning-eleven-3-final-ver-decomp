@@ -3780,6 +3780,38 @@ Historical APIs, full layouts, indirect users and native arithmetic/alias
 contracts remain provisional. The public count-weighted treemap is refreshed
 from this tracked-clean code snapshot; private size-weighted images are unchanged.
 
+### Medium resident batch 1 of 8 (2026-10-14)
+
+| Function | Bytes | Code commit | Compiler |
+| --- | ---: | --- | --- |
+| `func_80054A68` | 316 | `e700e1f` | gcc272-dos |
+| `func_80068E24` | 412 | `64d14ab` | gcc272-dos |
+| `func_80050738` | 336 | `c9c231e` | gcc272-dos |
+| `func_80052C6C` | 292 | `846f028` | gcc272-dos |
+| `func_800551C8` | 300 | `2f760e5` | gcc272-dos |
+| `func_80095090` | 308 | `4396a16` | gcc281 |
+
+All sources passed independent function-byte proofs and fresh combined-master
+resident C/assembly-only/restored-C builds, all five confirmed overlays and
+all 18 tests. Complete before/after manifests include every new C file;
+the aggregate audit confirms each resident substitution uses compiled C.
+Original instructions, retail slices, separately assembled original ASM,
+relocated C and full-linked C agree. No reference hash, original ASM,
+placement, game storage or build logic was changed.
+
+The initial `func_80053D34` attempt remains unmatched research and is not
+counted. Its active source/profile edits were completely restored before
+assigning the verified replacement `func_80054A68`. Selective compiler
+loop-invariant motion remains the unresolved hypothesis for that attempt.
+
+Snapshot `e700e1f`: 696 matching functions (371 overlay, 325 resident),
+696/1,685 (41.3%) of the known inventory; 989 remain assembly-backed.
+Overlays remain 371/412; native-PC and online work have not started. These
+are function-count percentages, not whole-game discovery or effort estimates.
+Historical APIs, full layouts, indirect users and native arithmetic/alias
+contracts remain provisional. The public count-weighted treemap is refreshed
+from this tracked-clean code snapshot; private size-weighted images are unchanged.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 
