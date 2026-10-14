@@ -3927,6 +3927,51 @@ Historical APIs, full layouts, indirect users and native arithmetic/alias
 contracts remain provisional. The public count-weighted treemap is refreshed
 from this tracked-clean code snapshot; private size-weighted images are unchanged.
 
+### Medium resident batch 6 of 8 (2026-10-14)
+
+| Function | Bytes | Code commit | Compiler |
+| --- | ---: | --- | --- |
+| `func_800987CC` | 412 | `8dc292a` | gcc272-dos |
+| `func_8009D008` | 320 | `dc8745d` | gcc272-dos |
+| `func_800A7C2C` | 300 | `ad80687` | gcc272-dos |
+| `func_800A7D58` | 428 | `ae7db31` | gcc272-dos |
+| `func_800ABC34` | 296 | `56259a5` | gcc272-dos |
+| `func_8004A114` | 444 | `7164536` | gcc272-dos |
+
+All sources passed independent function-byte proofs and fresh combined-master
+resident C/assembly-only/restored-C builds, all five confirmed overlays and
+all 18 tests. Complete before/after manifests include every new C file;
+the aggregate audit confirms each resident substitution uses compiled C.
+Original instructions, retail slices, separately assembled original ASM,
+relocated C and full-linked C agree. No reference hash, original ASM,
+placement, game storage or production build logic was changed.
+
+Read-only preparation of `func_800AC160` identified an unexplained
+72-byte frame with only return-address stack accesses. It remains
+unattempted/unmatched research, not an accepted conversion. The verified
+`func_8004A114` replacement has a normal saved-register/call frame;
+no artificial stack reservation was used.
+
+Private standalone proof linkage now uses an explicit section script
+with the existing retail GP value; default isolated linkage had
+overridden a command-line GP definition. The unchanged original
+instructions and actual ELF GP were independently checked. This
+checker correction changes neither tracked linker configuration
+nor global compiler defaults.
+
+`func_800ABC34` copies a genuine 38-byte local table. Its documented
+GP-cell views and architectural-zero output capture are measured
+target-specific matching aids, not recovered historical source or
+native-portability guarantees. No instructions were output-patched.
+
+Snapshot `ae7db31`: 726 matching functions (371 overlay, 355 resident),
+726/1,685 (43.1%) of the known inventory; 959 remain assembly-backed.
+Overlays remain 371/412; native-PC and online work have not started. These
+are function-count percentages, not whole-game discovery or effort estimates.
+Historical APIs, full layouts, indirect users and native arithmetic/alias
+contracts remain provisional. The public count-weighted treemap is refreshed
+from this tracked-clean code snapshot; private size-weighted images are unchanged.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 
