@@ -3839,6 +3839,33 @@ Historical APIs, full layouts, indirect users and native arithmetic/alias
 contracts remain provisional. The public count-weighted treemap is refreshed
 from this tracked-clean code snapshot; private size-weighted images are unchanged.
 
+### Medium resident batch 3 of 8 (2026-10-14)
+
+| Function | Bytes | Code commit | Compiler |
+| --- | ---: | --- | --- |
+| `func_80098628` | 420 | `454c9cb` | gcc272-dos |
+| `func_8009F690` | 372 | `b23d0cd` | gcc272-dos |
+| `func_80020C14` | 420 | `540c770` | gcc272-dos |
+| `func_8002EB3C` | 372 | `d2b022c` | gcc272-dos |
+| `func_8003172C` | 384 | `01aa93a` | gcc272-dos |
+| `func_80033DC8` | 292 | `de434c8` | gcc272-dos |
+
+All sources passed independent function-byte proofs and fresh combined-master
+resident C/assembly-only/restored-C builds, all five confirmed overlays and
+all 18 tests. Complete before/after manifests include every new C file;
+the aggregate audit confirms each resident substitution uses compiled C.
+Original instructions, retail slices, separately assembled original ASM,
+relocated C and full-linked C agree. No reference hash, original ASM,
+placement, game storage or build logic was changed.
+
+Snapshot `01aa93a`: 708 matching functions (371 overlay, 337 resident),
+708/1,685 (42.0%) of the known inventory; 977 remain assembly-backed.
+Overlays remain 371/412; native-PC and online work have not started. These
+are function-count percentages, not whole-game discovery or effort estimates.
+Historical APIs, full layouts, indirect users and native arithmetic/alias
+contracts remain provisional. The public count-weighted treemap is refreshed
+from this tracked-clean code snapshot; private size-weighted images are unchanged.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 
