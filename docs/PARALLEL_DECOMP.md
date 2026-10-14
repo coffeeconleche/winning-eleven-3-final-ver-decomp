@@ -3866,6 +3866,40 @@ Historical APIs, full layouts, indirect users and native arithmetic/alias
 contracts remain provisional. The public count-weighted treemap is refreshed
 from this tracked-clean code snapshot; private size-weighted images are unchanged.
 
+### Medium resident batch 4 of 8 (2026-10-14)
+
+| Function | Bytes | Code commit | Compiler |
+| --- | ---: | --- | --- |
+| `func_8007A154` | 340 | `1451662` | gcc272-dos |
+| `func_8003D99C` | 364 | `79dc9da` | gcc272-dos |
+| `func_8004B0F0` | 392 | `20480b9` | gcc272-dos |
+| `func_8004E5A8` | 300 | `8ee4bc9` | gcc272-dos |
+| `func_8005B61C` | 432 | `8c2fd54` | gcc272-dos |
+| `func_800815C8` | 380 | `1193fcb` | gcc272-dos |
+
+All sources passed independent function-byte proofs and fresh combined-master
+resident C/assembly-only/restored-C builds, all five confirmed overlays and
+all 18 tests. Complete before/after manifests include every new C file;
+the aggregate audit confirms each resident substitution uses compiled C.
+Original instructions, retail slices, separately assembled original ASM,
+relocated C and full-linked C agree. No reference hash, original ASM,
+placement, game storage or build logic was changed.
+
+The initial `func_8003495C` attempt remains unmatched research and is not
+counted. Compiler-stage diagnosis identified a late common-zero exit
+rewrite; the remaining two differing branch words were not accepted.
+Its complete active input set was restored before assigning the verified
+`func_8007A154` replacement. All failed probes and diagnostic evidence
+remain preserved privately; no output instructions were patched.
+
+Snapshot `1451662`: 714 matching functions (371 overlay, 343 resident),
+714/1,685 (42.4%) of the known inventory; 971 remain assembly-backed.
+Overlays remain 371/412; native-PC and online work have not started. These
+are function-count percentages, not whole-game discovery or effort estimates.
+Historical APIs, full layouts, indirect users and native arithmetic/alias
+contracts remain provisional. The public count-weighted treemap is refreshed
+from this tracked-clean code snapshot; private size-weighted images are unchanged.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 

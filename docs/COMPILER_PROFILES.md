@@ -1183,6 +1183,17 @@ not complete historical declarations or native-portability guarantees.
 No generated resident rodata, added storage, instruction-output patches
 or artificial frame reservations are introduced by this publication.
 
+### Medium resident batch 4 of 8 (2026-10-14)
+
+`func_8007A154`, `func_8003D99C`, `func_8004B0F0`, `func_8004E5A8`, `func_8005B61C`, `func_800815C8`.
+
+Profiles remain individually verified through complete function and image
+equality; these additions do not change global compiler defaults. Their
+source comments and matching annotations describe observed legacy codegen,
+not complete historical declarations or native-portability guarantees.
+No generated resident rodata, added storage, instruction-output patches
+or artificial frame reservations are introduced by this publication.
+
 ## Wrapper checks
 
 The wrapper's SDK-free tests cover successful verbatim copying, failed or
