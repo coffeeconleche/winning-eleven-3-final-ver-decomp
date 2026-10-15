@@ -1611,6 +1611,74 @@ All frozen sources have independent original/C/retail proofs and individual
 and cumulative matching-aid controls. No new storage, artificial frames,
 instruction patches or original data changes are used.
 
+### Resident 24-function run, batch 4 of 4 (2026-10-15)
+
+Five functions select `gcc272-dos -quiet -O2 -G0`; `800B0FB4` uses
+`gcc281` defaults plus `-mno-split-addresses`. Only per-function compiler
+settings change; original assembly/data, global defaults and helpers do not.
+
+| Function | Code commit | Exact bytes | Natural frame | Retained source choices |
+| --- | --- | ---: | ---: | --- |
+| `func_80028F98` | `d5aad01` | 220 | 24 | none |
+| `func_80049F90` | `25b6715` | 236 | 32 | natural status switch |
+| `func_80068474` | `14e2756` | 224 | 0 | none |
+| `func_80083D94` | `1b5ca35` | 244 | 0 | fixed-address reread; ordinary source shape |
+| `func_8009D250` | `ae9c504` | 268 | 24 | none |
+| `func_800B0FB4` | `df9ab86` | 252 | 24 | 1 actual-status binding; extra flag |
+
+`80028F98` writes boundary targets around four actual helper calls and
+conditionally updates record state. Its provisional target-coordinate binding
+was removed after exact single/all omission tests. Scratch and coordinate
+reads remain after the helpers that may mutate them; signed-halfword negation
+is bounded in s32, including -32768. Numeric scratch symbols refer to existing
+storage, not new data. Historical types, ownership and capacities are unknown.
+
+`80049F90` uses a natural status switch: 2, 4, 27, 38 and 89 dispatch the
+four-argument helper; 1 takes the direction/word update directly; the default
+resets a selector and falls through to that same update. No artificial aids
+remain. The direction snapshot survives helper calls, while later record
+reads are fresh. The threshold and subtraction are unsigned. Helper semantic
+names and full native record/API definitions remain provisional.
+
+`80068474` is a zero-argument leaf operating on two existing scratch entries.
+Its two state checks are independent, not if/else; the count is read after
+any possible clear. The lone located caller ignores the result register.
+No bindings, asm, extra flags or new storage are needed. Byte arithmetic is
+bounded; absolute scratch addresses and historical state meanings still need
+native adaptation.
+
+`80083D94` compares two byte inputs using the existing mode byte. Ordinary
+shared-tail labels preserve the low-default path's initial value and the
+high-default path's second load. The latter uses a fixed-address u8 view of
+the same linker-proved `D_8010A400` storage: it adds neither data nor invented
+volatility. Replacing only this view by the canonical symbol yields 232 bytes /
+51 changed words because GCC removes the observed reread. Other source-shape
+controls are parity if/else (240 bytes / 15 words), expanded absolute value
+(268 / 53), and removing the unsigned comparison suffix (244 / 2); all-source
+omission gives 252 / 54. Absolute differences are at most 255. There are no
+register bindings, operand asm or extra flags. Native code must unify these
+symbol/literal storage views; complete original API semantics remain unproved.
+
+`8009D250` preserves distinct unsigned identifier and signed scratch remainder
+domains, a guard's early return, and the flag reread after its helper. The
+helper consumes only the actual record pointer: incoming a1/a2 are overwritten
+before use, so no residual registers are invented as helper arguments. No aids
+remain. Full selector domains, scratch extents and native alias bounds are unknown.
+
+`800B0FB4` conditionally invokes the observed variadic logger and submits the
+existing ordering-table callback at offset 0x18. Its callback's complete body
+and existing `void(u32)` view were inspected. Status-binding removal differs by
+5 words; flag omission gives 244 bytes / 30 words; removing both gives 244 /
+35. Real hardware reads are volatile; no memory clobber or instruction-output
+asm is used. The two-explicit-word call view of the existing four-word
+`800BA798` forwarder still requires a native adapter, along with MMIO, callback
+table effective types and pointer-width translation. Binary equality does not
+settle that native API contract.
+
+Independent single/all source-aid and flag controls cover each retained choice.
+All six have original/C/retail proofs; no fake arguments, forced frames, new
+storage, post-link patches or changes to original data are used.
+
 ## Wrapper checks
 
 The wrapper's SDK-free tests cover successful verbatim copying, failed or

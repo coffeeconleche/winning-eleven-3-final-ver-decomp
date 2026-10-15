@@ -4427,6 +4427,43 @@ count-weighted treemap is refreshed. This is a known-function inventory, not
 whole-game coverage or an effort estimate. Native-PC and online work have
 not started. This records 18 of the requested 24 functions.
 
+### Resident 24-function run, batch 4 of 4 (2026-10-15)
+
+The fourth six-function group completes the requested 24. Each of the six
+workers delivered exactly four frozen private candidates and stopped; root
+independently reviewed, reproduced and integrated every accepted source.
+
+| Function | Exact bytes | Code commit | Inferred behavior |
+| --- | ---: | --- | --- |
+| `func_80028F98` | 220 | `d5aad01` | Helper-driven boundary target/state update |
+| `func_80049F90` | 236 | `25b6715` | Status-dependent direction/word update |
+| `func_80068474` | 224 | `14e2756` | Two-entry scratch state/countdown update |
+| `func_80083D94` | 244 | `1b5ca35` | Mode-dependent two-byte difference predicate |
+| `func_8009D250` | 268 | `ae9c504` | Identifier/remainder guard and helper/reset |
+| `func_800B0FB4` | 252 | `df9ab86` | GPU ordering-table submission readiness wrapper |
+
+This group adds 1,444 exact bytes / 361 instruction words; the four groups add
+7,720 exact bytes / 1,930 words in total. All six agree across annotation,
+retail slice, independently assembled original, relocated C and linked image.
+Fresh 410-C, assembly-only and restored-410-C resident builds retain retail
+SHA-1 `7e480656a295dced6ec187286773ab897651e995`. All five overlays and all
+18 tests pass. Complete input freezes include new sources; the independent
+all-resident audit checks 410 actual C substitutions without ASM fallback.
+
+No unnecessary artificial source aids remain; retained choices have individual
+and cumulative controls documented in compiler profiles. These include the
+mode predicate's actual fixed-address reread and the GPU wrapper's status
+binding/extra flag. Original helper implementations, assembly/data, global
+compiler defaults and function boundaries are unchanged. Failed attempts and
+deferred padded/multi-entry targets remain private research, not claimed matches.
+
+Snapshot `d5aad01`: **781/1,685 matching functions (46.4%)**:
+410 resident and 371 overlay functions; 904 remain assembly-backed. The
+count-weighted treemap is refreshed. This known-inventory function count is
+not a whole-game denominator or an effort estimate. Native-PC and online work
+have not started. Publication was four verified groups of six, with a push
+after each group; no fifth function per worker was started.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 
