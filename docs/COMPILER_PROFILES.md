@@ -2268,6 +2268,48 @@ arguments, new storage or original-data changes are used. Complete historical
 types, indirect users, native pointer/alias contracts and allocation bounds
 remain provisional; binary equality alone is not native API recovery.
 
+### Resident 96-function run, batch 15 of 16 (2026-10-16)
+
+Per-function compiler selections are listed below; global defaults, helpers,
+original assembly/data and unrelated profiles remain unchanged. All sources
+were independently reviewed and reproduced before integration.
+
+| Function | Code commit | Bytes | Natural frame | Compiler / extra flags | Retained source choices |
+| --- | --- | ---: | ---: | --- | --- |
+| `func_8006DB48` | `a64aeb2` | 540 | 32 | `gcc272-dos` / `defaults` | Plain C zero aids/default flags after individually and jointly removing provisional phase binding and result identity; actual agent3 delegated logical worker1 |
+| `func_8004F994` | `a77b18f` | 300 | 8 | `gcc272-dos` / `defaults` | Plain C zero aids/default flags after removing all provisional bindings/identities; natural8-byte leaf frame from real signed-short lowering, no pads. Actualagent4 delegatedworker2. |
+| `func_80057CEC` | `a05ec83` | 472 | 40 | `gcc272-dos` / `defaults` | No artificial aids after scalar identity removal |
+| `func_8007C09C` | `7504987` | 456 | 48 | `gcc272-dos` / `defaults` | No artificial aids or extra flags after redundant slot identity removed |
+| `func_800972AC` | `a661e56` | 756 | 24 | `gcc272-dos` / `defaults` | Seven declaration-only existing numeric scratch cell views; no bindings, identities or extra flags. Independent individual/all omission controls differ. |
+| `func_8005A29C` | `497a172` | 552 | 32 | `gcc272-dos` / `defaults` | One two-input initialized-used event/comparison identity; each dependency plus single/all omissions independently measured, no flags/bindings; delegatedw6 by w3 |
+
+`8006DB48`: One real record argument, full boolean return observed among three callsites. Canonical95FF8 type and existing494C0 signed result retained, explicit unsigned threshold comparison. Coordinates square/sum wrap unsigned before signed threshold; no small-coordinate bounds. Fullbyte angle/index domain and callback-sensitive record/scratch/pointer reloads retained. Both incoming update paths initialize result/phase. Native scratch translation, pointer/alias contracts and full helper ownership remain provisional.
+
+`8004F994`: One consumed lowbyte word argument/ignored residue agrees sole caller; no helpers/tables. Scaleupdates fit promotedint then narrowlow16 before signed comparisons. Countdown decrements unsigned/narrowsu16, defined u32left16 test handles initialzero wrap. Stateincrement paths known0/1; actualfixed locations disjoint withoutcallbacks. Existing signed-array views retained. Native signed-half reinterpretation, fixed scratch mapping and shared global ownership remain provisional.
+
+`80057CEC`: Actual selector stays full-word and all default paths remain. Signed random remainders keep their negative possibilities; small bounds prove all event arithmetic safe. Callback-dependent packed flags/scores reload in target order. Actual pointer-plus-word update helper and scalar caller ABI are inspected; native record/global layouts and scratch mapping remain provisional.
+
+`8007C09C`: No consumed incoming words or meaningful observed result. Existing537D0 partial type harmonized; no residual helper arguments invented. Known2283C/51810 forwarding prototype mismatches, nested BA30 pointer and older AB620 signedness remain explicit native adapter work. Bounded22-record loop and unsigned timer narrowing preserve wrap; negative RNG remainder2 follows nonzero branch. Callback/selector/timer rereads retained. Native pool/scratch mapping, full helper ownership and historical callback/API contracts remain provisional.
+
+`800972AC`: Full weighted numerators wrap as unsigned words before signed divide10; signed-half averages fit and arithmetic right shift rounds negative odd values down. Sole direct wrapper and nineteen propagated post-call contexts ignore return residue. Coordinates alias existing record23; reads and stores retain callback order. Native arithmetic shifts, signed casts, scratch alias mapping and complete helper APIs remain explicit PS1 contracts.
+
+`8005A29C`: One consumed record input, ignored return; real one-word random/dispatch APIs retained. Full-byte angle/side domains, widened signed-halfword abs and unsigned event subtraction avoid overflow. Both two-u16 tables have verified index0/1 bounds. Callback current/event/counter rereads preserved, including counter capture before flag store. Both identity operands genuinely feed later comparisons. Native fixed scratch/pool mapping, ownership and historical event API remain provisional.
+
+Independent omission measurements (changed word positions, not a matching
+percentage):
+
+- `8004F994`: remove-extra-ordinary-direct-state-increment: 296 B / 47 words; remove-extra-ordinary-direct-zero-test: 300 B / 1 words; remove-extra-ordinary-all-shapes: 296 B / 47 words.
+- `8007C09C`: remove-extra-ordinary-inline-mode: 456 B / 7 words; remove-extra-ordinary-wide-remainder: 452 B / 75 words; remove-extra-ordinary-all-shapes: 452 B / 81 words.
+- `800972AC`: remove-cell-scratch2E7: 760 B / 170 words; remove-cell-scratch200: 756 B / 49 words; remove-cell-scratch1FC: 756 B / 120 words; remove-cell-scratch204: 756 B / 152 words; remove-cell-scratch1F0: 756 B / 31 words; remove-cell-scratch1F4: 756 B / 26 words; remove-cell-scratch1F8: 752 B / 84 words; remove-all-source-aids: 764 B / 179 words.
+- `8005A29C`: remove-event-and-comparison-identity: 548 B / 39 words; remove-extra-event-input-dependency: 548 B / 39 words; remove-extra-constant-input-dependency: 552 B / 4 words; remove-all-source-aids: 548 B / 39 words.
+
+Every retained binding/empty identity uses initialized, genuinely consumed
+values. Empty operand asm emits no instructions and asserts no memory
+volatility. No instruction patch, artificial frame padding, fake helper
+arguments, new storage or original-data changes are used. Complete historical
+types, indirect users, native pointer/alias contracts and allocation bounds
+remain provisional; binary equality alone is not native API recovery.
+
 ## Wrapper checks
 
 The wrapper's SDK-free tests cover successful verbatim copying, failed or
