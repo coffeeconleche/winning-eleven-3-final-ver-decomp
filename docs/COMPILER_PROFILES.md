@@ -2143,6 +2143,47 @@ arguments, new storage or original-data changes are used. Complete historical
 types, indirect users, native pointer/alias contracts and allocation bounds
 remain provisional; binary equality alone is not native API recovery.
 
+### Resident 96-function run, batch 12 of 16 (2026-10-16)
+
+Per-function compiler selections are listed below; global defaults, helpers,
+original assembly/data and unrelated profiles remain unchanged. All sources
+were independently reviewed and reproduced before integration.
+
+| Function | Code commit | Bytes | Natural frame | Compiler / extra flags | Retained source choices |
+| --- | --- | ---: | ---: | --- | --- |
+| `func_80027140` | `f35f334` | 692 | 32 | `gcc272-dos` / `defaults` | One measured no-storage scratch-byte store address view, no bindings/identities/extra flags; compatible B864 partial type |
+| `func_8004D7D4` | `3922660` | 580 | 40 | `gcc272-dos` / `defaults` | Four real-value bindings, two single-input identities and two no-storage live-memory address views; every/all omission measured, no flags |
+| `func_800550C8` | `ea09daa` | 256 | 24 | `gcc272-dos` / `defaults` | No artificial aids; ordinary side-offset/key locals |
+| `func_800791A0` | `f38a0ac` | 448 | 56 | `gcc272-dos` / `defaults` | One initialized-used heading identity; no bindings or extra flags, single/all controls measured |
+| `func_800A24E4` | `b4e5247` | 416 | 48 | `gcc272-dos` / `defaults` | No artificial aids or extra flags; ordinary forward signed state check |
+| `func_80059250` | `8081747` | 464 | 32 | `gcc272-dos` / `defaults` | No artificial aids or extra flags; delegated logicalw6 slot executed by w3 |
+
+`80027140`: One consumed actor input and ignored result. Case0 deliberately falls through case1 only on its active path; speed word+48 wraps before clamp44. Halfword abs widened safely; arbitrary motion negation unsigned-wraps then PS1 signed interpretation. Flag3D1 computed before movement, unlike adjacent handler. Callback field rereads and byte-counter narrowing preserved. BA78 physical maps cross split labels, no invented16-byte bounds. Native actor/scratch/pointer/table ownership remains provisional.
+
+`8004D7D4`: One actual record input and defined boolean return; C1CC/E5A8/trig real arguments restored and compatible existing helper declarations retained. Lowword unsigned squares/sum then signed interpretation preserve wrapped distance; unsigned speed product/div192, bounded height arithmetic and coordinate wrapping avoid signed overflow. Ball pointer/height reload after each callback and each target store, including alias-sensitive repeated pointer reads. Native scratch/object/table mapping, extent and historical ownership remain provisional.
+
+`800550C8`: Signed-half differences fit s32, squares widen before low-word extraction, and unsigned sum wraps before original signed comparison. Negative wrapped distances remain accepted as in the target. Full halfword switch and nonbinary byte-side domain are preserved. Actual one-pointer/boolean caller and single random-helper argument are inspected. Native layout, scratch-table extent and target signed conversions remain provisional.
+
+`800791A0`: Two consumed inputs and real byte result agree caller; full requested-heading word handled by unsigned modular differences. Unsigned squares/sum preserve lowword wrapping. Eleven-record scan picks later equal-angle candidate, chosen pointer initialized whenever sentinel changes. Post-helper captures and field reads retained. Quantized B1128 GTE/table behavior remains opaque and called; older narrow B36C type needs native reconciliation. Native scratch/pool alignment, extent and ownership remain provisional.
+
+`800A24E4`: One actual pointer input, ignored return. Real A23BC record parameter restored and explicitly loaded unused A2374 first ABI slot retained. Both helper8-entry tables reviewed. Captured selector persists across callbacks while fresh selector/state reads follow both score helpers. Signed negative RNG remainders remain eligible even at zero threshold; second success overrides first. Full-byte selector ranges preserved. Native scratch/state extent, record ownership and complete helper APIs remain provisional.
+
+`80059250`: One consumed pointer and ignored result match caller. Existing helper word/byte signatures retained; full-byte selector and explicitly narrowed increments preserved. Signed random remainder2 may be negative but event additions bounded. Mode, selector and score reloads remain after callbacks, including optional second-side check if parity changes. Native scratch translation, shared storage extents, historical helper APIs and complete record layouts remain provisional.
+
+Independent omission measurements (changed word positions, not a matching
+percentage):
+
+- `80027140`: remove-scratch_byte_store_address_view: 692 B / 15 words; remove-all-source-aids: 692 B / 15 words.
+- `8004D7D4`: remove-record-binding: 580 B / 25 words; remove-scratch-binding: 580 B / 23 words; remove-selected-binding: 580 B / 7 words; remove-value-binding: 580 B / 7 words; remove-record-identity: 580 B / 12 words; remove-scratch-identity: 580 B / 1 words; remove-ball-view: 572 B / 126 words; remove-height-view: 576 B / 108 words; remove-all-source-aids: 568 B / 137 words.
+- `800791A0`: remove-heading-value-identity: 448 B / 5 words; remove-extra-ordinary-preassigned-choice: 452 B / 48 words; remove-extra-ordinary-literal-scratch-accesses: 424 B / 109 words; remove-extra-ordinary-all-source-shapes: 428 B / 107 words; remove-all-source-aids: 448 B / 5 words.
+
+Every retained binding/empty identity uses initialized, genuinely consumed
+values. Empty operand asm emits no instructions and asserts no memory
+volatility. No instruction patch, artificial frame padding, fake helper
+arguments, new storage or original-data changes are used. Complete historical
+types, indirect users, native pointer/alias contracts and allocation bounds
+remain provisional; binary equality alone is not native API recovery.
+
 ## Wrapper checks
 
 The wrapper's SDK-free tests cover successful verbatim copying, failed or
