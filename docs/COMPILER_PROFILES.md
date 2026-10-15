@@ -1885,6 +1885,49 @@ arguments, new storage or original-data changes are used. Complete historical
 types, indirect users, native pointer/alias contracts and allocation bounds
 remain provisional; binary equality alone is not native API recovery.
 
+### Resident 96-function run, batch 6 of 16 (2026-10-15)
+
+Per-function compiler selections are listed below; global defaults, helpers,
+original assembly/data and unrelated profiles remain unchanged. All sources
+were independently reviewed and reproduced before integration.
+
+| Function | Code commit | Bytes | Natural frame | Compiler / extra flags | Retained source choices |
+| --- | --- | ---: | ---: | --- | --- |
+| `func_8001DF74` | `c9ce0d4` | 384 | 48 | `gcc272-dos` / `defaults` | Four actual initialized argument bindings and one input-only capture; measured dependencies |
+| `func_800381F4` | `afcff1d` | 516 | 56 | `gcc272-dos` / `defaults` | No artificial aids; compatible existing helper access type |
+| `func_80055EEC` | `739b4b9` | 276 | 32 | `gcc272-dos` / `defaults` | Two initialized single-pointer operand identities; no bindings or flags |
+| `func_8008A740` | `4ac67ad` | 356 | 32 | `gcc272-dos` / `defaults` | No artificial aids; ordinary signed angle remainder and halfword conversion |
+| `func_800A3730` | `afb992b` | 496 | 40 | `gcc272-dos` / `-fno-strength-reduce` | No source aids; measured -fno-strength-reduce |
+| `func_800652EC` | `fe6e3c6` | 232 | 32 | `gcc272-dos` / `defaults` | Two initialized coordinate register bindings; no identities or flags |
+
+`8001DF74`: The eight-byte rectangle is real state, and the frame includes a genuine fifth helper argument. Four capture values are actual ClearImage inputs; every binding, each capture input and all aids have independently failing removal controls. Width/height narrow to u16; signed-half origin multiplication by two is bounded and avoids negative left-shift UB. SDK word/typed views, native rectangle/header reconciliation and scratch/bank bounds remain provisional.
+
+`800381F4`: Unsigned deltas/products/sums preserve original low words and unsigned distance comparisons. Signed-half position negation is safe. Chosen pointer is initialized whenever best leaves its sentinel, and tied distances replace the earlier candidate. Existing helper struct/prototypes agree; post-callback coordinate/identifier reloads remain. Native bank allocation, record bounds and scratch mapping remain provisional.
+
+`80055EEC`: Signed-half position negation is safe in s32, while the shifted sign test uses unsigned bits before target signed interpretation, including -32768. Four-halfword table index is masked to 0..3. Counter reload follows the callback before byte increment. Actual helper and caller views agree with existing declarations; full record/global allocation and native scratch adaptation remain provisional.
+
+`8008A740`: The real 94FF4 object argument is retained and agrees with production. Heading difference is 193..448, so signed remainder/multiply is safe; random halfword plus two fits s32. Five genuine helper arguments explain the frame. Callback-dependent scratch reads are preserved. Native layouts, shared helper invariants and scratch mapping remain provisional.
+
+`800A3730`: Signed-half differences and promoted absolute values are safe; squares use wide products narrowed to unsigned words before wrapped addition and target signed comparison. Spacing stores narrow to u16 before fresh pointer/coordinate reads; trig additions use unsigned wrapping. Existing helper types and partial struct view are preserved. Native allocation, post-loop pointer extent, scratch translation and effective-type contracts remain provisional.
+
+`800652EC`: Both coordinate differences are bounded to +/-65535, so signed negation is defined for the full halfword domain. Absolute distances compare against unrestricted u32 threshold. Actual two-input/count return and pure selector helper agree with inspected callers. Each binding/all-source omission fails. Native table extent includes final formed cursor, halfword alignment and record ownership remain required.
+
+Independent omission measurements (changed word positions, not a matching
+percentage):
+
+- `8001DF74`: remove-rectangle-argument-binding: 384 B / 8 words; remove-red-argument-binding: 384 B / 8 words; remove-green-argument-binding: 384 B / 6 words; remove-blue-argument-binding: 384 B / 4 words; remove-argument-preparation-capture: 384 B / 10 words; remove-extra-capture-clearRect-dependency: 384 B / 10 words; remove-extra-capture-red-dependency: 384 B / 8 words; remove-extra-capture-green-dependency: 384 B / 6 words; remove-extra-capture-blue-dependency: 384 B / 4 words; remove-all-source-aids: 384 B / 10 words.
+- `80055EEC`: remove-base-identity: 276 B / 17 words; remove-record-identity: 280 B / 62 words; remove-all-source-aids: 280 B / 62 words.
+- `8008A740`: remove-extra-ordinary-no-halfword-cast-source-shape: 348 B / 19 words; remove-extra-ordinary-angle-mask-source-shape: 336 B / 48 words; remove-extra-ordinary-both-source-shapes: 328 B / 48 words.
+- `800A3730`: remove-flag-0: 512 B / 123 words.
+- `800652EC`: remove-dx-v0: 232 B / 7 words; remove-dz-v0: 232 B / 7 words; remove-all-source-aids: 232 B / 19 words.
+
+Every retained binding/empty identity uses initialized, genuinely consumed
+values. Empty operand asm emits no instructions and asserts no memory
+volatility. No instruction patch, artificial frame padding, fake helper
+arguments, new storage or original-data changes are used. Complete historical
+types, indirect users, native pointer/alias contracts and allocation bounds
+remain provisional; binary equality alone is not native API recovery.
+
 ## Wrapper checks
 
 The wrapper's SDK-free tests cover successful verbatim copying, failed or
