@@ -2058,6 +2058,49 @@ arguments, new storage or original-data changes are used. Complete historical
 types, indirect users, native pointer/alias contracts and allocation bounds
 remain provisional; binary equality alone is not native API recovery.
 
+### Resident 96-function run, batch 10 of 16 (2026-10-16)
+
+Per-function compiler selections are listed below; global defaults, helpers,
+original assembly/data and unrelated profiles remain unchanged. All sources
+were independently reviewed and reproduced before integration.
+
+| Function | Code commit | Bytes | Natural frame | Compiler / extra flags | Retained source choices |
+| --- | --- | ---: | ---: | --- | --- |
+| `func_8001C5A8` | `f320374` | 1112 | 0 | `gcc272-dos` / `defaults` | Two initialized-used value identities and existing no-storage numeric scratch-word view; all omission controls measured, no flags or bindings |
+| `func_8003F0D0` | `1f396af` | 488 | 40 | `gcc272-dos` / `defaults` | No artificial aids or extra flags; separate real temporal captures and direct product/state branches |
+| `func_80056D10` | `22e58d1` | 448 | 32 | `gcc272-dos` / `defaults` | One initialized argument binding and one two-value operand identity |
+| `func_8008B518` | `9d5fbf1` | 488 | 32 | `gcc272-dos` / `defaults` | No artificial aids; ordinary distance/heading variable lifetimes |
+| `func_8009D9C4` | `cedffba` | 764 | 32 | `gcc272-dos` / `defaults` | One initialized-used coordinate extension identity; omission changes two words, no extra flags |
+| `func_80067B20` | `b1728bb` | 496 | 32 | `gcc272-dos` / `defaults` | Four real-value bindings, one initialized-used scratch identity and two actual comparison captures; all single/cumulative controls measured, no flags |
+
+`8001C5A8`: No consumed input or meaningful observed return, no helpers, natural zero-byte leaf frame. Bounded margin arithmetic safe; unrestricted word negations explicitly wrap unsigned then preserve PS1 signed interpretation, including negative INT_MIN threshold behavior. Named globals and bank-relative bytes physically overlap and require canonical native ownership. Scratch/actor pointer mapping, alignment and shared flag views remain provisional; numeric address view creates no storage.
+
+`8003F0D0`: Two actual pointers, ignored return; real512B8 pointer input and compatible typed52D90 predicate retained. Unsigned lowword products and final signed interpretation preserve wrapped distance; state16 path deliberately bypasses lower clamp and passes negative amount bits. Discarded random calls, alias-sensitive field/pointer reloads and callback order retained. Native scratch mapping, partial layouts and helper types remain provisional.
+
+`80056D10`: Promoted signed-half coordinate product fits s32 for its entire domain; position negation is safe. Six/three-entry modulo indices and byte increment are bounded. Both captured dependencies have failing controls and feed the actual product; callback-sensitive counter reload remains. Existing one-pointer caller/helper interfaces are used. Native scratch, record/global allocation and historical semantics remain provisional.
+
+`8008B518`: Existing one-pointer typed classifier view is mirrored; unused residual registers are not arguments. Unsigned first distances and signed final low-word comparison intentionally differ. Signed-half differences and byte selector arithmetic are bounded, but side-derived scratch mapping may exceed RAM for invalid domains and is not assumed binary. Native pool/layout/helper contracts remain provisional.
+
+`8009D9C4`: True one-pointer void API, no residual helper arguments. Halfword abs promoted safely; fullword INT_MIN negation uses unsigned wrapping then signed comparison. Signed frame remainder and all side-byte cases preserved. Position and scratch coordinate captures retain callback/alias order. Mapped scratch extents, partial record views and native ownership remain provisional.
+
+`80067B20`: Void zero-input API and real zero-input reset helper agree caller/definitions. Timer decrement guarded; signed-halfword magnitudes safely widen including -32768. Actual selector helper bounds row choice while full-byte accesses retained. State/pointer/coordinate rereads and callbacks preserve ordering. Scratch identity changes saved-base allocation, not read count or volatility. Native bank/record ownership, mapping and alignment remain provisional; external67860 excluded.
+
+Independent omission measurements (changed word positions, not a matching
+percentage):
+
+- `8001C5A8`: remove-mask_identity: 1108 B / 124 words; remove-wrapped_negation_identity: 1112 B / 1 words; remove-scratch_word_address_view: 1112 B / 35 words; remove-all-source-aids: 1108 B / 91 words.
+- `80056D10`: remove-argument-binding: 448 B / 6 words; remove-halfword-capture: 444 B / 55 words; remove-extra-no-loaded-dependency: 444 B / 55 words; remove-extra-no-coordinate-dependency: 452 B / 53 words; remove-all-source-aids: 444 B / 58 words.
+- `8008B518`: remove-extra-ordinary-reuse-distance-locals: 488 B / 27 words; remove-extra-ordinary-reuse-heading-local: 488 B / 6 words; remove-extra-ordinary-reuse-both: 488 B / 33 words.
+- `8009D9C4`: remove-first-extension-identity: 764 B / 2 words; remove-all-source-aids: 764 B / 2 words.
+- `80067B20`: remove-absolute-v0: 496 B / 1 words; remove-second-absolute-a0: 496 B / 8 words; remove-third-absolute-v1: 496 B / 3 words; remove-result-v0: 520 B / 39 words; remove-scratch-reread-identity: 496 B / 13 words; remove-middle-comparison-capture: 496 B / 2 words; remove-second-comparison-capture: 500 B / 16 words; remove-all-source-aids: 508 B / 51 words.
+
+Every retained binding/empty identity uses initialized, genuinely consumed
+values. Empty operand asm emits no instructions and asserts no memory
+volatility. No instruction patch, artificial frame padding, fake helper
+arguments, new storage or original-data changes are used. Complete historical
+types, indirect users, native pointer/alias contracts and allocation bounds
+remain provisional; binary equality alone is not native API recovery.
+
 ## Wrapper checks
 
 The wrapper's SDK-free tests cover successful verbatim copying, failed or
