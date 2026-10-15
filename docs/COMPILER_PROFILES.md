@@ -1547,6 +1547,70 @@ No instruction patch, new storage, fake frame padding or original-data edit
 is used. Complete record capacities, historical types, indirect users and
 native pointer/alias contracts remain provisional for all six functions.
 
+### Resident 24-function run, batch 3 of 4 (2026-10-15)
+
+Five functions select `gcc272-dos -quiet -O2 -G0`; `800B0D84` uses
+`gcc281` defaults plus `-mno-split-addresses`. Global defaults, helper bodies,
+original assembly/data and unrelated profiles remain unchanged.
+
+| Function | Code commit | Exact bytes | Natural frame | Retained source choices |
+| --- | --- | ---: | ---: | --- |
+| `func_8001D470` | `bba3adb` | 248 | 48 | none |
+| `func_8004968C` | `a09bd60` | 236 | 32 | none |
+| `func_8005C1CC` | `aae3c16` | 224 | 32 | 1 mirrored-coordinate binding |
+| `func_8008A144` | `bde1428` | 252 | 24 | ordinary source shape only |
+| `func_8009D148` | `bd11bc0` | 264 | 32 | none |
+| `func_800B0D84` | `3906b63` | 236 | 32 | 1 status binding; extra flag |
+
+`8001D470` initializes an existing 0x90-byte record and calls its setup and
+transform helpers. All nine incoming slots are populated by actual callers
+and consumed; the frame is natural, not argument padding. No matching aids
+remain. The existing ENTER caller's nine word-sized formal declaration differs
+from the narrowed byte/halfword access view here. The machine ABI matches,
+but a native shared signature must reconcile both, including guest-address
+words, pointer widths and complete record/table capacities.
+
+`8004968C` calls the four-argument selector helper, reloads the selector after
+it, and returns a squared distance using narrowed input coordinates. Widened
+products and an unsigned low-word sum avoid signed-overflow UB. No aids remain;
+the signed result interpretation follows the legacy target implementation.
+Scratch selector domains, storage extents and the native result API are unknown.
+
+`8005C1CC` follows word-address point tables, optionally mirrors a signed
+halfword, invokes the three-argument transform helper and writes three wrapped
+halfword results. Its only retained binding is the actual mirrored coordinate;
+single/all omission gives 248 bytes / 60 changed words. Unnecessary bindings,
+empty identities and an earlier `-fno-schedule-insns` flag were removed. The
+shared `u32 *D_8014A000[]` declaration was reconciled and reproved. The helper
+reads eight input bytes although the caller writes only six: scratch+0x132 is
+preserved, not initialized speculatively. Native address translation, aligned
+accesses, aliasing, allocation bounds and a shared helper API remain provisional.
+
+`8008A144` counts qualifying coordinates in eleven records and returns a
+boolean word. No artificial bindings/asm remain. Ordinary split bank capture,
+modulo byte cast and helper-result byte view have omission differences of
+15, 42 and 56 words; all-source omission gives 244 bytes / 53 changed words.
+The helper's existing `s32(u32)` declaration agrees. Halfword +/-128 arithmetic
+is bounded, but complete native record/table extents remain unknown.
+
+`8009D148` preserves helper-sensitive scratch rereads, byte counter wrap,
+a sentinel branch that bypasses a pointer read, and both reset sites. Signed
+halfword promotion makes abs(-32768) safe in s32. No artificial aids or extra
+flags remain. Full selector domains, guest pointers and ownership are unproved.
+
+`800B0D84` is a distinct GPU readback wrapper: its observed table slot points
+to the independently inspected readback callback, not the batch-2 upload slot.
+Status-binding removal differs by 5 words; flag removal gives 228 bytes / 32
+changed words, both removal 228 bytes / 37. Only real MMIO reads are volatile.
+The existing four-word `800BA798` forwarding helper is called through the two
+explicitly set word view; no residual registers were invented as arguments.
+Native MMIO/callback adapters, table effective types and shared declarations
+remain unresolved. Binary matching is not proof of native API compatibility.
+
+All frozen sources have independent original/C/retail proofs and individual
+and cumulative matching-aid controls. No new storage, artificial frames,
+instruction patches or original data changes are used.
+
 ## Wrapper checks
 
 The wrapper's SDK-free tests cover successful verbatim copying, failed or

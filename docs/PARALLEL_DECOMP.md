@@ -4391,6 +4391,42 @@ remaining. The count-weighted treemap is refreshed. This is a known-inventory
 function count, not a whole-game denominator or an effort estimate. Native-PC
 and online work have not started. This records 12 of the requested 24 matches.
 
+### Resident 24-function run, batch 3 of 4 (2026-10-15)
+
+Six further private candidates were independently reviewed and reproduced
+before integration. Root alone changed accepted sources and compiler settings;
+all worker probes were stopped at the input-change barrier.
+
+| Function | Exact bytes | Code commit | Inferred behavior |
+| --- | ---: | --- | --- |
+| `func_8001D470` | 248 | `bba3adb` | Nine-argument record initialization and transform setup |
+| `func_8004968C` | 236 | `a09bd60` | Opposite-selector helper and coordinate-distance result |
+| `func_8005C1CC` | 224 | `aae3c16` | Point-table mirroring, matrix transform and coordinate output |
+| `func_8008A144` | 252 | `bde1428` | Eleven-record side/coordinate counting predicate |
+| `func_8009D148` | 264 | `bd11bc0` | Record counter/sentinel and selected-pair resets |
+| `func_800B0D84` | 236 | `3906b63` | GPU readback readiness and callback submission |
+
+The batch adds 1,460 exact bytes / 365 instruction words. Annotated instruction
+words, retail slices, separately assembled originals, relocated compiled C and
+the linked resident image agree for all six. Fresh 404-C, assembly-only and
+restored-404-C builds retain retail SHA-1
+`7e480656a295dced6ec187286773ab897651e995`; all five overlays and all 18 tests
+pass. Complete before/after input freezes include the new C files, and an
+independent audit checks all 404 actual C substitutions without ASM fallback.
+
+Four functions need no artificial bindings or asm. The two remaining bindings
+and the one extra compiler flag have single/all omission controls; ordinary
+source-shape measurements are recorded separately. Native record, guest-pointer
+and API limitations, including the nine-argument formal view and GPU callback
+interface, are recorded in compiler profiles. No helper implementations,
+original assembly/data, compiler defaults or function boundaries were changed.
+
+Snapshot `bba3adb`: **775/1,685 matching functions (46.0%)**:
+404 resident and 371 overlay functions; 910 remain assembly-backed. The
+count-weighted treemap is refreshed. This is a known-function inventory, not
+whole-game coverage or an effort estimate. Native-PC and online work have
+not started. This records 18 of the requested 24 functions.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 
