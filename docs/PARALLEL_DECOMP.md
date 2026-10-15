@@ -4354,6 +4354,43 @@ or an effort estimate. The count-weighted treemap is refreshed; private
 size-weighted experiments are unchanged. Native-PC and online work have not
 started. This records the first six of the requested 24 functions only.
 
+### Resident 24-function run, batch 2 of 4 (2026-10-15)
+
+Six more private candidates were independently reviewed, recompiled and
+integrated after an explicit worker pause barrier. Publication follows the
+complete frozen-input gate, not an individual worker's matching claim.
+
+| Function | Exact bytes | Code commit | Inferred behavior |
+| --- | ---: | --- | --- |
+| `func_80019A44` | 216 | `f805cba` | Literal/backreference byte decoder |
+| `func_8003D274` | 628 | `153fcf4` | Record/height and row-distance predicate |
+| `func_800547A4` | 632 | `c339e54` | Player/ball direction and distance update |
+| `func_8008A65C` | 228 | `7466185` | Three-state record helper dispatch |
+| `func_8009FEDC` | 212 | `9ed5ef6` | Identifier/remainder predicate and reset |
+| `func_800B0C98` | 236 | `d62d731` | GPU image readiness/submission wrapper |
+
+These add 2,152 exact bytes / 538 instruction words. Annotated instructions,
+retail slices, independently assembled originals, relocated C and the linked
+image agree for all six. Fresh 398-C, assembly-only and restored-398-C builds
+retain retail SHA-1 `7e480656a295dced6ec187286773ab897651e995`. All five
+overlays and all 18 tests pass. An independent audit checks all 398 actual C
+substitutions without assembly fallback, and complete source-set freezes
+include the six new C files.
+
+Matching aids and extra flags have single/all omission controls, including
+separate operands of multi-value captures. Defined low-word arithmetic and
+helper-induced rereads are preserved; there are no invented helper arguments,
+new data/BSS, forced frames or generated instruction patches. Two functions
+need no artificial aids. Compiler profiles record measurements and API caveats,
+including the GPU wrapper's unresolved two-word/four-word callback interface.
+Matching the console binary does not make that interface native-port-ready.
+
+Snapshot `f805cba`: **769/1,685 matching functions (45.6%)**:
+398 resident and 371 overlay functions, with 916 assembly-backed functions
+remaining. The count-weighted treemap is refreshed. This is a known-inventory
+function count, not a whole-game denominator or an effort estimate. Native-PC
+and online work have not started. This records 12 of the requested 24 matches.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 

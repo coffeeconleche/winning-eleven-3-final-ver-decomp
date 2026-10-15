@@ -1486,6 +1486,67 @@ pointer/alias contracts remain provisional. Deferred padded and multi-entry
 slots were not forced into this batch; the builder and function inventory
 are unchanged.
 
+### Resident 24-function run, batch 2 of 4 (2026-10-15)
+
+Five functions select `gcc272-dos -quiet -O2 -G0`; `800B0C98` uses
+`gcc281` with those defaults plus `-mno-split-addresses`. These are scoped
+per-function entries; global defaults and original assembly/data are unchanged.
+
+| Function | Code commit | Exact bytes | Natural frame | Retained artificial source aids |
+| --- | --- | ---: | ---: | --- |
+| `func_80019A44` | `f805cba` | 216 | 0 | 3 actual-value bindings |
+| `func_8003D274` | `153fcf4` | 628 | 48 | 8 bindings, 3 argument-value captures |
+| `func_800547A4` | `c339e54` | 632 | 0 | 5 bindings, 2 actual-value identities |
+| `func_8008A65C` | `7466185` | 228 | 24 | none |
+| `func_8009FEDC` | `9ed5ef6` | 212 | 0 | none |
+| `func_800B0C98` | `d62d731` | 236 | 32 | 1 actual-status binding |
+
+`80019A44` decodes literals and bytewise forward backreferences, preserving
+overlapping-copy behavior. The three binding omissions differ by 17, 2 and
+2 word positions; ordinary terminal-constant materialization differs by 46;
+all-source omission differs by 48. A redundant terminal register binding was
+removed. The two-pointer caller ignores the returned next-output pointer;
+input termination, malformed-stream behavior and output capacity remain unknown.
+
+`8003D274` calls the real five-argument byte helper before height/distance
+tests and an alias-sensitive sequence of halfword writes. Its eight binding
+omissions differ by 27, 5, 7, 2, 2, 3, 107 and 7 word positions; the three
+initialized helper-argument captures by 5, 4 and 2. Separate selector/index
+operand omissions also fail (4 and 3 words). All-source omission differs by
+41 words. Every captured input is genuinely consumed; no residual register
+was promoted to a fictitious argument. Widened products and unsigned sums
+preserve low-word arithmetic; original signed/unsigned comparisons remain.
+
+`800547A4` retains player/ball pointers, distances and direction values.
+Five binding omissions differ by 12, 16, 3, 73 and 37 word positions; the
+two value identities by 58 and 55. Removing the selected-ball dependency
+alone differs by 56; all-source omission gives 628 bytes / 58 changed words.
+The input operand is the initialized pointer actually used for the facing
+load. Low-word products/negation, post-store rereads and the signed halfword
+increment/narrowing before its cap preserve the original edge cases.
+
+`8008A65C` needs no artificial aid. Its natural three-state switch selects
+existing helpers and preserves post-call byte rereads; an equivalent if/else
+control gives 200 bytes / 52 changed words. `8009FEDC` also needs no aids:
+both earlier address aliases were removed exactly. Its full-word unsigned
+result agrees with the existing caller declaration; unsigned identifier
+remainder and signed scratch remainder are deliberately distinct.
+
+`800B0C98` polls actual MMIO status and submits an image callback. Removing
+the status binding differs by 5 words, removing the extra compiler flag gives
+228 bytes / 32 changed words, and removing both gives 228 bytes / 37. Existing
+global pointer views agree; casts expose only the observed callback slot.
+This is not a recovered portable SDK interface. In particular `800BA798`
+forwards four machine words, while this call explicitly sets only two. No
+fictitious residual arguments were added; a native callback adapter/shared API
+must reconcile this legacy call view, pointer widths and table effective types.
+
+All aids and extra flags have independent single and cumulative controls.
+Empty asm value captures emit no instructions and assert no memory volatility.
+No instruction patch, new storage, fake frame padding or original-data edit
+is used. Complete record capacities, historical types, indirect users and
+native pointer/alias contracts remain provisional for all six functions.
+
 ## Wrapper checks
 
 The wrapper's SDK-free tests cover successful verbatim copying, failed or
