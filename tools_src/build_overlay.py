@@ -772,6 +772,7 @@ PER_FUNC_JUMP_TABLES: dict[str, JumpTableSlot | tuple[JumpTableSlot, ...]] = {
 }
 
 PER_FUNC_CC1_FLAGS = {
+    "func_800B0FB4": ["-quiet","-O2","-G0","-mno-split-addresses"],
     "func_800B0D84": ["-quiet","-O2","-G0","-mno-split-addresses"],
     "func_800B0C98": ["-quiet","-O2","-G0","-mno-split-addresses"],
     "func_8001FF7C": ["-quiet", "-O2", "-G0", "-fno-strength-reduce"],
