@@ -1843,6 +1843,48 @@ arguments, new storage or original-data changes are used. Complete historical
 types, indirect users, native pointer/alias contracts and allocation bounds
 remain provisional; binary equality alone is not native API recovery.
 
+### Resident 96-function run, batch 5 of 16 (2026-10-15)
+
+Per-function compiler selections are listed below; global defaults, helpers,
+original assembly/data and unrelated profiles remain unchanged. All sources
+were independently reviewed and reproduced before integration.
+
+| Function | Code commit | Bytes | Natural frame | Compiler / extra flags | Retained source choices |
+| --- | --- | ---: | ---: | --- | --- |
+| `func_8001E158` | `2e81dd8` | 440 | 24 | `gcc272-dos` / `defaults` | No artificial aids |
+| `func_80035184` | `d00cc80` | 412 | 32 | `gcc272-dos` / `defaults` | No artificial aids |
+| `func_80069094` | `756b2e4` | 276 | 0 | `gcc272-dos` / `defaults` | One initialized magnitude binding and two measured operand identities |
+| `func_8008A8A4` | `e4097e8` | 304 | 40 | `gcc272-dos` / `defaults` | No artificial aids; explicit observed halfword result conversion |
+| `func_800A3590` | `fb9f32e` | 416 | 40 | `gcc272-dos` / `-fno-strength-reduce` | No source aids; measured -fno-strength-reduce |
+| `func_80068378` | `551f365` | 228 | 0 | `gcc272-dos` / `defaults` | One initialized active binding, absolute byte view and measured ordinary address/reset choices |
+
+`8001E158`: Eight genuine four-word event registrations and single-word enable calls are corroborated by dispatcher stubs and local SDK declarations. Opaque handles retain 32-bit bits through signed/unsigned views; globals reload between callbacks. ROM bodies and callback semantics beyond null remain unavailable; native long width and shared handle declarations require explicit reconciliation.
+
+`80035184`: Signed-half position negation is safe even for -32768; unsigned speed subtracts only above the threshold. Helper-mutated state and scratch pointers reload in target order, including speed only after both direction helpers. Actual one-pointer/void caller view and six helper interfaces are inspected. Native record layouts, animation table bounds and scratch mapping remain provisional.
+
+`80069094`: Existing void(byte pointer,word,word) ABI is preserved with explicit signed-half narrowing. Wide squares narrow to unsigned low words before addition and target signed comparison; halfword absolute values are safe. All four capture dependencies have failing removal controls. Stores and subsequent alias-sensitive reloads follow the target; native record bounds and scratch translation remain provisional.
+
+`8008A8A4`: Actual first animation call takes object, selector 94 and index zero. Loop checks indices six down to zero. Signed-half random result plus two is bounded; the real five-argument helper explains the natural frame. Scratch pointer reload follows callbacks. Known production signatures are used, with older narrow B36C views explicitly unresolved for native shared-header recovery.
+
+`800A3590`: Both ten-record loops preserve selector reload between helper-mutating passes. Signed-half values promote before abs, including -32768. A0F30 consumes a0/a2/a3: its actual caller-loaded mode occupies the unused a1 position, not a phantom residual argument. Native record bounds, post-loop pointer extent and shared helper contracts remain provisional.
+
+`80068378`: Two byte-selector inputs and void result are supported by both callers. Scratchpad is ordinary PS1 RAM, not MMIO; all accesses are bytes. Integer address additions and bounded ten-row increments preserve target bits. Every retained component has a failing removal control, while two unnecessary bindings were removed. Native address translation, backing-row/scratch extents and complete layouts remain provisional.
+
+Independent omission measurements (changed word positions, not a matching
+percentage):
+
+- `80069094`: remove-binding-magnitude: 276 B / 14 words; remove-entry-capture: 272 B / 68 words; remove-scratch-capture: 276 B / 21 words; remove-extra-entry-z-dependency: 276 B / 1 words; remove-extra-entry-x-dependency: 272 B / 68 words; remove-extra-scratch-pointer-dependency: 280 B / 42 words; remove-extra-scratch-x-dependency: 276 B / 12 words; remove-all-source-aids: 268 B / 65 words.
+- `8008A8A4`: remove-extra-ordinary-no-halfword-cast-source-shape: 296 B / 27 words.
+- `800A3590`: remove-flag-0: 424 B / 67 words.
+- `80068378`: remove-active-v0: 228 B / 6 words; remove-absolute305-view: 224 B / 41 words; remove-clear-address-order: 228 B / 1 words; remove-set-address-order: 228 B / 1 words; remove-used-reset-capture: 228 B / 2 words; remove-all-source-aids: 224 B / 46 words.
+
+Every retained binding/empty identity uses initialized, genuinely consumed
+values. Empty operand asm emits no instructions and asserts no memory
+volatility. No instruction patch, artificial frame padding, fake helper
+arguments, new storage or original-data changes are used. Complete historical
+types, indirect users, native pointer/alias contracts and allocation bounds
+remain provisional; binary equality alone is not native API recovery.
+
 ## Wrapper checks
 
 The wrapper's SDK-free tests cover successful verbatim copying, failed or
