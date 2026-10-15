@@ -4099,6 +4099,58 @@ Historical APIs, full layouts, indirect users and native arithmetic/alias
 contracts remain provisional. The public count-weighted treemap is refreshed
 from this tracked-clean code snapshot; private size-weighted images are unchanged.
 
+### Second six reviewed medium resident matches (2026-10-15)
+
+| Function | Bytes | Code commit | Compiler |
+| --- | ---: | --- | --- |
+| `func_8005653C` | 344 | `9e589e6` | gcc272-dos |
+| `func_8005A580` | 428 | `b7e03f7` | gcc272-dos |
+| `func_8006A16C` | 376 | `724664f` | gcc272-dos |
+| `func_80075A14` | 316 | `02c60a1` | gcc272-dos |
+| `func_80056240` | 288 | `c10fc57` | gcc272-dos |
+| `func_8006C3D8` | 356 | `722e6e4` | gcc272-dos |
+
+All sources passed independent function-byte proofs and fresh combined-master
+resident C/assembly-only/restored-C builds, all five confirmed overlays and
+all 18 tests. Complete before/after manifests include every new C file;
+the aggregate audit confirms each resident substitution uses compiled C.
+Original instructions, retail slices, separately assembled original ASM,
+relocated C and full-linked C agree. No reference hash, original ASM,
+placement, game storage or production build logic was changed.
+
+These six matches add 2,108 exact code bytes. The fresh
+parent baseline and isolated workers use the same verified published inputs:
+tracked text is compared by Git blob (CRLF/LF differences are recorded),
+binary inputs byte-for-byte. The unused, ignored monolithic Splat C projection
+present only in the parent checkout is recorded but is not a compiler input.
+Source comments document partial access views, not complete recovered APIs.
+Per-function aids, removal tests and unresolved native contracts remain
+recorded in the independently reviewed sources and private receipts.
+
+`func_8002F0FC` remains reserved for the other AI and is not part of this
+batch. This publication completes only the six newly requested functions;
+it does not resume the older multi-batch queue.
+
+Snapshot `02c60a1`: 743 matching functions (371 overlay, 372 resident),
+743/1,685 (44.1%) of the known inventory; 942 remain assembly-backed.
+Overlays remain 371/412; native-PC and online work have not started. These
+are function-count percentages, not whole-game discovery or effort estimates.
+Historical APIs, full layouts, indirect users and native arithmetic/alias
+contracts remain provisional. The public count-weighted treemap is refreshed
+from this tracked-clean code snapshot; private size-weighted images are unchanged.
+
+`func_8005653C`: Preserves gate order, bounded signed-halfword negation, byte modulo-three selection and the counter reload after the callback. Both known callers discard the result; full historical APIs and record extents remain provisional. No matching aids.
+
+`func_8005A580`: Preserves both ten-record loops, the 1,000-byte stride, mixed-width reset stores, signed switch default and later byte rereads. Difference negation is bounded to byte-derived values. Three direct calls are known; complete state layouts and extents remain unproved. No matching aids.
+
+`func_8006A16C`: Uses unsigned operands before low-word products and subtraction, including direction -1 with INT_MIN, while preserving the target's signed comparison and halfword narrowing. Two initialized register bindings remain; independent final-hash removal tests differ by 4, 6 and 4 words (each binding and both). Phase and empty constraints were removed. This is measured target codegen, not a complete native arithmetic or table-bounds contract.
+
+`func_80075A14`: Preserves 18/22-byte strides, post-helper pointer/value reloads, dependent byte lookups and unsigned subtraction after refreshed bounds. All trial constraints were removed. One caller propagates result-register residue, so a historical return API is not established. The explicit 32-bit address view and unknown table extents require separate native-port work. No matching aids.
+
+`func_80056240`: Keeps the short-circuit random/helper gates, signed coordinate test, unsigned byte remainder and callback-mutated counter reload. Two static callers ignore the return. Pointer layouts, helper contracts and indirect users remain provisional. No matching aids.
+
+`func_8006C3D8`: Preserves the early state-change path, duplicated helper/store sequences, current-pointer reread and mask-gated callbacks. Captured byte indices and halfword masks need no register constraints. One static caller is known; full helper APIs, mask-table bounds and alias contracts remain provisional. No matching aids.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 

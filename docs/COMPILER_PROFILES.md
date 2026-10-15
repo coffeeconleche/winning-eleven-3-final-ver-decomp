@@ -1270,6 +1270,32 @@ the final source hash. The other five sources need no such constraints.
 No generated resident rodata, added storage, instruction-output patches
 or artificial frame reservations are introduced by this publication.
 
+### Second six reviewed medium resident matches (2026-10-15)
+
+`func_8005653C`, `func_8005A580`, `func_8006A16C`, `func_80075A14`, `func_80056240`, `func_8006C3D8`.
+
+Profiles remain individually verified through complete function and image
+equality; these additions do not change global compiler defaults. Their
+source comments and matching annotations describe observed legacy codegen,
+not complete historical declarations or native-portability guarantees.
+Compiler selections and any per-function flags are measured separately;
+no global defaults or unrelated map entries are changed.
+All six use `gcc272-dos -quiet -O2 -G0`; there are no new flag-map keys.
+No generated resident rodata, added storage, instruction-output patches
+or artificial frame reservations are introduced by this publication.
+
+`func_8005653C`: Preserves gate order, bounded signed-halfword negation, byte modulo-three selection and the counter reload after the callback. Both known callers discard the result; full historical APIs and record extents remain provisional. No matching aids.
+
+`func_8005A580`: Preserves both ten-record loops, the 1,000-byte stride, mixed-width reset stores, signed switch default and later byte rereads. Difference negation is bounded to byte-derived values. Three direct calls are known; complete state layouts and extents remain unproved. No matching aids.
+
+`func_8006A16C`: Uses unsigned operands before low-word products and subtraction, including direction -1 with INT_MIN, while preserving the target's signed comparison and halfword narrowing. Two initialized register bindings remain; independent final-hash removal tests differ by 4, 6 and 4 words (each binding and both). Phase and empty constraints were removed. This is measured target codegen, not a complete native arithmetic or table-bounds contract.
+
+`func_80075A14`: Preserves 18/22-byte strides, post-helper pointer/value reloads, dependent byte lookups and unsigned subtraction after refreshed bounds. All trial constraints were removed. One caller propagates result-register residue, so a historical return API is not established. The explicit 32-bit address view and unknown table extents require separate native-port work. No matching aids.
+
+`func_80056240`: Keeps the short-circuit random/helper gates, signed coordinate test, unsigned byte remainder and callback-mutated counter reload. Two static callers ignore the return. Pointer layouts, helper contracts and indirect users remain provisional. No matching aids.
+
+`func_8006C3D8`: Preserves the early state-change path, duplicated helper/store sequences, current-pointer reread and mask-gated callbacks. Captured byte indices and halfword masks need no register constraints. One static caller is known; full helper APIs, mask-table bounds and alias contracts remain provisional. No matching aids.
+
 ## Wrapper checks
 
 The wrapper's SDK-free tests cover successful verbatim copying, failed or
