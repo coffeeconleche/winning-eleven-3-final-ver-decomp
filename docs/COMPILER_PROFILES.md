@@ -1720,6 +1720,47 @@ arguments, new storage or original-data changes are used. Complete historical
 types, indirect users, native pointer/alias contracts and allocation bounds
 remain provisional; binary equality alone is not native API recovery.
 
+### Resident 96-function run, batch 2 of 16 (2026-10-15)
+
+Per-function compiler selections are listed below; global defaults, helpers,
+original assembly/data and unrelated profiles remain unchanged. All sources
+were independently reviewed and reproduced before integration.
+
+| Function | Code commit | Bytes | Natural frame | Compiler / extra flags | Retained source choices |
+| --- | --- | ---: | ---: | --- | --- |
+| `func_8002B1E4` | `828be7e` | 424 | 32 | `gcc272-dos` / `defaults` | One initialized result register binding and measured equivalent range-test expression |
+| `func_8003495C` | `c7149c4` | 368 | 32 | `gcc272-dos` / `defaults` | No artificial aids |
+| `func_80056694` | `fb74e8c` | 208 | 32 | `gcc272-dos` / `defaults` | No artificial aids |
+| `func_80071F24` | `10d7b6e` | 372 | 32 | `gcc272-dos` / `defaults` | Ordinary decrement source shape |
+| `func_8009D4C4` | `44a0332` | 428 | 32 | `gcc272-dos` / `defaults` | No artificial aids |
+| `func_800B9448` | `1441153` | 200 | 40 | `gcc281` / `defaults` | One initialized clock register binding |
+
+`8002B1E4`: Signed halfword square bounds fit s32; the sum is unsigned. Signed random remainders may be negative; both derived divisors remain positive. Helper side effects and result words follow the target, while native record bounds and historical types remain provisional.
+
+`8003495C`: Unsigned coordinate differences/products preserve low-word arithmetic; signed halfword absolute values fit s32, including -32768. Existing helper views and both pointer inputs were inspected. Native bounds and full shared record types remain provisional.
+
+`80056694`: One record argument and ignored result match the caller. The scratch coordinate and record flag are read after the first helper; the counter is reread after callbacks. Unsigned low-word addition preserves the unrestricted helper result, and byte narrowing preserves counter wrap. Native scratch/roster allocation and helper API meanings remain provisional.
+
+`80071F24`: Both inputs use their low bytes; the divisor must be nonzero, matching the console division-trap domain. A native trap adapter or explicit precondition is needed. Four real helper arguments and one packet-selector argument are verified; no residual second packet-helper argument was invented. Byte/halfword narrowing is bounded. Native packet alignment, extents and shared helper return views remain provisional.
+
+`8009D4C4`: Five real helper APIs are inspected. Signed scratch remainder and unsigned byte identifier remainder stay distinct; halfword coordinates are extended into the existing word ABI. Identifier, scratch coordinates and final state are reread after stores/helpers. No invented residual helper arguments. Complete native record bounds, selector domains and scratch mapping remain provisional.
+
+`800B9448`: Actual CD helper arguments and ignored returns were inspected. Deadline arithmetic uses unsigned wrap before target signed interpretation, with post-helper state reloads. The contiguous eight-word physical view crosses split labels: native array, alias and layout contracts remain unresolved; do not infer a portable shared array from binary equality.
+
+Independent omission measurements (changed word positions, not a matching
+percentage):
+
+- `8002B1E4`: remove-result-v1-binding: 424 B / 1 words; remove-mixed-square-shape: 416 B / 78 words; remove-all-source-aids: 416 B / 78 words.
+- `80071F24`: remove-extra-ordinary-decrement-source-shape: 372 B / 1 words.
+- `800B9448`: remove-clock-s1: 200 B / 3 words; remove-all-source-aids: 200 B / 3 words.
+
+Every retained binding/empty identity uses initialized, genuinely consumed
+values. Empty operand asm emits no instructions and asserts no memory
+volatility. No instruction patch, artificial frame padding, fake helper
+arguments, new storage or original-data changes are used. Complete historical
+types, indirect users, native pointer/alias contracts and allocation bounds
+remain provisional; binary equality alone is not native API recovery.
+
 ## Wrapper checks
 
 The wrapper's SDK-free tests cover successful verbatim copying, failed or
