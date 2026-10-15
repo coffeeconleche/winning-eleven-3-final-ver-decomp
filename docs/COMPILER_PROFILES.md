@@ -2101,6 +2101,48 @@ arguments, new storage or original-data changes are used. Complete historical
 types, indirect users, native pointer/alias contracts and allocation bounds
 remain provisional; binary equality alone is not native API recovery.
 
+### Resident 96-function run, batch 11 of 16 (2026-10-16)
+
+Per-function compiler selections are listed below; global defaults, helpers,
+original assembly/data and unrelated profiles remain unchanged. All sources
+were independently reviewed and reproduced before integration.
+
+| Function | Code commit | Bytes | Natural frame | Compiler / extra flags | Retained source choices |
+| --- | --- | ---: | ---: | --- | --- |
+| `func_800267D8` | `51812ec` | 652 | 32 | `gcc272-dos` / `defaults` | One measured no-storage scratch-byte store address view, no bindings/identities/extra flags; typed B864 API harmonized before acceptance |
+| `func_8003F2B8` | `e098a80` | 680 | 40 | `gcc272-dos` / `defaults` | Eleven initialized-used scalar bindings across disjoint near/far lifetimes; every/all omission measured, no identities or extra flags |
+| `func_80055610` | `fba3ef2` | 240 | 0 | `gcc272-dos` / `defaults` | No artificial aids after identity removal |
+| `func_8007C9B0` | `f5e3d2c` | 592 | 24 | `gcc272-dos` / `defaults` | No artificial aids or extra flags; separate ordinary angle lifetimes and direct selector calls |
+| `func_8009E318` | `cc3e14a` | 844 | 40 | `gcc272-dos` / `defaults` | No artificial aids or extra flags; redundant predicate identity removed after controls |
+| `func_800AE958` | `0ede3d5` | 200 | 32 | `gcc281` / `-mno-split-addresses` | Plain C with actual loop-mask/terminal-pointer captures and measured -mno-split-addresses; all bindings/identities removed |
+
+`800267D8`: One actual actor input and ignored return; B864 RecordView/u16 now matches existing definition member-for-member. Genuine helper args and BD1C word return retained. Halfword decrement and byte counters narrow unsigned; signed RNG/jitter arithmetic bounded without positivity assumptions. Arbitrary motion-word negation uses unsigned wrap then PS1 signed interpretation including INT_MIN. Callback field/pointer rereads and overlapping scratch views preserved. Native pointer mapping, partial layouts and runtime animation-table ownership remain provisional. Unsafe shift candidate1F7C4 deferred uncounted.
+
+`8003F2B8`: One consumed record input, full boolean return; real52A68 pointer restored and existing APIs retained. Halfword negation promoted safely. Unsigned squares/sum then PS1 signed reinterpretation preserve wrapped distance threshold; angular differences masked unsigned. Each binding assigned on its actual path, caller-saved values do not survive helpers, and shared comparison reads only initialized outer values. Callback/branch-specific coordinate rereads preserved. Native mapped scratch/pool extent, alignment and complete APIs remain provisional.
+
+`80055610`: Caller genuinely supplies two record pointers and a full-word scale, and consumes the boolean result. Product, shift and threshold updates use unsigned low-word arithmetic; byte differences are bounded. Scratch pointer reload and unsigned result comparison are preserved. No helpers or new storage. Native scratch/record allocation and target halfword narrowing remain provisional.
+
+`8007C9B0`: One actual object argument and ignored return. Random remainder3 can be negative and correctly follows nonzero branch. Real helpers consume their stated arguments only; no residual pool arguments. Bounded signed angle remainder and modulo24 pool selection preserve defined arithmetic. Object/pool/scratch alias visibility and post-helper state/cursor/heading reloads retained. Existing narrow B36C prototype needs native reconciliation; mapped pool, scratch and nested runtime table ownership remain provisional.
+
+`8009E318`: One actual object input, ignored return. Original loaded unused A0F30 middle slot retained to keep real output pointers in correct ABI positions. Wide signed squares reduced to unsigned words preserve wrapped signed-distance comparison; halfword abs safely promoted. Callback-sensitive associated pointers, counters, fields and outputs reread in original order. Full-byte side indices and10-record scan preserved without invented bounds. Native mapped scratch/pool ownership, helper contracts and complete partial layouts remain provisional.
+
+`800AE958`: Two consumed words; unreferenced discovered SDK entry has no resident caller to prove historical signature or count bounds. Pointer-valued exit observed and preserved, not claimed historical API. Positive count and that many live aligned words give n-1 safe next-pointer updates and final tag store; unsigned decrements wrap without signed overflow. Real variadic BIOS callback matches existing declaration/format. Byte alias then word reread and terminal/global store order preserved. Native32-bit pointer representation, array domain, BIOS and storage ownership remain provisional; external67860 excluded.
+
+Independent omission measurements (changed word positions, not a matching
+percentage):
+
+- `800267D8`: remove-scratch_byte_store_address_view: 648 B / 106 words; remove-all-source-aids: 648 B / 106 words.
+- `8003F2B8`: remove-distance: 680 B / 2 words; remove-threshold: 680 B / 2 words; remove-farX: 680 B / 5 words; remove-farZ: 680 B / 5 words; remove-farFirstProduct: 692 B / 86 words; remove-farSecondProduct: 688 B / 74 words; remove-nearX: 680 B / 5 words; remove-nearZ: 680 B / 5 words; remove-nearFirstProduct: 692 B / 75 words; remove-nearSecondProduct: 688 B / 74 words; remove-recordX: 680 B / 2 words; remove-all-source-aids: 680 B / 26 words.
+- `8007C9B0`: remove-extra-ordinary-angle16-mask: 572 B / 85 words; remove-extra-ordinary-angle33-mask: 572 B / 31 words; remove-extra-ordinary-shared-selector-call: 588 B / 123 words; remove-extra-ordinary-all-source-shapes: 548 B / 122 words.
+- `800AE958`: remove-loop-low-mask-capture: 200 B / 3 words; remove-terminal-pointer-capture: 204 B / 18 words; remove-all-source-aids: 204 B / 20 words; remove-flag-0: 200 B / 9 words; remove-all-aids-and-flags: 200 B / 12 words.
+
+Every retained binding/empty identity uses initialized, genuinely consumed
+values. Empty operand asm emits no instructions and asserts no memory
+volatility. No instruction patch, artificial frame padding, fake helper
+arguments, new storage or original-data changes are used. Complete historical
+types, indirect users, native pointer/alias contracts and allocation bounds
+remain provisional; binary equality alone is not native API recovery.
+
 ## Wrapper checks
 
 The wrapper's SDK-free tests cover successful verbatim copying, failed or
