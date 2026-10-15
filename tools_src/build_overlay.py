@@ -36,6 +36,7 @@ CPP_FLAGS = [
 ]
 
 PER_FUNC_COMPILERS: dict[str, str] = {
+    "func_8009D4C4": "gcc272-dos",
     "func_80026A64": "gcc272-dos",
     "func_8004F58C": "gcc272-dos",
     "func_80054C54": "gcc272-dos",
