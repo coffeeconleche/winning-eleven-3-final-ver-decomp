@@ -1327,6 +1327,22 @@ or artificial frame reservations are introduced by this publication.
 
 `func_8005C2AC`: Preserves five byte/stack-argument views, ordered matrix/GTE helper calls and unsigned word additions before output-halfword narrowing. Two independently removal-tested aids bind the actual scratch base and consume its initialized final vector halfword (15/8 changed words singly, 19 together). No volatile memory views or extra flags remain. All 40 direct callsite contexts were inspected, not all 32 complete caller bodies. Native GTE lanes, alias contracts and full record/helper layouts remain provisional; natural 40-byte frame.
 
+### Resident func_8002F0FC takeover (2026-10-15)
+
+`func_8002F0FC` (b2be577): 436 exact bytes, individually measured
+`gcc272-dos -quiet -O2 -G0 -fno-schedule-insns`. Global defaults and
+unrelated profile/flag entries are unchanged. The disabled first scheduling
+pass is necessary for this source, not a general recommendation.
+
+Preserves signed-halfword coordinate views, unsigned low-word squared-distance arithmetic, the fifth word's signed-low16 use, alias-sensitive pointer reloads, helper/counter order and final halfword copies. The sole known direct caller discards the return value; prior boolean-result speculation was corrected. Eleven individually and cumulatively removal-tested matching aids remain: five initialized value bindings, two initialized cursor identities, one existing-scratch alias, one pointer-read access view, an unused eight-byte stack-layout area, and the per-function first-scheduler option. Single removals change 102/9/2/2/48/5/5/51/81/9/51 words; removing all changes 104 words and produces 420 bytes instead of 436. The frame area is never accessed and its historical purpose is unknown; it is not recovered game data. No phantom operand, fake helper argument or instruction patch is used. Complete historical APIs, indirect users, pointer/alias contracts and termination remain unproved.
+
+The stack-layout reservation is explicitly a matching aid: it is never
+read, initialized, address-consumed or passed as an asm memory operand.
+It explains emitted frame size only; the historical purpose of those eight
+retail bytes is unknown. No generated resident rodata, data/BSS allocation
+or instruction-output patch is introduced. Historical APIs and native
+pointer, aliasing and termination contracts remain provisional.
+
 ## Wrapper checks
 
 The wrapper's SDK-free tests cover successful verbatim copying, failed or

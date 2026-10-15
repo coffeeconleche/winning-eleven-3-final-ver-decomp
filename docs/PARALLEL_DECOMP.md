@@ -4214,6 +4214,27 @@ from this tracked-clean code snapshot; private size-weighted images are unchange
 
 `func_8005C2AC`: Preserves five byte/stack-argument views, ordered matrix/GTE helper calls and unsigned word additions before output-halfword narrowing. Two independently removal-tested aids bind the actual scratch base and consume its initialized final vector halfword (15/8 changed words singly, 19 together). No volatile memory views or extra flags remain. All 40 direct callsite contexts were inspected, not all 32 complete caller bodies. Native GTE lanes, alias contracts and full record/helper layouts remain provisional; natural 40-byte frame.
 
+### Resident func_8002F0FC takeover (2026-10-15)
+
+The independently reviewed 436-byte `func_8002F0FC` is accepted in code
+commit `b2be577`. Original annotated words, the retail slice, separately
+assembled original ASM, relocated compiled C and the full linked resident
+image agree. Fresh resident C / assembly-only / restored-C builds, all five
+confirmed overlays and all 18 tests pass. Input freezes include the new C;
+the complete audit confirms all 382 resident slots use their C substitutions.
+Original ASM, layout, retail hashes, game storage and builder logic are unchanged.
+
+Preserves signed-halfword coordinate views, unsigned low-word squared-distance arithmetic, the fifth word's signed-low16 use, alias-sensitive pointer reloads, helper/counter order and final halfword copies. The sole known direct caller discards the return value; prior boolean-result speculation was corrected. Eleven individually and cumulatively removal-tested matching aids remain: five initialized value bindings, two initialized cursor identities, one existing-scratch alias, one pointer-read access view, an unused eight-byte stack-layout area, and the per-function first-scheduler option. Single removals change 102/9/2/2/48/5/5/51/81/9/51 words; removing all changes 104 words and produces 420 bytes instead of 436. The frame area is never accessed and its historical purpose is unknown; it is not recovered game data. No phantom operand, fake helper argument or instruction patch is used. Complete historical APIs, indirect users, pointer/alias contracts and termination remain unproved.
+
+Snapshot `b2be577`: **753/1,685 matching functions (44.7%)**, consisting of
+382 resident and 371 overlay functions; 932 remain assembly-backed. This is
+the known function-count inventory, not whole-game discovery or an effort
+estimate. The count-weighted treemap is refreshed; private size-weighted
+experiments are unchanged. Native-PC and online work have not started.
+
+This completes the separate F0FC request after the nine-function batch.
+The superseded 20-function queue remains cancelled; no further targets were started.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 
