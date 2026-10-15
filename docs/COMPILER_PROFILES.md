@@ -1971,6 +1971,50 @@ arguments, new storage or original-data changes are used. Complete historical
 types, indirect users, native pointer/alias contracts and allocation bounds
 remain provisional; binary equality alone is not native API recovery.
 
+### Resident 96-function run, batch 8 of 16 (2026-10-16)
+
+Per-function compiler selections are listed below; global defaults, helpers,
+original assembly/data and unrelated profiles remain unchanged. All sources
+were independently reviewed and reproduced before integration.
+
+| Function | Code commit | Bytes | Natural frame | Compiler / extra flags | Retained source choices |
+| --- | --- | ---: | ---: | --- | --- |
+| `func_80019C34` | `bb37b86` | 604 | 40 | `gcc272-dos` / `defaults` | One initialized field-cursor operand identity; no bindings or flags |
+| `func_80033B88` | `2aa1b00` | 576 | 24 | `gcc272-dos` / `defaults` | One initialized real second-argument binding |
+| `func_80055CD4` | `0ddf23b` | 536 | 32 | `gcc272-dos` / `defaults` | One initialized argument binding and one loaded-value identity |
+| `func_8008A460` | `88d1f7e` | 508 | 40 | `gcc272-dos` / `defaults` | No artificial aids; ordinary turn capture and halfword conversion |
+| `func_800A4630` | `9c9696a` | 540 | 48 | `gcc272-dos` / `-fno-strength-reduce` | No source aids; measured -fno-strength-reduce |
+| `func_8006682C` | `fdc8d49` | 432 | 48 | `gcc272-dos` / `-fno-schedule-insns` | Three initialized-used register bindings, actual row intermediate and -fno-schedule-insns; all individual/cumulative controls measured |
+
+`80019C34`: Both three-input rendering helpers consume actual descriptor/entry/selector arguments. The terminal part renders before its post-helper sentinel test. Byte selectors and halfword arithmetic are bounded, with defined u16 narrowing; alias-sensitive selector reloads remain. Native target-pointer layout, part termination/buffer extents, GPU/GTE contracts and shared ordering-entry views remain provisional.
+
+`80033B88`: Initial discarded-result call and repeated direction calls remain sequenced. Full-byte side shifts and masked unsigned angular differences avoid overflow; signed-half position negation is safe. Each facing read follows its helper and actual return narrows to a byte. Sole binding fails removal controls. Native record/helper types, scratch mapping and table bounds remain provisional.
+
+`80055CD4`: Promoted signed-half absolute values include -32768 safely. Each bound dispatch argument is assigned after all preceding callbacks, never retained in a caller-saved register across one. Table indices are 0..2 and counter reload follows callbacks. Actual two-pointer caller/helper views are inspected; native allocation and scratch translation remain provisional.
+
+`8008A460`: Actual typed RecordView/u16 helper declaration mirrors its existing definition; older byte-pointer/word views require later native reconciliation. Direction is deliberately captured before the random helper here, unlike adjacent handlers. Bounded byte/halfword arithmetic avoids overflow, the real fifth stack argument explains the frame, and search indices run six to zero. Table index requires 0..19; full native layouts/scratch mapping remain provisional.
+
+`800A4630`: Position helper and its dependency initialize both signed-half outputs on every normal return. Bounded signed clamps and direction products are safe; raw-word conversions preserve coordinate bits. Associated pointers/coordinates reload between the two real four-argument helpers. Side byte is not assumed binary. Native storage, post-loop pointer extents, helper tables and scratch mapping remain provisional.
+
+`8006682C`: One record argument; void result agrees caller. Unsigned wrapped angle subtraction, bounded modulo24 row choice, eleven iterations and count classification preserve arithmetic. Repeated opaque heading calls and coordinate rereads retained. Native mapped pool alignment, cursor extent through23006 and state/table ownership remain provisional.
+
+Independent omission measurements (changed word positions, not a matching
+percentage):
+
+- `80019C34`: remove-field_cursor_identity: 620 B / 149 words; remove-all-source-aids: 620 B / 149 words.
+- `80033B88`: remove-second-argument-binding: 576 B / 3 words; remove-all-source-aids: 576 B / 3 words.
+- `80055CD4`: remove-argument-binding: 536 B / 11 words; remove-load-identity: 528 B / 111 words; remove-all-source-aids: 528 B / 111 words.
+- `8008A460`: remove-extra-ordinary-no-halfword-cast-source-shape: 500 B / 29 words; remove-extra-ordinary-direct-turn-source-shape: 512 B / 116 words; remove-extra-ordinary-both-source-shapes: 504 B / 115 words.
+- `800A4630`: remove-flag-0: 556 B / 134 words.
+- `8006682C`: remove-coordinate-s0: 448 B / 111 words; remove-count-s4: 432 B / 7 words; remove-total-v1: 432 B / 3 words; remove-row-capture: 432 B / 2 words; remove-all-source-aids: 448 B / 111 words; remove-flag-0: 432 B / 6 words; remove-all-aids-and-flags: 448 B / 110 words.
+
+Every retained binding/empty identity uses initialized, genuinely consumed
+values. Empty operand asm emits no instructions and asserts no memory
+volatility. No instruction patch, artificial frame padding, fake helper
+arguments, new storage or original-data changes are used. Complete historical
+types, indirect users, native pointer/alias contracts and allocation bounds
+remain provisional; binary equality alone is not native API recovery.
+
 ## Wrapper checks
 
 The wrapper's SDK-free tests cover successful verbatim copying, failed or
