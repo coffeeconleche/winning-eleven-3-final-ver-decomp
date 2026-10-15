@@ -1371,6 +1371,58 @@ native-only adapter is still required. Helper implementations are unchanged:
 Complete record layouts, bounds, indirect users and native pointer/alias
 contracts remain provisional.
 
+### Three large resident functions (2026-10-15)
+
+All three use `gcc272-dos -quiet -O2 -G0`; three compiler-map entries and
+one per-function flag override are added. Global defaults, helpers, original
+assembly and data are unchanged.
+No instruction-output patch, fake helper argument, artificial frame padding,
+new data/BSS/rodata or resident jump-table placement is used.
+
+| Function | Code commit | Exact bytes | Natural frame | Extra flag |
+| --- | --- | ---: | ---: | --- |
+| `func_8001FF7C` | `727fc4f` | 1,372 | 80 | `-fno-strength-reduce` |
+| `func_8009A278` | `3babda4` | 1,668 | 0 | none |
+| `func_800C34E8` | `8f04318` | 1,232 | 0 | none |
+
+`8001FF7C` initializes packet and coordinate groups. Its 40-byte packet and
+8-byte coordinate structures are observed access views, not recovered complete
+types. Both selector bytes are reread on each of 23 outer iterations; signed
+bank/offset counters are real loop state with compiler-generated spills. The
+helper declarations agree with the existing matching implementations, which
+are unchanged. Four unnecessary identities/bindings were removed cumulatively
+after the final source made them redundant.
+
+Six source aids remain: argument register `$22`, case-zero coordinate registers
+`$4`/`$3`, an actual CLUT/UV value capture, default-path depth register `$3`,
+and an actual depth/extent constant capture. The empty captures emit no asm
+instructions and make no memory-volatility claim; all operands are initialized
+values consumed by real C operations. In particular, the input-only `u8` value
+255 also supplies two actual UV stores. Independent single-removal controls
+produce 39, 166, 163, 20, 10 and 50 changed word positions respectively.
+All-source removal produces 1,396 bytes / 204 changed positions; flag-only
+removal 1,432 / 274; removing both 1,464 / 304. The retained control is exact.
+
+`8009A278` has no retained matching aids, extra flags or inline asm. Two earlier
+register bindings were removed singly and together without changing bytes.
+Mode-dependent six-byte updates and the byte timer retain unsigned wrapping;
+packet updates retain each alias-sensitive byte reread. Its final reverse loops
+form a cursor one byte before the table after the last store: this reproduces
+the legacy compiler/machine behavior, not a portable C array-bound contract.
+An index-only alternative did not match. Adjacent byte symbols and the scratch
+word interpreted as a 32-bit packet pointer also need native API reconciliation.
+
+`800C34E8` has no matching aids or extra flags. Its observed 68-byte request
+contains a mask and 32 halfwords; mask zero selects all writes. Unsigned bit
+tests are defined through bit 31 and selected halfwords are written in ascending
+order. The existing destination pointer initializes to SPU MMIO base
+`0x1F801C00`, with writes at `0x1F801DC0..0x1F801DFF`. Only the pointee is
+volatile, not the pointer object; removing that qualifier still matches, but
+it is retained for the hardware access. A native backend must replace MMIO.
+
+Complete historical layouts, indirect users, table/buffer bounds and native
+pointer/alias contracts remain provisional for these matches.
+
 ## Wrapper checks
 
 The wrapper's SDK-free tests cover successful verbatim copying, failed or

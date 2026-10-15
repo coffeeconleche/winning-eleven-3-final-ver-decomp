@@ -4269,6 +4269,48 @@ estimate. The count-weighted treemap is refreshed; private size-weighted
 experiments are unchanged. Native-PC and online work have not started.
 This completes the single larger-function request; no further targets started.
 
+### Three large resident functions in parallel (2026-10-15)
+
+Three workers completed independent private candidates; root reviewed,
+minimized, integrated and verified the final sources. No additional targets
+were started.
+
+| Function | Exact bytes | Code commit | Inferred behavior |
+| --- | ---: | --- | --- |
+| `func_8001FF7C` | 1,372 | `727fc4f` | Packet/quad-coordinate initialization |
+| `func_8009A278` | 1,668 | `3babda4` | Six-byte transition state and packet updates |
+| `func_800C34E8` | 1,232 | `8f04318` | Masked SPU halfword-register writes |
+
+These descriptions are hypotheses, not recovered original names. The three
+matches add 4,272 bytes / 1,068 instruction words. Independently compiled C,
+separately assembled originals, annotated instructions, retail slices and the
+complete linked resident image agree for every target. Fresh 386-C,
+assembly-only and restored-386-C resident builds retain retail SHA-1
+`7e480656a295dced6ec187286773ab897651e995`. All five overlays and all 18 tests
+pass. Complete before/after input freezes include the new C files; an
+independent audit verifies all 386 actual C substitutions without ASM fallback.
+
+All three use GCC 2.7.2. `8009A278` and `800C34E8` need no matching aids or
+extra flags. `8001FF7C` retains six measured source aids and a per-function
+`-fno-strength-reduce` override, with independently reproduced individual,
+cumulative and flag-removal controls. Four redundant hints were removed after
+final-source interaction tests. See the compiler-profile section for measurements.
+Its helper prototypes are compatible with the existing matching C; no helper
+implementation or call ABI was altered.
+
+Access structures do not establish complete original types or buffer bounds.
+In particular, `8009A278` retains a legacy one-before-table terminal cursor,
+which is not a portable C contract. Its packet pointer and `8001FF7C`'s address
+arithmetic remain 32-bit platform views; `800C34E8` writes real MMIO. Native
+pointer/layout/alias contracts and hardware replacements still need separate
+work; binary matching does not establish native-port readiness.
+
+Snapshot `727fc4f`: **757/1,685 matching functions (44.9%)**, consisting of
+386 resident and 371 overlay functions; 928 remain assembly-backed. This is
+the known function-count inventory, not whole-game discovery or remaining
+effort. The count-weighted treemap is refreshed; private size-weighted
+experiments are unchanged. Native-PC and online work have not started.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 
