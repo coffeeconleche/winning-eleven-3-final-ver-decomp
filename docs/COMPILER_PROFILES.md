@@ -2015,6 +2015,49 @@ arguments, new storage or original-data changes are used. Complete historical
 types, indirect users, native pointer/alias contracts and allocation bounds
 remain provisional; binary equality alone is not native API recovery.
 
+### Resident 96-function run, batch 9 of 16 (2026-10-16)
+
+Per-function compiler selections are listed below; global defaults, helpers,
+original assembly/data and unrelated profiles remain unchanged. All sources
+were independently reviewed and reproduced before integration.
+
+| Function | Code commit | Bytes | Natural frame | Compiler / extra flags | Retained source choices |
+| --- | --- | ---: | ---: | --- | --- |
+| `func_8001E310` | `7f3f93a` | 660 | 8 | `gcc272-dos` / `defaults` | No artificial aids or extra flags |
+| `func_800332EC` | `e7d5c40` | 608 | 32 | `gcc272-dos` / `defaults` | One initialized-used record pointer identity after speed store; omission controls measured |
+| `func_80056B5C` | `b56e1da` | 260 | 32 | `gcc272-dos` / `defaults` | One initialized mode/constant operand identity |
+| `func_8008EAAC` | `300a57d` | 532 | 32 | `gcc272-dos` / `defaults` | No artificial aids; ordinary angle remainder and pointer-add shape |
+| `func_800A557C` | `68adc38` | 660 | 48 | `gcc272-dos` / `-fno-strength-reduce` | No source aids; measured -fno-strength-reduce and ordinary used one constant |
+| `func_80065440` | `6565045` | 380 | 48 | `gcc272-dos` / `defaults` | Two initialized-used cursor/index bindings; individual/all controls measured, no flags or identities |
+
+`8001E310`: Leaf void(void) matches sole caller. Bounded2/43/22 loops, descending indices, duplicate stores and original order retained. Interleaved86-byte table crosses split labels; native ownership must canonicalize shared backing. Settings scalar/array declarations and bank/scratch native layouts remain provisional.
+
+`800332EC`: One pointer argument, ignored return; callback argument counts and byte/word widths reviewed. Defined unsigned speed clamp and promoted byte arithmetic; callback/field/phase rereads retained. Existing C6C44[7] reads adjacent label and C6C04 byte index spans256 bytes; no invented bounds or new storage. Native shared table backing and mapped scratch/record layout remain provisional.
+
+`80056B5C`: Position halfword negation fits s32, including -32768. Both captured inputs are initialized after the random call and genuinely compared; each dependency has a failing removal control. Existing signed distance-helper return is explicitly compared as u32, matching target sltu. Four-entry table mask and post-callback counter reread are preserved; native storage/layouts remain provisional.
+
+`8008EAAC`: Only frames one to six move; six checks first and nineteen changes state, while other frames skip movement. Bounded angle remainder and unsigned word movement updates avoid overflow. Real void-pointer event helper signature matches production; scratch pointers/flags reload after callbacks. No invented unreachable frame domain or table ownership. Native layouts/helper contracts remain provisional.
+
+`800A557C`: Classifier return 255 is tested as a whole nonzero word. Actual state aliases clear base+10/+11, and primary/secondary marker store orders differ intentionally. Signed-half positions and constants are bounded; modulo24 indices remain full-byte derived. Associated pointers reload after potentially aliasing stores. Native state/record extents, final formed pointers and scratch mapping remain provisional.
+
+`80065440`: Four actual inputs and tested boolean return match caller; shared selector/heading APIs inspected. Signed-wide coordinate squares narrowed to unsigned words and wrapped sum preserve full signed-halfword domain without signed overflow. Angular subtraction unsigned and byte-masked, counter bounded10. Opaque helper calls and coordinate rereads preserved. Native pool/input alignment, allocation and final formed cursor through22006 remain provisional.
+
+Independent omission measurements (changed word positions, not a matching
+percentage):
+
+- `800332EC`: remove-post-speed-store-record-identity: 604 B / 77 words; remove-all-source-aids: 604 B / 77 words.
+- `80056B5C`: remove-mode-capture: 256 B / 47 words; remove-extra-mode-dependency: 256 B / 47 words; remove-extra-one-dependency: 260 B / 2 words; remove-all-source-aids: 256 B / 47 words.
+- `8008EAAC`: remove-extra-ordinary-initial-angle-mask: 512 B / 110 words; remove-extra-ordinary-active-angle-mask: 512 B / 56 words; remove-extra-ordinary-pointer-add-order: 532 B / 1 words; remove-extra-ordinary-all-source-shapes: 492 B / 110 words.
+- `800A557C`: remove-flag-0: 676 B / 152 words.
+- `80065440`: remove-coordinate-s0: 396 B / 95 words; remove-index-s4: 380 B / 15 words; remove-all-source-aids: 396 B / 95 words.
+
+Every retained binding/empty identity uses initialized, genuinely consumed
+values. Empty operand asm emits no instructions and asserts no memory
+volatility. No instruction patch, artificial frame padding, fake helper
+arguments, new storage or original-data changes are used. Complete historical
+types, indirect users, native pointer/alias contracts and allocation bounds
+remain provisional; binary equality alone is not native API recovery.
+
 ## Wrapper checks
 
 The wrapper's SDK-free tests cover successful verbatim copying, failed or
