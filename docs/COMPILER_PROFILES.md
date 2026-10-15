@@ -1296,6 +1296,37 @@ or artificial frame reservations are introduced by this publication.
 
 `func_8006C3D8`: Preserves the early state-change path, duplicated helper/store sequences, current-pointer reread and mask-gated callbacks. Captured byte indices and halfword masks need no register constraints. One static caller is known; full helper APIs, mask-table bounds and alias contracts remain provisional. No matching aids.
 
+### Nine-function medium request: 9 reviewed resident matches (2026-10-15)
+
+`func_8004E2A0`, `func_8004E410`, `func_8004F25C`, `func_80050380`, `func_8008C204`, `func_80054F1C`, `func_80056ED0`, `func_8005965C`, `func_8005C2AC`.
+
+Profiles remain individually verified through complete function and image
+equality; these additions do not change global compiler defaults. Their
+source comments and matching annotations describe observed legacy codegen,
+not complete historical declarations or native-portability guarantees.
+Compiler selections and any per-function flags are measured separately;
+no global defaults or unrelated map entries are changed.
+No generated resident rodata, added storage, instruction-output patches
+or artificial frame reservations are introduced by this publication.
+
+`func_8004E2A0`: Circular byte adjustment uses explicit unsigned low-word products and preserves both scratch-pointer reloads. Known caller discards the result; helper APIs, record extents and gameplay meanings remain provisional. Natural 40-byte frame; no matching aids.
+
+`func_8004E410`: Squared coordinate sums wrap as unsigned words before the measured signed comparison; scratch pointer/angle are reloaded after callbacks. One removal-tested identity retains the actual final returned byte; independently removing it changes 16 words (404 versus 408 bytes). No pointer binding or extra flags remain. Four direct callers use the byte result; layouts and complete native APIs remain provisional. Natural 40-byte frame.
+
+`func_8004F25C`: Four display digits retain full unsigned quotients until their measured halfword/byte narrowing; no helper value-range assumption is used. Six discovered direct callers ignore the result. Resource record bounds and full helper contracts remain unknown. Natural 40-byte frame; no matching aids.
+
+`func_80050380`: Preserves 140 then 320 ordered unit-copy calls and both eight-byte rectangle requests. Selector arithmetic wraps as unsigned words before coordinate narrowing; final branching uses the whole selector. Driver callbacks/resource extents remain provisional. Natural 56-byte frame; no matching aids.
+
+`func_8008C204`: Preserves state/callback updates, scratch halfword masks and the helper-result halfword store even when its narrowed byte is zero. Coordinate magnitude widens before negation; counters wrap only at byte stores. One discovered dispatch caller ignores the result. Natural 32-byte frame; no matching aids. Full layouts and nested helper APIs remain provisional.
+
+`func_80054F1C`: Preserves near/far coordinate gates, original scratch OR indexing and signed arithmetic shift for negative helper bounds. A natural late zero-result join eliminated every trial matching aid. Both known callers test the full Boolean word; record/table extents and helper contracts remain provisional. Natural 24-byte frame.
+
+`func_80056ED0`: Preserves unsigned input thresholds, circular byte-angle gates and conditional submission chronology. Existing bank counter is reloaded after callbacks, including the path with no submission; no helper purity or input-square range is assumed. One known caller ignores the result. Natural 32-byte frame and no matching aids; full layouts/APIs remain provisional.
+
+`func_8005965C`: Preserves sparse selector cases, unchecked signed table indexing and post-callback byte-counter reload. Actual signed remainders bound constant additions safely but do not establish a nonnegative index. Known caller discards the result; table extents and callback APIs remain provisional. Natural 24-byte frame; no matching aids.
+
+`func_8005C2AC`: Preserves five byte/stack-argument views, ordered matrix/GTE helper calls and unsigned word additions before output-halfword narrowing. Two independently removal-tested aids bind the actual scratch base and consume its initialized final vector halfword (15/8 changed words singly, 19 together). No volatile memory views or extra flags remain. All 40 direct callsite contexts were inspected, not all 32 complete caller bodies. Native GTE lanes, alias contracts and full record/helper layouts remain provisional; natural 40-byte frame.
+
 ## Wrapper checks
 
 The wrapper's SDK-free tests cover successful verbatim copying, failed or

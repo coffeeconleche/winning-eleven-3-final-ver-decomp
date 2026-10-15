@@ -4151,6 +4151,69 @@ from this tracked-clean code snapshot; private size-weighted images are unchange
 
 `func_8006C3D8`: Preserves the early state-change path, duplicated helper/store sequences, current-pointer reread and mask-gated callbacks. Captured byte indices and halfword masks need no register constraints. One static caller is known; full helper APIs, mask-table bounds and alias contracts remain provisional. No matching aids.
 
+### Nine-function medium request: 9 reviewed resident matches (2026-10-15)
+
+| Function | Bytes | Code commit | Compiler |
+| --- | ---: | --- | --- |
+| `func_8004E2A0` | 368 | `57bd9e5` | gcc272-dos |
+| `func_8004E410` | 408 | `83af399` | gcc272-dos |
+| `func_8004F25C` | 368 | `db5f821` | gcc272-dos |
+| `func_80050380` | 400 | `9fa8331` | gcc272-dos |
+| `func_8008C204` | 324 | `d33fe2a` | gcc272-dos |
+| `func_80054F1C` | 428 | `5a5e156` | gcc272-dos |
+| `func_80056ED0` | 420 | `b83e405` | gcc272-dos |
+| `func_8005965C` | 364 | `1cd5057` | gcc272-dos |
+| `func_8005C2AC` | 424 | `6764341` | gcc272-dos |
+
+All sources passed independent function-byte proofs and fresh combined-master
+resident C/assembly-only/restored-C builds, all five confirmed overlays and
+all 18 tests. Complete before/after manifests include every new C file;
+the aggregate audit confirms each resident substitution uses compiled C.
+Original instructions, retail slices, separately assembled original ASM,
+relocated C and full-linked C agree. No reference hash, original ASM,
+placement, game storage or production build logic was changed.
+
+These 9 matches add 3,504 exact code bytes. The fresh
+parent baseline and isolated workers use the same verified published inputs:
+tracked text is compared by Git blob (CRLF/LF differences are recorded),
+binary inputs byte-for-byte. The unused, ignored monolithic Splat C projection
+present only in the parent checkout is recorded but is not a compiler input.
+Source comments document partial access views, not complete recovered APIs.
+Per-function aids, removal tests and unresolved native contracts remain
+recorded in the independently reviewed sources and private receipts.
+
+`func_8002F0FC` is a separately authorized research takeover and is not
+counted in this nine-function publication. The user replaced the proposed
+20-function queue with the
+current six functions plus three new parallel workers, then stop.
+No remaining work from that superseded queue was started.
+
+Snapshot `6764341`: 752 matching functions (371 overlay, 381 resident),
+752/1,685 (44.6%) of the known inventory; 933 remain assembly-backed.
+Overlays remain 371/412; native-PC and online work have not started. These
+are function-count percentages, not whole-game discovery or effort estimates.
+Historical APIs, full layouts, indirect users and native arithmetic/alias
+contracts remain provisional. The public count-weighted treemap is refreshed
+from this tracked-clean code snapshot; private size-weighted images are unchanged.
+
+`func_8004E2A0`: Circular byte adjustment uses explicit unsigned low-word products and preserves both scratch-pointer reloads. Known caller discards the result; helper APIs, record extents and gameplay meanings remain provisional. Natural 40-byte frame; no matching aids.
+
+`func_8004E410`: Squared coordinate sums wrap as unsigned words before the measured signed comparison; scratch pointer/angle are reloaded after callbacks. One removal-tested identity retains the actual final returned byte; independently removing it changes 16 words (404 versus 408 bytes). No pointer binding or extra flags remain. Four direct callers use the byte result; layouts and complete native APIs remain provisional. Natural 40-byte frame.
+
+`func_8004F25C`: Four display digits retain full unsigned quotients until their measured halfword/byte narrowing; no helper value-range assumption is used. Six discovered direct callers ignore the result. Resource record bounds and full helper contracts remain unknown. Natural 40-byte frame; no matching aids.
+
+`func_80050380`: Preserves 140 then 320 ordered unit-copy calls and both eight-byte rectangle requests. Selector arithmetic wraps as unsigned words before coordinate narrowing; final branching uses the whole selector. Driver callbacks/resource extents remain provisional. Natural 56-byte frame; no matching aids.
+
+`func_8008C204`: Preserves state/callback updates, scratch halfword masks and the helper-result halfword store even when its narrowed byte is zero. Coordinate magnitude widens before negation; counters wrap only at byte stores. One discovered dispatch caller ignores the result. Natural 32-byte frame; no matching aids. Full layouts and nested helper APIs remain provisional.
+
+`func_80054F1C`: Preserves near/far coordinate gates, original scratch OR indexing and signed arithmetic shift for negative helper bounds. A natural late zero-result join eliminated every trial matching aid. Both known callers test the full Boolean word; record/table extents and helper contracts remain provisional. Natural 24-byte frame.
+
+`func_80056ED0`: Preserves unsigned input thresholds, circular byte-angle gates and conditional submission chronology. Existing bank counter is reloaded after callbacks, including the path with no submission; no helper purity or input-square range is assumed. One known caller ignores the result. Natural 32-byte frame and no matching aids; full layouts/APIs remain provisional.
+
+`func_8005965C`: Preserves sparse selector cases, unchecked signed table indexing and post-callback byte-counter reload. Actual signed remainders bound constant additions safely but do not establish a nonnegative index. Known caller discards the result; table extents and callback APIs remain provisional. Natural 24-byte frame; no matching aids.
+
+`func_8005C2AC`: Preserves five byte/stack-argument views, ordered matrix/GTE helper calls and unsigned word additions before output-halfword narrowing. Two independently removal-tested aids bind the actual scratch base and consume its initialized final vector halfword (15/8 changed words singly, 19 together). No volatile memory views or extra flags remain. All 40 direct callsite contexts were inspected, not all 32 complete caller bodies. Native GTE lanes, alias contracts and full record/helper layouts remain provisional; natural 40-byte frame.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 
