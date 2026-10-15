@@ -4235,6 +4235,40 @@ experiments are unchanged. Native-PC and online work have not started.
 This completes the separate F0FC request after the nine-function batch.
 The superseded 20-function queue remains cancelled; no further targets were started.
 
+### Large resident func_8005C8D0 (2026-10-15)
+
+Code commit `b92bda1` adds the 1,348-byte `func_8005C8D0` (337 instruction
+words), inferred to set up display packets and update decimal digit/texture
+coordinates. This is a behavioral hypothesis, not a recovered original name.
+Original annotated words, the retail slice, separately assembled original,
+relocated compiled C and full linked resident image agree. Fresh resident C /
+assembly-only / restored-C images, all five overlays and all 18 tests pass.
+Before/after input freezes include the then-untracked new C, and a complete
+resident audit confirms all 383 C substitutions. Publication rechecks those
+same frozen inputs; committing them does not change the verified source.
+
+Basic `gcc272-dos -quiet -O2 -G0` produces a natural 56-byte frame, without
+flag overrides, hard-register bindings, empty asm identities, padding or new
+storage. One existing-state asm-name alias at `0x1F800298` remains; independent
+removal yields 1,356 bytes and 337 changed words. It is a matching-only view,
+not a volatile/MMIO claim. The observed 11/22-byte and 12/264-byte strides do
+not prove table extents or input bounds. Packed fields are reread for each
+output store rather than assuming alias freedom.
+
+Three direct caller contexts were inspected; only `func_8007D5E8` was read
+in full. The eight-word caller view of the already matching `func_8001CEE0`
+is not a compatible shared/native C API with its narrower existing
+declaration; later API reconciliation or a native-only adapter is required.
+That helper and assembly-backed `func_8001D004` are unchanged. Complete layouts,
+indirect users and native pointer/alias contracts remain provisional.
+
+Snapshot `b92bda1`: **754/1,685 matching functions (44.7%)**, consisting of
+383 resident and 371 overlay functions; 931 remain assembly-backed. This is
+the known function-count inventory, not whole-game discovery or an effort
+estimate. The count-weighted treemap is refreshed; private size-weighted
+experiments are unchanged. Native-PC and online work have not started.
+This completes the single larger-function request; no further targets started.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 

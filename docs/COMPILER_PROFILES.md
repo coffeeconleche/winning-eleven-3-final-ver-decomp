@@ -1343,6 +1343,34 @@ retail bytes is unknown. No generated resident rodata, data/BSS allocation
 or instruction-output patch is introduced. Historical APIs and native
 pointer, aliasing and termination contracts remain provisional.
 
+### Resident func_8005C8D0 (2026-10-15)
+
+`func_8005C8D0` (`b92bda1`): 1,348 exact bytes (337 instruction words),
+`gcc272-dos -quiet -O2 -G0`, natural 56-byte frame. Only its compiler-map
+entry is added; global defaults and unrelated profiles are unchanged.
+No flag override, hard-register binding, empty asm identity, stack padding,
+new data/BSS/rodata or instruction-output patch is used.
+
+Typed 11/22-byte rows and 12/264-byte element/row access strides reproduce
+the observed address calculation and frame without temporary frame padding.
+These are access views, not complete table extents or validated indices.
+Byte narrowing, unsigned initial divisions and the separately reread packed
+fields' signed decimal arithmetic are preserved; packet/record/table aliasing
+has not been excluded.
+
+One matching aid remains: a numeric asm-name alias for the existing byte at
+`0x1F800298`, used at its post-helper reread. It allocates no storage and makes
+no volatile/MMIO claim. Independent single/all removal produces 1,356 bytes
+and 337 changed instruction words; the retained control is exact.
+
+The eight-word caller view of `func_8001CEE0` deliberately preserves the
+retail call ABI, but is not a compatible shared/native C API with that
+helper's existing narrower matching declaration. Reconciliation or a
+native-only adapter is still required. Helper implementations are unchanged:
+`func_8001CEE0` already has matching C; `func_8001D004` remains assembly-backed.
+Complete record layouts, bounds, indirect users and native pointer/alias
+contracts remain provisional.
+
 ## Wrapper checks
 
 The wrapper's SDK-free tests cover successful verbatim copying, failed or
