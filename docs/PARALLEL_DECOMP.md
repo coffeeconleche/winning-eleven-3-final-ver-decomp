@@ -4902,6 +4902,43 @@ This is known-inventory function count, not whole-game coverage or an effort
 estimate. Native-PC and online work have not started. This records
 72 of the requested 96 matches; publication is every verified six.
 
+### Resident 96-function run, batch 13 of 16 (2026-10-16)
+
+Six private candidates were independently reviewed, recompiled and integrated
+by root after an explicit all-probes-stopped input-change barrier.
+
+| Function | Exact bytes | Code commit | Inferred behavior |
+| --- | ---: | --- | --- |
+| `func_800264CC` | 780 | `6ddbda4` | Actor animation, speed/heading and six-substate transition handler |
+| `func_8003F7A4` | 792 | `5858e99` | Goal-side distance and heading gated record-state transition |
+| `func_80059C38` | 260 | `e18bb79` | Mode/angle or oriented-position random event dispatch |
+| `func_8008BF7C` | 648 | `2dd70ac` | Animation-turn state handler with timed record selection |
+| `func_8009B888` | 460 | `49ca6a3` | Two-bank packet/header and five-pattern UV initializer |
+| `func_80052D90` | 216 | `e674782` | Complete state-byte eligibility classifier |
+
+This group adds 3,156 exact bytes / 789 instruction words.
+Annotated words, retail slices, separately assembled originals, relocated C
+and the linked resident image agree for every accepted target. Fresh 488-C,
+assembly-only and restored-488-C builds retain retail SHA-1
+`7e480656a295dced6ec187286773ab897651e995`; all five overlays and all 18 tests
+pass. Complete input freezes include the new C files, and the independent
+all-resident audit checks 488 actual C substitutions without ASM fallback.
+
+The private full-build scheduler runs six fresh, unmodified original
+compiler API calls concurrently per build. There is no compiler cache or
+reused output; production build tools are unchanged. Single-function proofs
+still use the original sequential API. The serial/parallel smoke comparison
+and full retail hashes check the scheduling-only change.
+
+Matching-aid/extra-flag single and cumulative controls, arithmetic decisions
+and native API caveats are recorded in compiler profiles. Failed or deferred
+targets are not counted. Snapshot `6ddbda4`: **859/1,685
+matching functions (51.0%)**: 488 resident and 371 overlay;
+826 remain assembly-backed. The count-weighted treemap is refreshed.
+This is known-inventory function count, not whole-game coverage or an effort
+estimate. Native-PC and online work have not started. This records
+78 of the requested 96 matches; publication is every verified six.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 

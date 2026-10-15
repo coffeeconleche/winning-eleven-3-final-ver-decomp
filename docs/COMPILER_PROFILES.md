@@ -2184,6 +2184,47 @@ arguments, new storage or original-data changes are used. Complete historical
 types, indirect users, native pointer/alias contracts and allocation bounds
 remain provisional; binary equality alone is not native API recovery.
 
+### Resident 96-function run, batch 13 of 16 (2026-10-16)
+
+Per-function compiler selections are listed below; global defaults, helpers,
+original assembly/data and unrelated profiles remain unchanged. All sources
+were independently reviewed and reproduced before integration.
+
+| Function | Code commit | Bytes | Natural frame | Compiler / extra flags | Retained source choices |
+| --- | --- | ---: | ---: | --- | --- |
+| `func_800264CC` | `6ddbda4` | 780 | 32 | `gcc272-dos` / `defaults` | Two initialized-used single-coordinate identities before actual scratch pointer loads; each omission changes3 words, combined6. No bindings/address views/flags. |
+| `func_8003F7A4` | `5858e99` | 792 | 56 | `gcc272-dos` / `defaults` | Six initialized-used bindings and four single-input real-pointer identities, every/all omission independently measured. No extra flags; ordinary earlier bank pointer calculation removed quotient captures. |
+| `func_80059C38` | `e18bb79` | 260 | 24 | `gcc272-dos` / `defaults` | No artificial aids |
+| `func_8008BF7C` | `2dd70ac` | 648 | 24 | `gcc272-dos` / `defaults` | No artificial aids or extra flags; neutral source variation adopted rather than claimed necessary |
+| `func_8009B888` | `49ca6a3` | 460 | 56 | `gcc272-dos` / `defaults` | No artificial aids or extra flags; real final UV-byte capture preserves pre-RGB read order |
+| `func_80052D90` | `e674782` | 216 | 0 | `gcc272-dos` / `defaults` | No artificial aids or extra flags; ordinary GNU case ranges, delegated logicalw6 slot by w3 |
+
+`800264CC`: One genuine actor input and ignored return; compatible4840C partial type. Fake45504 third and BD1C second arguments rejected. Unsigned speed update wraps before clamp; byte/half copies and post-helper rereads remain ordered. Default still calls B908; constraint tail applies only designated states. Original479B8 division trap when reached byte3B5==2 is an external runtime caveat, not excused by guessed bound. Native mapped scratch/pool/table domains and complete helper/record layouts remain provisional.
+
+`8003F7A4`: One real record input/ignored return, compatible52A68/CE30/B36C APIs. Signed halves widened before negation including-32768; all squares/sums and thresholds unsigned-wrap, fullbyte angles masked. Repeated B36C calls and later record/side/scratch reloads preserved, only original halfword captures reused. Existing record-bank extent, native scratch translation and signed casts/shifts remain target contracts. No fake helper inputs, pads, data or narrowed-domain assumptions.
+
+`80059C38`: Byte promotions and explicit masks preserve signed/unsigned comparisons over the full byte domain; signed-half position negation is safe. Signed random remainder is not assumed nonnegative: table displacement explicitly uses wrapping guest-word address arithmetic and can read before the label as retail does. Accessible address domain and native mapping remain unresolved, not clamped or hidden. Actual one-pointer/void caller and helper interfaces are inspected.
+
+`8008BF7C`: One consumed object input, ignored return; direct helper declarations harmonize. Signed-halfword abs widened safely, unsigned range test and bounded angle remainder defined. Byte counters wrap before thresholds; state2 intentionally falls through default after transition. Each selection result publishes3C2 before branch and callbacks retain field rereads. Native scratch/object/pool extent, animation cursor and nested helper/GTE contracts remain provisional.
+
+`8009B888`: Void zero-input API and four real packet-helper signatures match caller/definitions. Bounded2-by30 loops and byte/halfword narrowing defined. Packet base reloads every iteration before callbacks; final UV byte captured before RGB writes, preserving aliases. Existing40-byte UV region spans eight split linker labels and must share canonical native backing. Dynamic packet bank allocation, scratch pointer mapping and complete packet/native layouts remain provisional.
+
+`80052D90`: One actual pointer input, defined byte boolean output; all14 caller bodies/19 sites reviewed. Shared partial typedef duplicates existing3EF94 and queued3F0D0 declarations member-for-member. Single unsigned-byte read classifies all256 states,43 true and213 false, without arithmetic or helpers. No emitted table/storage. Complete native record allocation and historical state meanings remain provisional; valid addressable byte396 required.
+
+Independent omission measurements (changed word positions, not a matching
+percentage):
+
+- `800264CC`: remove-case0_coordinate_identity: 780 B / 3 words; remove-case32_coordinate_identity: 780 B / 3 words; remove-all-source-aids: 780 B / 6 words.
+- `8003F7A4`: remove-bank-identity: 792 B / 6 words; remove-first-scratch-identity: 800 B / 118 words; remove-record-identity: 792 B / 1 words; remove-last-scratch-identity: 796 B / 73 words; remove-scratch-1: 792 B / 32 words; remove-targetX-1: 784 B / 115 words; remove-targetZ-1: 784 B / 115 words; remove-gateX-1: 788 B / 51 words; remove-finalX-1: 788 B / 50 words; remove-finalZ-1: 788 B / 44 words; remove-all-source-aids: 776 B / 124 words.
+- `8008BF7C`: remove-extra-ordinary-positive-angle-mask: 628 B / 82 words; remove-extra-ordinary-early-rejected-state: 664 B / 30 words; remove-extra-ordinary-all-source-shapes: 644 B / 84 words.
+
+Every retained binding/empty identity uses initialized, genuinely consumed
+values. Empty operand asm emits no instructions and asserts no memory
+volatility. No instruction patch, artificial frame padding, fake helper
+arguments, new storage or original-data changes are used. Complete historical
+types, indirect users, native pointer/alias contracts and allocation bounds
+remain provisional; binary equality alone is not native API recovery.
+
 ## Wrapper checks
 
 The wrapper's SDK-free tests cover successful verbatim copying, failed or
