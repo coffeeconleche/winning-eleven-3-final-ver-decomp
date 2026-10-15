@@ -1423,6 +1423,69 @@ it is retained for the hardware access. A native backend must replace MMIO.
 Complete historical layouts, indirect users, table/buffer bounds and native
 pointer/alias contracts remain provisional for these matches.
 
+### Resident 24-function run, batch 1 of 4 (2026-10-15)
+
+These six functions use `gcc272-dos -quiet -O2 -G0` without extra flags.
+Only six compiler selections are added; global defaults, helpers, original
+assembly/data and unrelated profiles remain unchanged. No instruction-output
+patch, fake helper argument, artificial frame padding or new storage is used.
+
+| Function | Code commit | Exact bytes | Natural frame | Retained artificial source aids |
+| --- | --- | ---: | ---: | --- |
+| `func_8001E5A4` | `6533c4e` | 240 | 0 | none |
+| `func_800494C0` | `2841223` | 248 | 0 | none |
+| `func_80054D2C` | `5d3c370` | 496 | 0 | 6 bindings, 3 empty identities |
+| `func_80086930` | `7ea410f` | 712 | 16 | none |
+| `func_80091518` | `8fc0339` | 728 | 32 | 2 bindings |
+| `func_800C5138` | `b90f14a` | 240 | 24 | 2 empty value captures |
+
+`8001E5A4` implements a low-byte phase/scale lookup with cardinal cases,
+reflected quarter-wave entries, low-word multiplication/negation and an
+arithmetic right shift. The two resident table symbols are physical access
+bases into overlapping data, not independent native arrays. Existing callers
+`8003172C` and `80096808` have different unsigned result/scale declarations;
+their machine-word ABI is retained, but a shared native API needs reconciliation.
+
+`800494C0` selects a 1,000-byte-stride row through scratch bytes and returns
+squared coordinate distance. Widened signed products followed by unsigned
+low-word addition avoid signed-overflow UB without changing instructions;
+the final signed-word conversion follows the legacy target implementation.
+Its earlier base-register binding was removed after exact omission controls.
+
+`80054D2C` retains initialized, genuinely used pointers, coordinates, loaded
+level values and distance/result values. Its six binding removals differ by
+6, 6, 42, 6, 8 and 34 word positions; the three identity removals by 124, 117
+and 79. Removing all aids gives 492 bytes / 118 changed positions. The empty
+identities emit no asm instructions and make no memory-volatility claim.
+Squared distances use explicit low-word products and a wrapping unsigned sum.
+
+`80086930` uses a natural two-case switch and an observed 12-byte digit-record
+view. All ten discovered call contexts support six real arguments, including
+two outgoing stack words. No artificial hints remain; its equivalent if/else
+source-shape control emits 704 bytes / 169 changed word positions. The byte
+wrap in the rightmost-position test is retained. Complete record capacities
+and the lookup helper's native contract remain unproved.
+
+`80091518` retains two real direction-value bindings, with individual removal
+differences of 3 and 2 words, and 2 for all removal. A compatible helper
+declaration agrees with the existing `8005B7CC` word API. The observed caller's
+byte directions and the extracted scale range 100..227 bound its signed
+arithmetic. Post-helper scratch reads are not combined with earlier snapshots.
+
+`800C5138` retains the actual mode and initialized message-page captures;
+their single removals differ by 10 and 1 word positions, and all removal gives
+236 bytes / 10 changed positions. The existing global pointer declaration
+agrees with its volatile-pointee view elsewhere. Legacy stores explicitly cast
+away that qualifier to retain measured delay-slot scheduling; only the actual
+discarded hardware read is volatile. This is not a portable MMIO API: native
+code must replace hardware/BIOS access. Its caller is an unlabeled interior
+entry, and a historical return contract is not established by result residue.
+
+Complete historical types, indirect users, allocation bounds and native
+pointer/alias contracts remain provisional. Deferred padded and multi-entry
+slots were not forced into this batch; the builder and function inventory
+are unchanged.
+
 ## Wrapper checks
 
 The wrapper's SDK-free tests cover successful verbatim copying, failed or

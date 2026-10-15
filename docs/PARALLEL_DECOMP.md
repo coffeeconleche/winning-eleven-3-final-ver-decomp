@@ -4311,6 +4311,49 @@ the known function-count inventory, not whole-game discovery or remaining
 effort. The count-weighted treemap is refreshed; private size-weighted
 experiments are unchanged. Native-PC and online work have not started.
 
+### Resident 24-function run, batch 1 of 4 (2026-10-15)
+
+Six parallel workers produced private candidates. Root independently reviewed
+the source, reproduced matching controls, integrated the six frozen files and
+verified the complete image before committing this batch.
+
+| Function | Exact bytes | Code commit | Inferred behavior |
+| --- | ---: | --- | --- |
+| `func_8001E5A4` | 240 | `6533c4e` | Phase-scaled quarter-wave lookup |
+| `func_800494C0` | 248 | `2841223` | Selected-row squared distance |
+| `func_80054D2C` | 496 | `5d3c370` | Record/ball state and distance predicate |
+| `func_80086930` | 712 | `7ea410f` | Digit-record UV and position updates |
+| `func_80091518` | 728 | `8fc0339` | Threshold-gated state/direction update |
+| `func_800C5138` | 240 | `b90f14a` | MDEC reset/request setup |
+
+The batch adds 2,664 exact bytes / 666 instruction words. All six independently
+agree across annotated instructions, retail slices, separately assembled
+originals, relocated compiled C and the linked resident image. Fresh 392-C,
+assembly-only and restored-392-C images retain retail SHA-1
+`7e480656a295dced6ec187286773ab897651e995`. All five overlays and all 18 tests
+pass. Complete input freezes include the new source files; a separate audit
+checks all 392 actual C substitutions without assembly fallback.
+
+Compiler defaults and original assembly/data are unchanged. Defined low-word
+distance arithmetic and compatible existing helper/global declarations were
+independently reproved after review corrections. Retained matching aids have
+individual and cumulative omission controls; unnecessary bindings/captures
+were removed. Measurements and native API caveats are in compiler profiles.
+Behavioral descriptions remain hypotheses, not recovered original names.
+
+Post-endlabel padding needs dedicated builder support; ambiguous multi-entry
+slots and unresolved hand-written SDK assembly were deferred with research
+preserved. They are not counted as recovered functions. Later private work
+may run alongside a frozen-input batch gate, with an explicit worker pause
+barrier before accepted input changes. Publication remains every six matches.
+
+Snapshot `6533c4e`: **763/1,685 matching functions (45.3%)**:
+392 resident and 371 overlay functions, with 922 assembly-backed functions
+remaining. This is the known function-count inventory, not whole-game discovery
+or an effort estimate. The count-weighted treemap is refreshed; private
+size-weighted experiments are unchanged. Native-PC and online work have not
+started. This records the first six of the requested 24 functions only.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 
