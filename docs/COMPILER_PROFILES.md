@@ -1761,6 +1761,48 @@ arguments, new storage or original-data changes are used. Complete historical
 types, indirect users, native pointer/alias contracts and allocation bounds
 remain provisional; binary equality alone is not native API recovery.
 
+### Resident 96-function run, batch 3 of 16 (2026-10-15)
+
+Per-function compiler selections are listed below; global defaults, helpers,
+original assembly/data and unrelated profiles remain unchanged. All sources
+were independently reviewed and reproduced before integration.
+
+| Function | Code commit | Bytes | Natural frame | Compiler / extra flags | Retained source choices |
+| --- | --- | ---: | ---: | --- | --- |
+| `func_8002CE60` | `4f569a5` | 252 | 32 | `gcc272-dos` / `defaults` | Three initialized bindings and one single-input operand identity |
+| `func_80036230` | `20f013a` | 392 | 32 | `gcc272-dos` / `defaults` | Two initialized used register bindings |
+| `func_8005726C` | `3275fd8` | 260 | 32 | `gcc272-dos` / `defaults` | One real halfword-load identity |
+| `func_80071D94` | `ea58815` | 400 | 40 | `gcc272-dos` / `defaults` | Measured ordinary postincrement source shape; no artificial aids |
+| `func_8009D670` | `52f116a` | 428 | 32 | `gcc272-dos` / `defaults` | No artificial aids |
+| `func_800B7494` | `38ad405` | 260 | 0 | `gcc272-dos` / `defaults` | No artificial aids |
+
+`8002CE60`: Phase arithmetic uses unsigned low-byte wrapping. Negative absolute word arithmetic uses unsigned negation before signed division by 736, preserving INT_MIN without signed overflow. Real helper arguments agree with inspected views; post-helper state reloads remain. Native record layouts, scratch mapping and historical shared types remain provisional.
+
+`80036230`: Actual initial helper result lies -8..16 and signed remainders can be negative; full helper analysis bounds every score intermediate to -33..37. The random helper has one argument, including its defined zero-divisor path. No extra flags or phantom residual arguments. Post-helper record/scratch reloads and full-word result are preserved; native allocation and shared-layout contracts remain provisional.
+
+`8005726C`: The initialized halfword load has one necessary empty identity: removing it singly or cumulatively gives 252 bytes / 40 changed words. Signed-halfword promotion makes negation and abs(-32768) safe in s32. The event counter is reread after callbacks. No residual a1 was added to the one-word helper API; native layouts and scratch mapping remain provisional.
+
+`80071D94`: Six real four-argument calls preserve packet transitions. Byte divisor must be nonzero; the target traps outside that domain. Halfword updates narrow after safe promotion, and byte postincrement compares the old value. Private pointer/word helper views need native shared-type recovery; no fake helper arguments.
+
+`8009D670`: Sibling of 8009D4C4 with scratch byte 007 and selector one. Actual helper arguments, post-helper coordinate reloads and final state reloads are preserved. Signed scratch modulo differs intentionally from unsigned identifier modulo. Native record bounds, scratch mapping and historical helper contracts remain provisional.
+
+`800B7494`: The actual v0 return is the destination pointer, though inspected callers ignore it. Sector bias uses explicit unsigned wrap; positive-constant division and bounded decimal arithmetic avoid signed overflow for every s32 input. Three byte stores remain ordered. Historical SDK naming and portable shared declarations are not asserted.
+
+Independent omission measurements (changed word positions, not a matching
+percentage):
+
+- `8002CE60`: remove-initial-phase-binding: 248 B / 59 words; remove-initial-phase-identity: 248 B / 59 words; remove-low-phase-binding: 252 B / 7 words; remove-final-phase-binding: 252 B / 3 words; remove-all-source-aids: 248 B / 59 words.
+- `80036230`: remove-record-binding: 392 B / 22 words; remove-maximum-binding: 392 B / 2 words; remove-all-source-aids: 392 B / 24 words.
+- `8005726C`: remove-load-identity: 252 B / 40 words; remove-all-source-aids: 252 B / 40 words.
+- `80071D94`: remove-extra-ordinary-separated-result-source-shape: 400 B / 6 words.
+
+Every retained binding/empty identity uses initialized, genuinely consumed
+values. Empty operand asm emits no instructions and asserts no memory
+volatility. No instruction patch, artificial frame padding, fake helper
+arguments, new storage or original-data changes are used. Complete historical
+types, indirect users, native pointer/alias contracts and allocation bounds
+remain provisional; binary equality alone is not native API recovery.
+
 ## Wrapper checks
 
 The wrapper's SDK-free tests cover successful verbatim copying, failed or
