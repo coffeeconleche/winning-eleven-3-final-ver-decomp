@@ -1803,6 +1803,46 @@ arguments, new storage or original-data changes are used. Complete historical
 types, indirect users, native pointer/alias contracts and allocation bounds
 remain provisional; binary equality alone is not native API recovery.
 
+### Resident 96-function run, batch 4 of 16 (2026-10-15)
+
+Per-function compiler selections are listed below; global defaults, helpers,
+original assembly/data and unrelated profiles remain unchanged. All sources
+were independently reviewed and reproduced before integration.
+
+| Function | Code commit | Bytes | Natural frame | Compiler / extra flags | Retained source choices |
+| --- | --- | ---: | ---: | --- | --- |
+| `func_80017564` | `0482a6f` | 288 | 32 | `gcc272-dos` / `defaults` | No artificial aids; reconciled pointer-return helper declaration |
+| `func_80034734` | `d8f56d3` | 552 | 64 | `gcc272-dos` / `defaults` | Three initialized bindings and one single-pointer operand identity |
+| `func_8005A100` | `3fb1c8d` | 240 | 24 | `gcc272-dos` / `defaults` | No artificial aids |
+| `func_80076D44` | `b5519aa` | 312 | 32 | `gcc272-dos` / `-fno-strength-reduce` | Ordinary loop constants; measured -fno-strength-reduce |
+| `func_8009D81C` | `91fb39d` | 424 | 32 | `gcc272-dos` / `defaults` | No artificial aids |
+| `func_800BF364` | `2db0e70` | 236 | 32 | `gcc272-dos` / `defaults` | No artificial aids; raw selected word retained until final argument conversion |
+
+`80017564`: The B7494 helper declaration now agrees with its queued pointer-return definition; ignored result stays ignored. Selector arithmetic and byte-count shift preserve unsigned wrapping. Three extern names are strided overlapping physical views, not separate native arrays. Retry loads and status stores remain ordered; descriptor extent, BIOS return contract and guest-pointer resolution remain provisional.
+
+`80034734`: Three real choices account for stack locals, with bounds checked before writes. Signed fallback arithmetic is bounded by halfword/remainder ranges. The original selection-index precondition is explicit: random(count) must be nonnegative and below count; negative signed remainders would index before the original list too. No preceding stack storage is invented. Native bounds and exceptional-state adaptation remain unresolved.
+
+`8005A100`: Four-case low-byte dispatch preserves the incoming word and unsigned low-word helper-result additions. One caller explicitly sets selector one; another inherits the argument through callers. Do not invent a zero-argument API from that path. Native shared signatures and global-state invariants remain provisional.
+
+`80076D44`: All five real helper signatures agree with known definitions; the final state helper consumes only one argument, not residual loop registers. Scratch2EE is a halfword store. Bounded 23-record loop arithmetic is safe; post-helper scratch reads remain ordered. Absolute aliases add no storage. Native scratch mapping, roster extent/alignment and historical shared layouts remain provisional.
+
+`8009D81C`: Actual FB84 consumes only the record; residual argument registers are overwritten before use. Signed scratch modulo and unsigned byte modulo remain distinct. Coordinate and final state reloads preserve helper/store alias behavior. No generated storage; native scratch mapping, complete record bounds and historical helper types remain provisional.
+
+`800BF364`: Caller explicitly supplies six ABI words; the fourth real slot is ignored by this implementation, not invented. Keeping the selected u32 until the helper's u16 conversion naturally preserves full stack-word loads. Branches prove nonzero denominators and bounded numerator/pan arithmetic. Helper return is forwarded; transitive native audio contracts remain provisional.
+
+Independent omission measurements (changed word positions, not a matching
+percentage):
+
+- `80034734`: remove-record-binding: 552 B / 22 words; remove-record-identity: 552 B / 6 words; remove-z-binding: 548 B / 73 words; remove-value-binding: 548 B / 79 words; remove-all-source-aids: 548 B / 89 words.
+- `80076D44`: remove-extra-ordinary-inline-loop-constants-source-shape: 312 B / 3 words; remove-flag-0: 320 B / 40 words.
+
+Every retained binding/empty identity uses initialized, genuinely consumed
+values. Empty operand asm emits no instructions and asserts no memory
+volatility. No instruction patch, artificial frame padding, fake helper
+arguments, new storage or original-data changes are used. Complete historical
+types, indirect users, native pointer/alias contracts and allocation bounds
+remain provisional; binary equality alone is not native API recovery.
+
 ## Wrapper checks
 
 The wrapper's SDK-free tests cover successful verbatim copying, failed or
