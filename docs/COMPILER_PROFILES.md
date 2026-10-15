@@ -2225,6 +2225,49 @@ arguments, new storage or original-data changes are used. Complete historical
 types, indirect users, native pointer/alias contracts and allocation bounds
 remain provisional; binary equality alone is not native API recovery.
 
+### Resident 96-function run, batch 14 of 16 (2026-10-16)
+
+Per-function compiler selections are listed below; global defaults, helpers,
+original assembly/data and unrelated profiles remain unchanged. All sources
+were independently reviewed and reproduced before integration.
+
+| Function | Code commit | Bytes | Natural frame | Compiler / extra flags | Retained source choices |
+| --- | --- | ---: | ---: | --- | --- |
+| `func_8001F134` | `d2eb7b9` | 412 | 24 | `gcc272-dos` / `defaults` | Two singleton declaration-only existing scratch-byte views, first occurrences remain ordinary numeric accesses; each/all omission independently measured. No bindings/identities/flags. |
+| `func_80034470` | `4e86540` | 708 | 32 | `gcc272-dos` / `defaults` | Plain C zero aids/default flags; neutral low-angle binding removed and fresh normalized source reproduced. |
+| `func_80069660` | `a976079` | 416 | 24 | `gcc272-dos` / `defaults` | Three initialized real-value register bindings; no identities or flags |
+| `func_80081374` | `fcfb2e3` | 376 | 40 | `gcc272-dos` / `defaults` | No artificial aids or extra flags; bounded signed remainder and byte slot views |
+| `func_80098428` | `77df77b` | 512 | 56 | `gcc272-dos` / `-fno-strength-reduce` | One initialized-used bank-offset binding and -fno-strength-reduce; fresh individual/all controls measured after redundant aids removed |
+| `func_80057AE4` | `e9af201` | 244 | 32 | `gcc272-dos` / `defaults` | One initialized-used low-byte second-flag binding; single/all controls measured; delegatedw6 by w3 |
+
+`8001F134`: Zero consumed arguments and ignored result; all twelve helper APIs reviewed. Honest one-arg DD50 view explicitly conflicts with old four-word residue-forwarding C; native reconciliation separate, no fake parameters. Fresh mode/global reads follow callbacks, stores retain widths/order, signed-6144 half constant representable. Target has no overflowing arithmetic. Native scratch aliases, broader global/table ownership and old helper contracts remain provisional. DeferredD14C not counted.
+
+`80034470`: One actual record pointer and ignored return, two callers/nine helper APIs reviewed with compatible4840C type. Unsigned masked angle differences and +/-64word arithmetic safe. Near/far record-pointer/read order retained; repeated direction calls not merged; fresh396 reread handles5385C returning0 after setting24. Existing34734 RNG valid-index contract remains inherited, not padded or invented. Native mapped scratch, runtime animation-table/record owners and full aliases remain provisional.
+
+`80069660`: Actual helper s16 return and weight signatures agree with definitions. Weighted halfword average is bounded; arbitrary target-word products and cutoff/clamp arithmetic use unsigned low words before signed target interpretation. Margin narrows explicitly and post-store side/selector reloads remain. No binary-side domain is invented. Native scratch/table extents and full record contracts remain provisional.
+
+`80081374`: One actual object input, ignored return; six real67860 outgoing words explain natural frame. Common u32 helper return view matches33DC8; older void533F4 and narrow B36C views require native reconciliation. Signed mode division preserves quotient-zero interval; unsigned negation/halfword narrowing then PS1 signed interpretation handles -32768. Side/coordinates reread after selection and heading after callback. Native scratch/pool/object mappings, full-byte side-derived extents and ownership remain provisional; reserved67860 untouched.
+
+`80098428`: Zero consumed inputs and no observed meaningful result; eleven direct callers plus propagated return-residue path reviewed. Four packet-helper APIs match existing definitions. Bounded loops preserve coordinate-copy interleaving, per-packet buffer reload and final UV capture before RGB stores. Signed-byte narrowing uses PS1 low-byte representation for arbitrary mutated table values. Existing coordinate/UV labels span shared backing; complete native table/packet allocations, scratch pointer layout and alias ownership remain provisional.
+
+`80057AE4`: Three actual word/pointer inputs and full boolean return agree20 callers/25 sites. Zero-vs-any-nonzero side picks fixed table rows; full-byte index preserved as numeric guest displacement beyond nominal22-byte rows. Event argument calculated before conditional; record394 reread after callback before shared halfword update. Native runtime BSS initialization/extent, mapping and historical dispatcher API remain provisional.
+
+Independent omission measurements (changed word positions, not a matching
+percentage):
+
+- `8001F134`: remove-second-state-byte-address-view: 420 B / 97 words; remove-second-clear-byte-address-view: 412 B / 58 words; remove-all-source-aids: 420 B / 90 words.
+- `80069660`: remove-record-binding: 416 B / 12 words; remove-directed-target-binding: 416 B / 4 words; remove-cutoff-binding: 416 B / 10 words; remove-all-source-aids: 416 B / 16 words.
+- `80081374`: remove-extra-ordinary-wide-remainder: 364 B / 75 words; remove-extra-ordinary-wide-slot: 372 B / 30 words; remove-extra-ordinary-all-source-widths: 360 B / 75 words.
+- `80098428`: remove-bank-offset-binding: 512 B / 10 words; remove-all-source-aids: 512 B / 10 words; remove-flag-0: 516 B / 124 words; remove-all-aids-and-flags: 516 B / 124 words.
+- `80057AE4`: remove-flag-v0-binding: 252 B / 55 words; remove-all-source-aids: 252 B / 55 words.
+
+Every retained binding/empty identity uses initialized, genuinely consumed
+values. Empty operand asm emits no instructions and asserts no memory
+volatility. No instruction patch, artificial frame padding, fake helper
+arguments, new storage or original-data changes are used. Complete historical
+types, indirect users, native pointer/alias contracts and allocation bounds
+remain provisional; binary equality alone is not native API recovery.
+
 ## Wrapper checks
 
 The wrapper's SDK-free tests cover successful verbatim copying, failed or
