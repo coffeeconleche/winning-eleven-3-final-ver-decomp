@@ -1679,6 +1679,47 @@ Independent single/all source-aid and flag controls cover each retained choice.
 All six have original/C/retail proofs; no fake arguments, forced frames, new
 storage, post-link patches or changes to original data are used.
 
+### Resident 96-function run, batch 1 of 16 (2026-10-15)
+
+Per-function compiler selections are listed below; global defaults, helpers,
+original assembly/data and unrelated profiles remain unchanged. All sources
+were independently reviewed and reproduced before integration.
+
+| Function | Code commit | Bytes | Natural frame | Compiler / extra flags | Retained source choices |
+| --- | --- | ---: | ---: | --- | --- |
+| `func_80026A64` | `9749490` | 216 | 24 | `gcc272-dos` / `defaults` | Natural three-case switch including idle case2 |
+| `func_8004F58C` | `bb38ac1` | 224 | 72 | `gcc272-dos` / `defaults` | No artificial aids |
+| `func_80054C54` | `0481d30` | 216 | 32 | `gcc272-dos` / `defaults` | No artificial aids |
+| `func_800827D4` | `aabf996` | 244 | 40 | `gcc272-dos` / `defaults` | Ordinary initialized mark source shape |
+| `func_800A2684` | `d81ecda` | 316 | 32 | `gcc272-dos` / `defaults` | No artificial aids |
+| `func_800B6464` | `9251716` | 200 | 0 | `gcc272-dos` / `defaults` | One real-value binding, one empty identity |
+
+`80026A64`: Width-narrowing subtraction/increment preserve wrapping. Idle-case omission single/all differs by 12 words. All helper mutation rereads retained. Existing B864 RecordView* vs local opaque byte-pointer helper view requires shared native declaration reconciliation; target ABI exact, full layout/table bounds unknown.
+
+`8004F58C`: Natural 72-byte frame includes 64 outgoing bytes for sixteen actual constructor arguments, matching existing narrow signature. Selector lowbyte and ten 40-byte strides bound arithmetic; helper-sensitive scratch/store ordering kept. Native record capacities and helper historical return contracts unknown.
+
+`80054C54`: Full-word selector sentinel 255 and boolean/byte results match four caller contexts. Existing s32(u32) helper signature agrees. Byte/remainder narrowing and stride1000 preserved, no writes. Native table allocation/bounds and complete layout unknown.
+
+`800827D4`: No artificial aids; inline mark variant differs by 2 words. Scratch pointer reloads after helpers retained; FBC4 prototype corrected to existing s32(u32). No-argument 2283C call differs from existing fourword forwarding declaration; do not invent residual arguments, native API/adapter reconciliation required. Historical record/table extents unknown.
+
+`800A2684`: Unnecessary empty identity removed exactly. Signed count / 300 multiplication stays within s32 for all inputs; signed modulo100 retained. Neither incoming registers nor helper results consumed; second flag reread after callbacks retained. Native scratch/record bounds and helper APIs provisional.
+
+`800B6464`: All six negations corrected to unsigned lowword subtraction then target signed reinterpretation, including INT_MIN. No signed overflow. Raw binding removal: 15 words; identity: 2; all: 17, all 200 B; no extra flags. Signed comparisons preserve target INT_MIN behavior rather than mathematical unsigned abs. Native input extent/alignment and target signed conversion remain provisional.
+
+Independent omission measurements (changed word positions, not a matching
+percentage):
+
+- `80026A64`: remove-idle-case2: 216 B / 12 words; remove-all-source-aids: 216 B / 12 words.
+- `800827D4`: remove-extra-ordinary-inline-mark-source-shape: 244 B / 2 words.
+- `800B6464`: remove-raw-v0: 200 B / 15 words; remove-first-next-identity: 200 B / 2 words; remove-all-source-aids: 200 B / 17 words.
+
+Every retained binding/empty identity uses initialized, genuinely consumed
+values. Empty operand asm emits no instructions and asserts no memory
+volatility. No instruction patch, artificial frame padding, fake helper
+arguments, new storage or original-data changes are used. Complete historical
+types, indirect users, native pointer/alias contracts and allocation bounds
+remain provisional; binary equality alone is not native API recovery.
+
 ## Wrapper checks
 
 The wrapper's SDK-free tests cover successful verbatim copying, failed or

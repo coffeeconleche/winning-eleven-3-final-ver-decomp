@@ -4464,6 +4464,37 @@ not a whole-game denominator or an effort estimate. Native-PC and online work
 have not started. Publication was four verified groups of six, with a push
 after each group; no fifth function per worker was started.
 
+### Resident 96-function run, batch 1 of 16 (2026-10-15)
+
+Six private candidates were independently reviewed, recompiled and integrated
+by root after an explicit all-probes-stopped input-change barrier.
+
+| Function | Exact bytes | Code commit | Inferred behavior |
+| --- | ---: | --- | --- |
+| `func_80026A64` | 216 | `9749490` | Record state/animation step and coordinate update |
+| `func_8004F58C` | 224 | `bb38ac1` | Ten-record clear and selector-dependent setup |
+| `func_80054C54` | 216 | `0481d30` | Eleven-record selector lookup |
+| `func_800827D4` | 244 | `aabf996` | Countdown-gated roster reset and transition |
+| `func_800A2684` | 316 | `d81ecda` | Counter-period gated two-record helper updates |
+| `func_800B6464` | 200 | `9251716` | Six-word signed max-absolute reduction |
+
+This group adds 1,416 exact bytes / 354 instruction words.
+Annotated words, retail slices, separately assembled originals, relocated C
+and the linked resident image agree for every accepted target. Fresh 416-C,
+assembly-only and restored-416-C builds retain retail SHA-1
+`7e480656a295dced6ec187286773ab897651e995`; all five overlays and all 18 tests
+pass. Complete input freezes include the new C files, and the independent
+all-resident audit checks 416 actual C substitutions without ASM fallback.
+
+Matching-aid/extra-flag single and cumulative controls, arithmetic decisions
+and native API caveats are recorded in compiler profiles. Failed or deferred
+targets are not counted. Snapshot `9749490`: **787/1,685
+matching functions (46.7%)**: 416 resident and 371 overlay;
+898 remain assembly-backed. The count-weighted treemap is refreshed.
+This is known-inventory function count, not whole-game coverage or an effort
+estimate. Native-PC and online work have not started. This records
+6 of the requested 96 matches; publication is every verified six.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 
