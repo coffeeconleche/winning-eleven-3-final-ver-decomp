@@ -2310,6 +2310,48 @@ arguments, new storage or original-data changes are used. Complete historical
 types, indirect users, native pointer/alias contracts and allocation bounds
 remain provisional; binary equality alone is not native API recovery.
 
+### Resident 96-function run, batch 16 of 16 (2026-10-16)
+
+Per-function compiler selections are listed below; global defaults, helpers,
+original assembly/data and unrelated profiles remain unchanged. All sources
+were independently reviewed and reproduced before integration.
+
+| Function | Code commit | Bytes | Natural frame | Compiler / extra flags | Retained source choices |
+| --- | --- | ---: | ---: | --- | --- |
+| `func_8006C6B8` | `3903de3` | 928 | 32 | `gcc272-dos` / `defaults` | Seven genuinely initialized-used register bindings after29-to10-to7 reduction; root repeated each/all controls, no identities or extra flags. Actualagent3 delegatedworker1. |
+| `func_80028C68` | `49e22e2` | 816 | 56 | `gcc272-dos` / `defaults` | Plain C zero aids/default flags, natural56-byte frame including real fifth-argument outgoing area; actualagent1 delegatedworker2. |
+| `func_80059E7C` | `bb28eac` | 644 | 32 | `gcc272-dos` / `defaults` | No artificial aids or extra flags; normal no-storage scratch byte address view |
+| `func_8007BED0` | `62d23c6` | 460 | 32 | `gcc272-dos` / `defaults` | Plain C, zero artificial aids or extra flags; ordinary shape variants independently measured |
+| `func_8009787C` | `c408113` | 904 | 40 | `gcc272-dos` / `defaults` | Five necessary existing numeric scratch cell views, seven neutral views removed individually; each/all omission independently measured. No bindings/identities/flags. |
+| `func_8006F624` | `349cdeb` | 240 | 0 | `gcc272-dos` / `defaults` | Two initialized-used increment/final-sum bindings; each/all controls measured, no identities or flags; delegatedw6 by w3 |
+
+`8006C6B8`: One actual pointer/ignored result, full target/caller reviewed; canonical fourword helper views. Bounded packed-field height math, safely widenedhalf abs/negation; squares/sum wrapu32 before signed threshold. Indexed fulls32 limit negation uses unsigned zero-minus includingINT_MIN. Fullbyte side/phase indices retained: scratch314+phase*4 canreach710 beyond1KiB, packedoffsetup70380; native valid-address/owner contract unresolved not narrowed. Callback/pointer/record reloads and capture-before-store ordering preserved. Guestpointer mapping and complete native layouts/APIs provisional.
+
+`80028C68`: One actor input/full0-1 return consumed by fullcaller; all nine helper APIs reviewed and compatible existing types reused. Signed-half differences fit but squares/sum explicitlyu32wrap. Anyu32 B1128 result/6 fits s32 without a narrow sqrt bound, clamp<=259; all laterhalf*6/additions and boundedangle shift safe. Originalhandwritten helper highbit/GTE/table domain remains unproved, passed unchanged. Callback coordinate/field reloads and finalcapture-before-store order retained. Native scratch/pointer/alias/table ownership provisional.
+
+`80059E7C`: One consumed record argument; caller also supplies unused second word, not fabricated as a consumed formal. Helper flags0/0 and word APIs reviewed. Byte counter and mode rereads remain after callbacks. Signed previous remainder preserves counter0 behavior; bounded halfword negation safe. Negative random remainder table access and full-byte row selection preserve numeric guest addresses without invented bounds. Native scratch/table/record backing and historical API remain provisional.
+
+`8007BED0`: Zero consumed arguments and ignored return. Fixed scratch views allocate no storage; word differences/squares/sum/result-times9 intentionally wrap unsigned. Post-helper scratch and record reads and captured selector before stores preserved. Original GTE/table B1128 receives unchanged unrestricted word; high-bit table domain unproved, not treated as generic sqrt. Older 2283C, 96050/B53D8 and B36C private APIs need explicit native reconciliation, as do scratch/record alias mapping and full allocations.
+
+`8009787C`: Zero consumed inputs, caller propagation reviewed with no observed meaningful result. Signed64 products reduced to lowu32, summedunsigned before signed divide; positivebyte divisors exclude-1 but each read must be nonzero for defined C (original exact machine has zero traps). Setup six-row and helper5x6 regions are not proved bounds for fullbyte selectors; complete physical footprints inspected, native mapping/domain unresolved. Scale/divisor/mode/counter/focus callback reloads retained. Shared APIs agree existing views; scratch/table ownership, aliases and native arithmetic remain provisional.
+
+`8006F624`: Three consumed inputs and full boolean return agree three caller bodies/four sites including overlay. Selector lowbyte stride40 and fullword unsigned increment preserve wrapped low-byte updates, not mathematical saturation. Each target byte reread after provisional destination store preserves source/destination aliases across components. Verified128/128/128 target tables unchanged. Existing byte descriptor view reused; native ownership/counts/addressability remain provisional.
+
+Independent omission measurements (changed word positions, not a matching
+percentage):
+
+- `8006C6B8`: remove-binding-0-offset: 928 B / 4 words; remove-binding-13-recordX: 928 B / 7 words; remove-binding-15-firstSquare: 928 B / 2 words; remove-binding-16-secondSquare: 928 B / 2 words; remove-binding-17-recordZ: 928 B / 4 words; remove-binding-26-branchZ: 928 B / 7 words; remove-binding-28-oppositeZ: 928 B / 7 words; remove-all-source-aids: 928 B / 18 words.
+- `8007BED0`: remove-extra-ordinary-narrow-slot: 464 B / 34 words; remove-extra-ordinary-literal-coordinate-views: 472 B / 116 words; remove-extra-ordinary-all-shapes: 476 B / 114 words.
+- `8009787C`: remove-cell-scratch2F0: 884 B / 216 words; remove-cell-scratch32C: 900 B / 166 words; remove-cell-scratch2E7: 904 B / 184 words; remove-cell-scratch2E8: 904 B / 211 words; remove-cell-scratch2EA: 900 B / 200 words; remove-all-source-aids: 884 B / 208 words.
+- `8006F624`: remove-amount-binding: 236 B / 60 words; remove-value2-binding: 236 B / 15 words; remove-all-source-aids: 236 B / 60 words.
+
+Every retained binding/empty identity uses initialized, genuinely consumed
+values. Empty operand asm emits no instructions and asserts no memory
+volatility. No instruction patch, artificial frame padding, fake helper
+arguments, new storage or original-data changes are used. Complete historical
+types, indirect users, native pointer/alias contracts and allocation bounds
+remain provisional; binary equality alone is not native API recovery.
+
 ## Wrapper checks
 
 The wrapper's SDK-free tests cover successful verbatim copying, failed or
