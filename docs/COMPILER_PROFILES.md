@@ -2439,6 +2439,45 @@ arguments, new storage or original-data changes are used. Complete historical
 types, indirect users, native pointer/alias contracts and allocation bounds
 remain provisional; binary equality alone is not native API recovery.
 
+### Resident geometry initialization wrapper (2026-10-16)
+
+`func_800B5B78` (`04e687e`) recovers the complete 76-byte / 19-word
+range `[0x800B5B78, 0x800B5BC4)` with `gcc272-dos -quiet -O2 -G0`.
+Its natural 24-byte frame contains the real outgoing argument area and saved
+return address; there are no matching aids, extra flags, local padding or
+new data. The same plain C under GCC 2.8.1 produces 72 bytes with 11 changed
+word positions and is not selected.
+
+The complete sole caller, `800B4138`, supplies no target inputs and ignores
+its result. The observed API is `void(void)`. Three existing native helpers
+are called in order: `800B5BD0()`, `800B5C58(0, 0, 0)` and
+`800B47A8(0, 0)`, followed by aligned halfword clears at `800F1072` and
+`800F1070`. Full helper bodies and the native initialization/BIOS veneers
+were reviewed; no fake residual parameters, return value, purity annotation
+or replacement hardware instructions are introduced.
+
+The original zero word at `800B5BC4` is post-end padding before `800B5BC8`,
+not part of the C function. Private comparisons use the declared endlabel;
+the unchanged assembly padding remains in its original slot and is covered
+by the complete retail hash. Annotated instructions, assembled original,
+relocated C, retail slice and linked resident bytes agree. Fresh 519-C,
+assembly-only and restored-519-C builds, all five overlays and all 21 tests
+pass. Original assembly, initialized data, helpers and unrelated compiler
+profiles are unchanged.
+
+The first full-image gate caught a resident aggregator defect: C substitution
+discarded that post-end word and shifted later code by four bytes. The scoped
+builder correction preserves the original post-end tail and rejects missing
+or duplicate endlabels. Three SDK-free regression tests fail against the old
+behavior and pass with the correction. No padding is added to C, and no
+original instruction or data is patched to manufacture a match.
+
+The inferred role is geometry/platform initialization. Existing BIOS,
+CP0/GTE and callback/exception contracts remain opaque native platform
+behavior. Native ports still need mapped global storage and explicit
+platform adapters; original names, global meaning/signedness, full layouts
+and historical formal APIs remain provisional.
+
 ## Wrapper checks
 
 The wrapper's SDK-free tests cover successful verbatim copying, failed or

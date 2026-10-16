@@ -5118,6 +5118,34 @@ This is known-inventory function count, not whole-game coverage or an effort
 estimate. Native-PC and online work have not started. This records
 12 of the additional requested 12 matches; publication is every verified six.
 
+### Single resident geometry initialization wrapper (2026-10-16)
+
+`func_800B5B78` (`04e687e`): 76 exact bytes / 19 instruction words;
+plain C with `gcc272-dos -quiet -O2 -G0`, natural 24-byte RA-only frame,
+no source matching aids or extra flags. Inferred behavior: call existing
+geometry/platform initialization helpers, then clear two halfword globals.
+The complete caller and actual helper APIs were reviewed; native hardware,
+BIOS, callback and partial-global contracts remain provisional.
+
+Independent original/annotated/C/retail comparisons cover the full declared
+range without its four-byte post-end padding. That padding is retained in
+the original assembly slot and independently verified by the full image.
+Fresh 519-C, assembly-only and restored-519-C resident builds retain retail
+SHA-1 `7e480656a295dced6ec187286773ab897651e995`; all five overlays and all
+21 tests pass. The all-resident audit checks all 519 actual C substitutions,
+including endlabel-bounded ranges with separately retained padding, without
+falling back to original ASM for accepted targets. A scoped resident-builder
+correction preserves original post-end tails on C substitution and rejects
+missing/duplicate endlabels; three new SDK-free regressions cover this.
+The failed first full gate remains recorded. No original assembly, data,
+inventory or shared helper was changed, and no padding was added to C.
+
+Snapshot `04e687e`: **890/1,685 matching functions (52.8%)**:
+519 resident and 371 overlay; 795 remain assembly-backed. README and the
+count-weighted treemap are refreshed. This is known-inventory function count,
+not whole-game coverage or an effort estimate. Native-PC and online work
+have not started. The instruction-weighted local comparison remains private.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 
