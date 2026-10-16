@@ -5050,6 +5050,37 @@ This is known-inventory function count, not whole-game coverage or an effort
 estimate. Native-PC and online work have not started. This records
 96 of the requested 96 matches; publication is every verified six.
 
+### Resident additional 12-function run, batch 1 of 2 (2026-10-16)
+
+Six private candidates were independently reviewed, recompiled and integrated
+by root after an explicit all-probes-stopped input-change barrier.
+
+| Function | Exact bytes | Code commit | Inferred behavior |
+| --- | ---: | --- | --- |
+| `func_8001F53C` | 648 | `ca3c998` | Roster, scratch-state and rendering initialization dispatcher |
+| `func_80048D94` | 560 | `f69d656` | Animation-aware angular smoothing and wrapped speed limiting |
+| `func_80065A20` | 664 | `9a4b272` | Side/position classifier with retained prior state and signed-random fallback |
+| `func_8001BCF4` | 132 | `54bfc90` | Relocate a mutable block then copy four interleaved words into indexed object slots |
+| `func_80094EEC` | 264 | `12b720c` | Record-filtered unsigned wrapped distance/radius predicate using refreshed scratch coordinates |
+| `func_80079360` | 428 | `dbd1fe7` | Select a record-dependent action/result from signed coordinates, distance flags and signed remainder helpers |
+
+This group adds 2,696 exact bytes / 674 instruction words.
+Annotated words, retail slices, separately assembled originals, relocated C
+and the linked resident image agree for every accepted target. Fresh 512-C,
+assembly-only and restored-512-C builds retain retail SHA-1
+`7e480656a295dced6ec187286773ab897651e995`; all five overlays and all 18 tests
+pass. Complete input freezes include the new C files, and the independent
+all-resident audit checks 512 actual C substitutions without ASM fallback.
+
+Matching-aid/extra-flag single and cumulative controls, arithmetic decisions
+and native API caveats are recorded in compiler profiles. Failed or deferred
+targets are not counted. Snapshot `ca3c998`: **883/1,685
+matching functions (52.4%)**: 512 resident and 371 overlay;
+802 remain assembly-backed. The count-weighted treemap is refreshed.
+This is known-inventory function count, not whole-game coverage or an effort
+estimate. Native-PC and online work have not started. This records
+6 of the additional requested 12 matches; publication is every verified six.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 

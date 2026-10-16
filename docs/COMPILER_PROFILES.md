@@ -2352,6 +2352,49 @@ arguments, new storage or original-data changes are used. Complete historical
 types, indirect users, native pointer/alias contracts and allocation bounds
 remain provisional; binary equality alone is not native API recovery.
 
+### Resident additional 12-function run, batch 1 of 2 (2026-10-16)
+
+Per-function compiler selections are listed below; global defaults, helpers,
+original assembly/data and unrelated profiles remain unchanged. All sources
+were independently reviewed and reproduced before integration.
+
+| Function | Code commit | Bytes | Natural frame | Compiler / extra flags | Retained source choices |
+| --- | --- | ---: | ---: | --- | --- |
+| `func_8001F53C` | `ca3c998` | 648 | 72 | `gcc272-dos` / `defaults` | Plain C with no aids or extra flags; neutral integer-address view removed after ordinary scratch-plus-index local remained exact. |
+| `func_80048D94` | `f69d656` | 560 | 48 | `gcc272-dos` / `defaults` | Six initialized-used bindings and four single-input identities, reduced from21 aids; root independently measured every/all final omission. No extra flags. |
+| `func_80065A20` | `9a4b272` | 664 | 24 | `gcc272-dos` / `defaults` | Two initialized-used bindings and one single-input side identity; each/all omission independently measured, no extra flags. |
+| `func_8001BCF4` | `54bfc90` | 132 | 32 | `gcc272-dos` / `defaults` | gcc272-dos/default flags and natural 32-byte frame. Single initialized-used block+4 cursor identity retained; three redundant post-step identities, cursor binding and slot masks removed before frozen source. Root separate single/all omission plus ordinary destination-base/direct-offset controls reproduced. No extra data, frame pads or helper arguments. |
+| `func_80094EEC` | `12b720c` | 264 | 32 | `gcc272-dos` / `defaults` | gcc272-dos/default flags and natural 32-byte frame with genuine five-argument outgoing area; one initialized-used result/v0 binding remains, independently measured alone and with all aids removed. No extra flags, identities or application storage. Early failure branch topology and post-callback fresh coordinate loads retained. |
+| `func_80079360` | `dbd1fe7` | 428 | 24 | `gcc272-dos` / `defaults` | gcc272-dos/default flags, natural 24-byte RA-only frame; four initialized-used caller-saved bindings and one two-input capture, all individually and collectively necessary on the corrected final source, including both capture dependencies. Separate side/current-pointer rereads retained; bounded signed products feed unsigned wrapping distance addition. No added application data or artificial frame object. |
+
+`8001F53C`: Zero consumed inputs and ignored result agree six callers; fourteen helper APIs reviewed. Genuine initialized byte phase is passed synchronously by address, with real ten-argument D14C and compatible narrow nine-argument D470 calls. Counters, byte sums and modulo24 addressing are bounded; fresh pointer and mode reads preserve store/callback order. Native scratch translation, complete record/packet backing and opaque helper domain contracts remain provisional. No instruction asm, new data or frame padding.
+
+`80048D94`: Four genuine record/angle/limit inputs and ignored result agree nine full callers. Compatible helper APIs retained; 54A68 may change state even returning0, so later fields are freshly read. Unsigned fullword angular differences, adjustments and speed addition preserve modulo32 before masking/clamping; limit uses original low16. All shared-call predecessor pointers and actual selector constants are initialized. Native record/alias mapping and opaque animation-table helper domains remain provisional; no fake arguments, new data or frame padding.
+
+`80065A20`: Canonical pointer/word-return API agrees caller; actual random helper has one signed divisor. Signed halfword magnitude widens safely including -32768; nonzero negative remainders retain original behavior. Full-byte side selectors preserved, scratch 2DD+index reaches3DC and table quotient0..25 fits reviewed44-byte storage. Every path initializes its real divisor/result; no memory snapshot reused after terminal callbacks. Native scratch/guest pointers, complete record ownership and historical meanings remain provisional.
+
+`8001BCF4`: Three actual inputs; sole complete caller explicitly supplies low-byte slot and ignores return residue. u8 slot prototype required for native C callers, no conflicting existing declaration. Full relocation helper and sibling API reviewed. Postcallback source loads stay interleaved with destination stores, without disjointness assumptions. Slot arithmetic bounded0..1020, words copied unchanged. Native mapped object/block extents, alignment, effective type and relocation-buffer validity remain provisional.
+
+`80094EEC`: Two real inputs, record and unrestricted radius word; 13 complete callers cover 17 sites, without narrowing radius to their observed constants. Five byte/record helper arguments agree established API, including real stack argument. Signed-half differences and absolute Y are bounded within +/-65535; unsigned squares/sum retain low-word wrap and unsigned comparisons. Native guest layout, selected vector extents, GTE/helper state and alignment contracts remain provisional.
+
+`80079360`: One actual player argument; known caller stores only low eight return bits, while target retains the full selected word. Packed nibble permits divisors -6 through 9, including zero; existing helper skips RNG and returns zero for zero divisor. Inherited INT_MIN%-1 native trap domain is not excluded. Native guest record/table pointer, alignment, alias and live-entry contracts remain provisional; no recovered full table bound or binary-side restriction.
+
+Independent omission measurements (changed word positions, not a matching
+percentage):
+
+- `80048D94`: remove-identity-adjusted: 572 B / 110 words; remove-identity-selector: 560 B / 2 words; remove-identity-current: 556 B / 43 words; remove-identity-savedLimit: 560 B / 11 words; remove-binding-initialFirst: 548 B / 137 words; remove-binding-adjusted: 560 B / 44 words; remove-binding-argumentRecord: 564 B / 90 words; remove-binding-difference: 560 B / 3 words; remove-binding-facing: 560 B / 5 words; remove-binding-lowFirst: 560 B / 3 words; remove-all-source-aids: 556 B / 130 words.
+- `80065A20`: remove-position-binding: 664 B / 3 words; remove-result-binding: 660 B / 32 words; remove-side-load-identity: 668 B / 163 words; remove-all-source-aids: 664 B / 144 words.
+- `8001BCF4`: remove-cursor-value-identity: 124 B / 28 words; remove-extra-ordinary-destination-base: 132 B / 5 words; remove-extra-ordinary-direct-offsets: 124 B / 28 words; remove-all-source-aids: 124 B / 28 words.
+- `80094EEC`: remove-result-v0-binding: 268 B / 21 words; remove-all-source-aids: 268 B / 21 words.
+- `80079360`: remove-z-binding: 428 B / 16 words; remove-squaredZ-capture: 408 B / 96 words; remove-shiftedAgain-binding: 436 B / 85 words; remove-distance-product-capture: 428 B / 4 words; remove-limit-capture: 428 B / 7 words; remove-extra-all-bindings-only: 428 B / 17 words; remove-extra-squaredZ-binding-only: 428 B / 5 words; remove-extra-limit-binding-only: 428 B / 7 words; remove-extra-distance-capture-distance-input: 428 B / 4 words; remove-extra-distance-capture-operand-input: 428 B / 4 words; remove-all-source-aids: 428 B / 17 words.
+
+Every retained binding/empty identity uses initialized, genuinely consumed
+values. Empty operand asm emits no instructions and asserts no memory
+volatility. No instruction patch, artificial frame padding, fake helper
+arguments, new storage or original-data changes are used. Complete historical
+types, indirect users, native pointer/alias contracts and allocation bounds
+remain provisional; binary equality alone is not native API recovery.
+
 ## Wrapper checks
 
 The wrapper's SDK-free tests cover successful verbatim copying, failed or
