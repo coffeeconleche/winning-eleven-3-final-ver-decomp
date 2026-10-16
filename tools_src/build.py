@@ -119,15 +119,24 @@ def write_text_aggregate(compiled: dict[str, Path] | None = None) -> Path:
     )
     raw_count = 0
     for path in functions:
+        original_lines = path.read_text(encoding="utf-8").splitlines()
         if path.stem in compiled:
             text, table = compiled_parts(compiled[path.stem], path.stem)
             if table is not None:
                 raise BuildError(f"{path.stem}: resident C rodata substitution is not supported")
+            ends = [index for index, line in enumerate(original_lines)
+                    if re.fullmatch(r"\s*endlabel\s+" + re.escape(path.stem) + r"\s*", line)]
+            if len(ends) != 1:
+                raise BuildError(f"{path.stem}: missing or duplicate original endlabel")
             lines.extend((f"/* matching C: {path.stem} */", text,
                           ".set noat", ".set noreorder", ".section .text"))
-            continue
-        lines.append(f"/* {path.relative_to(ROOT).as_posix()} */")
-        for line in path.read_text(encoding="utf-8").splitlines():
+            # Replace only the function, not original padding/data after its end.
+            original_lines = original_lines[ends[0] + 1:]
+            if any(line.strip() for line in original_lines):
+                lines.append(f"/* original post-function tail: {path.stem} */")
+        else:
+            lines.append(f"/* {path.relative_to(ROOT).as_posix()} */")
+        for line in original_lines:
             match = handwritten.match(line)
             if match:
                 # Preserve Splat's source word literally. This covers PS1 GTE

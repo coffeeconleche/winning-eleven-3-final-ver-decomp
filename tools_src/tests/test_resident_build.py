@@ -37,7 +37,7 @@ class ResidentAggregateTests(unittest.TestCase):
         self.assertIn(".word 0x78563412", text)
 
     def test_c_replaces_only_its_existing_slot_and_restores_assembler_state(self):
-        self.function("func_80010000", "glabel func_80010000\nold body\n")
+        self.function("func_80010000", "glabel func_80010000\nold body\nendlabel func_80010000\n")
         self.function("func_80010100", "glabel func_80010100\njr $ra\nnop\n")
         compiled = self.root / "converted.s"
         compiled.write_text('.include "macro.inc"\n.file "local-input.c"\n'
@@ -57,6 +57,40 @@ class ResidentAggregateTests(unittest.TestCase):
         with self.assertRaisesRegex(resident.BuildError, "no assembly slot"):
             resident.write_text_aggregate({"func_80010200": self.root / "missing.s"})
         self.assertFalse((self.output / "generated/5EBC.s").exists())
+
+    def test_c_preserves_original_post_end_padding_and_data(self):
+        self.function("func_80010000",
+                      "glabel func_80010000\nold body\nendlabel func_80010000\n"
+                      "/* 808 80010008 00000000 */ nop\n"
+                      "dlabel D_8001000C\n"
+                      "/* 80C 8001000C 12345678 */ ignored /* handwritten instruction */\n")
+        self.function("func_80010010", "glabel func_80010010\njr $ra\nnop\n")
+        compiled = self.root / "converted.s"
+        compiled.write_text(".text\nfunc_80010000:\njr $ra\nnop\n")
+        text = resident.write_text_aggregate({"func_80010000": compiled}).read_text()
+        self.assertNotIn("old body", text)
+        self.assertIn("/* 808 80010008 00000000 */ nop", text)
+        self.assertIn("dlabel D_8001000C", text)
+        self.assertIn(".word 0x78563412", text)
+        self.assertEqual(text.count("/* 808 80010008 00000000 */ nop"), 1)
+        self.assertLess(text.index("func_80010000:"), text.index("dlabel D_8001000C"))
+        self.assertLess(text.index("dlabel D_8001000C"), text.index("glabel func_80010010"))
+
+    def test_c_missing_original_endlabel_fails_closed(self):
+        self.function("func_80010000", "glabel func_80010000\nold body\n")
+        compiled = self.root / "converted.s"
+        compiled.write_text(".text\nfunc_80010000:\njr $ra\nnop\n")
+        with self.assertRaisesRegex(resident.BuildError, "missing or duplicate.*endlabel"):
+            resident.write_text_aggregate({"func_80010000": compiled})
+
+    def test_c_duplicate_original_endlabel_fails_closed(self):
+        self.function("func_80010000",
+                      "glabel func_80010000\nold body\nendlabel func_80010000\n"
+                      "endlabel func_80010000\n")
+        compiled = self.root / "converted.s"
+        compiled.write_text(".text\nfunc_80010000:\njr $ra\nnop\n")
+        with self.assertRaisesRegex(resident.BuildError, "missing or duplicate.*endlabel"):
+            resident.write_text_aggregate({"func_80010000": compiled})
 
     def test_resident_rodata_is_not_silently_discarded(self):
         self.function("func_80010000", "glabel func_80010000\njr $ra\nnop\n")
