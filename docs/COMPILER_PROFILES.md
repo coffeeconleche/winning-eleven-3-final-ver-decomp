@@ -2478,6 +2478,40 @@ behavior. Native ports still need mapped global storage and explicit
 platform adapters; original names, global meaning/signedness, full layouts
 and historical formal APIs remain provisional.
 
+### Large resident player-marker coordinate mapping (2026-10-16)
+
+`func_80020E30` (`5f1dfcd`) recovers the complete 3,012-byte /
+753-word range `[0x80020E30, 0x800219F4)` with
+`gcc272-dos -quiet -O2 -G0`. Plain C reproduces the natural 32-byte
+frame, with two live saved base pointers and the return address. No source
+matching aids, extra flags, artificial storage, instruction-output assembly,
+new data or original-assembly changes are needed. GCC 2.8.1 on the final
+source produces 2,964 bytes and 610 differing word positions.
+
+The inferred role is player-marker coordinate mapping. Three layout/orientation
+paths retain signed halfword coordinates, division by 303/356 or 305/361,
+inactive-record skips, direct or reordered 23-record traversal, and two
+separately selected markers. Unknown selector values retain the original
+lack of traversal stores; no mode bounds or replacement default are invented.
+Ordinary player-data and scratch-base locals preserve the measured allocation;
+the earlier absolute-address-only draft was 3,000 bytes with a different frame.
+
+Both complete known callers ignore the result. The existing resource lookup
+receives real key 2, including the original second lookup in large-layout modes.
+Its full body and initial pointer-table entry were reviewed; the mutable lookup
+is not replaced with a constant address. Partial 1,000-byte player and 12-byte
+marker views describe observed offsets only. Native scratch mapping, buffer
+alignment/extents, alias contracts, halfword conversions and historical types
+remain provisional; this is not a portable host API.
+
+Annotated original, assembled original, relocated C, retail slice and linked
+resident bytes agree. Fresh 520-C, assembly-only and restored-520-C builds
+retain the complete retail hash; all five overlays and all 21 tests pass.
+An independent arithmetic model also checked all four division forms over the
+full signed-halfword/negated-halfword range (262,148 comparisons) and both
+marker-index permutations. These model checks supplement, not replace, the
+full linked-byte proof.
+
 ## Wrapper checks
 
 The wrapper's SDK-free tests cover successful verbatim copying, failed or

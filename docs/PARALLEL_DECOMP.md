@@ -5146,6 +5146,30 @@ count-weighted treemap are refreshed. This is known-inventory function count,
 not whole-game coverage or an effort estimate. Native-PC and online work
 have not started. The instruction-weighted local comparison remains private.
 
+### Single large resident coordinate-mapping function (2026-10-16)
+
+`func_80020E30` (`5f1dfcd`): 3,012 exact bytes / 753 instruction words;
+plain C with `gcc272-dos -quiet -O2 -G0`, natural 32-byte frame,
+no matching aids or extra flags. The inferred behavior maps player positions
+to marker coordinates across three layout/orientation paths, preserving
+inactive-record skips, reordered team slots and two selected markers.
+Both complete callers and the actual resource-lookup helper were reviewed.
+Native scratch/partial-layout/alias contracts and original formal APIs remain
+provisional; no helper, original assembly/data or inventory was changed.
+
+Independent original/annotated/C/retail comparisons and the linked resident
+slice agree. Fresh 520-C, assembly-only and restored-520-C builds retain
+retail SHA-1 `7e480656a295dced6ec187286773ab897651e995`; all five overlays
+and all 21 tests pass. The final all-resident audit checks all 520 actual C
+substitutions, without ASM fallback for accepted functions. Failed compiler
+comparisons and the arithmetic/index model remain in ignored local evidence.
+
+Snapshot `5f1dfcd`: **891/1,685 matching functions (52.9%)**:
+520 resident and 371 overlay; 794 remain assembly-backed. README and the
+count-weighted treemap are refreshed. This is known-inventory function count,
+not whole-game coverage or an effort estimate. Native-PC and online work
+have not started. The instruction-weighted local preview remains private.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 
