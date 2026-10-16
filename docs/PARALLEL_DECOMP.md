@@ -5081,6 +5081,43 @@ This is known-inventory function count, not whole-game coverage or an effort
 estimate. Native-PC and online work have not started. This records
 6 of the additional requested 12 matches; publication is every verified six.
 
+### Resident additional 12-function run, batch 2 of 2 (2026-10-16)
+
+Six private candidates were independently reviewed, recompiled and integrated
+by root after an explicit all-probes-stopped input-change barrier.
+
+| Function | Exact bytes | Code commit | Inferred behavior |
+| --- | ---: | --- | --- |
+| `func_8002AFE0` | 516 | `6cfeeb2` | Compute byte direction with packed-stat bias, side-dependent destination and signed random perturbations |
+| `func_80048AD8` | 700 | `f4e1b73` | Three-way circular-direction adjustment with callback state changes and capped quarter/sixth-step counters |
+| `func_80053728` | 168 | `ae56210` | Reject a bank identifier list when any selected phase/identifier flag is set |
+| `func_800B6548` | 64 | `7cd08fc` | Interleaved word/halfword transpose of nine 16-bit matrix coefficients, returning the destination |
+| `func_800A2310` | 100 | `ad2aa10` | Move an indexed scratch byte one step toward a target, preserving the post-increment reread |
+| `func_80078CE4` | 532 | `06da34f` | Place a player relative to the current actor using phase projections, then update facing and scratch identities |
+
+This group adds 2,080 exact bytes / 520 instruction words.
+Annotated words, retail slices, separately assembled originals, relocated C
+and the linked resident image agree for every accepted target. Fresh 518-C,
+assembly-only and restored-518-C builds retain retail SHA-1
+`7e480656a295dced6ec187286773ab897651e995`; all five overlays and all 18 tests
+pass. Complete input freezes include the new C files, and the independent
+all-resident audit checks 518 actual C substitutions without ASM fallback.
+
+The private full-build scheduler runs six fresh, unmodified original
+compiler API calls concurrently per build. There is no compiler cache or
+reused output; production build tools are unchanged. Single-function proofs
+still use the original sequential API. The serial/parallel smoke comparison
+and full retail hashes check the scheduling-only change.
+
+Matching-aid/extra-flag single and cumulative controls, arithmetic decisions
+and native API caveats are recorded in compiler profiles. Failed or deferred
+targets are not counted. Snapshot `6cfeeb2`: **889/1,685
+matching functions (52.8%)**: 518 resident and 371 overlay;
+796 remain assembly-backed. The count-weighted treemap is refreshed.
+This is known-inventory function count, not whole-game coverage or an effort
+estimate. Native-PC and online work have not started. This records
+12 of the additional requested 12 matches; publication is every verified six.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 

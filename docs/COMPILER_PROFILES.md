@@ -2395,6 +2395,50 @@ arguments, new storage or original-data changes are used. Complete historical
 types, indirect users, native pointer/alias contracts and allocation bounds
 remain provisional; binary equality alone is not native API recovery.
 
+### Resident additional 12-function run, batch 2 of 2 (2026-10-16)
+
+Per-function compiler selections are listed below; global defaults, helpers,
+original assembly/data and unrelated profiles remain unchanged. All sources
+were independently reviewed and reproduced before integration.
+
+| Function | Code commit | Bytes | Natural frame | Compiler / extra flags | Retained source choices |
+| --- | --- | ---: | ---: | --- | --- |
+| `func_8002AFE0` | `6cfeeb2` | 516 | 40 | `gcc272-dos` / `defaults` | gcc272-dos/default flags; natural 40-byte frame. Eight neutral exploratory aids removed; final two real initialized-used amount/stat bindings and one single-input branch-record identity independently measured alone and cumulatively. Ordinary labels retain side/coordinate rereads without clobbers. Reverse lookup uses unsigned target-address subtraction rather than a pointer preceding its anchor object. |
+| `func_80048AD8` | `f4e1b73` | 700 | 48 | `gcc272-dos` / `defaults` | gcc272-dos/default flags; natural 48-byte frame without local padding. Seven real initialized-used bindings and four single-input identities independently necessary; neutral aids removed before final hash. Actual record copy, straight/turn limit uses and captured real counter preserved without memory claims. Unsigned angle/counter word arithmetic wraps before masks and clamp comparisons. |
+| `func_80053728` | `ae56210` | 168 | 0 | `gcc272-dos` / `defaults` | gcc272-dos/default flags and natural zero-frame leaf. All identities and entry/row bindings removed; sole initialized-used literal-one comparison binding independently necessary, single/all controls172B/29 words. Unsigned numeric guest address arithmetic and explicit signed-word loop comparison retain full selector behavior rather than replacing it with host pointer ordering. |
+| `func_800B6548` | `7cd08fc` | 64 | 0 | `gcc272-dos` / `defaults` | gcc272-dos/default flags, natural zero-frame leaf. Four initialized-used bindings for actual destination and three reusable loaded words plus one single-input destination identity; neutral result binding/identity and duplicate scalar bindings removed. Root reproduced each/all omission and ordinary store-order/signed-half-load controls on final hash. No instructions asm, padding or data definitions. |
+| `func_800A2310` | `ad2aa10` | 100 | 0 | `gcc272-dos` / `defaults` | gcc272-dos/default flags, natural zero-frame leaf. One initialized-used single-input index identity after the real increment store; separate root single/all omission controls fail 88B/14 words. Same direct guest base on every access; no volatility, memory clobber, fixed binding or distinct-base alias workaround. |
+| `func_80078CE4` | `06da34f` | 532 | 48 | `gcc272-dos` / `defaults` | gcc272-dos/default flags, natural 48-byte frame. Two initialized-used player/angle bindings, one single-input conditional-player capture and ordinary byte captures; root independently repeated all source removals and binding components. Unnecessary bindings/captures removed. Unsigned coordinate/angle wrapping and explicit current-coordinate-before-height-store chronology retained. |
+
+`8002AFE0`: Two actual inputs agree all four sites in the complete sole caller. Arbitrary bias words wrap before signed clamp 2..16. Signed-half coordinate adjustments/negation are bounded; jitter helper subtracts two signed remainders, so first range is +/-256, derived next bound277..618, final jitter+/-32. Actual helper APIs reconciled. Existing reverse16-byte storage inspected, no invented table or binary-side assumption. Native address translation, raw record/stat extent, alias and signed-narrowing contracts remain provisional.
+
+`80048AD8`: Four actual input words agree eight complete callers and established API. Initial and repeated 54A68 calls can mutate even on zero result. Fresh helper inputs, captured facing-before-store and actual flag versus reread chronology retained. Actual quarter and sixth paths remain separate; no assumed initial counter cap or extra selector bound. Partial native record/table, alias, alignment and helper runtime-domain contracts remain provisional.
+
+`80053728`: One actual full word; complete sole caller supplies loop selector0/1 and tests canonical full-word0/1 return. Mode1/2 guard and one preloop phase snapshot retained. No helpers or stores. All phase/list-byte combinations for known caller remain in configured BSS, but no logical row bound or runtime initialization inferred. Arbitrary selectors retain native mapped-access contract. Numeric pointer conversion, signed reinterpretation and partial bank views require native adaptation.
+
+`800B6548`: Two real pointers; sole complete caller supplies existing matrix/stack destination and ignores returned pointer, while original v0 retains destination. Paired loads precede their first stores and later reads remain interleaved with halfword overwrites; no disjoint-source assumption or naive transpose loop. In-place behavior preserved. Full bit-pattern copies, including signed final half load, add no arithmetic overflow. Native little-endian 18-byte backing, word/half alignment, effective type and pointer representation remain required; historical full matrix layout/API provisional.
+
+`800A2310`: Two actual word inputs narrow to bytes; six sites in the complete sole caller ignore return residue. All 256 index/target values retained, no inferred two-team or target1/2 restriction. Derived guest span2FF..3FE lies within scratch RAM. Branch bounds make increment/decrement safe, and the later comparison consumes the actual reload. Native backing/address translation and historical formal API remain provisional.
+
+`80078CE4`: Two actual inputs and ignored return agree five complete callers. Three full helpers and existing projection/angle tables reviewed; APIs match existing uses. Only signed negation is promoted halfword x and is safe including -32768. Phase193..448 makes remainder/multiply safe; coordinate word arithmetic wraps before signed-short narrowing. Current-pointer, side and scratch-identity rereads retain native alias order. Physical table-base aliases, record/scratch extents, effective type, alignment and target signed conversions remain native adaptation contracts.
+
+Independent omission measurements (changed word positions, not a matching
+percentage):
+
+- `8002AFE0`: remove-amount-binding: 516 B / 22 words; remove-stat-binding: 512 B / 126 words; remove-branch-record-identity: 496 B / 69 words; remove-all-source-aids: 496 B / 69 words.
+- `80048AD8`: remove-identity-initial-record: 700 B / 8 words; remove-identity-straight-limit: 700 B / 5 words; remove-identity-first-sum: 668 B / 119 words; remove-identity-turn-limit: 700 B / 5 words; remove-binding-adjusted: 696 B / 170 words; remove-binding-workingSecond: 688 B / 170 words; remove-binding-savedLimit: 700 B / 27 words; remove-binding-middle: 700 B / 2 words; remove-binding-lowFirst: 700 B / 3 words; remove-binding-amount: 700 B / 11 words; remove-binding-sum: 696 B / 37 words; remove-all-source-aids: 648 B / 173 words.
+- `80053728`: remove-comparison-one-binding: 172 B / 29 words; remove-all-source-aids: 172 B / 29 words.
+- `800B6548`: remove-dest-binding: 68 B / 16 words; remove-first-binding: 64 B / 6 words; remove-second-binding: 64 B / 5 words; remove-third-binding: 64 B / 3 words; remove-dest-identity: 64 B / 13 words; remove-extra-ordinary-commuting-first-stores: 68 B / 13 words; remove-extra-ordinary-tail-unsigned-half-load: 64 B / 1 words; remove-all-source-aids: 64 B / 14 words.
+- `800A2310`: remove-postincrement-index-identity: 88 B / 14 words; remove-all-source-aids: 88 B / 14 words.
+- `80078CE4`: remove-player-binding: 532 B / 28 words; remove-angle-byte-capture: 540 B / 86 words; remove-direction-byte-capture: 532 B / 3 words; remove-output-byte-capture: 540 B / 44 words; remove-conditional-player-input: 512 B / 107 words; remove-extra-angleByte-binding-only: 532 B / 3 words; remove-extra-all-bindings-only: 532 B / 29 words; remove-all-source-aids: 520 B / 110 words.
+
+Every retained binding/empty identity uses initialized, genuinely consumed
+values. Empty operand asm emits no instructions and asserts no memory
+volatility. No instruction patch, artificial frame padding, fake helper
+arguments, new storage or original-data changes are used. Complete historical
+types, indirect users, native pointer/alias contracts and allocation bounds
+remain provisional; binary equality alone is not native API recovery.
+
 ## Wrapper checks
 
 The wrapper's SDK-free tests cover successful verbatim copying, failed or
