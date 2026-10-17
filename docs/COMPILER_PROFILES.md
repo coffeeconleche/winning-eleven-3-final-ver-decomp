@@ -2551,6 +2551,52 @@ audit passes. Original assembly, data, boundaries and helpers are unchanged.
 Failed attempts, final source hashes and twenty final-source controls remain
 in ignored local evidence.
 
+### Large resident roster-row packet formatting (2026-10-17)
+
+`func_8007524C` (`328b177`) recovers all 1,992 bytes /
+498 instruction words in `[0x8007524C, 0x80075A14)` with
+`gcc272-dos -quiet -O2 -G0` and its natural 56-byte frame,
+with no local frame objects, extra flags or empty assembly expressions.
+The inferred role formats roster-row packets: descriptor-selected traversal,
+special rows 9/10, decimal glyphs, texture-bank selection and attribute/status
+byte updates. All five calls in the two complete mapped callers ignore the
+result. The existing resource lookup and four packet helpers were reviewed;
+their real argument, return and low-byte contracts are retained.
+
+Stage-separated offset variables and byte lookups recover the original
+22-byte roster stride, `0xABAA` / `0x8E9C` / `0x88A5` accesses,
+the measured -1 mapping lookup and four-byte attribute records. The 18-byte
+descriptor is a partial access view. Initial and dynamic halfword bounds,
+counter wrapping, pointer reloads after helper calls and aliasing byte stores,
+and native halfword/byte conversions are preserved. No selector restriction,
+replacement bounds, independent copied state or historical object API is
+invented; native mapping, storage extents and alignment remain prerequisites.
+
+An explicit C back-edge preserves the original register lifetimes without
+hoisting decimal reciprocals across the loop. Restoring an ordinary C loop
+on the final source produces 2,012 bytes, an 88-byte frame and 481 differing
+words. Decimal formatting still uses ordinary `/ 10` and `% 10`, not manual
+reciprocal instructions. Branch-specific actual helper submissions retain
+descriptor reads that conditional argument expressions had merged.
+
+Cumulative removal checks eliminated every empty capture and redundant
+binding. Eleven scoped bindings remain for live coordinate, glyph, metadata
+and final-lookup values. Final-source individual removals and their combined
+removal all differ; removing all bindings changes 63 words. Four ordinary
+pointer-add controls each change one word, justifying the native 32-bit
+address-sum forms. The eighteen-control audit compares complete bytes,
+not only instruction counts; no instruction-output assembly or new storage
+is used.
+
+Fresh parent-521-C and final-522-C, assembly-only and restored-522-C builds
+retain retail SHA-1 `7e480656a295dced6ec187286773ab897651e995`.
+Annotated original, assembled original, relocated C, retail slice and linked
+resident bytes agree. All five overlays, all 21 tests and all 522 actual C
+substitution audits pass. A supplemental numeric model checks 132,864
+coordinate/decimal/address identities; it is not an emulator or a substitute
+for binary proof. Original assembly, data, boundaries and helpers are unchanged;
+all rejected candidates and compiler logs remain ignored local evidence.
+
 ## Wrapper checks
 
 The wrapper's SDK-free tests cover successful verbatim copying, failed or

@@ -5194,6 +5194,35 @@ public count-weighted treemap are refreshed; private instruction-weighted
 previews are unchanged. Percentages describe the known function inventory,
 not whole-game coverage or remaining effort.
 
+### Second large resident roster-row function (2026-10-17)
+
+`func_8007524C` (`328b177`): 1,992 exact bytes / 498 instruction words;
+`gcc272-dos -quiet -O2 -G0`, natural 56-byte frame. This completes the
+other large research target from the preceding checkpoint. The inferred
+roster-row formatter preserves native descriptor/roster lookup stages, decimal
+glyphs, low-byte helper contracts and alias-sensitive packet updates.
+All five mapped calls discard the result; historical types and complete
+native storage ownership remain provisional.
+
+An explicit C back-edge and eleven measured live register bindings reproduce
+the original allocation. Every empty capture and redundant binding was
+removed. Eighteen final-source controls include each binding, all bindings,
+the structured-loop alternative and four address-sum forms. No extra flags,
+emitted instruction assembly, fake padding or helper arguments, original
+ASM/data edits or new application storage are present.
+
+Fresh parent-521-C, final-522-C, assembly-only and restored-522-C builds
+retain the retail hash. Independent five-view proof, all five overlays,
+all 21 tests and the complete 522-substitution resident audit pass.
+The supplemental arithmetic checks and all failed attempts remain private.
+
+Snapshot `328b177`: **893/1,685 matching functions (53.0%)**:
+522 resident and 371 overlay; 792 remain assembly-backed. README and the
+public count-weighted treemap are refreshed; private instruction-weighted
+previews are unchanged. This is known-inventory function count, not a
+whole-game percentage or remaining-effort estimate. Native-PC and online
+work have not started.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 
