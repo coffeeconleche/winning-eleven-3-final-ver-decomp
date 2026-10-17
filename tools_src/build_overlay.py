@@ -906,8 +906,8 @@ PER_FUNC_SMALL_DATA = {
 }
 
 # Functions whose original assembler expanded li as ori for small positives
-# (maspsx versions below 2.50). Values below 2.50 keep every other 2.7x/2.8x
-# behaviour identical to 2.79 while enabling the li expansion.
+# (maspsx versions below 2.50). This selects the whole version profile, not
+# only li expansion: its other pseudo-op choices also require byte verification.
 PER_FUNC_MASPSX_VERSION = {
     "func_800AA7EC": "2.49",
 }

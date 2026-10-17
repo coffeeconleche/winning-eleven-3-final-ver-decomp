@@ -26,14 +26,11 @@ s32 func_800188B4(s32 arg0)
         scratch[0x29F] = scratch[0x29F] + 1;
         return 0;
     case 1: {
-        register u32 result __asm__("$2");
+        u32 result;
 
         result = (u32)(u8)func_80017684(6);
         if (result == 0)
             goto done;
-        /* Empty identity keeps the narrowed result live across the branch;
-         * it emits no instruction or memory access. */
-        __asm__ volatile("" : : "r"(result));
         func_80019564(D_801A6000, 0);
         func_80019564(D_801A6004, 0);
         /* Empty barrier ends the shared call tail; it emits nothing. */

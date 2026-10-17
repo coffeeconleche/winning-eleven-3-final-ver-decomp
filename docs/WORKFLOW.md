@@ -42,9 +42,12 @@ but differs in bytes is not yet a match.
 
 ## Owned switch tables
 
-The placement mechanism below is currently overlay-only. The resident builder
-rejects generated C rodata until its original placement has dedicated support
-and independent verification.
+Owned switch tables are supported in overlays and the resident executable.
+Resident tables replace only their declared slots in `asm/data/800.rodata.s`;
+generated text and rodata labels are exported for cross-object linkage. A build
+without owned tables removes stale generated rodata and uses the original file.
+Require independent equality of both instructions and every owned table, plus
+the complete linked retail hash. Undeclared rodata remains rejected.
 
 When compiled C emits a jump table, record its original symbol and entry count
 in `PER_FUNC_JUMP_TABLES` in `tools_src/build_overlay.py`. Inspect the original
