@@ -5170,6 +5170,30 @@ count-weighted treemap are refreshed. This is known-inventory function count,
 not whole-game coverage or an effort estimate. Native-PC and online work
 have not started. The instruction-weighted local preview remains private.
 
+### Single large resident coordinate/packet update (2026-10-17)
+
+`func_8009C6E8` (`7513223`): 2,204 exact bytes / 551 instruction words;
+`gcc272-dos -quiet -O2 -G0`, natural 48-byte frame. Native table/record
+views and callback-sensitive reload chronology recover coordinate, flag,
+packet-color, rendering and phase updates. Two tail bindings, five symbolic
+byte views and four zero-instruction identities remain after final single/all
+removal and live-input dependency controls. No extra flags, fake arguments,
+emitted instruction assembly, original data/assembly edits or new storage.
+Complete caller/helper review and native alias caveats are recorded in the
+compiler-profile notes; the code is not a portable PC implementation.
+
+Independent original/annotated/C/retail and linked-byte proofs agree. Fresh
+521-C, assembly-only and restored-521-C builds retain the retail SHA-1;
+all five overlays, all 21 tests and the complete resident substitution audit
+pass. Only this one large function was accepted at this checkpoint; the
+separate `func_8007524C` research draft remains unmatched and is not counted.
+
+Snapshot `7513223`: **892/1,685 matching functions (52.9%)**:
+521 resident and 371 overlay; 793 remain assembly-backed. README and the
+public count-weighted treemap are refreshed; private instruction-weighted
+previews are unchanged. Percentages describe the known function inventory,
+not whole-game coverage or remaining effort.
+
 The behavioral descriptions below are starting hypotheses, not permission to
 rename functions or symbols without additional evidence.
 

@@ -2512,6 +2512,45 @@ full signed-halfword/negated-halfword range (262,148 comparisons) and both
 marker-index permutations. These model checks supplement, not replace, the
 full linked-byte proof.
 
+### Large resident coordinate/packet phase update (2026-10-17)
+
+`func_8009C6E8` (`7513223`) recovers the complete 2,204-byte /
+551-word range `[0x8009C6E8, 0x8009CF84)` with
+`gcc272-dos -quiet -O2 -G0` and its natural 48-byte frame.
+The inferred role combines mirrored coordinate submissions, native coordinate
+and flag updates, fourteen packet-color updates, twenty-eight render calls,
+and phase-byte advancement. The one mapped caller has no arguments and ignores
+the result; all actual helper inputs, including stack pointer arguments, were
+reviewed. Historical formal APIs and complete object meanings remain provisional.
+
+Partial native views recover six-byte coordinates in fourteen-record mode
+rows, sixteen-byte coordinate/flag records, and forty-byte packets in
+376-record banks. `D_800E6F04` also aliases the first updated Z halfword.
+Callback-sensitive mode, buffer and phase reloads are preserved; no input
+bounds, independent sign cache, fake helper arguments or new storage are added.
+This matching source requires native PS1 mapping and narrowing conventions,
+not a portable host-memory contract.
+
+Final-source removal controls retain only two tail register bindings, five
+symbolic byte views and four zero-instruction tied-value expressions. Each
+aid, each of the three live render-pointer dependencies, the one retained
+volatile qualifier, and the all-aids removal were measured independently.
+Removing the sign tie changes two words; the positive-path offset tie changes
+196 words and shortens the function; the Z-loop counter tie changes six words;
+the render-pointer capture changes five words. Removing each pointer input
+changes four, three or two words. Removing either tail binding changes twelve
+words. Earlier redundant bindings, identities, volatile qualifiers and the
+render-counter dependency were removed. There are no extra compiler flags,
+emitted instruction assembly, memory clobbers or fabricated frame objects.
+
+Annotated original, assembled original, relocated C, retail slice and linked
+resident bytes agree. Fresh 521-C, assembly-only and restored-521-C builds
+retain retail SHA-1 `7e480656a295dced6ec187286773ab897651e995`;
+all five overlays and all 21 tests pass. The complete 521-substitution resident
+audit passes. Original assembly, data, boundaries and helpers are unchanged.
+Failed attempts, final source hashes and twenty final-source controls remain
+in ignored local evidence.
+
 ## Wrapper checks
 
 The wrapper's SDK-free tests cover successful verbatim copying, failed or
