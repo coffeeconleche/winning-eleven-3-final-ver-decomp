@@ -1,5 +1,26 @@
 # Parallel decompilation handoff
 
+## Reviewed external resident matches — 2026-10-18
+
+Three external commits were independently reviewed and integrated:
+`func_800818DC` (400 bytes), `func_800AA7EC` (480 bytes), and
+`func_800188B4` (308 bytes plus its original eight-word jump table).
+All use GCC 2.7.2 with `-quiet -O2 -G0`. The new small-data addressing and
+resident owned-table support are opt-in; original assembly, data, function
+boundaries and retail hashes remain unchanged. See WORKFLOW.md and
+COMPILER_PROFILES.md for the supported mechanisms and remaining assumptions.
+
+Review added three SDK-free small-data tests and removed two unnecessary
+matching aids from the selector dispatcher together. Its remaining empty tail
+barrier is necessary on the simplified final source (removal changes 47 words).
+The final instruction spans and owned table are independently compared with
+original assembled code, annotated words, retail slices and the full image.
+
+Snapshot `fa4a90f`: **896/1,685 matching functions (53.2%)**, comprising
+525 resident and 371 overlay functions; 789 remain assembly-backed. The
+function-count treemap is refreshed. The separately assigned `func_800954E8`
+is not included in this snapshot.
+
 Use this document with independent agents working on this same game.
 Give each agent an exclusive assignment or ordered queue. The three-worker
 tables below are historical examples, not current reservations. Do not run
