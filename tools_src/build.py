@@ -13,7 +13,13 @@ import subprocess
 import sys
 from pathlib import Path
 
-from build_overlay import BuildError as CBuildError, compile_c_sources, compiled_parts
+from build_overlay import (
+    BuildError as CBuildError,
+    compile_c_sources,
+    compiled_parts,
+    jump_table_slots,
+    relocate_jump_table,
+)
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -99,6 +105,25 @@ def function_address(path: Path) -> int:
         raise BuildError(f"invalid function address in {path.name}") from error
 
 
+def export_linkage_labels(text: str) -> str:
+    """Make compiler-local $L labels linkable across resident objects.
+
+    Resident rodata and text assemble as separate objects, so the $L labels
+    an owned jump table references must be explicitly global; without .globl
+    GAS keeps them object-local and the link fails. Only definition lines are
+    affected, and .globl emits no section content.
+    """
+    lines: list[str] = []
+    exported: set[str] = set()
+    for line in text.splitlines():
+        match = re.fullmatch(r"(\$L_[A-Za-z0-9_]+):", line.strip())
+        if match and match.group(1) not in exported:
+            lines.append(f".globl {match.group(1)}")
+            exported.add(match.group(1))
+        lines.append(line)
+    return "\n".join(lines)
+
+
 def write_text_aggregate(compiled: dict[str, Path] | None = None) -> Path:
     compiled = compiled or {}
     functions = sorted(
@@ -111,7 +136,13 @@ def write_text_aggregate(compiled: dict[str, Path] | None = None) -> Path:
     if unknown:
         raise BuildError("resident C has no assembly slot: " + ", ".join(unknown))
     output = BUILD / "generated" / "5EBC.s"
-    output.parent.mkdir(parents=True, exist_ok=True)
+    rodata_output = BUILD / "generated" / "800.rodata.s"
+    rodata_output.parent.mkdir(parents=True, exist_ok=True)
+    # A stale generated rodata from an earlier run must never reach the
+    # assembler when this run claims no tables.
+    rodata_output.unlink(missing_ok=True)
+    rodata: str | None = None
+    claimed_slots: set[str] = set()
     lines = ['.include "macro.inc"', ".set noat", ".set noreorder", ".section .text"]
     handwritten = re.compile(
         r"^(\s*)/\*\s+[0-9A-F]+\s+[0-9A-F]+\s+([0-9A-F]{8})\s+\*/"
@@ -123,7 +154,20 @@ def write_text_aggregate(compiled: dict[str, Path] | None = None) -> Path:
         if path.stem in compiled:
             text, table = compiled_parts(compiled[path.stem], path.stem)
             if table is not None:
-                raise BuildError(f"{path.stem}: resident C rodata substitution is not supported")
+                # The table's entries live in the separately assembled rodata
+                # object; the labels they name must link across objects.
+                text = export_linkage_labels(text)
+                tables = (table,) if isinstance(table, str) else table
+                for slot, generated in zip(jump_table_slots(path.stem), tables,
+                                           strict=True):
+                    if slot[0] in claimed_slots:
+                        raise BuildError(f"{path.stem}: table slot already claimed: {slot[0]}")
+                    claimed_slots.add(slot[0])
+                    if rodata is None:
+                        rodata = (ROOT / "asm" / "data" / "800.rodata.s").read_text(
+                            encoding="utf-8"
+                        )
+                    rodata = relocate_jump_table(rodata, path.stem, generated, slot)
             ends = [index for index, line in enumerate(original_lines)
                     if re.fullmatch(r"\s*endlabel\s+" + re.escape(path.stem) + r"\s*", line)]
             if len(ends) != 1:
@@ -147,8 +191,12 @@ def write_text_aggregate(compiled: dict[str, Path] | None = None) -> Path:
                 raw_count += 1
             lines.append(line)
     output.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    if rodata is not None:
+        # Same cross-object rule for the table label defined in the rodata.
+        rodata_output.write_text(export_linkage_labels(rodata), encoding="utf-8")
     print(f"text functions: {len(functions)} ({len(compiled)} matching C substitutions, "
-          f"{raw_count} raw instruction words)")
+          f"{raw_count} raw instruction words, "
+          f"{len(claimed_slots)} owned jump tables)")
     return output
 
 
@@ -233,15 +281,22 @@ def main() -> int:
             args.dosbox, args.dos_cc1, source_dir=ROOT / "src" / "resident",
         )
 
+        text_aggregate = write_text_aggregate(compiled)
+        # Compiled jump tables replace their owned original rodata slots; the
+        # original file is assembled unchanged when no function claims a table.
+        rodata_source = BUILD / "generated" / "800.rodata.s"
+        if not rodata_source.is_file():
+            rodata_source = ROOT / "asm" / "data" / "800.rodata.s"
+
         jobs = [
             (ROOT / "asm" / "header.s", BUILD / "asm" / "header.o"),
-            (ROOT / "asm" / "data" / "800.rodata.s", BUILD / "asm" / "data" / "800.rodata.o"),
+            (rodata_source, BUILD / "asm" / "data" / "800.rodata.o"),
             (
                 write_encoded_data(ROOT / "asm" / "data" / "B6874.data.s"),
                 BUILD / "asm" / "data" / "B6874.data.o",
             ),
             (ROOT / "asm" / "data" / "D728C.sdata.s", BUILD / "asm" / "data" / "D728C.sdata.o"),
-            (write_text_aggregate(compiled), BUILD / "src" / "5EBC.o"),
+            (text_aggregate, BUILD / "src" / "5EBC.o"),
         ]
         for source, output in jobs:
             if not source.is_file():

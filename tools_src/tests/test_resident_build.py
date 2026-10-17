@@ -92,11 +92,70 @@ class ResidentAggregateTests(unittest.TestCase):
         with self.assertRaisesRegex(resident.BuildError, "missing or duplicate.*endlabel"):
             resident.write_text_aggregate({"func_80010000": compiled})
 
-    def test_resident_rodata_is_not_silently_discarded(self):
-        self.function("func_80010000", "glabel func_80010000\njr $ra\nnop\n")
-        with patch.object(resident, "compiled_parts", return_value=("code", "table")):
-            with self.assertRaisesRegex(resident.BuildError, "rodata substitution is not supported"):
-                resident.write_text_aggregate({"func_80010000": self.root / "converted.s"})
+    def test_owned_jump_table_moves_into_original_rodata_slot(self):
+        self.function("func_80010000",
+                      "glabel func_80010000\nold body\nendlabel func_80010000\n")
+        self.function("func_80010100", "glabel func_80010100\njr $ra\nnop\n")
+        compiled = self.root / "converted.s"
+        compiled.write_text('.section .rodata\n.align 3\n$L10:\n.word $L0\n'
+                            '.word $L1\n.text\n$L0:\nfunc_80010000:\njr $ra\n'
+                            'nop\n$L1:\nnop\n')
+        rodata = self.root / "asm" / "data" / "800.rodata.s"
+        rodata.parent.mkdir(parents=True)
+        rodata.write_text("before\ndlabel jtbl_80010000\n"
+                          "    /* entry 0 */ .word .L80010100\n"
+                          "    /* entry 1 */ .word .L80010104\n"
+                          "    /* padding */ .word 0x00000000\n"
+                          "enddlabel jtbl_80010000\nafter\n")
+        with patch.dict(build_overlay.PER_FUNC_JUMP_TABLES,
+                        {"func_80010000": ("jtbl_80010000", 2)}):
+            text = resident.write_text_aggregate({"func_80010000": compiled}).read_text()
+        generated = (self.output / "generated" / "800.rodata.s").read_text()
+        self.assertIn("before\ndlabel jtbl_80010000\n"
+                      ".globl $L_func_80010000_10\n"
+                      "$L_func_80010000_10:\n"
+                      ".word $L_func_80010000_0\n"
+                      ".word $L_func_80010000_1\n"
+                      "    /* padding */ .word 0x00000000\n"
+                      "enddlabel jtbl_80010000\nafter", generated)
+        self.assertNotIn(".align", generated.split("dlabel jtbl_80010000", 1)[1]
+                         .split("enddlabel jtbl_80010000", 1)[0])
+        self.assertIn("func_80010000:\njr $ra\nnop", text)
+        self.assertIn(".globl $L_func_80010000_0\n$L_func_80010000_0:", text)
+        self.assertIn(".globl $L_func_80010000_1\n$L_func_80010000_1:", text)
+        self.assertNotIn(".word", text)
+        self.assertNotIn("old body", text)
+
+    def test_rodata_output_absent_without_tables_and_stale_output_removed(self):
+        self.function("func_80010000",
+                      "glabel func_80010000\nold body\nendlabel func_80010000\n")
+        compiled = self.root / "converted.s"
+        compiled.write_text(".text\nfunc_80010000:\njr $ra\nnop\n")
+        stale = self.output / "generated" / "800.rodata.s"
+        stale.parent.mkdir(parents=True, exist_ok=True)
+        stale.write_text("stale rodata\n")
+        resident.write_text_aggregate({"func_80010000": compiled}).read_text()
+        self.assertFalse(stale.exists())
+
+    def test_two_resident_functions_cannot_claim_the_same_slot(self):
+        for name in ("func_80010000", "func_80010100"):
+            self.function(name, f"glabel {name}\njr $ra\nnop\nendlabel {name}\n")
+        rodata = self.root / "asm" / "data" / "800.rodata.s"
+        rodata.parent.mkdir(parents=True)
+        rodata.write_text("dlabel jtbl_80010000\n    .word .L80010100\n"
+                          "enddlabel jtbl_80010000\n")
+        compiler = ('.section .rodata\n$L0:\n.word $L1\n.text\nfunc_80010000:\n'
+                    'jr $ra\nnop\n')
+        compiled = {}
+        for name in ("func_80010000", "func_80010100"):
+            source = self.root / f"{name}.compiled.s"
+            source.write_text(compiler.replace("func_80010000", name))
+            compiled[name] = source
+        with patch.dict(build_overlay.PER_FUNC_JUMP_TABLES,
+                        {name: ("jtbl_80010000", 1)
+                         for name in ("func_80010000", "func_80010100")}):
+            with self.assertRaisesRegex(resident.BuildError, "already claimed"):
+                resident.write_text_aggregate(compiled)
 
     def test_empty_resident_source_directory_does_not_require_sdk(self):
         legacy = self.root / "src/overlays/resident"
