@@ -246,6 +246,7 @@ PER_FUNC_COMPILERS: dict[str, str] = {
     "func_800B0290": "gcc272-dos",
     "func_800ACFEC": "gcc272-dos",
     "func_800AA7C4": "gcc272-dos",
+    "func_800AA7EC": "gcc272-dos",
     "func_800A96C4": "gcc272-dos",
     "func_800B10B0": "gcc272-dos",
     "func_800AA9E8": "gcc272-dos",
@@ -887,6 +888,48 @@ PER_FUNC_JUMP_TABLES: dict[str, JumpTableSlot | tuple[JumpTableSlot, ...]] = {
     "func_801CCA00": ("jtbl_8018DA58", 16),
 }
 
+# Extern scalars whose original TU assembled every access %gp_rel($gp) against
+# the linker-provided _gp. maspsx only gp-rels symbols it saw defined through
+# .sdata/.comm, so these extern accesses are rewritten after maspsx, per
+# function, against the verified original bytes.
+PER_FUNC_SMALL_DATA = {
+    "func_800AA7EC": frozenset({
+        "D_800E6A90",
+        "D_800E6BCC",
+        "D_800E6B84",
+        "D_800E6B54",
+        "D_800E6A98",
+        "D_800E6A94",
+    }),
+}
+
+# Functions whose original assembler expanded li as ori for small positives
+# (maspsx versions below 2.50). Values below 2.50 keep every other 2.7x/2.8x
+# behaviour identical to 2.79 while enabling the li expansion.
+PER_FUNC_MASPSX_VERSION = {
+    "func_800AA7EC": "2.49",
+}
+
+SMALL_DATA_ACCESS = re.compile(
+    r"^(\s*)(lbu|lhu|lh|lw|lb|sb|sh|sw)(\s+)(\$[0-9A-Za-z]+),(\s*)([A-Za-z_][A-Za-z0-9_]*)\s*$"
+)
+
+
+def rewrite_small_data(text: str, symbols: frozenset[str]) -> str:
+    """Rewrite bare extern accesses of known small-data symbols to %gp_rel."""
+    res = []
+    for line in text.splitlines():
+        match = SMALL_DATA_ACCESS.match(line)
+        if match and match.group(6) in symbols:
+            res.append(
+                f"{match.group(1)}{match.group(2)}{match.group(3)}{match.group(4)},"
+                f"%gp_rel({match.group(6)})($gp)"
+            )
+        else:
+            res.append(line)
+    return "\n".join(res) + "\n"
+
+
 PER_FUNC_CC1_FLAGS = {
     "func_80098428": ["-quiet","-O2","-G0","-fno-strength-reduce"],
     "func_800AE958": ["-quiet","-O2","-G0","-mno-split-addresses"],
@@ -1512,7 +1555,7 @@ def compile_c_sources(
             [
                 str(maspsx_python),
                 str(maspsx),
-                "--aspsx-version=2.79",
+                f"--aspsx-version={PER_FUNC_MASPSX_VERSION.get(source.stem, '2.79')}",
                 "--macro-inc",
                 "--expand-div",
             ],
@@ -1523,7 +1566,12 @@ def compile_c_sources(
         )
         if result.returncode:
             raise BuildError(f"maspsx failed for {source.name}: {result.stderr[:1000]}")
-        maspsx_asm.write_text(result.stdout, encoding="utf-8")
+        small_data = PER_FUNC_SMALL_DATA.get(source.stem)
+        if small_data:
+            result_stdout = rewrite_small_data(result.stdout, small_data)
+        else:
+            result_stdout = result.stdout
+        maspsx_asm.write_text(result_stdout, encoding="utf-8")
         compiled[source.stem] = maspsx_asm
     return compiled
 
