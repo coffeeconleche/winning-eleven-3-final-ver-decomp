@@ -2670,6 +2670,37 @@ retains SHA-1 `7e480656a295dced6ec187286773ab897651e995`. Original assembly,
 tables, symbols and boundaries are unchanged. Failed candidates, final hashes,
 literal controls and independent review evidence remain ignored local files.
 
+### Resident conditional callback dispatch (2026-10-18)
+
+`func_80056000` recovers all 576 bytes / 144 instruction words with
+`gcc272-dos -quiet -O2 -G0` and its natural 32-byte frame. Ordinary native
+pointer accesses replace two unnecessary scalar-address assembly names.
+The only retained source aid is an input-only use of an initialized raw
+halfword before signed narrowing. Removing it, or replacing it with a bare
+empty expression, produces 572 bytes and 74 differing words. The final-source
+`gcc281` control produces 540 bytes and 136 differing words.
+
+The two mapped calls in `func_8003257C` do not consume its result. Physical
+`a1` setup at those sites is unused by this body, not an invented second
+formal input. The three actual helpers and their consumed arguments were
+reviewed: one bound word to `func_8001E6B8`, a record and two zero flags to
+`func_80057AE4`, and one identifier word to `func_800AB620`. Record meanings,
+historical declarations, indirect callers and native mapping/alignment remain
+provisional. Signed-halfword differences and their product fit `s32`; no
+two-team restriction or nonnegative random-result assumption is introduced.
+Byte counter reloads after callbacks, low-byte comparisons and native signed
+narrowing are retained. No padding, register bindings, instruction-output
+assembly, new storage, new symbol definitions or owned tables are needed.
+
+The publication checkout freshly compiles all 530 resident C functions.
+Annotated original, reassembled original, relocated C, retail slice and linked
+resident bytes agree. Assembly-only and restored-C builds also match;
+restoration uses the validated baseline cache. All five overlays, all 26 tests
+and all 530 resident substitution audits pass. The complete image remains
+882,688 bytes with SHA-1 `7e480656a295dced6ec187286773ab897651e995`.
+Original assembly, tables, symbols and boundaries are unchanged; all failed
+controls and independent review evidence remain ignored local files.
+
 ## Wrapper checks
 
 The wrapper's SDK-free tests cover successful verbatim copying, failed or
