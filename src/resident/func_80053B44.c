@@ -8,12 +8,13 @@ extern void func_8005C2AC(u8 *, u8, u8, u8, u8);
  * table and the scratch cells are byte/word access views of existing storage;
  * complete layouts and the original gameplay terms remain unknown.
  *
- * The two squared-distance tests keep their temporaries block-local, and the
- * second snapshot write of each pair rereads the scratch pointer through a
- * volatile view: the store to the first halfword may alias that pointer and
- * retail reloads it. Both are measured source-shape choices, not MMIO claims.
- * The 0x2CF byte index stays an absolute scratch view, matching the measured
- * separate constant materialization. */
+ * Squared differences use widened signed multiplication, low-word truncation
+ * and unsigned addition before the observed signed comparison. The first
+ * snapshot branch retains one measured qualified pointer reload after its
+ * first halfword store; the corresponding qualifier in the later branch was
+ * redundant and removed. This is a native alias/reload view, not an MMIO
+ * declaration. The 0x2CF index remains an unbounded byte-address view.
+ */
 s32 func_80053B44(u8 *record)
 {
     u8 *bank = D_800FF748;
@@ -39,7 +40,7 @@ s32 func_80053B44(u8 *record)
     {
         s32 dx = x - (s16)*(u16 *)(scratch + 0x36);
         s32 dz = z - (s16)*(u16 *)(scratch + 0x66);
-        if (dx * dx + dz * dz >= 0x6401)
+        if ((s32)((u32)((long long)dx * dx) + (u32)((long long)dz * dz)) >= 0x6401)
             return 0;
     }
     {
@@ -50,11 +51,11 @@ s32 func_80053B44(u8 *record)
     {
         s32 dx = *(s16 *)(other + 2) - x;
         s32 dz = *(s16 *)(other + 6) - z;
-        if (dx * dx + dz * dz >= 0x6401) {
+        if ((s32)((u32)((long long)dx * dx) + (u32)((long long)dz * dz)) >= 0x6401) {
             /* Selected record is out of range: mirror this position. */
             *(u16 *)(*(u32 *)(scratch + 0x2F4) + 2) =
                 *(u16 *)(scratch + 0xF0) + *(u32 *)(record + 8);
-            *(u16 *)(*(u32 volatile *)(scratch + 0x2F4) + 6) =
+            *(u16 *)(*(u32 *)(scratch + 0x2F4) + 6) =
                 *(u16 *)(scratch + 0xF4) + *(u32 *)(record + 0x10);
             return 1;
         }

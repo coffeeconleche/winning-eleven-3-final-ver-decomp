@@ -10,19 +10,13 @@ extern s32 func_8005CE30(u32);
  * 24-entry ring are measured, and the historical field meanings, helper
  * contracts and full layouts remain unknown.
  *
- * Matching aids (they emit no instruction or memory access):
- *  - fixed-register bindings pin the measured GCC 2.7.2 allocation:
- *    argX/argY for the first call's arguments (they die at the jal), `side`
- *    for the post-call byte, armX/armY for the angle re-test arguments,
- *    xa/xb for the table x and its preserved copy, firstReg/squareReg and the
- *    per-arm `sum` for the final squared-distance test;
- *  - the empty identity on `xb` keeps the preserved table x live so the
- *    per-arm `x +- 0x3320` factor is materialised in v0 instead of clobbering
- *    the copy;
- *  - the shared ok/fail labels keep both final tests as real tests; folding
- *    them into a single return makes GCC 2.7.2 merge the two arms.
- * The `side == 0` arm that appears to compute the same value on both paths is
- * retained because the retail code really branches there. */
+ * Final-source removal controls retain only three initialized value bindings:
+ * dx2 in $a0, oy and dy2 in $v1. All earlier bindings and both empty uses were
+ * removed cumulatively. Shared ok/fail labels retain the native branch shape.
+ * Signed products are widened before low-word truncation, and sums wrap as
+ * unsigned words before the native signed comparison. Native mapping and
+ * narrowing conventions remain required; these are not historical API types.
+ */
 s32 func_800531D8(u8 *record)
 {
     u8 *bank = D_800FF748;
@@ -31,15 +25,15 @@ s32 func_800531D8(u8 *record)
     u32 difference;
     u8 index;
     u8 *other;
-    register s32 xa __asm__("$5");
-    register s32 xb __asm__("$4");
+    s32 xa;
+    s32 xb;
     s32 distance;
     s32 square;
 
     {
         /* Call-site argument views; both die in the call. */
-        register s32 argX __asm__("$4");
-        register s32 argY __asm__("$5");
+        s32 argX;
+        s32 argY;
 
         argX = *(s16 *)(record + 2);
         argY = *(s16 *)(record + 6);
@@ -51,13 +45,13 @@ s32 func_800531D8(u8 *record)
     }
     {
         /* Post-call facing byte and the masked angle difference. */
-        register u32 side __asm__("$4");
+        u32 side;
 
         side = record[0x399];
         difference = ((side << 7) - angle) & 255;
         if (difference >= 129) {
-            register s32 armX __asm__("$2");
-            register s32 armY __asm__("$5");
+            s32 armX;
+            s32 armY;
 
             armX = *(s16 *)(record + 2);
             armY = *(s16 *)(record + 6);
@@ -70,8 +64,8 @@ s32 func_800531D8(u8 *record)
                 goto fail;
             }
         } else {
-            register s32 armX __asm__("$2");
-            register s32 armY __asm__("$5");
+            s32 armX;
+            s32 armY;
 
             armX = *(s16 *)(record + 2);
             armY = *(s16 *)(record + 6);
@@ -91,26 +85,26 @@ s32 func_800531D8(u8 *record)
     {
         /* Squared distance to the selected record with the measured register
          * roles: dx/dy in v0, dx^2 in a0, dy^2 and the sum in v1. */
-        register s32 dx __asm__("$2");
+        s32 dx;
         register s32 dx2 __asm__("$4");
-        register s32 yy __asm__("$2");
+        s32 yy;
         register s32 oy __asm__("$3");
         register s32 dy2 __asm__("$3");
         s32 dsum;
 
         dx = xa - *(s16 *)(other + 2);
-        dx2 = dx * dx;
+        dx2 = (s32)(u32)((long long)dx * dx);
         yy = *(s16 *)(record + 6);
         oy = *(s16 *)(other + 6);
         dx = yy - oy;
-        dy2 = dx * dx;
-        dsum = dx2 + dy2;
+        dy2 = (s32)(u32)((long long)dx * dx);
+        dsum = (s32)((u32)dx2 + (u32)dy2);
         distance = dsum;
     }
     if (distance > 0x143FFFF) {
         /* Second test: the record's own position stepped one heading offset
          * towards the selected side. */
-        register s32 firstReg __asm__("$5");
+        s32 firstReg;
 
         xb = xa;
         if (record[0x399] == 0) {
@@ -118,21 +112,19 @@ s32 func_800531D8(u8 *record)
         } else {
             firstReg = xb + 0x3320;
         }
-        square = *(s16 *)(record + 6) * *(s16 *)(record + 6);
+        square = (s32)(u32)((long long)*(s16 *)(record + 6) * *(s16 *)(record + 6));
         if (record[0x399] == 0) {
-            register s32 sum __asm__("$3");
+            s32 sum;
 
-            sum = firstReg * (xb - 0x3320) + square;
-            __asm__("" : : "r"(xb));
+            sum = (s32)((u32)((long long)firstReg * (xb - 0x3320)) + (u32)square);
             if (sum <= 0x143FFFF) {
                 goto ok;
             }
             goto fail;
         } else {
-            register s32 sum __asm__("$3");
+            s32 sum;
 
-            sum = firstReg * (xb + 0x3320) + square;
-            __asm__("" : : "r"(xb));
+            sum = (s32)((u32)((long long)firstReg * (xb + 0x3320)) + (u32)square);
             if (sum > 0x143FFFF) {
                 goto fail;
             }

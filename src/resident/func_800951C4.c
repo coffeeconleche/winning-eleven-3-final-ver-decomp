@@ -5,21 +5,16 @@ extern s32 func_8001E6B8(s32 divisor);
 extern void func_8004B0F0(u8 *record, u32 byteValue, u32 shiftedWord,
                           u32 scaledWord);
 
-/* Partial record and scratchpad views. The speed word at 0x3A0 holds a 24.8
- * fixed-point value and the signed angle word at 0xC is stored in 736ths by
- * func_8004B0F0. The live scratch pointer is reread from 0x1F8002F4 around the
- * helper calls, and the first read is a fresh absolute `lui/lw` pair while the
- * later reads share one scratchpad base, so the base is a plain local.
+/* Partial native record/scratch views; gameplay meanings remain provisional.
+ * The observed word at 0x3A0 is shifted by eight before scaling, and the
+ * negated word at 0xC is divided by 736. The scratch pointer is reread after
+ * helper calls. Actual helper arguments and low-byte/word operations remain
+ * unchanged; no nonnegative RNG-state invariant is assumed.
  *
- * Matching aids, all source-level and instruction-free except for the copy
- * they describe:
- *  - savedDirection is bound to $19 (s3) because the retail object copies the
- *    direction argument into s3 before the facing-byte test and masks that
- *    copy at the final call. The empty tied identity emits `addu s3,s0,zero`.
- *  - amount is bound to $6 (a2) because retail keeps the running amount in a2
- *    from the /10 quotient through the divisor branch, the clamp and the final
- *    adjustment.
- * These are measured register identities, not assembly patches or table edits. */
+ * Only savedDirection ($s3) and amount ($a2) retain measured value bindings.
+ * The formerly used empty direction identity is redundant and removed. Each
+ * final binding removal changes native code. There is no instruction-output
+ * assembly, fabricated frame object or table patch. */
 void func_800951C4(u8 *record, u32 direction, s32 level, u32 adjustment)
 {
     s32 random;
@@ -35,12 +30,12 @@ void func_800951C4(u8 *record, u32 direction, s32 level, u32 adjustment)
     s32 combined;
     register u32 savedDirection __asm__("$19");
 
-    /* The helper returns 0 or 1 here; the speed is scaled by 6 or 7. */
+    /* Preserve the signed remainder result; no nonnegative RNG-state
+     * invariant is assumed. For divisor 2 its range is -1 through 1. */
     random = func_8001E6B8(2);
     associated = *(u8 **)0x1F8002F4;
     product = (*(u32 *)(associated + 0x3A0) >> 8) * (u32)(random + 6);
     savedDirection = direction;
-    __asm__("" : "=r"(savedDirection) : "0"(savedDirection));
     oldDirection = associated[0x3A4];
     /* Wrapped 8-bit facing difference; both halves are kept positive. */
     delta = (oldDirection - direction) & 255;
