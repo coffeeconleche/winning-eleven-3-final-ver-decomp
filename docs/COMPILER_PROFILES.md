@@ -2630,6 +2630,46 @@ coordinate/decimal/address identities; it is not an emulator or a substitute
 for binary proof. Original assembly, data, boundaries and helpers are unchanged;
 all rejected candidates and compiler logs remain ignored local evidence.
 
+### Four independently reviewed resident matches (2026-10-18)
+
+Four complete functions add 1,940 bytes / 485 instruction words. All use
+`gcc272-dos -quiet -O2 -G0`, normal maspsx translation and natural frames;
+the final-source `gcc281` controls differ for all four.
+
+| Function | Code bytes | Frame bytes | Retained source aids |
+|---|---:|---:|---|
+| `func_800951C4` | 448 | 48 | two initialized value bindings |
+| `func_8004FEE8` | 456 | 32 | one binding, one input-only empty use |
+| `func_800531D8` | 540 | 32 | three initialized value bindings |
+| `func_80053B44` | 496 | 40 | one qualified native pointer reload |
+
+Independent review removes redundant bindings and empty uses cumulatively,
+then replays each final aid removal and their combined removal. The
+`func_8004FEE8` scalar-address assembly name is also unnecessary: ordinary
+native pointer accesses reproduce the same bytes. Its remaining empty use
+cannot be replaced by a bare fence without changing code. No instruction
+assembly, dummy frame storage, extra helper arguments or data patches are used.
+
+The squared-distance routines widen signed products before low-word
+truncation, add as unsigned words and then perform the original signed
+comparison. This preserves native overflow behavior without C signed-overflow
+assumptions or new guards. `func_800951C4` preserves the signed remainder from
+its random helper; a nonnegative RNG state is not assumed. The five mapped
+call sites of `func_8004FEE8` supply positive durations (`0xA0`, `0xD0`,
+`0x150`). Its defined C domain requires a nonzero half-duration; retail faults
+if execution reaches division by zero. Record meanings, original formal
+types, native mapping/alignment and indirect callers remain provisional.
+
+The publication checkout freshly compiles all 529 resident C functions.
+Annotated original, reassembled original, relocated C, retail slices and the
+linked resident image agree for every new function. Assembly-only and
+restored-C builds also match; restoration uses the validated baseline cache,
+not a second fresh full-C compilation. All five overlays, all 26 tests and
+all 529 resident substitution audits pass. The complete 882,688-byte image
+retains SHA-1 `7e480656a295dced6ec187286773ab897651e995`. Original assembly,
+tables, symbols and boundaries are unchanged. Failed candidates, final hashes,
+literal controls and independent review evidence remain ignored local files.
+
 ## Wrapper checks
 
 The wrapper's SDK-free tests cover successful verbatim copying, failed or
