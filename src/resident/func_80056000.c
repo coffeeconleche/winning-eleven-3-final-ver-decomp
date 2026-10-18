@@ -4,8 +4,6 @@ extern u8 D_8010A397;
 extern u8 D_8010A392;
 extern u8 D_800C7D44[];
 extern u8 D_800FF748[];
-extern u8 scratch29A __asm__("0x1F80029A");
-extern u8 *scratchCurrent __asm__("0x1F8002F4");
 extern s32 func_8001E6B8(s32);
 extern s32 func_80057AE4(u8 *, u32, u32);
 extern void func_800AB620(s32);
@@ -16,10 +14,17 @@ extern void func_800AB620(s32);
  * D_800FF748 storage (base + 0xAC53 / + 0xAC54), not new symbols. The wrapped
  * facing difference narrows to a byte before the unsigned threshold tests, and
  * the block ordering is the measured one: the flag store and the frame check
- * read happen before the stack frame is set up. The empty input identity keeps
+ * read happen before the stack frame is set up. The empty input use keeps
  * the unsigned halfword view live so its signed narrowing stays the measured
  * separate sll/sra pair instead of folding into a single lh; it emits no
- * instruction and has no memory clobber. */
+ * instruction and has no memory clobber. Ordinary native pointer accesses
+ * replace two unnecessary scalar-address assembly names.
+ *
+ * The two mapped calls in 8003257C ignore the return residue. Their physical
+ * a1 setup is not consumed here and is not an invented second formal input.
+ * Signed halfword differences and their product fit s32; byte counters wrap
+ * after callback-sensitive reloads. Native mapping/alignment and valid record
+ * pointers are required; historical declarations and indirect uses are unknown. */
 void func_80056000(u8 *record)
 {
     u8 *base = D_800FF748;
@@ -34,10 +39,10 @@ void func_80056000(u8 *record)
     u16 raw;
 
     D_8010A397 = 255;
-    if (D_8010A392 != 0 || scratch29A != 1) {
+    if (D_8010A392 != 0 || *(u8 *)0x1F80029A != 1) {
         return;
     }
-    current = scratchCurrent;
+    current = *(u8 **)0x1F8002F4;
     side = record[0x399] << 7;
     angle = current[0x3A4];
     difference = (u8)(side - angle) < 0x81 ? side - angle : angle - side;
