@@ -944,6 +944,7 @@ def rewrite_small_data(text: str, symbols: frozenset[str]) -> str:
 
 
 PER_FUNC_CC1_FLAGS = {
+    "func_800AFD14": ["-quiet", "-O2", "-G0", "-mno-split-addresses"],
     "func_80098428": ["-quiet","-O2","-G0","-fno-strength-reduce"],
     "func_800AE958": ["-quiet","-O2","-G0","-mno-split-addresses"],
     "func_800A557C": ["-quiet","-O2","-G0","-fno-strength-reduce"],
