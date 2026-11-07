@@ -62,6 +62,7 @@ PER_FUNC_COMPILERS: dict[str, str] = {
     "func_80015F80": 'gcc272-dos',
     "func_8001E814": 'gcc272-dos',
     "func_80078EF8": 'gcc272-dos',
+    "func_8004C0B0": 'gcc272-dos',
     "func_8007CC00": 'gcc272-dos',
     "func_8008ECC0": 'gcc272-dos',
     "func_8009EF68": 'gcc272-dos',
@@ -925,6 +926,7 @@ PER_FUNC_JUMP_TABLES: dict[str, JumpTableSlot | tuple[JumpTableSlot, ...]] = {
     "func_80015F80": ('jtbl_80010020', 6),
     "func_8001E814": ('jtbl_8001061C', 6),
     "func_80078EF8": ('jtbl_80013098', 10),
+    "func_8004C0B0": ('jtbl_80011B08', 5),
     "func_8007CC00": ('jtbl_80013158', 5),
     "func_8008ECC0": ('jtbl_80013E5C', 17),
     "func_8009EF68": ('jtbl_80014314', 25),
@@ -1047,6 +1049,7 @@ def rewrite_small_data(text: str, symbols: frozenset[str]) -> str:
 
 
 PER_FUNC_CC1_FLAGS = {
+    "func_8004C0B0": ['-quiet', '-O2', '-G0', '-fno-strength-reduce'],
     "func_80079D5C": ["-quiet", "-O2", "-G0", "-fno-strength-reduce"],
     "func_800AFD14": ["-quiet", "-O2", "-G0", "-mno-split-addresses"],
     "func_80098428": ["-quiet","-O2","-G0","-fno-strength-reduce"],
