@@ -36,6 +36,7 @@ CPP_FLAGS = [
 ]
 
 PER_FUNC_COMPILERS: dict[str, str] = {
+    "func_8001B0B8": "gcc272-dos",
     "func_800A7450": "gcc272-dos",
     "func_800807F0": "gcc272-dos",
     "func_801C7A84": "gcc272-dos",
@@ -1053,6 +1054,7 @@ def rewrite_small_data(text: str, symbols: frozenset[str]) -> str:
 
 
 PER_FUNC_CC1_FLAGS = {
+    "func_8001B0B8": ["-quiet", "-O2", "-G0", "-fno-schedule-insns"],
     "func_8004C0B0": ['-quiet', '-O2', '-G0', '-fno-strength-reduce'],
     "func_80079D5C": ["-quiet", "-O2", "-G0", "-fno-strength-reduce"],
     "func_800AFD14": ["-quiet", "-O2", "-G0", "-mno-split-addresses"],
