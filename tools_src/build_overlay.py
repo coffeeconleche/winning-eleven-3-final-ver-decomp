@@ -36,6 +36,7 @@ CPP_FLAGS = [
 ]
 
 PER_FUNC_COMPILERS: dict[str, str] = {
+    "func_800178B4": "gcc272-dos",
     "func_8018C068": "gcc272-dos",
     "func_8001B0B8": "gcc272-dos",
     "func_800A7450": "gcc272-dos",
@@ -908,6 +909,7 @@ PER_FUNC_COMPILERS: dict[str, str] = {
 # location. Code, targets and surrounding retail rodata are never patched.
 JumpTableSlot = tuple[str, int]
 PER_FUNC_JUMP_TABLES: dict[str, JumpTableSlot | tuple[JumpTableSlot, ...]] = {
+    "func_800178B4": ("jtbl_800100C0", 5),
     "func_8009FD40": ('jtbl_800143F8', 19),
     "func_8009FD84": ('jtbl_80014448', 19),
     "func_80089C08": ('jtbl_80013940', 119),
