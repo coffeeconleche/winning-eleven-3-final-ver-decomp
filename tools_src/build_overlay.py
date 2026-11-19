@@ -36,6 +36,7 @@ CPP_FLAGS = [
 ]
 
 PER_FUNC_COMPILERS: dict[str, str] = {
+    "func_800AB620": "gcc272-dos",
     "func_800A98E0": "gcc272-dos",
     "func_8001F2D0": "gcc272-dos",
     "func_800658D0": "gcc272-dos",
@@ -1023,6 +1024,7 @@ PER_FUNC_JUMP_TABLES: dict[str, JumpTableSlot | tuple[JumpTableSlot, ...]] = {
 # .sdata/.comm, so these extern accesses are rewritten after maspsx, per
 # function, against the verified original bytes.
 PER_FUNC_SMALL_DATA = {
+    "func_800AB620": frozenset({"D_800E6AEA", "D_800E6B88"}),
     "func_800A98E0": frozenset({"D_800E6AA2"}),
     "func_800AA7EC": frozenset({
         "D_800E6A90",
@@ -1038,6 +1040,7 @@ PER_FUNC_SMALL_DATA = {
 # (maspsx versions below 2.50). This selects the whole version profile, not
 # only li expansion: its other pseudo-op choices also require byte verification.
 PER_FUNC_MASPSX_VERSION = {
+    "func_800AB620": "2.49",
     "func_800A98E0": "2.49",
     "func_800AA7EC": "2.49",
 }
