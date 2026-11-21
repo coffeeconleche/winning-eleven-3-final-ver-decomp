@@ -909,6 +909,7 @@ PER_FUNC_COMPILERS: dict[str, str] = {
     "func_80056000": "gcc272-dos",
     "func_800B6718": "gcc272-dos",
     "func_800BB1F0": "gcc272-dos",
+    "func_800ADB8C": "gcc272-dos",
 }
 
 # Original read-only table ownership, excluding any trailing padding words.
