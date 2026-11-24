@@ -1391,6 +1391,7 @@ PER_FUNC_CC1_FLAGS = {
     "func_8018EBA4": ["-quiet", "-O2", "-G0", "-mno-split-addresses"],
     "func_801AAE5C": ["-quiet", "-O2", "-G0"],
     "func_800AEACC": ["-quiet", "-O2", "-G0", "-mno-split-addresses"],
+    "func_800AE7E0": ["-quiet", "-O2", "-G0", "-mno-split-addresses"],
 }
 
 OVERLAYS = {
