@@ -914,6 +914,7 @@ PER_FUNC_COMPILERS: dict[str, str] = {
     "func_800BC4D8": "gcc272-dos",
     "func_800AB080": "gcc272-dos",
     "func_800BBC08": "gcc272-dos",
+    "func_800AA7B4": "gcc272-dos",
 }
 
 # Original read-only table ownership, excluding any trailing padding words.
@@ -1041,6 +1042,7 @@ PER_FUNC_SMALL_DATA = {
         "D_800E6A98",
         "D_800E6A94",
     }),
+    "func_800AA7B4": frozenset({"D_800E6B94"}),
 }
 
 # Functions whose original assembler expanded li as ori for small positives
@@ -1050,6 +1052,7 @@ PER_FUNC_MASPSX_VERSION = {
     "func_800AB620": "2.49",
     "func_800A98E0": "2.49",
     "func_800AA7EC": "2.49",
+    "func_800AA7B4": "2.49",
 }
 
 SMALL_DATA_ACCESS = re.compile(
